@@ -1,0 +1,5 @@
+"0","wss = sapply(2:7,function(k) { "
+"0","  kmeans(x=t(brca.exp), centers =k)$tot.withinss"
+"0","})"
+"0","plot(2:7,wss,type='b',pch=19,xlab=""Number of clusters K"","
+"0","     ylab=""Total within-clusters sum of squares"")"

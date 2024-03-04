@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 WEEK 1: Probability distributions | Bioinformatics introductory course - MSc Molekulare Biotechnologie</title>
+  <meta name="description" content="RMarkdowns for the Data Analysis introduction course (SoSe2024), MoBi MA" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 WEEK 1: Probability distributions | Bioinformatics introductory course - MSc Molekulare Biotechnologie" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="RMarkdowns for the Data Analysis introduction course (SoSe2024), MoBi MA" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 WEEK 1: Probability distributions | Bioinformatics introductory course - MSc Molekulare Biotechnologie" />
+  
+  <meta name="twitter:description" content="RMarkdowns for the Data Analysis introduction course (SoSe2024), MoBi MA" />
+  
+
+<meta name="author" content="Biomedical Genomics group, IPMB" />
+
+
+<meta name="date" content="2024-03-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="week-1-dimensionality-reduction-and-unsupervised-learning.html"/>
+<link rel="next" href="week-1-hypothesis-testing.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Bioinformatics Introduction course (MoBi MA)</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#where-to-start"><i class="fa fa-check"></i>Where to start</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#r"><i class="fa fa-check"></i>R</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#rstudio"><i class="fa fa-check"></i>RStudio</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#variable-assignment-in-r"><i class="fa fa-check"></i>Variable assignment in R</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#classes"><i class="fa fa-check"></i>Classes</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#logical-operations"><i class="fa fa-check"></i>Logical operations</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#vectors"><i class="fa fa-check"></i>Vectors</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#matrixes"><i class="fa fa-check"></i>Matrixes</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#dataframes"><i class="fa fa-check"></i>Dataframes</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#r-markdown"><i class="fa fa-check"></i>R Markdown</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#advanced-data-manipulation-with-tidyverse"><i class="fa fa-check"></i>Advanced data manipulation with tidyverse</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#filter-based-on-conditions"><i class="fa fa-check"></i>Filter based on conditions</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#select-specific-columns"><i class="fa fa-check"></i>Select specific columns</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#operations-on-groups"><i class="fa fa-check"></i>Operations on groups</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#pretty-plots-using-ggplot2"><i class="fa fa-check"></i>Pretty plots using ggplot2</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#histogram"><i class="fa fa-check"></i>Histogram</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#scatter-plot"><i class="fa fa-check"></i>Scatter plot</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#boxplot"><i class="fa fa-check"></i>Boxplot</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html"><i class="fa fa-check"></i><b>1</b> WEEK 1: Descriptive statistics and data types</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#data-features-and-where-to-find-them"><i class="fa fa-check"></i><b>1.1</b> Data features and where to find them</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#load-the-data"><i class="fa fa-check"></i><b>1.1.1</b> Load the data</a></li>
+<li class="chapter" data-level="1.1.2" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#dimensions-and-naming"><i class="fa fa-check"></i><b>1.1.2</b> Dimensions and naming</a></li>
+<li class="chapter" data-level="1.1.3" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#numerical-features"><i class="fa fa-check"></i><b>1.1.3</b> Numerical features</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#data-cleaning"><i class="fa fa-check"></i><b>1.2</b> Data cleaning</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#filter"><i class="fa fa-check"></i><b>1.2.1</b> filter()</a></li>
+<li class="chapter" data-level="1.2.2" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#is.na"><i class="fa fa-check"></i><b>1.2.2</b> is.na()</a></li>
+<li class="chapter" data-level="1.2.3" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#mutate"><i class="fa fa-check"></i><b>1.2.3</b> mutate()</a></li>
+<li class="chapter" data-level="1.2.4" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#accross"><i class="fa fa-check"></i><b>1.2.4</b> accross()</a></li>
+<li class="chapter" data-level="1.2.5" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#in"><i class="fa fa-check"></i><b>1.2.5</b> %in%</a></li>
+<li class="chapter" data-level="1.2.6" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#ready-for-the-cleaning"><i class="fa fa-check"></i><b>1.2.6</b> Ready for the cleaning!</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#visualizing-data-distribution"><i class="fa fa-check"></i><b>1.3</b> Visualizing data distribution</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#histograms"><i class="fa fa-check"></i><b>1.3.1</b> Histograms</a></li>
+<li class="chapter" data-level="1.3.2" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#density-plots"><i class="fa fa-check"></i><b>1.3.2</b> Density plots</a></li>
+<li class="chapter" data-level="1.3.3" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#boxplots"><i class="fa fa-check"></i><b>1.3.3</b> Boxplots</a></li>
+<li class="chapter" data-level="1.3.4" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#qq-plots"><i class="fa fa-check"></i><b>1.3.4</b> QQ-plots</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#correlation"><i class="fa fa-check"></i><b>1.4</b> Correlation</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#measuring-the-centrality-in-data"><i class="fa fa-check"></i><b>1.4.1</b> Measuring the centrality in data</a></li>
+<li class="chapter" data-level="1.4.2" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#association-between-variables"><i class="fa fa-check"></i><b>1.4.2</b> Association between variables</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#exercises"><i class="fa fa-check"></i><b>1.5</b> EXERCISES</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#exercise-1-data-features"><i class="fa fa-check"></i><b>1.5.1</b> Exercise 1: Data features</a></li>
+<li class="chapter" data-level="1.5.2" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#exercise-2-visualization"><i class="fa fa-check"></i><b>1.5.2</b> Exercise 2: Visualization</a></li>
+<li class="chapter" data-level="1.5.3" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#exercise-3-correlation"><i class="fa fa-check"></i><b>1.5.3</b> Exercise 3: Correlation</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html"><i class="fa fa-check"></i><b>2</b> WEEK 1: Dimensionality reduction and unsupervised learning</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#preparing-the-data"><i class="fa fa-check"></i><b>2.1</b> Preparing the data</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#load-data"><i class="fa fa-check"></i><b>2.1.1</b> Load data</a></li>
+<li class="chapter" data-level="2.1.2" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#data-transformation"><i class="fa fa-check"></i><b>2.1.2</b> Data transformation</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#k-means-clustering"><i class="fa fa-check"></i><b>2.2</b> k-means clustering</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#performing-k-means"><i class="fa fa-check"></i><b>2.2.1</b> Performing k-means</a></li>
+<li class="chapter" data-level="2.2.2" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#quality-of-the-clustering"><i class="fa fa-check"></i><b>2.2.2</b> Quality of the clustering</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#hierarchical-clustering"><i class="fa fa-check"></i><b>2.3</b> Hierarchical clustering</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#determine-the-most-variable-genes"><i class="fa fa-check"></i><b>2.3.1</b> Determine the most variable genes</a></li>
+<li class="chapter" data-level="2.3.2" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#computing-the-correlation-between-all-patients"><i class="fa fa-check"></i><b>2.3.2</b> Computing the correlation between all patients</a></li>
+<li class="chapter" data-level="2.3.3" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#including-clinical-annotations-in-the-heatmap"><i class="fa fa-check"></i><b>2.3.3</b> Including clinical annotations in the heatmap</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#principal-component-analysis"><i class="fa fa-check"></i><b>2.4</b> Principal component analysis</a></li>
+<li class="chapter" data-level="2.5" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#exercises-1"><i class="fa fa-check"></i><b>2.5</b> EXERCISES</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#exercise-1-variance"><i class="fa fa-check"></i><b>2.5.1</b> Exercise 1: Variance</a></li>
+<li class="chapter" data-level="2.5.2" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#exercise-2-hierarchical-clustering"><i class="fa fa-check"></i><b>2.5.2</b> Exercise 2: Hierarchical clustering</a></li>
+<li class="chapter" data-level="2.5.3" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#exercise-3-pca"><i class="fa fa-check"></i><b>2.5.3</b> Exercise 3: PCA</a></li>
+<li class="chapter" data-level="2.5.4" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#going-further-expert"><i class="fa fa-check"></i><b>2.5.4</b> Going further <em>(expert)</em></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html"><i class="fa fa-check"></i><b>3</b> WEEK 1: Probability distributions</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html#probability-distributions"><i class="fa fa-check"></i><b>3.1</b> Probability distributions</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html#getting-to-know-the-various-functions"><i class="fa fa-check"></i><b>3.1.1</b> Getting to know the various functions</a></li>
+<li class="chapter" data-level="3.1.2" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html#normalgaussian-distribution"><i class="fa fa-check"></i><b>3.1.2</b> Normal/Gaussian distribution</a></li>
+<li class="chapter" data-level="3.1.3" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html#visualization"><i class="fa fa-check"></i><b>3.1.3</b> Visualization</a></li>
+<li class="chapter" data-level="3.1.4" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html#application-on-a-real-dataset"><i class="fa fa-check"></i><b>3.1.4</b> Application on a real dataset</a></li>
+<li class="chapter" data-level="3.1.5" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html#binomial-distribution"><i class="fa fa-check"></i><b>3.1.5</b> Binomial distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html#confidence-interval"><i class="fa fa-check"></i><b>3.2</b> Confidence interval</a></li>
+<li class="chapter" data-level="3.3" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html#exercises-2"><i class="fa fa-check"></i><b>3.3</b> EXERCISES</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html#exercise-1-probability-distributions"><i class="fa fa-check"></i><b>3.3.1</b> Exercise 1: Probability distributions</a></li>
+<li class="chapter" data-level="3.3.2" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html#exercise-2-binomial-distribution"><i class="fa fa-check"></i><b>3.3.2</b> Exercise 2: Binomial distribution</a></li>
+<li class="chapter" data-level="3.3.3" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html#exercise-3-confidence-intervals"><i class="fa fa-check"></i><b>3.3.3</b> Exercise 3: Confidence intervals</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="week-1-hypothesis-testing.html"><a href="week-1-hypothesis-testing.html"><i class="fa fa-check"></i><b>4</b> WEEK 1: Hypothesis testing</a>
+<ul>
+<li class="chapter" data-level="4.0.1" data-path="week-1-hypothesis-testing.html"><a href="week-1-hypothesis-testing.html#one-sample-t-test"><i class="fa fa-check"></i><b>4.0.1</b> One sample t-test</a></li>
+<li class="chapter" data-level="4.0.2" data-path="week-1-hypothesis-testing.html"><a href="week-1-hypothesis-testing.html#two-sample-t-test-2-sided"><i class="fa fa-check"></i><b>4.0.2</b> Two-sample t-test (2-sided)</a></li>
+<li class="chapter" data-level="4.0.3" data-path="week-1-hypothesis-testing.html"><a href="week-1-hypothesis-testing.html#two-sample-t-test-1-sided"><i class="fa fa-check"></i><b>4.0.3</b> Two-sample t-test (1-sided)</a></li>
+<li class="chapter" data-level="4.1" data-path="week-1-hypothesis-testing.html"><a href="week-1-hypothesis-testing.html#exercises-3"><i class="fa fa-check"></i><b>4.1</b> EXERCISES</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="week-1-hypothesis-testing.html"><a href="week-1-hypothesis-testing.html#exercise-1-one-sided-t-test"><i class="fa fa-check"></i><b>4.1.1</b> Exercise 1: One-sided t-test</a></li>
+<li class="chapter" data-level="4.1.2" data-path="week-1-hypothesis-testing.html"><a href="week-1-hypothesis-testing.html#exercice-2-two-sided-t-test"><i class="fa fa-check"></i><b>4.1.2</b> Exercice 2: Two-sided t-test</a></li>
+<li class="chapter" data-level="4.1.3" data-path="week-1-hypothesis-testing.html"><a href="week-1-hypothesis-testing.html#exercise-3.-going-further-checking-the-normality-of-the-distribution"><i class="fa fa-check"></i><b>4.1.3</b> Exercise 3. Going further … Checking the normality of the distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="week-1-hypothesis-testing.html"><a href="week-1-hypothesis-testing.html#wilcoxon-test"><i class="fa fa-check"></i><b>4.2</b> Wilcoxon test</a></li>
+<li class="chapter" data-level="4.3" data-path="week-1-hypothesis-testing.html"><a href="week-1-hypothesis-testing.html#chi-squared-test"><i class="fa fa-check"></i><b>4.3</b> Chi-squared test</a></li>
+<li class="chapter" data-level="4.4" data-path="week-1-hypothesis-testing.html"><a href="week-1-hypothesis-testing.html#fishers-exact-test"><i class="fa fa-check"></i><b>4.4</b> Fisher’s exact test</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="week-1-multiple-testing-and-regression.html"><a href="week-1-multiple-testing-and-regression.html"><i class="fa fa-check"></i><b>5</b> WEEK 1: Multiple testing and regression</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="week-1-multiple-testing-and-regression.html"><a href="week-1-multiple-testing-and-regression.html#multiple-testing"><i class="fa fa-check"></i><b>5.1</b> Multiple testing</a></li>
+<li class="chapter" data-level="5.2" data-path="week-1-multiple-testing-and-regression.html"><a href="week-1-multiple-testing-and-regression.html#regression"><i class="fa fa-check"></i><b>5.2</b> Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="week-2-annotathon.html"><a href="week-2-annotathon.html"><i class="fa fa-check"></i><b>6</b> WEEK 2: Annotathon!</a></li>
+<li class="chapter" data-level="7" data-path="week-2-data-formats-and-where-to-find-them.html"><a href="week-2-data-formats-and-where-to-find-them.html"><i class="fa fa-check"></i><b>7</b> WEEK 2: Data formats and where to find them</a></li>
+<li class="chapter" data-level="8" data-path="week-2-rna-seq---from-fastq-to-count-matrix.html"><a href="week-2-rna-seq---from-fastq-to-count-matrix.html"><i class="fa fa-check"></i><b>8</b> WEEK 2: RNA-seq - from FASTQ to count matrix</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="9" data-path="instructions.html"><a href="instructions.html"><i class="fa fa-check"></i><b>9</b> instructions</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="instructions.html"><a href="instructions.html#chapters-and-sub-chapters"><i class="fa fa-check"></i><b>9.1</b> Chapters and sub-chapters</a></li>
+<li class="chapter" data-level="9.2" data-path="instructions.html"><a href="instructions.html#captioned-figures-and-tables"><i class="fa fa-check"></i><b>9.2</b> Captioned figures and tables</a></li>
+<li class="chapter" data-level="9.3" data-path="instructions.html"><a href="instructions.html#footnotes"><i class="fa fa-check"></i><b>9.3</b> Footnotes</a></li>
+<li class="chapter" data-level="9.4" data-path="instructions.html"><a href="instructions.html#citations"><i class="fa fa-check"></i><b>9.4</b> Citations</a></li>
+<li class="chapter" data-level="9.5" data-path="instructions.html"><a href="instructions.html#equations"><i class="fa fa-check"></i><b>9.5</b> Equations</a></li>
+<li class="chapter" data-level="9.6" data-path="instructions.html"><a href="instructions.html#theorems-and-proofs"><i class="fa fa-check"></i><b>9.6</b> Theorems and proofs</a></li>
+<li class="chapter" data-level="9.7" data-path="instructions.html"><a href="instructions.html#callout-blocks"><i class="fa fa-check"></i><b>9.7</b> Callout blocks</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Bioinformatics introductory course - MSc Molekulare Biotechnologie</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="week-1-probability-distributions" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> WEEK 1: Probability distributions<a href="week-1-probability-distributions.html#week-1-probability-distributions" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="probability-distributions" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Probability distributions<a href="week-1-probability-distributions.html#probability-distributions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In the previous Exercise Sheet we have learnt more about unsupervised learning, like hierarchical clustering and especially PCA. These are among the fundamental methods of Data Analysis. Today we will learn more about another milestone of statistics: <strong>probability distributions</strong>.</p>
+<div class="float">
+<img src="figures/distrib.png" alt="Various kinds of distributions and the relations among them." />
+<div class="figcaption">Various kinds of distributions and the relations among them.</div>
+</div>
+<p><a href="https://medium.com/@srowen/common-probability-distributions-347e6b945ce4">Figure source</a></p>
+<p>Distributions represented by sparse lines represent outcomes which will be discrete (for example the <em>roll of dice</em> will always have discrete integer values from 1 to 6). Distributions represented by dense lines represent outcomes which can be continuous i.e real numbers (for example the height of people living in Heidelberg).</p>
+<p>R has in-built functions for almost all probability distributions</p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="week-1-probability-distributions.html#cb128-1" tabindex="-1"></a><span class="co"># Get the list of all probability distribution related functions</span></span>
+<span id="cb128-2"><a href="week-1-probability-distributions.html#cb128-2" tabindex="-1"></a><span class="fu">help</span>(distributions)</span></code></pre></div>
+<p>All of these functions for probability distributions follow the same common scheme, the <strong>root name</strong> of the function prefixed by either of <strong>p</strong>, <strong>d</strong>, <strong>q</strong> and <strong>r</strong>. For example for the Normal distribution we have the four variants of function available - <strong>pnorm</strong>, <strong>dnorm</strong>, <strong>qnorm</strong> and <strong>rnorm</strong>.</p>
+<p>Here, you can find some specific help on these functions:</p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="week-1-probability-distributions.html#cb129-1" tabindex="-1"></a>?rnorm</span>
+<span id="cb129-2"><a href="week-1-probability-distributions.html#cb129-2" tabindex="-1"></a><span class="co"># or</span></span>
+<span id="cb129-3"><a href="week-1-probability-distributions.html#cb129-3" tabindex="-1"></a>?rpois</span>
+<span id="cb129-4"><a href="week-1-probability-distributions.html#cb129-4" tabindex="-1"></a><span class="co"># etc ...</span></span></code></pre></div>
+<p>In the respective help documentation, you will find details on each of the functions.<br />
+Probably, the most difficult to distinguish or to remember are <strong>pnorm()</strong> and <strong>qnorm()</strong> (respectively <strong>ppois()</strong> and <strong>qpois()</strong>, etc …).<br />
+We are going to look at them more deeply in the following.</p>
+<div id="getting-to-know-the-various-functions" class="section level3 hasAnchor" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Getting to know the various functions<a href="week-1-probability-distributions.html#getting-to-know-the-various-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Let us get a grasp of what these functions actually do. You should be familiar with the cumulative distribution function, let’s take a look at that and its inverse first. We will work with a Normal distribution. We calculate the <strong>cumulative probability</strong> for the values 1,2,3,4 in three different distributions, using one of the functions described previously.<br />
+Short hint: <strong>p</strong> like <strong>cumulative P-robability</strong>. Which function are you going to use?</p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="week-1-probability-distributions.html#cb130-1" tabindex="-1"></a><span class="co"># Distribution 1: Mean = 2, Standard Deviation = 1</span></span>
+<span id="cb130-2"><a href="week-1-probability-distributions.html#cb130-2" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,<span class="at">mean=</span><span class="dv">2</span>,<span class="at">sd=</span><span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## [1] 0.1586553 0.5000000 0.8413447 0.9772499</code></pre>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="week-1-probability-distributions.html#cb132-1" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb132-2"><a href="week-1-probability-distributions.html#cb132-2" tabindex="-1"></a><span class="co"># Distribution 2: Mean = 2, Standard Deviation = 2</span></span>
+<span id="cb132-3"><a href="week-1-probability-distributions.html#cb132-3" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,<span class="at">mean=</span><span class="dv">2</span>,<span class="at">sd=</span><span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 0.3085375 0.5000000 0.6914625 0.8413447</code></pre>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="week-1-probability-distributions.html#cb134-1" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb134-2"><a href="week-1-probability-distributions.html#cb134-2" tabindex="-1"></a><span class="co"># Distribution 2: Mean = 4, Standard Deviation = 1</span></span>
+<span id="cb134-3"><a href="week-1-probability-distributions.html#cb134-3" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,<span class="at">mean=</span><span class="dv">4</span>,<span class="at">sd=</span><span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## [1] 0.001349898 0.022750132 0.158655254 0.500000000</code></pre>
+<blockquote>
+<p>Do you understand why the cumulative distribution functions change the way they do?</p>
+</blockquote>
+<p>Now, on the same distributions, we calculate the <strong>inverse cdf</strong> (inverse cumulative distribution function) for the cumulative probabilities of 25%, 50% and 75%. We use the <code>qnorm()</code> function for this (<strong>q- like quantile</strong>):</p>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="week-1-probability-distributions.html#cb136-1" tabindex="-1"></a><span class="co"># Distribution 1: Mean = 2, Standard Deviation = 1</span></span>
+<span id="cb136-2"><a href="week-1-probability-distributions.html#cb136-2" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fu">c</span>(<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.75</span>),<span class="at">mean=</span><span class="dv">2</span>,<span class="at">sd=</span><span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## [1] 1.32551 2.00000 2.67449</code></pre>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="week-1-probability-distributions.html#cb138-1" tabindex="-1"></a><span class="co"># Distribution 2: Mean = 2, Standard Deviation = 2</span></span>
+<span id="cb138-2"><a href="week-1-probability-distributions.html#cb138-2" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fu">c</span>(<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.75</span>),<span class="at">mean=</span><span class="dv">2</span>,<span class="at">sd=</span><span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 0.6510205 2.0000000 3.3489795</code></pre>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="week-1-probability-distributions.html#cb140-1" tabindex="-1"></a><span class="co"># Distribution 3: Mean = 4, Standard Deviation = 1</span></span>
+<span id="cb140-2"><a href="week-1-probability-distributions.html#cb140-2" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fu">c</span>(<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.75</span>),<span class="at">mean=</span><span class="dv">4</span>,<span class="at">sd=</span><span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## [1] 3.32551 4.00000 4.67449</code></pre>
+<blockquote>
+<p>Try with 100% on any of the distributions. Can you explain this result? Do you expect the result to be different in the other ones?</p>
+</blockquote>
+<p>Now that you know the output of the p- and q- functions, let’s look at <strong>d- like density probability</strong> functions. For any continuous distribution, the value of the function at any specific value is 0. This is why this probability function is used in discrete distribution such as the binomial distribution (function <strong>dbinom()</strong>). We first calculate the probability of getting 5 events out of 5 in a binomial distribution with a probability of 0.5. Then, we calculate the odds of <strong>not</strong> getting 5 out of 5.</p>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="week-1-probability-distributions.html#cb142-1" tabindex="-1"></a><span class="co"># probability of 5 out of 5</span></span>
+<span id="cb142-2"><a href="week-1-probability-distributions.html#cb142-2" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">5</span>, <span class="at">size=</span><span class="dv">5</span>, <span class="at">prob=</span><span class="fl">0.5</span>) </span></code></pre></div>
+<pre><code>## [1] 0.03125</code></pre>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="week-1-probability-distributions.html#cb144-1" tabindex="-1"></a><span class="co"># size = number of trials; prob = probability of success on each trial</span></span>
+<span id="cb144-2"><a href="week-1-probability-distributions.html#cb144-2" tabindex="-1"></a></span>
+<span id="cb144-3"><a href="week-1-probability-distributions.html#cb144-3" tabindex="-1"></a><span class="co"># probability of NOT getting 5 out of 5</span></span>
+<span id="cb144-4"><a href="week-1-probability-distributions.html#cb144-4" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">dbinom</span>(<span class="dv">5</span>, <span class="at">size=</span><span class="dv">5</span>, <span class="at">prob=</span><span class="fl">0.5</span>)</span></code></pre></div>
+<pre><code>## [1] 0.96875</code></pre>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="week-1-probability-distributions.html#cb146-1" tabindex="-1"></a><span class="co"># or</span></span>
+<span id="cb146-2"><a href="week-1-probability-distributions.html#cb146-2" tabindex="-1"></a><span class="fu">pbinom</span>(<span class="dv">4</span>, <span class="at">size=</span><span class="dv">5</span>, <span class="at">prob=</span><span class="fl">0.5</span>)</span></code></pre></div>
+<pre><code>## [1] 0.96875</code></pre>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="week-1-probability-distributions.html#cb148-1" tabindex="-1"></a><span class="co"># Remember, pbinom() returns the &quot;cumulative probability&quot; of ...</span></span></code></pre></div>
+<blockquote>
+<p>What is the probability of getting 5 out of 10? And NOT getting 5 out of 10?</p>
+</blockquote>
+<p>Suppose that the distribution of body height is described by a <strong>normal distribution</strong> with <strong>mean = 1.75 m</strong> and standard deviation <strong>sd = 0.15</strong>. What is the probability that someone is taller than 1.9 m? We can use the parameter <strong>lower.tail</strong> of the function <code>pnorm()</code> for this.<br />
+What is the probability that someone is smaller than 1.60m?</p>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="week-1-probability-distributions.html#cb149-1" tabindex="-1"></a><span class="do">## taller than 1.9</span></span>
+<span id="cb149-2"><a href="week-1-probability-distributions.html#cb149-2" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fl">1.9</span>, <span class="at">mean=</span><span class="fl">1.75</span>, <span class="at">sd=</span><span class="fl">0.15</span>, <span class="at">lower.tail=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## [1] 0.1586553</code></pre>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="week-1-probability-distributions.html#cb151-1" tabindex="-1"></a><span class="co"># or</span></span>
+<span id="cb151-2"><a href="week-1-probability-distributions.html#cb151-2" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(<span class="fl">1.9</span>, <span class="at">mean=</span><span class="fl">1.75</span>, <span class="at">sd=</span><span class="fl">0.15</span>)</span></code></pre></div>
+<pre><code>## [1] 0.1586553</code></pre>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="week-1-probability-distributions.html#cb153-1" tabindex="-1"></a><span class="do">## smaller than 1.6</span></span>
+<span id="cb153-2"><a href="week-1-probability-distributions.html#cb153-2" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fl">1.6</span>, <span class="at">mean=</span><span class="fl">1.75</span>, <span class="at">sd=</span><span class="fl">0.15</span>, <span class="at">lower.tail=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## [1] 0.1586553</code></pre>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="week-1-probability-distributions.html#cb155-1" tabindex="-1"></a><span class="co"># equivalent to </span></span>
+<span id="cb155-2"><a href="week-1-probability-distributions.html#cb155-2" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fl">1.6</span>, <span class="at">mean=</span><span class="fl">1.75</span>, <span class="at">sd=</span><span class="fl">0.15</span>)</span></code></pre></div>
+<pre><code>## [1] 0.1586553</code></pre>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="week-1-probability-distributions.html#cb157-1" tabindex="-1"></a><span class="co"># because: per defaults, lower.tail is set to TRUE (you can check the help page for further information using `?pnorm`)</span></span></code></pre></div>
+<p>Let’s have a look at this distribution using the <strong>dnorm()</strong> function:</p>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="week-1-probability-distributions.html#cb158-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="fl">2.5</span>, <span class="at">by=</span><span class="fl">0.01</span>)</span>
+<span id="cb158-2"><a href="week-1-probability-distributions.html#cb158-2" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">dnorm</span>(x, <span class="at">mean=</span><span class="fl">1.75</span>, <span class="at">sd=</span><span class="fl">0.15</span>)</span>
+<span id="cb158-3"><a href="week-1-probability-distributions.html#cb158-3" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">col=</span><span class="st">&#39;red&#39;</span>,<span class="at">lwd=</span><span class="dv">2</span>);<span class="fu">abline</span>(<span class="at">v=</span><span class="fu">c</span>(<span class="fl">1.6</span>,<span class="fl">1.9</span>),<span class="at">lty=</span><span class="dv">3</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-86-1.png" width="672" /></p>
+<p>Let’s finally look at <strong>r- like random</strong> functions. These, unlike the others, don’t return single probabilities or values but rather generate a random distribution of values. We can use this to generate a normal distribution with mean = 10, sd = 5.</p>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="week-1-probability-distributions.html#cb159-1" tabindex="-1"></a><span class="do">## normal distribution</span></span>
+<span id="cb159-2"><a href="week-1-probability-distributions.html#cb159-2" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n=</span><span class="dv">1000</span>,<span class="at">mean=</span><span class="dv">10</span>,<span class="at">sd=</span><span class="dv">5</span>)</span>
+<span id="cb159-3"><a href="week-1-probability-distributions.html#cb159-3" tabindex="-1"></a><span class="fu">hist</span>(x,<span class="at">breaks=</span><span class="dv">20</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-87-1.png" width="672" /></p>
+<blockquote>
+<p>Can you generate a Poisson distribution and a binomial distribution?</p>
+</blockquote>
+</div>
+<div id="normalgaussian-distribution" class="section level3 hasAnchor" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> Normal/Gaussian distribution<a href="week-1-probability-distributions.html#normalgaussian-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The normal or the Gaussian distribution is given as:</p>
+<p><span class="math display">\[P(x) = \frac{1}{{\sigma \sqrt {2\pi } }} \cdot e ^ \frac{-(x- \mu)^2}{{2\sigma ^2 }} \]</span> where <span class="math inline">\(\mu\)</span> is the mean of the distribution and <span class="math inline">\(\sigma\)</span> is the standard deviation.</p>
+<p>The <strong>standard normal distribution</strong> is a special case of <strong>normal distribution</strong> where the values for <span class="math inline">\(\mu = 0\)</span> and <span class="math inline">\(\sigma = 1\)</span>. Thus, the above equation for the Normal distribution simplifies to:</p>
+<p><span class="math display">\[P(x) = \frac{1}{{\sqrt {2\pi } }} \cdot e ^ \frac{-x^2}{2} \]</span> Now for any <span class="math inline">\(x\)</span> we can easily solve this equation since <span class="math inline">\(\pi\)</span> and <span class="math inline">\(e\)</span> are known constants.</p>
+<hr />
+</div>
+<div id="visualization" class="section level3 hasAnchor" number="3.1.3">
+<h3><span class="header-section-number">3.1.3</span> Visualization<a href="week-1-probability-distributions.html#visualization" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Let’s generate three random normal distributions with different means and standard deviations and visualize them together</p>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="week-1-probability-distributions.html#cb160-1" tabindex="-1"></a><span class="do">## Use the function `dnorm()` to plot the density distribution</span></span>
+<span id="cb160-2"><a href="week-1-probability-distributions.html#cb160-2" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">30</span>, <span class="at">by=</span>.<span class="dv">1</span>)</span>
+<span id="cb160-3"><a href="week-1-probability-distributions.html#cb160-3" tabindex="-1"></a>d1 <span class="ot">=</span> <span class="fu">dnorm</span>(x, <span class="at">mean=</span><span class="dv">0</span>, <span class="at">sd=</span><span class="dv">1</span>)</span>
+<span id="cb160-4"><a href="week-1-probability-distributions.html#cb160-4" tabindex="-1"></a>d2 <span class="ot">=</span> <span class="fu">dnorm</span>(x, <span class="at">mean=</span><span class="dv">10</span>, <span class="at">sd=</span><span class="dv">1</span>)</span>
+<span id="cb160-5"><a href="week-1-probability-distributions.html#cb160-5" tabindex="-1"></a>d3 <span class="ot">=</span> <span class="fu">dnorm</span>(x, <span class="at">mean=</span><span class="dv">20</span>, <span class="at">sd=</span><span class="dv">1</span>)</span>
+<span id="cb160-6"><a href="week-1-probability-distributions.html#cb160-6" tabindex="-1"></a></span>
+<span id="cb160-7"><a href="week-1-probability-distributions.html#cb160-7" tabindex="-1"></a><span class="co"># Compare with the histogram build from 1000 random number drawn from the standard normal distribution</span></span>
+<span id="cb160-8"><a href="week-1-probability-distributions.html#cb160-8" tabindex="-1"></a>r1 <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n=</span><span class="dv">1000</span>, <span class="at">mean=</span><span class="dv">0</span>, <span class="at">sd =</span><span class="dv">1</span>)  <span class="co"># random distributions of values</span></span>
+<span id="cb160-9"><a href="week-1-probability-distributions.html#cb160-9" tabindex="-1"></a>r2 <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n=</span><span class="dv">1000</span>, <span class="at">mean=</span><span class="dv">10</span>, <span class="at">sd=</span><span class="dv">1</span>)</span>
+<span id="cb160-10"><a href="week-1-probability-distributions.html#cb160-10" tabindex="-1"></a>r3 <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n=</span><span class="dv">1000</span>, <span class="at">mean=</span><span class="dv">20</span>, <span class="at">sd=</span><span class="dv">1</span>)</span>
+<span id="cb160-11"><a href="week-1-probability-distributions.html#cb160-11" tabindex="-1"></a></span>
+<span id="cb160-12"><a href="week-1-probability-distributions.html#cb160-12" tabindex="-1"></a><span class="co"># Histogram visualization</span></span>
+<span id="cb160-13"><a href="week-1-probability-distributions.html#cb160-13" tabindex="-1"></a><span class="co"># We will start by converting the rnorm outputs into one single df</span></span>
+<span id="cb160-14"><a href="week-1-probability-distributions.html#cb160-14" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">vals =</span> <span class="fu">c</span>(r1, r2, r3), <span class="co"># column vals is actual numbers</span></span>
+<span id="cb160-15"><a href="week-1-probability-distributions.html#cb160-15" tabindex="-1"></a>           <span class="at">Specs =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;mean=0, sd=1&quot;</span>, <span class="dv">1000</span>), <span class="co"># column Specs is mean/sd </span></span>
+<span id="cb160-16"><a href="week-1-probability-distributions.html#cb160-16" tabindex="-1"></a>                     <span class="fu">rep</span>(<span class="st">&quot;mean=10, sd=1&quot;</span>, <span class="dv">1000</span>),</span>
+<span id="cb160-17"><a href="week-1-probability-distributions.html#cb160-17" tabindex="-1"></a>                     <span class="fu">rep</span>(<span class="st">&quot;mean=20, sd=1&quot;</span>, <span class="dv">1000</span>))</span>
+<span id="cb160-18"><a href="week-1-probability-distributions.html#cb160-18" tabindex="-1"></a>             ) <span class="sc">%&gt;%</span></span>
+<span id="cb160-19"><a href="week-1-probability-distributions.html#cb160-19" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> vals, </span>
+<span id="cb160-20"><a href="week-1-probability-distributions.html#cb160-20" tabindex="-1"></a>             <span class="at">colour =</span> Specs)) <span class="sc">+</span></span>
+<span id="cb160-21"><a href="week-1-probability-distributions.html#cb160-21" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">50</span>) <span class="sc">+</span> </span>
+<span id="cb160-22"><a href="week-1-probability-distributions.html#cb160-22" tabindex="-1"></a>  <span class="fu">geom_freqpoly</span>(<span class="at">bins =</span> <span class="dv">50</span>) <span class="co"># geom_freqpoly adds in the line on top of the histogram</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-88-1.png" width="672" /></p>
+<blockquote>
+<p>Play with the mean and sd parameters and visualize the distributions (plain lines) as well as the corresponding histograms.</p>
+</blockquote>
+<hr />
+</div>
+<div id="application-on-a-real-dataset" class="section level3 hasAnchor" number="3.1.4">
+<h3><span class="header-section-number">3.1.4</span> Application on a real dataset<a href="week-1-probability-distributions.html#application-on-a-real-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Now we will use the Normal distribution to make predictions about gene expression of TP53 in lung cancer. TP53 is the most commonly mutated gene across multiple cancer types especially in lung cancers. We will read a table (import) containing measurements of TP53 expression levels in 586 patients.</p>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="week-1-probability-distributions.html#cb161-1" tabindex="-1"></a>tp53.exp <span class="ot">=</span> <span class="fu">read.table</span>(<span class="st">&quot;https://www.dropbox.com/s/rwopdr8ycmdg8bd/TP53_expression_LungAdeno.txt?dl=1&quot;</span>, </span>
+<span id="cb161-2"><a href="week-1-probability-distributions.html#cb161-2" tabindex="-1"></a>                      <span class="at">header=</span>T, <span class="at">sep=</span><span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>)[,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span>
+<span id="cb161-3"><a href="week-1-probability-distributions.html#cb161-3" tabindex="-1"></a><span class="fu">summary</span>(tp53.exp)</span></code></pre></div>
+<pre><code>##    Samples          TP53_expression 
+##  Length:586         Min.   :  92.6  
+##  Class :character   1st Qu.: 911.8  
+##  Mode  :character   Median :1313.3  
+##                     Mean   :1380.8  
+##                     3rd Qu.:1778.1  
+##                     Max.   :4703.9  
+##                     NA&#39;s   :69</code></pre>
+<div id="data-cleaning-and-central-values" class="section level4 hasAnchor" number="3.1.4.1">
+<h4><span class="header-section-number">3.1.4.1</span> Data cleaning and central values<a href="week-1-probability-distributions.html#data-cleaning-and-central-values" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>We will remove all the missing values and calculate the mean and standard deviation for the TP53 gene expression.</p>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="week-1-probability-distributions.html#cb163-1" tabindex="-1"></a>tp53.exp <span class="ot">=</span> tp53.exp <span class="sc">%&gt;%</span></span>
+<span id="cb163-2"><a href="week-1-probability-distributions.html#cb163-2" tabindex="-1"></a>  <span class="fu">na.omit</span>() </span>
+<span id="cb163-3"><a href="week-1-probability-distributions.html#cb163-3" tabindex="-1"></a></span>
+<span id="cb163-4"><a href="week-1-probability-distributions.html#cb163-4" tabindex="-1"></a>m.tp53 <span class="ot">=</span> <span class="fu">mean</span>(tp53.exp<span class="sc">$</span>TP53_expression) <span class="co"># mean</span></span>
+<span id="cb163-5"><a href="week-1-probability-distributions.html#cb163-5" tabindex="-1"></a>s.tp53 <span class="ot">=</span> <span class="fu">sd</span>(tp53.exp<span class="sc">$</span>TP53_expression) <span class="co"># standard deviation</span></span>
+<span id="cb163-6"><a href="week-1-probability-distributions.html#cb163-6" tabindex="-1"></a></span>
+<span id="cb163-7"><a href="week-1-probability-distributions.html#cb163-7" tabindex="-1"></a>m.tp53;s.tp53</span></code></pre></div>
+<pre><code>## [1] 1380.822</code></pre>
+<pre><code>## [1] 719.5934</code></pre>
+</div>
+<div id="modeling-using-a-normal-distribution" class="section level4 hasAnchor" number="3.1.4.2">
+<h4><span class="header-section-number">3.1.4.2</span> Modeling using a normal distribution<a href="week-1-probability-distributions.html#modeling-using-a-normal-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Let’s see how well a normal distribution with <span class="math inline">\(\mu = 1380.822\)</span> (m.tp53) and <span class="math inline">\(\sigma = 719.5934\)</span> (s.tp53) can approximate the <strong>real</strong> distribution of TP53 expression.<br />
+We assume that the population mean and standard deviation is similar as calculated above since we cannot measure the expression of TP53 in each and every lung cancer patient in the world.</p>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="week-1-probability-distributions.html#cb166-1" tabindex="-1"></a><span class="co"># distribution of the measured data</span></span>
+<span id="cb166-2"><a href="week-1-probability-distributions.html#cb166-2" tabindex="-1"></a><span class="fu">ggplot</span>(tp53.exp,</span>
+<span id="cb166-3"><a href="week-1-probability-distributions.html#cb166-3" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> TP53_expression)) <span class="sc">+</span></span>
+<span id="cb166-4"><a href="week-1-probability-distributions.html#cb166-4" tabindex="-1"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span> </span>
+<span id="cb166-5"><a href="week-1-probability-distributions.html#cb166-5" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">1500</span>, <span class="dv">6000</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-91-1.png" width="672" /></p>
+<p>Make a normal distribution with the above parameters</p>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="week-1-probability-distributions.html#cb167-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">5000</span>,<span class="at">by=</span><span class="dv">5</span>)</span>
+<span id="cb167-2"><a href="week-1-probability-distributions.html#cb167-2" tabindex="-1"></a>d.pred <span class="ot">=</span> <span class="fu">dnorm</span>(x, <span class="at">mean =</span> m.tp53, <span class="at">sd =</span> s.tp53)</span>
+<span id="cb167-3"><a href="week-1-probability-distributions.html#cb167-3" tabindex="-1"></a></span>
+<span id="cb167-4"><a href="week-1-probability-distributions.html#cb167-4" tabindex="-1"></a><span class="co"># Now plot both, predicted and measured data</span></span>
+<span id="cb167-5"><a href="week-1-probability-distributions.html#cb167-5" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb167-6"><a href="week-1-probability-distributions.html#cb167-6" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="fu">aes</span>(<span class="at">x =</span> tp53.exp<span class="sc">$</span>TP53_expression)) <span class="sc">+</span></span>
+<span id="cb167-7"><a href="week-1-probability-distributions.html#cb167-7" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, </span>
+<span id="cb167-8"><a href="week-1-probability-distributions.html#cb167-8" tabindex="-1"></a>                <span class="at">y =</span> d.pred,</span>
+<span id="cb167-9"><a href="week-1-probability-distributions.html#cb167-9" tabindex="-1"></a>                <span class="at">colour =</span> <span class="st">&quot;red&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb167-10"><a href="week-1-probability-distributions.html#cb167-10" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">c</span>(<span class="fu">quantile</span>(tp53.exp<span class="sc">$</span>TP53_expression, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.9</span>)))) <span class="sc">+</span></span>
+<span id="cb167-11"><a href="week-1-probability-distributions.html#cb167-11" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">c</span>(<span class="fu">qnorm</span>(<span class="at">p =</span> <span class="fl">0.1</span>, <span class="at">mean =</span> m.tp53, <span class="at">sd =</span> s.tp53), </span>
+<span id="cb167-12"><a href="week-1-probability-distributions.html#cb167-12" tabindex="-1"></a>                            <span class="fu">qnorm</span>(<span class="at">p =</span> <span class="fl">0.9</span>, <span class="at">mean =</span> m.tp53, <span class="at">sd =</span> s.tp53)),</span>
+<span id="cb167-13"><a href="week-1-probability-distributions.html#cb167-13" tabindex="-1"></a>             <span class="at">colour =</span> <span class="st">&#39;red&#39;</span>, <span class="at">linetype =</span> <span class="st">&#39;dotted&#39;</span>) </span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-92-1.png" width="672" /></p>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="week-1-probability-distributions.html#cb168-1" tabindex="-1"></a><span class="co">#plot(density(tp53.exp$TP53_expression), main =&quot;&quot;, xlim=c(-1500, 6000),lwd=3);lines(x,d.pred, col=&quot;red&quot;,lwd=3)</span></span></code></pre></div>
+</div>
+<div id="data-prediction-using-the-normal-distribution-model" class="section level4 hasAnchor" number="3.1.4.3">
+<h4><span class="header-section-number">3.1.4.3</span> Data prediction using the normal distribution model<a href="week-1-probability-distributions.html#data-prediction-using-the-normal-distribution-model" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Using a normal distribution with <span class="math inline">\(\mu = 1380.822\)</span> (m.tp53) and <span class="math inline">\(\sigma = 719.5934\)</span> (s.tp53), we will ask the following questions -</p>
+<p>– <strong>(Q1)</strong> What is the probability of observing the expression of TP53 to be <strong>less</strong> than 1000?</p>
+<p>– <strong>(Q2)</strong> What is the probability of observing the expression of TP53 to be <strong>greater</strong> than 1000?</p>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="week-1-probability-distributions.html#cb169-1" tabindex="-1"></a><span class="co"># Q1</span></span>
+<span id="cb169-2"><a href="week-1-probability-distributions.html#cb169-2" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="at">q=</span><span class="dv">1000</span>, <span class="at">mean =</span>m.tp53, <span class="at">sd =</span> s.tp53) <span class="co"># returns the cumulative probability</span></span></code></pre></div>
+<pre><code>## [1] 0.2983271</code></pre>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="week-1-probability-distributions.html#cb171-1" tabindex="-1"></a><span class="co"># Q2</span></span>
+<span id="cb171-2"><a href="week-1-probability-distributions.html#cb171-2" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="at">q=</span><span class="dv">1000</span>, <span class="at">mean =</span>m.tp53, <span class="at">sd =</span> s.tp53) </span></code></pre></div>
+<pre><code>## [1] 0.7016729</code></pre>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="week-1-probability-distributions.html#cb173-1" tabindex="-1"></a><span class="co"># is same as</span></span>
+<span id="cb173-2"><a href="week-1-probability-distributions.html#cb173-2" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="at">q=</span><span class="dv">1000</span>, <span class="at">mean =</span>m.tp53, <span class="at">sd =</span> s.tp53, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>) <span class="co"># or pnorm(q=1000, mean =m.tp53, sd = s.tp53, lower.tail = F)</span></span></code></pre></div>
+<pre><code>## [1] 0.7016729</code></pre>
+</div>
+<div id="evaluating-the-quality-of-the-predictions" class="section level4 hasAnchor" number="3.1.4.4">
+<h4><span class="header-section-number">3.1.4.4</span> Evaluating the quality of the predictions<a href="week-1-probability-distributions.html#evaluating-the-quality-of-the-predictions" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Let’s check how good these predictions are compared to <strong>real</strong> data.</p>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="week-1-probability-distributions.html#cb175-1" tabindex="-1"></a><span class="co"># Q1: What is the probability of observing the expression of TP53 to be **less** than 1000?</span></span>
+<span id="cb175-2"><a href="week-1-probability-distributions.html#cb175-2" tabindex="-1"></a><span class="fu">sum</span>(tp53.exp<span class="sc">$</span>TP53_expression <span class="sc">&lt;</span> <span class="dv">1000</span>)<span class="sc">/</span><span class="fu">nrow</span>(tp53.exp)</span></code></pre></div>
+<pre><code>## [1] 0.2978723</code></pre>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="week-1-probability-distributions.html#cb177-1" tabindex="-1"></a><span class="co"># Q2: What is the probability of observing the expression of TP53 to be **greater** than 1000?</span></span>
+<span id="cb177-2"><a href="week-1-probability-distributions.html#cb177-2" tabindex="-1"></a><span class="fu">sum</span>(tp53.exp<span class="sc">$</span>TP53_expression <span class="sc">&gt;</span> <span class="dv">1000</span>)<span class="sc">/</span><span class="fu">nrow</span>(tp53.exp)</span></code></pre></div>
+<pre><code>## [1] 0.7021277</code></pre>
+<blockquote>
+<p>I would say those predictions are pretty good !! Now, let’s try to break this model. Re-execute the code above with different <span class="math inline">\(q\)</span> values <code>q=100, q=500, q=4000, q=4500</code> etc. At what values do you think the model would not perform well. HINT: Look at the tails of the distribution!</p>
+</blockquote>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="week-1-probability-distributions.html#cb179-1" tabindex="-1"></a><span class="co"># What is the probability of observing the expression of TP53 to be less than q?</span></span>
+<span id="cb179-2"><a href="week-1-probability-distributions.html#cb179-2" tabindex="-1"></a>q <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">100</span>,<span class="dv">500</span>,<span class="dv">1000</span>,<span class="dv">4000</span>,<span class="dv">4500</span>)</span>
+<span id="cb179-3"><a href="week-1-probability-distributions.html#cb179-3" tabindex="-1"></a></span>
+<span id="cb179-4"><a href="week-1-probability-distributions.html#cb179-4" tabindex="-1"></a><span class="co"># The function sapply() is used to calculate and store the predicted (a) and real (b) values</span></span>
+<span id="cb179-5"><a href="week-1-probability-distributions.html#cb179-5" tabindex="-1"></a>pred <span class="ot">=</span> <span class="fu">numeric</span>()</span>
+<span id="cb179-6"><a href="week-1-probability-distributions.html#cb179-6" tabindex="-1"></a>meas <span class="ot">=</span> <span class="fu">numeric</span>()</span>
+<span id="cb179-7"><a href="week-1-probability-distributions.html#cb179-7" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(q)){</span>
+<span id="cb179-8"><a href="week-1-probability-distributions.html#cb179-8" tabindex="-1"></a>  pred[i] <span class="ot">=</span> <span class="fu">pnorm</span>(<span class="at">q=</span>q[i], <span class="at">mean =</span> m.tp53, <span class="at">sd =</span> s.tp53) </span>
+<span id="cb179-9"><a href="week-1-probability-distributions.html#cb179-9" tabindex="-1"></a>  meas[i] <span class="ot">=</span> <span class="fu">sum</span>(tp53.exp<span class="sc">$</span>TP53_expression <span class="sc">&lt;</span> q[i])<span class="sc">/</span><span class="fu">nrow</span>(tp53.exp)</span>
+<span id="cb179-10"><a href="week-1-probability-distributions.html#cb179-10" tabindex="-1"></a>}</span>
+<span id="cb179-11"><a href="week-1-probability-distributions.html#cb179-11" tabindex="-1"></a></span>
+<span id="cb179-12"><a href="week-1-probability-distributions.html#cb179-12" tabindex="-1"></a><span class="co"># Change into a dataframe </span></span>
+<span id="cb179-13"><a href="week-1-probability-distributions.html#cb179-13" tabindex="-1"></a>model_mat <span class="ot">=</span> <span class="fu">data.frame</span>(pred, meas, q)</span>
+<span id="cb179-14"><a href="week-1-probability-distributions.html#cb179-14" tabindex="-1"></a>model_mat</span></code></pre></div>
+<pre><code>##         pred        meas    q
+## 1 0.03754417 0.001934236  100
+## 2 0.11046576 0.104448743  500
+## 3 0.29832708 0.297872340 1000
+## 4 0.99986358 0.992263056 4000
+## 5 0.99999270 0.996131528 4500</code></pre>
+<p>Again, using a normal distribution with <span class="math inline">\(\mu = 1380.822\)</span> and <span class="math inline">\(\sigma = 719.5934\)</span>, what if we ask these kinds of questions:</p>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="week-1-probability-distributions.html#cb181-1" tabindex="-1"></a><span class="co"># Q1: What is the value of TP53 expression at the 10% quantile?</span></span>
+<span id="cb181-2"><a href="week-1-probability-distributions.html#cb181-2" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="at">p =</span> <span class="fl">0.1</span>, <span class="at">mean =</span> m.tp53, <span class="at">sd =</span> s.tp53)</span></code></pre></div>
+<pre><code>## [1] 458.6258</code></pre>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="week-1-probability-distributions.html#cb183-1" tabindex="-1"></a><span class="co"># Q2: What is the value of TP53 expression at the 90% quantile?</span></span>
+<span id="cb183-2"><a href="week-1-probability-distributions.html#cb183-2" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="at">p =</span> <span class="fl">0.9</span>, <span class="at">mean =</span> m.tp53, <span class="at">sd =</span> s.tp53)</span></code></pre></div>
+<pre><code>## [1] 2303.018</code></pre>
+<p>Let’s check how good these predictions are compared to our real data.</p>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="week-1-probability-distributions.html#cb185-1" tabindex="-1"></a><span class="fu">quantile</span>(tp53.exp<span class="sc">$</span>TP53_expression, </span>
+<span id="cb185-2"><a href="week-1-probability-distributions.html#cb185-2" tabindex="-1"></a>         <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.9</span>))</span></code></pre></div>
+<pre><code>##       10%       90% 
+##  478.2844 2240.1913</code></pre>
+<p>Again the predictions are pretty good!</p>
+</div>
+<div id="visualization-1" class="section level4 hasAnchor" number="3.1.4.5">
+<h4><span class="header-section-number">3.1.4.5</span> Visualization<a href="week-1-probability-distributions.html#visualization-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>We can also visualize all of this on a simple graph:</p>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="week-1-probability-distributions.html#cb187-1" tabindex="-1"></a><span class="co"># Model prediction:</span></span>
+<span id="cb187-2"><a href="week-1-probability-distributions.html#cb187-2" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">5000</span>,<span class="at">by=</span><span class="dv">5</span>)</span>
+<span id="cb187-3"><a href="week-1-probability-distributions.html#cb187-3" tabindex="-1"></a>d.pred <span class="ot">=</span> <span class="fu">dnorm</span>(x,<span class="at">mean =</span> m.tp53, <span class="at">sd =</span> s.tp53)</span>
+<span id="cb187-4"><a href="week-1-probability-distributions.html#cb187-4" tabindex="-1"></a></span>
+<span id="cb187-5"><a href="week-1-probability-distributions.html#cb187-5" tabindex="-1"></a><span class="co"># Model and measured data:</span></span>
+<span id="cb187-6"><a href="week-1-probability-distributions.html#cb187-6" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(tp53.exp<span class="sc">$</span>TP53_expression), <span class="at">main =</span><span class="st">&quot;&quot;</span>, <span class="at">xlim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">1500</span>, <span class="dv">6000</span>),<span class="at">lwd=</span><span class="dv">3</span>);<span class="fu">lines</span>(x,d.pred, <span class="at">col=</span><span class="st">&quot;red&quot;</span>,<span class="at">lwd=</span><span class="dv">3</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-98-1.png" width="672" /></p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="week-1-probability-distributions.html#cb188-1" tabindex="-1"></a><span class="co"># Model and measured data and predicted versus measured 0.1 and 0.9 quantiles:</span></span>
+<span id="cb188-2"><a href="week-1-probability-distributions.html#cb188-2" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb188-3"><a href="week-1-probability-distributions.html#cb188-3" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, </span>
+<span id="cb188-4"><a href="week-1-probability-distributions.html#cb188-4" tabindex="-1"></a>                <span class="at">y =</span> d.pred),</span>
+<span id="cb188-5"><a href="week-1-probability-distributions.html#cb188-5" tabindex="-1"></a>            <span class="at">colour =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb188-6"><a href="week-1-probability-distributions.html#cb188-6" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="fu">aes</span>(<span class="at">x =</span> tp53.exp<span class="sc">$</span>TP53_expression)) </span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-98-2.png" width="672" /></p>
+<p>Compare the black and red vertical lines (real vs predicted).</p>
+<blockquote>
+<p>Re-execute the code above with <code>p=0.25, p=0.5, p=0.75 etc</code> and check how good the predictions are.</p>
+</blockquote>
+</div>
+<div id="visualization-using-a-q-q-plot" class="section level4 hasAnchor" number="3.1.4.6">
+<h4><span class="header-section-number">3.1.4.6</span> Visualization using a Q-Q plot<a href="week-1-probability-distributions.html#visualization-using-a-q-q-plot" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Now, let’s plot the sample quantiles against theoretical quantiles to check the similarity between the two. This is called a quantile - quantile plot or a Q-Q plot, which you are familiar with (see Exercises Sheet 1).</p>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="week-1-probability-distributions.html#cb189-1" tabindex="-1"></a>q <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="fl">0.01</span>) <span class="co"># Creating a vector of quantiles</span></span>
+<span id="cb189-2"><a href="week-1-probability-distributions.html#cb189-2" tabindex="-1"></a></span>
+<span id="cb189-3"><a href="week-1-probability-distributions.html#cb189-3" tabindex="-1"></a><span class="co"># Find values corresponding to these quantiles in the real data</span></span>
+<span id="cb189-4"><a href="week-1-probability-distributions.html#cb189-4" tabindex="-1"></a>q.observed <span class="ot">=</span> <span class="fu">quantile</span>(tp53.exp<span class="sc">$</span>TP53_expression, <span class="at">probs =</span> q)</span>
+<span id="cb189-5"><a href="week-1-probability-distributions.html#cb189-5" tabindex="-1"></a></span>
+<span id="cb189-6"><a href="week-1-probability-distributions.html#cb189-6" tabindex="-1"></a><span class="co"># Find values corresponding to these quantiles in the theoretical normal distribution</span></span>
+<span id="cb189-7"><a href="week-1-probability-distributions.html#cb189-7" tabindex="-1"></a>q.theoretical <span class="ot">=</span> <span class="fu">qnorm</span>(<span class="at">p =</span> q, <span class="at">mean =</span> m.tp53, <span class="at">sd =</span> s.tp53)</span>
+<span id="cb189-8"><a href="week-1-probability-distributions.html#cb189-8" tabindex="-1"></a></span>
+<span id="cb189-9"><a href="week-1-probability-distributions.html#cb189-9" tabindex="-1"></a><span class="co"># Correlate the above two values</span></span>
+<span id="cb189-10"><a href="week-1-probability-distributions.html#cb189-10" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb189-11"><a href="week-1-probability-distributions.html#cb189-11" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> q.theoretical, </span>
+<span id="cb189-12"><a href="week-1-probability-distributions.html#cb189-12" tabindex="-1"></a>                 <span class="at">y =</span> q.observed), <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb189-13"><a href="week-1-probability-distributions.html#cb189-13" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">slope =</span> <span class="dv">1</span>, </span>
+<span id="cb189-14"><a href="week-1-probability-distributions.html#cb189-14" tabindex="-1"></a>              <span class="at">size =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) </span></code></pre></div>
+<pre><code>## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+## ℹ Please use `linewidth` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-99-1.png" width="480" /></p>
+<hr />
+</div>
+</div>
+<div id="binomial-distribution" class="section level3 hasAnchor" number="3.1.5">
+<h3><span class="header-section-number">3.1.5</span> Binomial distribution<a href="week-1-probability-distributions.html#binomial-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A binomial distribution can be defined as -</p>
+<p><span class="math display">\[P(x) = \frac{n!}{x!(n-x)!}\cdot p^x \cdot (1-p)^{n-x}\]</span></p>
+<p>Where <span class="math inline">\(x\)</span> is the number of successes out of <span class="math inline">\(n\)</span> experiments and <span class="math inline">\(p\)</span> is the probability of success.</p>
+<ul>
+<li><span class="math inline">\(mean = n \cdot p\)</span></li>
+<li><span class="math inline">\(variance = np \cdot (1 - p)\)</span></li>
+<li><span class="math inline">\(sd = \sqrt{np \cdot (1 - p)}\)</span></li>
+</ul>
+<p>The design of the experiment is as follows -</p>
+<ul>
+<li>The experiment is repeated and are independent of one another</li>
+<li>Each experiment has just two outcomes</li>
+<li>The probability of success is constant and does not change with experiments</li>
+</ul>
+<p>We can for example compute the probability of having 7 heads in a series of 10 throws of a coin:</p>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="week-1-probability-distributions.html#cb191-1" tabindex="-1"></a><span class="co"># x = number of successes; size = number of trials; prob = probability of success on each trial</span></span>
+<span id="cb191-2"><a href="week-1-probability-distributions.html#cb191-2" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="at">x=</span><span class="dv">7</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">prob =</span> <span class="fl">0.5</span>) </span></code></pre></div>
+<pre><code>## [1] 0.1171875</code></pre>
+<p>Or we can compute what the probability is to get 7 or more heads using the function <code>pbinom()</code>. Remember that the parameter “lower.tail” is used to specify whether to calculate the probability of observing x or fewer successes (if <code>lower.tail = TRUE</code>) or the probability of observing more than x successes (<code>lower.tail = FALSE</code>):</p>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="week-1-probability-distributions.html#cb193-1" tabindex="-1"></a><span class="fu">pbinom</span>(<span class="dv">6</span>, <span class="at">size=</span><span class="dv">10</span>,</span>
+<span id="cb193-2"><a href="week-1-probability-distributions.html#cb193-2" tabindex="-1"></a>       <span class="at">prob=</span><span class="fl">0.5</span>,</span>
+<span id="cb193-3"><a href="week-1-probability-distributions.html#cb193-3" tabindex="-1"></a>       <span class="at">lower.tail=</span><span class="cn">FALSE</span>) </span></code></pre></div>
+<pre><code>## [1] 0.171875</code></pre>
+<p>Beware that this syntax means <strong>strictly more than 6</strong>, i.e. 7 or more!!</p>
+<blockquote>
+<p>How would you compute the probability to get less than 5? What would <code>qbinom(0.3,size=10,prob=0.5,lower.tail=FALSE)</code> represent?</p>
+</blockquote>
+<hr />
+</div>
+</div>
+<div id="confidence-interval" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Confidence interval<a href="week-1-probability-distributions.html#confidence-interval" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The <strong>confidence interval</strong> describes the interval containing the (unknown) expectation value of a distribution with 95% confidence. This means that out of 100 random realizations of this random variable, the true expectation value <span class="math inline">\(\mu\)</span> will indeed be in this interval.</p>
+<p>Let us try a simulation: we consider a random variable distributed according to a Poisson distribution <span class="math display">\[P(x) = \frac{{e^{ - \lambda } \lambda ^x }}{{x!}}\]</span> Here, <em>we know the true value of the expectation value</em>. We want to get an estimate for <span class="math inline">\(\lambda\)</span>, and check if the confidence interval contains the true expectation value.</p>
+<p>For example, a farmer expects to collect 75 eggs from his hens per hour.</p>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="week-1-probability-distributions.html#cb195-1" tabindex="-1"></a>lambda <span class="ot">=</span> <span class="dv">75</span></span></code></pre></div>
+<p>He now collects during 100 days the eggs <span class="math inline">\(N=8\)</span> times a day (each time during one hour). We want to compute the mean <span class="math inline">\(m_N\)</span> over these <span class="math inline">\(N=8\)</span> realizations and determine the 95% confidence interval, and check, how often the expectation value <span class="math inline">\(\mu\)</span> is inside the confidence interval.</p>
+<p>Remember that the 95% CI is given by <span class="math display">\[[m_N-t_{95,N-1}\frac{\sigma}{\sqrt{N}},m_N+t_{95,N-1}\frac{\sigma}{\sqrt{N}}]\]</span> where <span class="math inline">\(t_{95,N-1}\)</span> is the critical value for the <span class="math inline">\(t\)</span>-distribution with <span class="math inline">\(n-1\)</span> degrees of freedom.</p>
+<p>Let’s start by creating our samples:</p>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="week-1-probability-distributions.html#cb196-1" tabindex="-1"></a><span class="co"># size of the sample</span></span>
+<span id="cb196-2"><a href="week-1-probability-distributions.html#cb196-2" tabindex="-1"></a>N <span class="ot">=</span> <span class="dv">8</span></span>
+<span id="cb196-3"><a href="week-1-probability-distributions.html#cb196-3" tabindex="-1"></a></span>
+<span id="cb196-4"><a href="week-1-probability-distributions.html#cb196-4" tabindex="-1"></a><span class="co"># we now draw 100 times samples of size N=8</span></span>
+<span id="cb196-5"><a href="week-1-probability-distributions.html#cb196-5" tabindex="-1"></a><span class="do">## rpois is the function used to generate the Poisson distribution</span></span>
+<span id="cb196-6"><a href="week-1-probability-distributions.html#cb196-6" tabindex="-1"></a>X <span class="ot">=</span> <span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="cf">function</span>(i) {</span>
+<span id="cb196-7"><a href="week-1-probability-distributions.html#cb196-7" tabindex="-1"></a>  <span class="fu">rpois</span>(N, <span class="at">lambda =</span> lambda)</span>
+<span id="cb196-8"><a href="week-1-probability-distributions.html#cb196-8" tabindex="-1"></a>  })</span></code></pre></div>
+<p><code>lapply()</code> is a function in R that stands for “list apply”. It is used to <em>apply</em> a function to each element of a list or vector and produces a list with the same length as an output.</p>
+<p>In this previous example, the input is a vector (<code>1:100</code>).
+Then, we <code>lapply(v, function(i))</code>:
++ v: The list or vector you want to apply the function to.
++ function: The function you want to apply where <code>i</code> is each element in X. In this case, we are applying <code>rpois</code> 100 times.</p>
+<p>As an output, <code>lapply</code> returns a list where each element has had the specified function applied to it.</p>
+<blockquote>
+<p>Run View(X) to see how this object looks like. Try using lapply to obtain the mean of all elements in each X using <code>lapply(X, function(i){mean(i)})</code> or <code>lapply(X, mean)</code>.</p>
+</blockquote>
+<p>Now, we calculate the mean and the standard deviation of the respective samples:</p>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="week-1-probability-distributions.html#cb197-1" tabindex="-1"></a><span class="co"># we compute the sample means</span></span>
+<span id="cb197-2"><a href="week-1-probability-distributions.html#cb197-2" tabindex="-1"></a>Xm <span class="ot">=</span> <span class="fu">sapply</span>(X,mean)</span>
+<span id="cb197-3"><a href="week-1-probability-distributions.html#cb197-3" tabindex="-1"></a><span class="co"># and the sample standard deviations</span></span>
+<span id="cb197-4"><a href="week-1-probability-distributions.html#cb197-4" tabindex="-1"></a>Xsd <span class="ot">=</span> <span class="fu">sapply</span>(X,sd) </span></code></pre></div>
+<p>Next, we determine the upper and lower bounds of the 95% CI. Remember that the confidence interval is based on a <span class="math inline">\(t\)</span>-distribution. The degrees of freedom of this distribution is the sample size -1 (<span class="math inline">\(N\)</span>-1=7 in this case)</p>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="week-1-probability-distributions.html#cb198-1" tabindex="-1"></a>df <span class="ot">=</span> N<span class="dv">-1</span></span>
+<span id="cb198-2"><a href="week-1-probability-distributions.html#cb198-2" tabindex="-1"></a>tc <span class="ot">=</span> <span class="fu">qt</span>(<span class="fu">c</span>(<span class="fl">0.975</span>),df) <span class="co"># this is the critical value for the t-distribution for df = N-1 degrees of freedom and 95% CI</span></span>
+<span id="cb198-3"><a href="week-1-probability-distributions.html#cb198-3" tabindex="-1"></a></span>
+<span id="cb198-4"><a href="week-1-probability-distributions.html#cb198-4" tabindex="-1"></a>Xl <span class="ot">=</span> Xm<span class="sc">-</span>tc<span class="sc">*</span>Xsd<span class="sc">/</span><span class="fu">sqrt</span>(N) <span class="co"># upper bound of the 95% CI</span></span>
+<span id="cb198-5"><a href="week-1-probability-distributions.html#cb198-5" tabindex="-1"></a>Xh <span class="ot">=</span> Xm<span class="sc">+</span>tc<span class="sc">*</span>Xsd<span class="sc">/</span><span class="fu">sqrt</span>(N) <span class="co"># lower bound of the 95% CI</span></span></code></pre></div>
+<p>Finally, we determine whether each sample mean is found within the 95% CI or not:</p>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="week-1-probability-distributions.html#cb199-1" tabindex="-1"></a><span class="do">## vector of TRUE/FALSE if the real expectation value lambda is inside the interval</span></span>
+<span id="cb199-2"><a href="week-1-probability-distributions.html#cb199-2" tabindex="-1"></a>i.ok <span class="ot">=</span>  <span class="fu">as.factor</span>(Xl <span class="sc">&lt;</span> lambda <span class="sc">&amp;</span> Xh <span class="sc">&gt;</span> lambda)</span>
+<span id="cb199-3"><a href="week-1-probability-distributions.html#cb199-3" tabindex="-1"></a></span>
+<span id="cb199-4"><a href="week-1-probability-distributions.html#cb199-4" tabindex="-1"></a>plot_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb199-5"><a href="week-1-probability-distributions.html#cb199-5" tabindex="-1"></a>  <span class="at">n =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>,</span>
+<span id="cb199-6"><a href="week-1-probability-distributions.html#cb199-6" tabindex="-1"></a>  <span class="at">Xm =</span> Xm,</span>
+<span id="cb199-7"><a href="week-1-probability-distributions.html#cb199-7" tabindex="-1"></a>  <span class="at">Xl =</span> Xl,</span>
+<span id="cb199-8"><a href="week-1-probability-distributions.html#cb199-8" tabindex="-1"></a>  <span class="at">Xh =</span> Xh,</span>
+<span id="cb199-9"><a href="week-1-probability-distributions.html#cb199-9" tabindex="-1"></a>  <span class="at">i.ok =</span> i.ok</span>
+<span id="cb199-10"><a href="week-1-probability-distributions.html#cb199-10" tabindex="-1"></a>) </span>
+<span id="cb199-11"><a href="week-1-probability-distributions.html#cb199-11" tabindex="-1"></a></span>
+<span id="cb199-12"><a href="week-1-probability-distributions.html#cb199-12" tabindex="-1"></a><span class="co"># Plot using ggplot2</span></span>
+<span id="cb199-13"><a href="week-1-probability-distributions.html#cb199-13" tabindex="-1"></a><span class="fu">ggplot</span>(plot_data, </span>
+<span id="cb199-14"><a href="week-1-probability-distributions.html#cb199-14" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> n, <span class="at">y =</span> Xm, </span>
+<span id="cb199-15"><a href="week-1-probability-distributions.html#cb199-15" tabindex="-1"></a>           <span class="at">color =</span> <span class="st">`</span><span class="at">i.ok</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb199-16"><a href="week-1-probability-distributions.html#cb199-16" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb199-17"><a href="week-1-probability-distributions.html#cb199-17" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> Xl, <span class="at">ymax =</span> Xh, <span class="at">color =</span> i.ok), <span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb199-18"><a href="week-1-probability-distributions.html#cb199-18" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> lambda, <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
+<span id="cb199-19"><a href="week-1-probability-distributions.html#cb199-19" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;grey&quot;</span>, <span class="st">&quot;orange&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb199-20"><a href="week-1-probability-distributions.html#cb199-20" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Mean values&quot;</span>,</span>
+<span id="cb199-21"><a href="week-1-probability-distributions.html#cb199-21" tabindex="-1"></a>       <span class="at">title =</span> <span class="fu">paste</span>(<span class="st">&quot;Mean values and confidence intervals, N=&quot;</span>,N),</span>
+<span id="cb199-22"><a href="week-1-probability-distributions.html#cb199-22" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">&quot;95% CI Status&quot;</span>) </span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-106-1.png" width="672" /></p>
+<p>Here, the orange/grey bars represent the confidence interval, the dot is the mean of the sample values, and the dotted line at <code>\lambda</code> represents the true expectation value. Whenever the true expectation value is within the CI, the bar is orange, if not, the bar is grey. How often is the true expectation value outside the CI? Count the grey bars!</p>
+<p>It happens 2 times, which fits pretty well with the expected 5%.</p>
+<blockquote>
+<p>Repeat this simulation, but now with samples of <span class="math inline">\(N=24\)</span> (again 100 times)<br />
+What do you observe?<br />
+How often is the true expectation value outside the CI? Change to 90% CI and check if that works!</p>
+</blockquote>
+<hr />
+</div>
+<div id="exercises-2" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> EXERCISES<a href="week-1-probability-distributions.html#exercises-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="exercise-1-probability-distributions" class="section level3 hasAnchor" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Exercise 1: Probability distributions<a href="week-1-probability-distributions.html#exercise-1-probability-distributions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li><p>What is the expression of TP53 observed at 10th percentile? What is the expression of TP53 observed at 90th percentile?</p></li>
+<li><p>Other distribution types can become very similar to the normal distribution under certain conditions. Plot the histogram of 1000 random numbers drawn from the Poisson distribution with lambda = 1, 10, 100, 1000. What do you observe?</p></li>
+</ol>
+</div>
+<div id="exercise-2-binomial-distribution" class="section level3 hasAnchor" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> Exercise 2: Binomial distribution<a href="week-1-probability-distributions.html#exercise-2-binomial-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li><p>How large are the chances of getting at least 50 times head out of 100?</p></li>
+<li><p>How would you simulate the effect of an unfair coin say which leads head 2/3 times? How large are the chances of getting at least 50 times head out of 100 with this coin?</p></li>
+<li><p>You invited a group of 20 friends to a bar. For every member, there is an 80% chance that he/she will show up. If you want to buy a treat for all of your friends, how many should you buy to have a 70% chance that you will have just enough for everyone?</p></li>
+</ol>
+</div>
+<div id="exercise-3-confidence-intervals" class="section level3 hasAnchor" number="3.3.3">
+<h3><span class="header-section-number">3.3.3</span> Exercise 3: Confidence intervals<a href="week-1-probability-distributions.html#exercise-3-confidence-intervals" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>You are buying 10 packs of gummy bears. You particularly like the red ones and the green ones. A pack contains 6 different colors and you expect them to be equally distributed. There are 84 pieces per 200g pack.</p>
+<ol style="list-style-type: decimal">
+<li><p>What is the expected amount of red or green gummy bears?</p></li>
+<li><p>You selected your 10 packs according to the colors you could see in the pack. At home, you counted the following bears per pack:</p></li>
+</ol>
+<ul>
+<li>for the red ones: 12 16 17 12 16 13 11 18 13 19<br />
+</li>
+<li>for the green ones: 11 10 15 16 12 14 13 10 13 17<br />
+Was your selection procedure a success? In other words, is the expected value bellow (congrats!), within or above (bad luck!) the 95% CI?</li>
+</ul>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="week-1-dimensionality-reduction-and-unsupervised-learning.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="week-1-hypothesis-testing.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/03-ProbDist.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,310 @@
+--- 
+title: "Bioinformatics introductory course - MSc Molekulare Biotechnologie"
+author: "Biomedical Genomics group, IPMB"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+# url: your book url like https://bookdown.org/yihui/bookdown
+# cover-image: path to the social sharing image like images/cover.jpg
+description: |
+  RMarkdowns for the Data Analysis introduction course (SoSe2024), MoBi MA 
+link-citations: yes
+github-repo: rstudio/bookdown-demo
+---
+
+# Introduction {-}
+
+## Where to start {-}
+
+It is recommended that you take the introductory classes for R in **DataCamp** to get to know this language before you start coding here. In this course you will learn to use RStudio, a software that allows you to use R in a very user-friendly way.
+
+You can find more resources here:
+
+> -   R Tutorial for Beginners at [guru99](https://www.guru99.com/r-tutorial.html)
+> -   R courses at [Babraham Bioinformatics](https://www.bioinformatics.babraham.ac.uk/training.html#advancedrtidy)
+> -   R for [Data Science](https://r4ds.had.co.nz)
+> -   R markdown at [RStudio](https://rmarkdown.rstudio.com/lesson-1.html) and in this [cheatsheet](https://www.markdownguide.org/cheat-sheet/)
+> -   [Youtube tutorial](https://www.youtube.com/watch?v=h29g21z0a68) on ggplot2 with one of its developers
+
+## R {-}
+
+R is a powerful programming language for the analysis of data.  
+Two notes of advice about good practice now that your journey is about to start:
+
+> **Commenting**: Comment your code as you go with `#`! This way you avoid forgetting the meaning of a given line. This is also important if you want to share your code with others. Trust me, you will not remember what you are writing today in this class one week from now, so it will be best to have a reminder.  
+> **Clean and tidy code**: See that weird line in the middle of your script/markdown? This is meant to be a guideline about code length. If your code is so long that it crosses the line, please find a way to make it shorter. In addition, avoid making your chunks too long and make separate scripts for each class or topic, it will keep everything more organised and easy to track. 
+
+
+### RStudio {-}
+
+We will work with RStudio that is composed of 4 main windows/panels.\
+The **Editor**, the **Environment**, the **Console**, and the **Files** window/panel. Order can vary.
+
+![In **Editor (1)**, you can find the area where you usually write most code, like a Rscript or a Rmarkdown. **Environment (2)** shows you your variables, history, among others. Here, you can see any variable you define in your session. You can use this to do a very basic inspection of objects you create or import. **Console (3)** is where all your code gets processed when you run it. The console remembers (which is why when you click arrow up or down, it shows you commands you ran before), but it does not keep! Therefore, ALWAYS write the meaningful code lines in a script/markdown (1). Lastly, **4** can be used for browsing documents (*Files*), see the plots you produce (*Plots*), searching/managing packages (*Packages*), or find help on functions (*Help*).](figures/RstudioLayout.png)
+
+### Variable assignment in R {-}
+
+You can start by testing one of the most basic tasks - variable assignment. Variable assignments in R can be done using either the `<-` symbol, or the `=` symbol. 
+
+```{r Assigments, results='hide'}
+a <- "Hello world!"
+# or
+hello = "Hello world!"
+```
+
+You can now run `print(a)` and `print(hello)`.
+Note that after assignment both variables (a and hello) are listed in the "Environment" window of RStudio.   
+
+> R is case sensitive. `hello` is a known variable, but `Hello` is not!
+
+You can remove variables too... 
+```{r rmvar, results='hide'}
+rm(a)
+```
+
+### Classes {-}
+In the same way that a orange is a fruit or Malta is a country, any R variable corresponds to a class and holds a given structure. Classes 
+Let us say you generate a new variable (`name`). How can you know more about it?
+```{r}
+name = "Marie"
+```
+
+The function `str()` gives you the **structure** of the variable.
+```{r}
+str(name)
+```
+where *chr* stands for character, the class of this variable. 
+
+The function `class()` gives you the **class** of the variable.
+```{r}
+class(name)
+```
+
+### Logical operations {-}
+
+We can perform tests on simple variables using the `==`, `>`,`<` operators:
+```{r}
+name == "Harry Potter"
+```
+
+The output of this test will be either FALSE/TRUE. You can test these using numbers too:
+```{r}
+33 > 23
+```
+
+### Vectors {-}
+
+We can make any vector using `c()`. Try it with some numbers. 
+```{r}
+var1 = c(3,7,12,2)
+```
+
+If you want to identify the specific number of this vector by position, you can use square brackets. Like this:
+```{r, results='hide'}
+var1[1]     # outputs the first element
+var1[2:3]   # outputs the 2nd to 3rd elements
+var1[-3]    # outputs all except the 3rd element
+```
+
+### Matrixes {-}
+
+A matrix is a two-dimensional **array** of numbers. They are defined using the `matrix()` function as follows:
+Take note of the difference between `byrow=FALSE` and `byrow=TRUE`.
+
+```{r Defining matrices , results='hide'}
+x <- c(1, 2, 3, 4, 5, 6)
+
+X <- matrix(data = x, nrow = 2, ncol = 3, byrow = TRUE)
+X <- matrix(data = x, nrow = 2, ncol = 3, byrow = FALSE)
+```
+
+> Do you understand all parameters ("nrow", "ncol", "byrow") of the `matrix()` function? What happens if you do not specify "byrow" as TRUE or FALSE?
+
+You can ask for the **dimensions** of a matrix (and see later also for data frames) using the function `dim()`. Do it for X.
+
+```{r dim_matrix, results='hide'}
+dim(X)
+```
+
+To access the elements of a matrix, it is similar to the vector but with 2 indexes:
+
+```{r Accessing Matrices, results='hide'}
+X[1, 2]	                    # [1] 3  -> element in the first row and second column
+X[1:2, 1]	                  # [1] 1 2	
+X[2, ]	                    # [1] 2 4 6	 -> all elements of the second row
+length(X[1:2, 1])	          # [1] 2  -> X[1:2, 1] is a vector of length 2
+```
+
+### Dataframes {-}
+
+Data frames are like matrices, but they can contain **multiple types** of values mixed.\
+We can create a data frame using the `data.frame()` function. We can also convert a matrix into a data frame with the `as.data.frame()` function.
+
+We can prepare three vectors of the same length (for example 4 elements) and create a data frame:
+
+```{r student_gen}
+Name <- c("Leah", "Alice", "Jonas", "Paula")
+Age <- c(21, 22, 20, 22)
+Course <- c("Mathematics", "Physics", "Medicine", "Biology")
+Place_of_birth <- c("USA", "Germany", "Germany", "France")
+
+Students <- data.frame(First_Name = Name, 
+                       Age = Age, 
+                       Course = Course,
+                       Place_of_birth = Place_of_birth)
+Students
+```
+
+We can again access specific elements in a similar manner to the matrix before. Try some of these examples:
+```{r get_elements_df, results='hide'}
+# Columns
+Students$Age 
+Students[["Age"]]
+
+# Rows or columns
+Students[, 3]
+Students[3,]
+
+# Elements
+Students$Course[3]    # access element 3 of the column "Course"
+Students[2:3, 3]      # select elements 2 and 3 of column 3 
+```
+
+
+## R Markdown {-}
+
+R Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. You will be working with R Markdown during this course. For more details on using R Markdown see <http://rmarkdown.rstudio.com> or <https://www.markdownguide.org/basic-syntax/>.
+
+R instructions in a markdown file are written in a "chunk", the one below.\
+Chunks can be added using the `+C` icon at the top right corner of this panel/editor.\
+There is also a keyboard shortcut for it.
+
+```{r Print Hello World!}
+# Sentences written after "#" are comments. Comments are ignored during the execution of the code.
+# print "Hello world!" on the screen.
+print("Hello world!")
+```
+
+> What happens in the editor if you remove the second parenthesis? Do you see the red cross appearing? You can click on it and read the comment.\
+> And what happens if you press "enter" while the second parenthesis is missing?\
+
+R will usually let know know when there is a simple syntax mistake like this one on your code. 
+
+
+## Advanced data manipulation with tidyverse {-}
+
+**Tidyverse** is a set of packages often used to manipulate data. You can think of tidyverse as a variation of the original R, which is meant to be a grammar specific to data manipulation.  
+
+You can install these through:
+```{r, results='hide', eval=F}
+install.packages("tidyverse")
+```
+
+And load it using
+```{r, results='hide', warning=FALSE}
+library(tidyverse)
+```
+
+We will learn a couple of functions from this framework which will make the next tasks a lot easier. Tidyverse works with the *tibble* class, which is very similar to a the dataframe class, only faster and tidier.    
+
+Start by loading a default tibble including sleeping patterns from different mammals. It also includes information on the animal order, genus, diet, or body weight. To do so, run the following:
+
+```{r}
+data(msleep)
+```
+
+We can start by inspecting `msleep`. 
+```{r, results='hide'}
+str(msleep)
+```
+We can print the first rows of a dataframe using `head()`. Try it out.
+```{r}
+head(msleep)
+```
+
+### Filter based on conditions {-}
+
+Now that we know how this dataset looks like, we can start doing more with it. Let us see the information for the domestic cat.  
+We can do it using `filter()` on the **genus** column:
+
+```{r}
+msleep %>%
+  filter(genus == "Felis")
+```
+
+We also use the `%>%` operator here. This is a **pipe operator** and you will use it very often.  
+
+To understand piping, let's imagine you are making a three layer cake in a factory. Instead of manually carrying the cake from one station to another to add layers and frosting, you have a conveyor belt transporting the cake through the stations automatically to make the process much more efficient. Piping avoids that you have to create multiple intermediate objects to achieve your final result when performing multiple functions.  
+
+> Try filtering other columns based on numeric conditions. Use `filter()` to see which 7 animals in the datasets have a body weight superior to 200 (kg).  
+
+
+### Select specific columns {-}
+
+Now, let's say you want to *select* only specific columns. Use the `select()` function to select the columns `name`, `order`, and `bodywt` (body weight). 
+```{r}
+body_weights = msleep %>%
+  select(name, order, bodywt)
+```
+
+### Operations on groups {-}
+
+We can assess the average (`mean()`) and standard deviation (`sd()`) body weight by animal order present. To do so, we will use `summarise()` and `group_by()` functions on the *body_weights* we generated previously. 
+
++  `group_by()`: Assigns a group to a given set of rows (observations).  
++  `summarise()`: Makes calculations for a given group based on the row values assigned to it.
+
+```{r}
+body_weights %>% 
+  group_by(order) %>%
+  summarise(mean_bweight = mean(bodywt, na.rm = T),    # na.rm = T will exclude missing values (NA)
+            sd_bweight = sd(bodywt))
+```
+
+
+## Pretty plots using ggplot2 {-}
+
+One of the many advantages of tidyverse is how compatible it is with `ggplot2`. Thanks to the wonders of the `%>%` operator, you can generate a basic plot instantly without creating intermediate objects. 
+
+**The structure of any `ggplot()` is always based on two essential elements: the aesthetics (`aes()`) and the plot layers (named as `geom_something()`. `aes()` is always found within the `ggplot()` function.** 
+
+### Histogram {-}
+
+Let us start by making an histogram, as we will work with distributions over this course. If we want to see the global distribution of sleep time (total, in hours) for all animals in the dataset, we will use `geom_histogram()`. Like this:
+
+```{r, message=FALSE, fig.height=4, fig.width=5}
+ggplot(msleep,                    # start by picking the dataframe to plot
+       aes(x = sleep_total)) +    # column to use for y-axis
+  geom_histogram()                # plot layer for histogram
+```
+
+### Scatter plot {-}
+
+For example, if we want to see the relationship between the sleep time (total, in hours) and the body weights, we use this formula:
+```{r, fig.height=4, fig.width=4}
+ggplot(msleep,                    # start by picking the dataframe to plot
+       aes(x = bodywt,            # column to use for x-axis
+           y = sleep_total)) +    # column to use for y-axis
+  geom_point()                    # plot layer for points
+```
+
+> The x-axis looks a little squished, so it will be hard to view many of the trends. We can then log-transform this scale using the `log()` function. Try it out!
+
+There are multiple options for `geom_X()` depending on the information you are plotting. You can find all possibilities [here](https://ggplot2.tidyverse.org/reference/). 
+
+### Boxplot {-}
+
+In this next example, we are creating a boxplot with the sleep time (total, in hours) for each dietary group (`vore`). 
+
+```{r, fig.height=3, fig.width=4}
+ggplot(msleep,
+       aes(x = vore,
+           y = sleep_total)) +
+  geom_boxplot()
+```
+
+> Try some of the other geom_ layers available. As an example, `geom_violin()` can be used in a similar way to `geom_boxplot()`. 
+
+
+

@@ -1,0 +1,425 @@
+---
+title: "Exercise Sheet 7"
+author: "Maïwen Caudron-Herger, Carl Herrmann"
+date: "`r Sys.Date()`"
+output:
+  pdf_document: default
+  html_document: default
+editor_options:
+  markdown:
+    wrap: sentence
+---
+
+```{r knitr_init, echo=FALSE, cache=FALSE}
+library(knitr)
+library(rmdformats)
+## Global options
+options(max.print="120")
+opts_chunk$set(echo=TRUE,
+	             cache=TRUE,
+               prompt=FALSE,
+               tidy=TRUE,
+               comment=NA,
+               message=FALSE,
+               warning=FALSE)
+opts_knit$set(width=120)
+opts_knit$set(root.dir  = "~/")
+```
+
+We will work with a dataset of tumor expression data of patients with acute myeloid leukemia (AML) or acute lymphocytic leukemia (ALL):
+
+```{r, echo = FALSE}
+all.aml = read.delim('http://bioinfo.ipmb.uni-heidelberg.de/crg/datascience3fs/practicals/data/all.aml.cleaned.csv',header=TRUE)
+all.aml.anno = read.delim("http://bioinfo.ipmb.uni-heidelberg.de/crg/datascience3fs/practicals/data/all.aml.anno.cleaned.csv", header=TRUE)
+#
+# we convert all.aml into a data matrix rather than a data.frame
+all.aml = data.matrix(all.aml)
+i.all = which(all.aml.anno$ALL.AML=='ALL') ## we extract the row numbers of the ALL patients
+```
+
+# 1. Introduction and Objectives
+
+In the previous Exercise Sheet we have looked at **hypothesis testing**, learned how the process works and then learned about the t-test function.
+
+In this Exercise Sheet you will learn more about hypothesis testing, specifically about how to deal with **non-parametric tests** and **proportion testing**.
+
+You should be familiar with both these problems from the lecture.
+
+# 2. Non-parametric test
+
+What if the data is not normally distributed?
+In that case, we are no supposed to use the t-test for testing differences between mean values!
+Let us us see an example.
+
+We check whether the distribution of the expression values for the gene "FOSB" corresponds to a normal distribution:
+
+```{r}
+expression = all.aml['CLU',]
+#expression = all.aml[sample(1:nrow(all.aml),1),]
+hist(expression,breaks = 30)
+qqnorm(expression);qqline(expression)
+```
+
+This looks everything but normal!
+In that case, we cannot apply the t.test, but need to apply a **non-parametric test** called the *Wilcoxon test* (check the lecture notes!).
+This test is performed not on the *values* (like the t-test) but on the *ranks* of these values (remember the difference between the Pearson's and the Spearman's correlations!)
+
+```{r}
+# divide the FOSB expression data in two groups according to ALL or AML patients:
+exp.all = all.aml['FOSB',i.all] 
+exp.aml = all.aml['FOSB',-i.all]
+
+# test for a difference in the mean expression values using the Wilcoxon test:
+wilcox.test(exp.all,exp.aml)
+```
+
+Compare the obtained p-value with the p-value obtained if we would have used the t-test:
+
+```{r}
+t.test(exp.all, exp.aml)
+```
+
+The p-values are very different!!
+So is the difference of expression between ALL and AML patients for this gene significant or not taking $\alpha=0.05$?
+
+Here, we **cannot** trust the t-test due to the non-normality of the data!
+Hence, the correct p-value is the one from the Wilcoxon test.
+
+We will discuss in the **Going further...** section what it means that we cannot trust the p-value of the t-test.
+
+------------------------------------------------------------------------
+
+# 3. Proportion tests
+
+The t-test and wilcoxon tests are **tests of the mean**; we are comparing the means of two samples and looking for significant differences.
+
+But there are other hypothesis that one might want to test, related to the relationship between two **categorical** variables:
+
+-   is the proportion of men **significantly** higher in the patients from Louisa compared to the ones from Buckingham?
+-   is the proportion of smokers under 18 in Germany **significantly** higher than in other european countries?
+
+The proportion test (**Fisher Extact Test** or **chi2 test**) are used to investigate the relationship between 2 categorical variables, starting from a **contingency table**.
+We will use a dataset with clinical information about breast cancer patients.
+
+```{r}
+dat.brca = read.delim('http://bioinfo.ipmb.uni-heidelberg.de/crg/datascience3fs/practicals/data/gbsg_ba_ca.dat', stringsAsFactors = FALSE)
+```
+
+> Check which variables in this dataset are categorical/ordinal/numerical.
+
+We can now check if there is a significant relationship between some variables.
+For example, we can verify if the choice of treatment with tamoxifen (variable `hormon`) is related to the pre-/post-menopausal status (variable `meno`)
+
+First, we can build the contingency table for these 2 variables:
+
+```{r}
+## build contingency table
+table(dat.brca$meno, dat.brca$hormon)
+```
+
+------------------------------------------------------------------------
+
+We can compute the **odds-ratio (OR)** for these two variables:
+
+```{r}
+CT = table(dat.brca$meno,dat.brca$hormon)
+
+OR = (CT[1,1]/CT[1,2])/(CT[2,1]/CT[2,2])
+OR
+```
+
+> How would the odds-ratio look like if you would transpose the matrix?
+
+Now we can run the one-sided **Fisher Exact Test** (FET).
+The H0/H1 hypothesis are:
+
+-   H0: the odds-ratio is not significantly larger than one
+-   H1: the odds-ratio is significantly larger than one
+
+```{r}
+## build contingency table
+tab = table(dat.brca$meno,dat.brca$hormon)
+#
+## run the FET
+fisher.test(tab, alternative = 'greater')
+```
+
+Check if your computation of the odds-ratio is right!
+Compute also the **two-sided** test:
+
+> Formulate the H0/H1 hypothesis!
+
+```{r}
+fisher.test(tab)
+```
+
+We can also use the **chi-square test** to answer the same question.
+The Chi-square test compares the **observed** number of occurrences in the contingency table to the **expected** number of occurrences if there was no relationship between the variables.
+
+-   H0: the observed and expected occurrences are not significantly different
+-   H1: the observed and expected occurrences are significantly different
+
+```{r}
+chisq.test(tab)
+```
+
+Now we want to verify the impact of age on the grade of the tumor.
+We categorize the patients in under and over 40 year groups, and perform a chi-squared test:
+
+```{r}
+## contingency table
+tab = table(dat.brca$age>40,dat.brca$grade)
+tab # tumor grades 1,2,3; age under 40 (FALSE) and over 40 (TRUE)
+##
+chisq.test(tab)
+```
+
+We can determine the table of expected counts:
+
+```{r}
+tot = apply(tab,2,sum) # this is the total number of occurrences in the 3 categories of "grade", independently of "age"
+tot
+
+age = apply(tab,1,sum) # this is the total number of persons above/below 40, independently of "grade"
+age
+```
+
+```{r}
+tot.proportions = tot/sum(tot) # HO proportions (the proportions of occurrences in the three categories of grade, independently of age)
+
+tab.exp = sapply(tot.proportions,function(x) {x*age}) # expected counts under H0
+tab.exp
+```
+
+> How would you compute the chi-square test statistic using the `tab` and `tab.exp` tables?
+
+# 4. Power of a test
+
+We have seen that $\alpha$ controls the **False-positive rate**.
+False positive means seeing a difference that is not there...
+
+The other type of errors are **False-negatives**, i.e. **not seeing** a difference that actually exists!
+
+Let us imagine the following scenario:
+
+## Hunting penguins in Antarctica...
+
+You have been sent on a research mission in Antarctica, to study two penguin populations:
+
+1.  the King penguins
+2.  the Emperor penguins
+
+Both species are similar, but they have different average weights: $w_K = 15\,kg$, $w_E=16\,kg$.
+The standard deviation for both is $3.5\,kg$
+
+```{r}
+wK = 15 
+wE = 16 
+s = 3.5 
+n = 10 # number of measurements per day
+```
+
+You are going to an area where **mostly King penguins live**; you are catching 10 penguins a day, weight them, and compute the average weight of the daily sample.
+Since penguins don't mix, you are always catching individuals from the same species (King or Emperor).
+
+The $H_0$ hypothesis is: *"The penguins caught are King penguins, not Emperor penguins"*
+
+Here are the results of your catch from the first 5 days of your mission
+
+```{r}
+mean_weights = c(16.64268,17.69074,15.07522,14.52752,15.76787)
+```
+
+What is the **expected** theoretical distribution of **mean weights** over samples of $n=10$ penguins?
+
+```{r}
+x = seq(12,18,by =0.01)
+y = dnorm(x, mean=wK, sd=s/sqrt(n)) # built a normal distribution of the expected mean weights for King penguins from the known parameters
+
+plot(x,y,type='l',lwd=3,col='red',
+main=paste0('Distribution of average weight of King penguins (n=',n,')'))
+```
+
+**Note the** $\sqrt{n}$ factor in the standard deviation!!
+
+When would you reject the $H_0$ (one sided test, $\alpha=0.05$)?
+
+```{r}
+rej_lim = qnorm(p=0.05,mean=wK,sd=s/sqrt(n),lower.tail = FALSE)
+rej_lim
+```
+
+Whenever your measured mean weight lies above this, you would reject $H_0$ (so-called **positive** events); otherwise, you would not reject $H_0$ (**negative** events).
+
+We can compare each of our measured mean values (blue) to this rejection limit (purple):
+
+```{r}
+plot(x,y,type='l',lwd=3,col='red',
+main=paste0('Distribution of average weight of King penguins (n=',n,')'));
+abline(v=rej_lim,lwd=3,lty=3,col='purple');
+abline(v=mean_weights,lty=3,lwd=2,col='blue')
+```
+
+So day 2 might be a sample of Emperor penguins, but you are pretty confident about the other 4 samples.
+
+However, it turns out that the helicopter wrongly brought you to an area in which there are **only** Emperor penguin living!
+So all caught samples were composed on Emperor penguins, and $H_0$ is **not valid** for **any** of these 5 samples!
+
+Hence, you failed to reject $H_0$ for 4 out of 5 samples: 80% **false-negatives** !
+
+Let's determine how often that would happen if we consider 1000 samples made of **Emperor penguins**:
+
+```{r}
+### parameters
+wK = 15
+wE = 16
+s = 3.5
+n = 10
+alpha = 0.05
+
+### 1000 samples of n Emperor penguins each
+mean_weights  = sapply(1:1000,function(i) {mean(rnorm(n,mean=wE,sd=s))})
+
+
+### rejection limit for H0 : "samples are King, not Emperor penguins"
+rej_lim = qnorm(alpha,mean=wK,sd = s/sqrt(n),lower.tail = FALSE)
+
+### for how many sample did I falsely **not** reject H0?
+### H0 ('King penguin') is rejected if the mean weight is ABOVE the rejection limit
+### H0 ('King penguin') is NOT rejected if the mean weight is BELOW the rejection limit
+
+beta = sum(mean_weights < rej_lim)/length(mean_weights)
+beta # false-negative rate
+
+```
+
+This is a huge False-negative rate!!
+
+> How does the false-negative rate beta change with increasing sample size (i.e. increasing n)?
+> Try to find a combination of effect size (i.e. difference between the expectation values for the weights), significance level, sample size, so that the beta value is lower than 30% for a given effect size and significance level.
+
+The next code helps visualize what is going on, you can play with the parameters!
+
+```{r}
+source('http://bioinfo.ipmb.uni-heidelberg.de/crg/datascience3fs/practicals/helper.R')
+
+wK = 15
+wE = 18
+s = 3.5
+n = 50
+alpha = 0.05
+
+h0h1(wK,wE,s,n,alpha)
+```
+
+All samples (dots) are drawn from the purple curve (Emperor penguin).
+The red dots are the ones where the H0 hypothesis "King penguin" is rejected (correctly), the purple dots are the samples for which H0 is NOT rejected (wrongly).
+
+------------------------------------------------------------------------
+
+# Exercises
+
+#### Exercise 1
+
+1.  Check the expression of a random gene in the ALL/AML dataset using a QQ-plot.
+    Are the values normally distributed?
+
+2.  Divide the patients into two groups (ALL and AML) and run a t-test and a wilcoxon test on this gene.
+    Is there a difference between the p-values?
+    What did you expect?
+    *Hint*: You can use the `i.all` vector to subset the patients.
+
+3.  *(expert)* Write a code that runs both tests on every gene and registers each p-value in a vector.
+    *Hint*: Run the t-test and wilcoxon test within an `apply()` loop and extract the p-values from their `$p.value` attributes.
+
+4.  *(expert)* Do a scatter plot of `-log10(Pvalue of t-test)` vs. `-log10(Pvalue of wilcoxon test)`; are there strong deviations?
+
+#### Exercise 2
+
+What test would you use for the following questions?
+
+-   A lotion company has to figure out whether their last product is more likely to give men acne rather than females
+-   The department of education wants to find out whether social science students have higher grades than science students
+-   A biologist needs to find out whether a specific gene is more likely to be silenced in lactose intolerant people.
+
+#### Exercise 3
+
+A pharmaceutical company has a new corona vaccine that works on 178 out of 200 patient.
+75% of the batch of patients had been previously vaccinated against corona with another previous vaccine, and on 143 of these the vaccine worked.
+Is there a significant disproportion to say that the vaccine has a higher chance of working on people who are already vaccinated against corona if our p-value threshold is 0.05?
+Built a contingency table and use a (one-sided) Fisher Extact Test.
+
+------------------------------------------------------------------------
+
+# Going further
+
+What does it mean, when we say that we cannot trust the t-test when the data is not normally distributed?
+Remember that the significance value $\alpha$ represents the **false-positive rate (FPR)**.
+Hence, with an $\alpha$ of 5%, if $H_0$ is true, we have a 5% risk of rejecting $H_0$ (False-positive).
+
+Let us suppose that the $H_0$ Hypothesis: "The expectation values of two distributions are equal" holds.
+For example, we can generate 2 random samples, drawn from the same distribution, and perform a t-test.
+Here, $H_0$ would hold!
+What would the p-value be?
+Well, if we perform this 10000 times, we would obtain a **uniform distribution**:
+
+```{r}
+set.seed(123) # for reproducibility 
+alpha = 0.05
+
+p = sapply(1:10000,function(i) {      
+  x = rnorm(10);y = rnorm(10)       # generate two random samples from the same normal distribution
+  t.test(x,y)$p.value               # perform a t-test and get the p-value
+})    # perform this 10000 times
+
+hist(p,breaks=20);abline(v=alpha,col='red',lwd=3) # distribution of the p-values
+```
+
+Approximately 5% of these p-values are smaller than $\alpha$ (see red line):
+
+```{r}
+sum(p<alpha)/length(p)
+```
+
+These would be **False positives**.
+So here, we indeed have $\alpha$ = False-positive rate!
+
+This also holds true for different values of $\alpha$:
+
+```{r}
+alphas = c(0.01,0.02,0.03,0.04,0.05,0.07,0.1,0.2)
+fpr = sapply(alphas,function(alpha) {
+  sum(p<alpha)/length(p)
+})
+plot(alphas,fpr,xlab='alpha',pch=19,col='red');abline(0,1,lwd=2,lty=2,col='lightgrey')
+```
+
+Now what if the distributions of values had the same expectation values, but were not normally distributed?
+Let's sample x and y from a t-Distribution, instead of a normal distribution:
+
+```{r}
+p = sapply(1:10000,function(i) {
+  x = rt(10,df=1);y = rt(10,df=1)
+  t.test(x,y)$p.value
+})
+hist(p,breaks=20);abline(v=alpha,col='red',lwd=3) # distribution of the p-values
+```
+
+No longer a uniform distribution!!
+How often would we reject $H_0$ here?
+
+```{r}
+sum(p<alpha)/length(p)
+```
+
+Not exactly $\alpha$ anymore... What if we user different values of $\alpha$?
+
+```{r}
+alphas = c(0.01,0.02,0.03,0.04,0.05,0.07,0.1,0.2)
+fpr = sapply(alphas,function(alpha) {
+  sum(p<alpha)/length(p)
+})
+plot(alphas,fpr,xlab='alpha',pch=19,col='red');abline(0,1,lwd=2,lty=2,col='lightgrey')
+```
+
+So in the case of a non-normal distribution of the data, the false-positive rate (FPR) is no longer equal to the significance level $\alpha$... **Hence, we can no longer control the FPR with** $\alpha$!

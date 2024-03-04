@@ -1,0 +1,1 @@
+{"frames":[{"func":"apply(dat, 1, function(x) {\n    sum(is.na(x))\n})","file":"","line_number":0,"end_line_number":0,"character_number":0,"end_character_number":0}],"message":"Error: object 'dat' not found\n"}

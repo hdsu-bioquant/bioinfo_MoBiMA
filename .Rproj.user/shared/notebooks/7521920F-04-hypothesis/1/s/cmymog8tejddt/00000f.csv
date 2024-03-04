@@ -1,0 +1,4 @@
+"0","# No need to understand this code - just look at the graph and shaded areas."
+"0","x = seq(-5,5,by=0.01)"
+"0","y = dt(x,df=372.45)"
+"0","plot(x,y,type='l',lwd=3);abline(v = c(-1.8453,1.8453), lwd=2,col='blue',lty=3);polygon(c(x[x>=1.84], max(x), 1.84), c(y[x>=1.84], 0, 0), col = rgb(0.78, 0.3, 1, alpha = 0.8));polygon(c(min(x),x[x<=-1.84], min(x)), c(y[x<=-1.84], 0, 0), col = rgb(0.78, 0.3, 1, alpha = 0.8))"

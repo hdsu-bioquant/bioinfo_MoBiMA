@@ -1,0 +1,464 @@
+# WEEK 1: Descriptive statistics and data types
+
+Today, you will learn how to perform basic tasks on a dataframe/tibble, descriptive statistics, perform data cleaning, and plotting.
+
+## Data features and where to find them
+
+### Load the data
+
+The diabetes dataset, which we will be using in this practical class will be downloaded from an online repository.
+We will load that into R and have a sneak peek into how it looks like with the console.
+In the following you will see several functions that give us information about our dataset.
+
+```{r}
+dat = as_tibble(read.delim('https://tinyurl.com/y4fark9g')) # Load the dataset
+head(dat, 10) # Look at the first 10 lines of the table
+```
+
+
+### Dimensions and naming
+
+**1.** What is the dimension of our dataset (i.e. how many rows/columns are there in our data)
+
+```{r}
+# Dimension
+dim(dat)
+```
+
+```{r, results='hide'}
+# Number of columns
+ncol(dat)
+# Number of rows
+nrow(dat)
+```
+
+**2.** What are the column names of our dataset
+
+```{r}
+colnames(dat) # Similarly rownames() for rows
+```
+
+Probably you are confused about what these column names mean.
+For more description on these values [look here](https://biostat.app.vumc.org/wiki/pub/Main/DataSets/Cdiabetes.html)
+
+### Numerical features 
+
+**3.** How do we extract the minimum and maximum age of patients in our dataset?
+
+```{r, results='hide'}
+min(dat$age)
+max(dat$age)
+range(dat$age)
+```
+
+> Can you find out the same for height and weight?
+
+**4.** How does the overall summary of our entire dataset look like?
+
+```{r, results='hide'}
+summary(dat)
+```
+
+> Can you explain what you see after you run the `summary()` function?
+
+
+Feel free to play around with this syntax until you feel comfortable with it.
+You can open a window with `View(dat)` to compare your results.
+
+------------------------------------------------------------------------
+
+## Data cleaning
+
+Very often the first thing one needs to do before any data science project is to clean up the raw data and transform it into a format that is readily understood and easy to use for all downstream analysis.
+This process usually involves: --
+
+-   Removing empty value rows/columns
+-   Removing unused or unnecessary rows/columns
+-   Reordering the data matrix
+-   Keeping columns uniformly numeric (age, weight etc) or string (names, places etc) or logical (TRUE/FALSE, 1/0)
+-   Handling strange caveats which are data specific like replacing `,` or `.`, or `;` from numbers etc
+
+Lets do some clean up of our own diabetes data
+
+1.  We will make the `id` column the row names for the dataset;
+2.  We will remove the `bp.2s` and `bp.2d` columns as it has mostly missing values (see summary above);
+3.  We will also remove the column `time.ppn` which will not be required in our analysis;
+4.  We will reorder the columns of the data such that all the qualitative and quantitative values are separated.
+
+To perform this cleanup, we need a couple of important functions, that we will first discuss:
+
+-   `filter`
+-   `is.na`
+-   `mutate`
+-   `accross`
+-   `%in%`
+
+### filter()
+
+`filter()` is used on a dataset to filter rows satisfying a condition you specify like we saw previously (Introduction).
+Let's look at an example. We are only filtering for senior individuals in our dataset. 
+
+```{r}
+dat_seniors = dat %>%
+  filter(age <= 65)
+```
+
+We can also filter based on other conditions, like location, sex, among others.
+In some cases, we can also use `which()` to filter values. The syntax is different...
+
+```{r, eval=FALSE}
+dat[dat$age <= 65,]
+```
+
+... but it works for vectors and other classes. Let's see the next example.
+
+```{r, eval = TRUE}
+# number of animals you have
+number = c(2,3,4,5,1,2,5)
+# Let's create a different vector (of the same length)
+animals = c("cat", "dog", "cow", "parrot", "zebra", "sparrow", "lizard")
+# Let's use the "which()" function now
+animals[which(number > 2)]
+```
+
+We selected all animals from the "animals" vector that correspond to more than three individuals in the "number" vector.
+
+### is.na()
+
+`is.na()` is used to determine if NA values are present in a given object. We can try a simple example with one variable being assigned as NA.
+```{r}
+x = 2
+is.na(x)
+
+y = NA
+is.na(y)
+```
+
+We can do this with vectors obtained from `dat`. What class is the output in? 
+
+```{r, results='hide'}
+is.na(dat$glyhb)
+```
+
+### mutate()
+
+`mutate()` is often used to create a new column based on another column of the dataframe. Let us use this function to *mutate* two new columns including the weight in kilograms and the height in centimeters. **The conversion from pounds to kilograms can be done by multiplying weight in pounds by 0.454. To covert height to centimeters we only need to multiply height (inches) by 2.54**.  
+
+```{r}
+dat %>%
+  mutate(weight.kg = weight * 0.454,        # you can generate both columns using the same mutate!
+         height.cm = height * 2.54) %>%     # we do not need to save this output
+  select(id, weight.kg, height.cm)
+```
+
+### accross()
+
+`accross()` is very often used together with `mutate()` and another helper function, like `everywhere()`, `starts_with()`, `ends_with()`, or `contains()`.
+Later, we will use `accross()` together with the other functions we learned previously to remove NAs like this:
+
+```{r, results='hide', eval=FALSE}
+dat %>%
+  rowwise() %>%
+  mutate(na_count = sum(is.na(across(everything()))))
+```
+
+There is much to unpack here: 
++  `rowwise()` ensures that the next operations are applied by row.
++  `mutate()` adds a new column called na_count to the dataframe.
++  `across(everything())` selects all columns in the current row.
++  `sum(is.na(...))` calculates the sum of missing values for each row.
+
+> Try to run the previous example without `rowwise()`. What does it look like?
+
+
+
+### %in%
+
+This is an operator to check which elements of a first vector are inside a second vector.
+
+```{r}
+c('Frodo','Sam') %in% c('Pippin','Sam','Frodo','Merry')
+```
+
+### Ready for the cleaning!
+
+The first column of the dataframe is the column with the name "id".
+The rows are just numbered, without names.
+We are going to rename the rows using the column "id". The function `column_to_rownames()` allows us to do this efficiently.  
+
+```{r, results='hide'}
+# set the row names using the column id
+dat = dat %>%
+  column_to_rownames(var = 'id')
+```
+
+> Keep in mind that rownames must be unique!
+
+The *na_count* column will then include the number of NAs per row. Do you understand how it works? 
+We finally apply `filter` again to keep only rows with less than or 2 NAs.
+
+```{r}
+dat = dat %>%
+  rowwise() %>%
+  mutate(na_count = sum(is.na(across(everything())))) %>%
+  filter(na_count <= 2)
+```
+
+We will also remove the *na_count* and some problematic columns (*bp.2s*, *bp.2d* and *time.ppn*) by **selecting the ones which are not these**. We can do this using `!`, as this character can be used to invert results. Let us try it with `select()`. 
+
+```{r}
+dat = dat %>%
+  select(!c(na_count, time.ppn, bp.2d, bp.2s))
+```
+
+
+Next, we can re-order the remaining columns, in order to put the categorical columns first, and numerical columns after. We can use `select` to order columns too, but we need to combine it with `where()` and functions which verify the class of the columns, like `is.character()` or `is.numeric()`.  
+
+Here is a simple example:
+```{r, results='hide'}
+# Create a character and numeric 
+name = c("Antonia")
+age = c(23)
+
+# Verify if the previous object are from the character/numeric classes
+is.character(name)
+is.character(age)
+is.numeric(age)
+```
+
+And here we can apply the same principle to the re-ordering:
+```{r}
+dat <- dat %>%
+  select(
+    # Select categorical columns
+    where(is.character), 
+    # Select numerical columns
+    where(is.numeric)
+  )
+
+# OR you can use the indexes too, but if you more than 10-20 columns, that is not ideal
+# dat = dat[,c(8,6,11,9,10,14,15,2,5,1,3,4,12,13)]
+```
+
+Now lets look at our cleaned data:
+
+```{r}
+summary(dat)
+```
+
+The ordering and selection of columns looks right, however it seems that there are certain rows that have missing values still (like `glyhb` column has 3 `NA` values still).
+Lets remove all rows with any missing value using `na.omit()`.
+Remember, 1 row = 1 patient.  
+
+```{r}
+dat = dat %>%
+  na.omit()
+```
+
+> How many patients were removed because they were associated with missing values?
+
+Now our cleaned data has no missing values, columns are cleanly ordered and each column is in the right format
+
+```{r}
+summary(dat)
+```
+
+> Can you identify which types of data (continuous, discrete etc) each column above represents and why?
+
+------------------------------------------------------------------------
+
+## Visualizing data distribution
+
+In this section you will also learn the essential functions to plot data in an intuitive and useful way using the `ggplot2` package, just like in the introductory section to tidyverse. 
+
+### Histograms
+
+We can plot the column "stab.glu" as a histogram using the `hist()` function:
+
+```{r, message=F}
+ggplot(dat,
+       aes(x = stab.glu)) +
+  geom_histogram() +
+  labs(x = "Stabilized Glucose concentration in blood",  # add labels to the x-axis
+       title = "Glucose concentration")                  # add title
+```
+
+> Add the parameter `bins = 50` in the above lines of code (inside `geom_histogram`) and see what happens.
+> Try different values for `bins` like `10, 20, 75, 100`. Can you interpret the differences?
+> Is this a good or bad thing about histograms?
+
+### Density plots
+
+For density plots, we use the `geom_density()` function to estimate the probability density function for a given variable.
+
+```{r eval = TRUE}
+ggplot(dat,
+       aes(x = stab.glu)) +
+  geom_density() +
+  labs(x = "Stabilized Glucose concentration in blood",  # add labels to the x-axis
+       title = "Glucose concentration")                  # add title
+```
+
+### Boxplots
+
+The `boxplot()` function produces a boxplot for a given variable:
+
+```{r fig.width=4, fig.height=2}
+ggplot(dat,
+       aes(x = stab.glu)) +
+  geom_boxplot() +
+  labs(x ="Stabilized Glucose concentration in blood")
+```
+
+> Can you explain all features of this graph, such as upper/lower whisker, 25% quantile, ...? 
+
+### QQ-plots
+
+We can use **QQ-plots** to either (1) compare two distributions, or (2) compare a distribution with a theoretical distribution (typically the normal distribution).
+
+We can for example compare the distribution of the blood pressure values to check if they are normally distributed
+
+```{r eval=TRUE}
+## Let's first make a histogram
+ggplot(dat,
+       aes(x = bp.1s)) +
+  geom_histogram(bins = 50)
+```
+
+Now we can use the function `geom_qq()` to generate the **QQ-plot** of this distribution against the standard normal distribution:
+
+```{r eval = TRUE, fig.width=3, fig.height=3}
+ggplot(dat,
+       aes(sample = bp.1s)) +     # we use sample= inside aes for the QQ-plot
+  geom_qq()                       # creates the QQ-plot
+```
+
+Using the additional command `geom_qq_line()`, we can add a straight line that goes through the first and third quartile:
+
+```{r fig.width=3, fig.height=3}
+ggplot(dat,
+       aes(sample = bp.1s)) +     # we use sample= inside aes for the QQ-plot
+  geom_qq() +
+  geom_qq_line(colour = 'red')                  # adds in the QQ-line on top
+```
+
+> So, is the distribution normal??
+
+Now let's compare the quantiles of the cholesterol values by biological sex.
+**Notes on `ggplot()` here:** Rather than `ggplot(dataset, aes(...))` we use `ggplot() + geom_xx(aes(...))` for situations where the data we wish to plot is not in a dataframe.
+
+```{r fig.width=3, fig.height=3}
+# We can use "filter()" to filter the cholesterol values for men and women
+dat.male = dat %>%
+  filter(gender == 'male')
+
+dat.female = dat %>%
+  filter(gender == 'female')
+
+# Compute the quantiles (note the "na.rm" option to ignore missing NA values!)
+q.male = quantile(dat.male$bp.1s, 
+                  probs=seq(0,1,by=0.05), 
+                  na.rm=TRUE)
+q.female = quantile(dat.female$bp.1s, 
+                    probs=seq(0,1,by=0.05),
+                    na.rm=TRUE)
+
+# Now plot against each other!
+ggplot() +
+  geom_point(aes(x = q.male, y = q.female)) +
+  labs(title = "Quantiles", x = "Male quantiles", y = "Female quantiles")
+```
+
+------------------------------------------------------------------------
+
+## Correlation  
+
+### Measuring the centrality in data
+
+Before you begin, think back to the mean, median and quantiles we saw on the boxplot. Do you remember what these terms mean? How does an asymmetrical distribution influence mean and median? 
+We have already seen that the `summary()` and `quantile()` functions in R can compute the mean, median and quantiles of any given data. 
+
+```{r, eval=F, results='hide'}
+mean(dat$stab.glu) 
+median(dat$stab.glu) 
+quantile(dat$stab.glu) 
+```
+> Calculate the mean and median of other continuous numeric data in the diabetes dataset and measure the difference between them. (a) Why is there a difference between the mean and median? (b) Why do you think there are larger differences for some and almost no difference for others?  
+
+
+### Association between variables
+
+Often a common step during any data analysis project is to find associations between variables present in the dataset. Such associations helps us to decipher the underlying structure in the data.  
+
+For instance, in our diabetes dataset we would expect a high correlation between free blood glucose levels and glycosylated blood levels or between waist and hip sizes. One of the most common ways of measuring associations is *correlations*. 
+
+Let us start by producing a **scatter plot** between a pair of variables:
+
+```{r}
+ggplot(dat,
+       aes(x = stab.glu, y = glyhb)) +
+  geom_point() +
+  labs(x='Stabilized glucose', y='Glycosylated hemoglobin')
+```
+
+> Do you suspect that the two variables have a relationship? Do the scatter plot for other pairs of numerical variables!
+
+We now can compute the correlation of the two variables. We can compute the **Pearson correlation** or the **Spearman correlation**:
+
+```{r}
+## compute the Pearson correlation
+cor(dat$stab.glu, dat$glyhb, method='pearson')
+
+## compute the Spearman correlation
+cor(dat$stab.glu, dat$glyhb, method='spearman')
+```
+
+The Spearman correlation seems much lower, right? To understand why, we can do a scatter plot between the **ranks** of the two variables:
+
+```{r}
+ggplot(dat,
+       aes(x = rank(stab.glu), y = rank(glyhb))) +
+  geom_point() +
+  labs(x='Rank - Stabilized glucose', y='Rank - Glycosylated hemoglobin')
+```
+
+Do you understand the usage of ranks here? Run `rank()`` on a vector like *c(3,5,10,1,23)* to see how the output looks like.
+
+> Associations are among the simplest forms of structure in the data! It is important to remember that *Association does not imply correlation* and *Correlation does not imply causation*. Take a look at this page to view few common logical fallacies. [see here](https://en.wikipedia.org/wiki/Fallacy)
+
+------------------------------------------------------------------------
+
+## EXERCISES
+
+### Exercise 1: Data features
+
+1.  Try to obtain the same result of the `head()` function by using slicing on the dataset "dat" using row indexes.
+
+2.  Print out the first three column names of "dat" using `colnames()`.
+
+3.  Print out the last element in the last column of "dat" using the `dim()` function instead of using numerals.
+
+4.  Write a code to calculate the mean of 3 numerical columns of "dat" (you can choose which ones) without using the `mean()` function and make a new column. 
+
+5.  Add one line of code that prints out the results from exercise 1 that are greater than 10 by using the `which()` function
+
+### Exercise 2: Visualization
+
+1.  Visualize the cholesterol levels of all patients with a histogram using the `geom_histogram()` function.
+
+2.  Visualize the cholesterol levels of all **male** patients with a histogram using `geom_histogram()`.
+    *(expert):* Mark the median, first and third quartile with vertical lines using `geom_vline()`. The values are defined using `xintercept` (as in which value of x should the vertical line intercept).
+    Then mark median, first and third quartile for **female** patients in the same graph with a different color.
+    What can you tell from the differences in these values?
+    
+### Exercise 3: Correlation
+
+1.  Is there an association between "hip" and "waist" on the data frame "dat"? Use the `geom_point()` function to do a scatter plot of the **values** and of the **ranks** (as determined by the `rank()` function). Compute both the **Pearson** and **Spearman** correlation values.
+
+2.  Select only the numerical columns (using `select(where(is.numeric))`), and apply the function `cor()` **directly**: `%>% cor()` . What happens? What is the output? Store the result of this command in a new variable named "all.cor". Plot a heatmap of these results using the `pheatmap()` function from the "pheatmap" package. Remember that you first have to install and then activate this package using `library("pheatmap")`.
+
+3.  Find the **highest** and **lowest** Pearson correlation value of the result from exercise 2.2. To which pair of variables do they correspond? Plot the corresponding scatter plots using `geom_point()`! *Hint*: Before finding the highest Pearson correlation value, use the `diag()` function to set all diagonal values (=1) of "all.cor" to NA.
+
+
+
+

@@ -1,0 +1,18 @@
+h1:week-1-dimensionality-reduction-and-unsupervised-learning WEEK 1: Dimensionality reduction and unsupervised learning
+h2:preparing-the-data Preparing the data
+h3:load-data Load data
+h3:data-transformation Data transformation
+h2:k-means-clustering k-means clustering
+h3:performing-k-means Performing k-means
+h3:quality-of-the-clustering Quality of the clustering
+h2:hierarchical-clustering Hierarchical clustering
+h3:determine-the-most-variable-genes Determine the most variable genes
+h3:computing-the-correlation-between-all-patients Computing the correlation between all patients
+h3:including-clinical-annotations-in-the-heatmap Including clinical annotations in the heatmap
+h2:principal-component-analysis Principal component analysis
+h2:exercises EXERCISES
+h3:exercise-1-variance Exercise 1: Variance
+h3:exercise-2-hierarchical-clustering Exercise 2: Hierarchical clustering
+h3:exercise-3-pca Exercise 3: PCA
+h3:going-further-expert Going further 
+

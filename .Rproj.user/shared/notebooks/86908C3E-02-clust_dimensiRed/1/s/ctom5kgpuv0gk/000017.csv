@@ -1,0 +1,5 @@
+"0","## Let's filter for only the highly variable genes"
+"0","brca.exp.highvar.cor = brca.exp.tibble %>%"
+"0","  filter(gene %in% topVariantGenes$gene) %>%        # from the whole list, select only high variable"
+"0","  select(where(is.numeric)) %>%                     # get only numerical columns"
+"0","  cor(method=""spearman"")                            # create correlation-based distance matrix"

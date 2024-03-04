@@ -1,0 +1,8 @@
+"0","expression = all.aml %>%"
+"0","  t() %>%"
+"0","  as.data.frame()"
+"0",""
+"0","# Plot histogram "
+"0","ggplot(expression,"
+"0","       aes(x = SOX4)) +"
+"0","  geom_histogram(bins = 20)"

@@ -1,0 +1,4 @@
+"0","ggplot(dat,"
+"0","       aes(x = rank(stab.glu), y = rank(glyhb))) +"
+"0","  geom_point() +"
+"0","  labs(x='Rank - Stabilized glucose', y='Rank - Glycosylated hemoglobin')"

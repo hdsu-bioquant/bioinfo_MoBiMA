@@ -1,0 +1,2 @@
+"0","brca.exp.original = brca.exp # this also retains matrix-structure"
+"0","brca.exp = as_tibble(brca.exp, rownames = NA)"

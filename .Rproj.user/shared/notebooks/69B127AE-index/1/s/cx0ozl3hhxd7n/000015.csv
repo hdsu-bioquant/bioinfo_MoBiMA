@@ -1,0 +1,4 @@
+"0","body_weights %>% "
+"0","  group_by(order) %>%"
+"0","  summarise(mean_bweight = mean(bodywt),"
+"0","            sd_bweight = sd(bodywt))"

@@ -1,0 +1,4 @@
+"0","library(pheatmap)"
+"0","pheatmap(brca.exp.highvar.cor, "
+"0","         show_rownames = FALSE, "
+"0","         show_colnames = FALSE)"

@@ -1,0 +1,7 @@
+"0","## normal distribution"
+"0","x = rnorm(n=1000,mean=10,sd=5)"
+"0",""
+"0","ggplot() +"
+"0","  geom_histogram(aes(x=x), bins = 20,"
+"0","                 fill = ""orange"") +"
+"0","  labs(y = ""Frequency"") "

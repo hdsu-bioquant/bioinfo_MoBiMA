@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>1 WEEK 1: Descriptive statistics and data types | Bioinformatics introductory course - MSc Molekulare Biotechnologie</title>
+  <meta name="description" content="RMarkdowns for the Data Analysis introduction course (SoSe2024), MoBi MA" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="1 WEEK 1: Descriptive statistics and data types | Bioinformatics introductory course - MSc Molekulare Biotechnologie" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="RMarkdowns for the Data Analysis introduction course (SoSe2024), MoBi MA" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="1 WEEK 1: Descriptive statistics and data types | Bioinformatics introductory course - MSc Molekulare Biotechnologie" />
+  
+  <meta name="twitter:description" content="RMarkdowns for the Data Analysis introduction course (SoSe2024), MoBi MA" />
+  
+
+<meta name="author" content="Biomedical Genomics group, IPMB" />
+
+
+<meta name="date" content="2024-03-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="week-1-dimensionality-reduction-and-unsupervised-learning.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Bioinformatics Introduction course (MoBi MA)</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#where-to-start"><i class="fa fa-check"></i>Where to start</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#r"><i class="fa fa-check"></i>R</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#rstudio"><i class="fa fa-check"></i>RStudio</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#variable-assignment-in-r"><i class="fa fa-check"></i>Variable assignment in R</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#classes"><i class="fa fa-check"></i>Classes</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#logical-operations"><i class="fa fa-check"></i>Logical operations</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#vectors"><i class="fa fa-check"></i>Vectors</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#matrixes"><i class="fa fa-check"></i>Matrixes</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#dataframes"><i class="fa fa-check"></i>Dataframes</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#r-markdown"><i class="fa fa-check"></i>R Markdown</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#advanced-data-manipulation-with-tidyverse"><i class="fa fa-check"></i>Advanced data manipulation with tidyverse</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#filter-based-on-conditions"><i class="fa fa-check"></i>Filter based on conditions</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#select-specific-columns"><i class="fa fa-check"></i>Select specific columns</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#operations-on-groups"><i class="fa fa-check"></i>Operations on groups</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#pretty-plots-using-ggplot2"><i class="fa fa-check"></i>Pretty plots using ggplot2</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#histogram"><i class="fa fa-check"></i>Histogram</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#scatter-plot"><i class="fa fa-check"></i>Scatter plot</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#boxplot"><i class="fa fa-check"></i>Boxplot</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html"><i class="fa fa-check"></i><b>1</b> WEEK 1: Descriptive statistics and data types</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#data-features-and-where-to-find-them"><i class="fa fa-check"></i><b>1.1</b> Data features and where to find them</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#load-the-data"><i class="fa fa-check"></i><b>1.1.1</b> Load the data</a></li>
+<li class="chapter" data-level="1.1.2" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#dimensions-and-naming"><i class="fa fa-check"></i><b>1.1.2</b> Dimensions and naming</a></li>
+<li class="chapter" data-level="1.1.3" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#numerical-features"><i class="fa fa-check"></i><b>1.1.3</b> Numerical features</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#data-cleaning"><i class="fa fa-check"></i><b>1.2</b> Data cleaning</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#filter"><i class="fa fa-check"></i><b>1.2.1</b> filter()</a></li>
+<li class="chapter" data-level="1.2.2" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#is.na"><i class="fa fa-check"></i><b>1.2.2</b> is.na()</a></li>
+<li class="chapter" data-level="1.2.3" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#mutate"><i class="fa fa-check"></i><b>1.2.3</b> mutate()</a></li>
+<li class="chapter" data-level="1.2.4" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#accross"><i class="fa fa-check"></i><b>1.2.4</b> accross()</a></li>
+<li class="chapter" data-level="1.2.5" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#in"><i class="fa fa-check"></i><b>1.2.5</b> %in%</a></li>
+<li class="chapter" data-level="1.2.6" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#ready-for-the-cleaning"><i class="fa fa-check"></i><b>1.2.6</b> Ready for the cleaning!</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#visualizing-data-distribution"><i class="fa fa-check"></i><b>1.3</b> Visualizing data distribution</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#histograms"><i class="fa fa-check"></i><b>1.3.1</b> Histograms</a></li>
+<li class="chapter" data-level="1.3.2" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#density-plots"><i class="fa fa-check"></i><b>1.3.2</b> Density plots</a></li>
+<li class="chapter" data-level="1.3.3" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#boxplots"><i class="fa fa-check"></i><b>1.3.3</b> Boxplots</a></li>
+<li class="chapter" data-level="1.3.4" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#qq-plots"><i class="fa fa-check"></i><b>1.3.4</b> QQ-plots</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#correlation"><i class="fa fa-check"></i><b>1.4</b> Correlation</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#measuring-the-centrality-in-data"><i class="fa fa-check"></i><b>1.4.1</b> Measuring the centrality in data</a></li>
+<li class="chapter" data-level="1.4.2" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#association-between-variables"><i class="fa fa-check"></i><b>1.4.2</b> Association between variables</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#exercises"><i class="fa fa-check"></i><b>1.5</b> EXERCISES</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#exercise-1-data-features"><i class="fa fa-check"></i><b>1.5.1</b> Exercise 1: Data features</a></li>
+<li class="chapter" data-level="1.5.2" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#exercise-2-visualization"><i class="fa fa-check"></i><b>1.5.2</b> Exercise 2: Visualization</a></li>
+<li class="chapter" data-level="1.5.3" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#exercise-3-correlation"><i class="fa fa-check"></i><b>1.5.3</b> Exercise 3: Correlation</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html"><i class="fa fa-check"></i><b>2</b> WEEK 1: Dimensionality reduction and unsupervised learning</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#preparing-the-data"><i class="fa fa-check"></i><b>2.1</b> Preparing the data</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#load-data"><i class="fa fa-check"></i><b>2.1.1</b> Load data</a></li>
+<li class="chapter" data-level="2.1.2" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#data-transformation"><i class="fa fa-check"></i><b>2.1.2</b> Data transformation</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#k-means-clustering"><i class="fa fa-check"></i><b>2.2</b> k-means clustering</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#performing-k-means"><i class="fa fa-check"></i><b>2.2.1</b> Performing k-means</a></li>
+<li class="chapter" data-level="2.2.2" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#quality-of-the-clustering"><i class="fa fa-check"></i><b>2.2.2</b> Quality of the clustering</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#hierarchical-clustering"><i class="fa fa-check"></i><b>2.3</b> Hierarchical clustering</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#determine-the-most-variable-genes"><i class="fa fa-check"></i><b>2.3.1</b> Determine the most variable genes</a></li>
+<li class="chapter" data-level="2.3.2" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#computing-the-correlation-between-all-patients"><i class="fa fa-check"></i><b>2.3.2</b> Computing the correlation between all patients</a></li>
+<li class="chapter" data-level="2.3.3" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#including-clinical-annotations-in-the-heatmap"><i class="fa fa-check"></i><b>2.3.3</b> Including clinical annotations in the heatmap</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#principal-component-analysis"><i class="fa fa-check"></i><b>2.4</b> Principal component analysis</a></li>
+<li class="chapter" data-level="2.5" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#exercises-1"><i class="fa fa-check"></i><b>2.5</b> EXERCISES</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#exercise-1-variance"><i class="fa fa-check"></i><b>2.5.1</b> Exercise 1: Variance</a></li>
+<li class="chapter" data-level="2.5.2" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#exercise-2-hierarchical-clustering"><i class="fa fa-check"></i><b>2.5.2</b> Exercise 2: Hierarchical clustering</a></li>
+<li class="chapter" data-level="2.5.3" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#exercise-3-pca"><i class="fa fa-check"></i><b>2.5.3</b> Exercise 3: PCA</a></li>
+<li class="chapter" data-level="2.5.4" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#going-further-expert"><i class="fa fa-check"></i><b>2.5.4</b> Going further <em>(expert)</em></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html"><i class="fa fa-check"></i><b>3</b> WEEK 1: Probability distributions</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html#probability-distributions"><i class="fa fa-check"></i><b>3.1</b> Probability distributions</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html#getting-to-know-the-various-functions"><i class="fa fa-check"></i><b>3.1.1</b> Getting to know the various functions</a></li>
+<li class="chapter" data-level="3.1.2" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html#normalgaussian-distribution"><i class="fa fa-check"></i><b>3.1.2</b> Normal/Gaussian distribution</a></li>
+<li class="chapter" data-level="3.1.3" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html#visualization"><i class="fa fa-check"></i><b>3.1.3</b> Visualization</a></li>
+<li class="chapter" data-level="3.1.4" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html#application-on-a-real-dataset"><i class="fa fa-check"></i><b>3.1.4</b> Application on a real dataset</a></li>
+<li class="chapter" data-level="3.1.5" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html#binomial-distribution"><i class="fa fa-check"></i><b>3.1.5</b> Binomial distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html#confidence-interval"><i class="fa fa-check"></i><b>3.2</b> Confidence interval</a></li>
+<li class="chapter" data-level="3.3" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html#exercises-2"><i class="fa fa-check"></i><b>3.3</b> EXERCISES</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html#exercise-1-probability-distributions"><i class="fa fa-check"></i><b>3.3.1</b> Exercise 1: Probability distributions</a></li>
+<li class="chapter" data-level="3.3.2" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html#exercise-2-binomial-distribution"><i class="fa fa-check"></i><b>3.3.2</b> Exercise 2: Binomial distribution</a></li>
+<li class="chapter" data-level="3.3.3" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html#exercise-3-confidence-intervals"><i class="fa fa-check"></i><b>3.3.3</b> Exercise 3: Confidence intervals</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="week-1-hypothesis-testing.html"><a href="week-1-hypothesis-testing.html"><i class="fa fa-check"></i><b>4</b> WEEK 1: Hypothesis testing</a>
+<ul>
+<li class="chapter" data-level="4.0.1" data-path="week-1-hypothesis-testing.html"><a href="week-1-hypothesis-testing.html#one-sample-t-test"><i class="fa fa-check"></i><b>4.0.1</b> One sample t-test</a></li>
+<li class="chapter" data-level="4.0.2" data-path="week-1-hypothesis-testing.html"><a href="week-1-hypothesis-testing.html#two-sample-t-test-2-sided"><i class="fa fa-check"></i><b>4.0.2</b> Two-sample t-test (2-sided)</a></li>
+<li class="chapter" data-level="4.0.3" data-path="week-1-hypothesis-testing.html"><a href="week-1-hypothesis-testing.html#two-sample-t-test-1-sided"><i class="fa fa-check"></i><b>4.0.3</b> Two-sample t-test (1-sided)</a></li>
+<li class="chapter" data-level="4.1" data-path="week-1-hypothesis-testing.html"><a href="week-1-hypothesis-testing.html#exercises-3"><i class="fa fa-check"></i><b>4.1</b> EXERCISES</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="week-1-hypothesis-testing.html"><a href="week-1-hypothesis-testing.html#exercise-1-one-sided-t-test"><i class="fa fa-check"></i><b>4.1.1</b> Exercise 1: One-sided t-test</a></li>
+<li class="chapter" data-level="4.1.2" data-path="week-1-hypothesis-testing.html"><a href="week-1-hypothesis-testing.html#exercice-2-two-sided-t-test"><i class="fa fa-check"></i><b>4.1.2</b> Exercice 2: Two-sided t-test</a></li>
+<li class="chapter" data-level="4.1.3" data-path="week-1-hypothesis-testing.html"><a href="week-1-hypothesis-testing.html#exercise-3.-going-further-checking-the-normality-of-the-distribution"><i class="fa fa-check"></i><b>4.1.3</b> Exercise 3. Going further … Checking the normality of the distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="week-1-hypothesis-testing.html"><a href="week-1-hypothesis-testing.html#wilcoxon-test"><i class="fa fa-check"></i><b>4.2</b> Wilcoxon test</a></li>
+<li class="chapter" data-level="4.3" data-path="week-1-hypothesis-testing.html"><a href="week-1-hypothesis-testing.html#chi-squared-test"><i class="fa fa-check"></i><b>4.3</b> Chi-squared test</a></li>
+<li class="chapter" data-level="4.4" data-path="week-1-hypothesis-testing.html"><a href="week-1-hypothesis-testing.html#fishers-exact-test"><i class="fa fa-check"></i><b>4.4</b> Fisher’s exact test</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="week-1-multiple-testing-and-regression.html"><a href="week-1-multiple-testing-and-regression.html"><i class="fa fa-check"></i><b>5</b> WEEK 1: Multiple testing and regression</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="week-1-multiple-testing-and-regression.html"><a href="week-1-multiple-testing-and-regression.html#multiple-testing"><i class="fa fa-check"></i><b>5.1</b> Multiple testing</a></li>
+<li class="chapter" data-level="5.2" data-path="week-1-multiple-testing-and-regression.html"><a href="week-1-multiple-testing-and-regression.html#regression"><i class="fa fa-check"></i><b>5.2</b> Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="week-2-annotathon.html"><a href="week-2-annotathon.html"><i class="fa fa-check"></i><b>6</b> WEEK 2: Annotathon!</a></li>
+<li class="chapter" data-level="7" data-path="week-2-data-formats-and-where-to-find-them.html"><a href="week-2-data-formats-and-where-to-find-them.html"><i class="fa fa-check"></i><b>7</b> WEEK 2: Data formats and where to find them</a></li>
+<li class="chapter" data-level="8" data-path="week-2-rna-seq---from-fastq-to-count-matrix.html"><a href="week-2-rna-seq---from-fastq-to-count-matrix.html"><i class="fa fa-check"></i><b>8</b> WEEK 2: RNA-seq - from FASTQ to count matrix</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="9" data-path="instructions.html"><a href="instructions.html"><i class="fa fa-check"></i><b>9</b> instructions</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="instructions.html"><a href="instructions.html#chapters-and-sub-chapters"><i class="fa fa-check"></i><b>9.1</b> Chapters and sub-chapters</a></li>
+<li class="chapter" data-level="9.2" data-path="instructions.html"><a href="instructions.html#captioned-figures-and-tables"><i class="fa fa-check"></i><b>9.2</b> Captioned figures and tables</a></li>
+<li class="chapter" data-level="9.3" data-path="instructions.html"><a href="instructions.html#footnotes"><i class="fa fa-check"></i><b>9.3</b> Footnotes</a></li>
+<li class="chapter" data-level="9.4" data-path="instructions.html"><a href="instructions.html#citations"><i class="fa fa-check"></i><b>9.4</b> Citations</a></li>
+<li class="chapter" data-level="9.5" data-path="instructions.html"><a href="instructions.html#equations"><i class="fa fa-check"></i><b>9.5</b> Equations</a></li>
+<li class="chapter" data-level="9.6" data-path="instructions.html"><a href="instructions.html#theorems-and-proofs"><i class="fa fa-check"></i><b>9.6</b> Theorems and proofs</a></li>
+<li class="chapter" data-level="9.7" data-path="instructions.html"><a href="instructions.html#callout-blocks"><i class="fa fa-check"></i><b>9.7</b> Callout blocks</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Bioinformatics introductory course - MSc Molekulare Biotechnologie</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="week-1-descriptive-statistics-and-data-types" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">1</span> WEEK 1: Descriptive statistics and data types<a href="week-1-descriptive-statistics-and-data-types.html#week-1-descriptive-statistics-and-data-types" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Today, you will learn how to perform basic tasks on a dataframe/tibble, descriptive statistics, perform data cleaning, and plotting.</p>
+<div id="data-features-and-where-to-find-them" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Data features and where to find them<a href="week-1-descriptive-statistics-and-data-types.html#data-features-and-where-to-find-them" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="load-the-data" class="section level3 hasAnchor" number="1.1.1">
+<h3><span class="header-section-number">1.1.1</span> Load the data<a href="week-1-descriptive-statistics-and-data-types.html#load-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The diabetes dataset, which we will be using in this practical class will be downloaded from an online repository.
+We will load that into R and have a sneak peek into how it looks like with the console.
+In the following you will see several functions that give us information about our dataset.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="week-1-descriptive-statistics-and-data-types.html#cb37-1" tabindex="-1"></a>dat <span class="ot">=</span> <span class="fu">as_tibble</span>(<span class="fu">read.delim</span>(<span class="st">&#39;https://tinyurl.com/y4fark9g&#39;</span>)) <span class="co"># Load the dataset</span></span>
+<span id="cb37-2"><a href="week-1-descriptive-statistics-and-data-types.html#cb37-2" tabindex="-1"></a><span class="fu">head</span>(dat, <span class="dv">10</span>) <span class="co"># Look at the first 10 lines of the table</span></span></code></pre></div>
+<pre><code>## # A tibble: 10 × 19
+##       id  chol stab.glu   hdl ratio glyhb location     age gender height weight
+##    &lt;int&gt; &lt;int&gt;    &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;   &lt;int&gt;  &lt;int&gt;
+##  1  1000   203       82    56  3.60  4.31 Buckingham    46 female     62    121
+##  2  1001   165       97    24  6.90  4.44 Buckingham    29 female     64    218
+##  3  1002   228       92    37  6.20  4.64 Buckingham    58 female     61    256
+##  4  1003    78       93    12  6.5   4.63 Buckingham    67 male       67    119
+##  5  1005   249       90    28  8.90  7.72 Buckingham    64 male       68    183
+##  6  1008   248       94    69  3.60  4.81 Buckingham    34 male       71    190
+##  7  1011   195       92    41  4.80  4.84 Buckingham    30 male       69    191
+##  8  1015   227       75    44  5.20  3.94 Buckingham    37 male       59    170
+##  9  1016   177       87    49  3.60  4.84 Buckingham    45 male       69    166
+## 10  1022   263       89    40  6.60  5.78 Buckingham    55 female     63    202
+## # ℹ 8 more variables: frame &lt;chr&gt;, bp.1s &lt;int&gt;, bp.1d &lt;int&gt;, bp.2s &lt;int&gt;,
+## #   bp.2d &lt;int&gt;, waist &lt;int&gt;, hip &lt;int&gt;, time.ppn &lt;int&gt;</code></pre>
+</div>
+<div id="dimensions-and-naming" class="section level3 hasAnchor" number="1.1.2">
+<h3><span class="header-section-number">1.1.2</span> Dimensions and naming<a href="week-1-descriptive-statistics-and-data-types.html#dimensions-and-naming" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>1.</strong> What is the dimension of our dataset (i.e. how many rows/columns are there in our data)</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="week-1-descriptive-statistics-and-data-types.html#cb39-1" tabindex="-1"></a><span class="co"># Dimension</span></span>
+<span id="cb39-2"><a href="week-1-descriptive-statistics-and-data-types.html#cb39-2" tabindex="-1"></a><span class="fu">dim</span>(dat)</span></code></pre></div>
+<pre><code>## [1] 403  19</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="week-1-descriptive-statistics-and-data-types.html#cb41-1" tabindex="-1"></a><span class="co"># Number of columns</span></span>
+<span id="cb41-2"><a href="week-1-descriptive-statistics-and-data-types.html#cb41-2" tabindex="-1"></a><span class="fu">ncol</span>(dat)</span>
+<span id="cb41-3"><a href="week-1-descriptive-statistics-and-data-types.html#cb41-3" tabindex="-1"></a><span class="co"># Number of rows</span></span>
+<span id="cb41-4"><a href="week-1-descriptive-statistics-and-data-types.html#cb41-4" tabindex="-1"></a><span class="fu">nrow</span>(dat)</span></code></pre></div>
+<p><strong>2.</strong> What are the column names of our dataset</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="week-1-descriptive-statistics-and-data-types.html#cb42-1" tabindex="-1"></a><span class="fu">colnames</span>(dat) <span class="co"># Similarly rownames() for rows</span></span></code></pre></div>
+<pre><code>##  [1] &quot;id&quot;       &quot;chol&quot;     &quot;stab.glu&quot; &quot;hdl&quot;      &quot;ratio&quot;    &quot;glyhb&quot;   
+##  [7] &quot;location&quot; &quot;age&quot;      &quot;gender&quot;   &quot;height&quot;   &quot;weight&quot;   &quot;frame&quot;   
+## [13] &quot;bp.1s&quot;    &quot;bp.1d&quot;    &quot;bp.2s&quot;    &quot;bp.2d&quot;    &quot;waist&quot;    &quot;hip&quot;     
+## [19] &quot;time.ppn&quot;</code></pre>
+<p>Probably you are confused about what these column names mean.
+For more description on these values <a href="https://biostat.app.vumc.org/wiki/pub/Main/DataSets/Cdiabetes.html">look here</a></p>
+</div>
+<div id="numerical-features" class="section level3 hasAnchor" number="1.1.3">
+<h3><span class="header-section-number">1.1.3</span> Numerical features<a href="week-1-descriptive-statistics-and-data-types.html#numerical-features" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>3.</strong> How do we extract the minimum and maximum age of patients in our dataset?</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="week-1-descriptive-statistics-and-data-types.html#cb44-1" tabindex="-1"></a><span class="fu">min</span>(dat<span class="sc">$</span>age)</span>
+<span id="cb44-2"><a href="week-1-descriptive-statistics-and-data-types.html#cb44-2" tabindex="-1"></a><span class="fu">max</span>(dat<span class="sc">$</span>age)</span>
+<span id="cb44-3"><a href="week-1-descriptive-statistics-and-data-types.html#cb44-3" tabindex="-1"></a><span class="fu">range</span>(dat<span class="sc">$</span>age)</span></code></pre></div>
+<blockquote>
+<p>Can you find out the same for height and weight?</p>
+</blockquote>
+<p><strong>4.</strong> How does the overall summary of our entire dataset look like?</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="week-1-descriptive-statistics-and-data-types.html#cb45-1" tabindex="-1"></a><span class="fu">summary</span>(dat)</span></code></pre></div>
+<blockquote>
+<p>Can you explain what you see after you run the <code>summary()</code> function?</p>
+</blockquote>
+<p>Feel free to play around with this syntax until you feel comfortable with it.
+You can open a window with <code>View(dat)</code> to compare your results.</p>
+<hr />
+</div>
+</div>
+<div id="data-cleaning" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Data cleaning<a href="week-1-descriptive-statistics-and-data-types.html#data-cleaning" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Very often the first thing one needs to do before any data science project is to clean up the raw data and transform it into a format that is readily understood and easy to use for all downstream analysis.
+This process usually involves: –</p>
+<ul>
+<li>Removing empty value rows/columns</li>
+<li>Removing unused or unnecessary rows/columns</li>
+<li>Reordering the data matrix</li>
+<li>Keeping columns uniformly numeric (age, weight etc) or string (names, places etc) or logical (TRUE/FALSE, 1/0)</li>
+<li>Handling strange caveats which are data specific like replacing <code>,</code> or <code>.</code>, or <code>;</code> from numbers etc</li>
+</ul>
+<p>Lets do some clean up of our own diabetes data</p>
+<ol style="list-style-type: decimal">
+<li>We will make the <code>id</code> column the row names for the dataset;</li>
+<li>We will remove the <code>bp.2s</code> and <code>bp.2d</code> columns as it has mostly missing values (see summary above);</li>
+<li>We will also remove the column <code>time.ppn</code> which will not be required in our analysis;</li>
+<li>We will reorder the columns of the data such that all the qualitative and quantitative values are separated.</li>
+</ol>
+<p>To perform this cleanup, we need a couple of important functions, that we will first discuss:</p>
+<ul>
+<li><code>filter</code></li>
+<li><code>is.na</code></li>
+<li><code>mutate</code></li>
+<li><code>accross</code></li>
+<li><code>%in%</code></li>
+</ul>
+<div id="filter" class="section level3 hasAnchor" number="1.2.1">
+<h3><span class="header-section-number">1.2.1</span> filter()<a href="week-1-descriptive-statistics-and-data-types.html#filter" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>filter()</code> is used on a dataset to filter rows satisfying a condition you specify like we saw previously (Introduction).
+Let’s look at an example. We are only filtering for senior individuals in our dataset.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="week-1-descriptive-statistics-and-data-types.html#cb46-1" tabindex="-1"></a>dat_seniors <span class="ot">=</span> dat <span class="sc">%&gt;%</span></span>
+<span id="cb46-2"><a href="week-1-descriptive-statistics-and-data-types.html#cb46-2" tabindex="-1"></a>  <span class="fu">filter</span>(age <span class="sc">&lt;=</span> <span class="dv">65</span>)</span></code></pre></div>
+<p>We can also filter based on other conditions, like location, sex, among others.
+In some cases, we can also use <code>which()</code> to filter values. The syntax is different…</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="week-1-descriptive-statistics-and-data-types.html#cb47-1" tabindex="-1"></a>dat[dat<span class="sc">$</span>age <span class="sc">&lt;=</span> <span class="dv">65</span>,]</span></code></pre></div>
+<p>… but it works for vectors and other classes. Let’s see the next example.</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="week-1-descriptive-statistics-and-data-types.html#cb48-1" tabindex="-1"></a><span class="co"># number of animals you have</span></span>
+<span id="cb48-2"><a href="week-1-descriptive-statistics-and-data-types.html#cb48-2" tabindex="-1"></a>number <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">5</span>)</span>
+<span id="cb48-3"><a href="week-1-descriptive-statistics-and-data-types.html#cb48-3" tabindex="-1"></a><span class="co"># Let&#39;s create a different vector (of the same length)</span></span>
+<span id="cb48-4"><a href="week-1-descriptive-statistics-and-data-types.html#cb48-4" tabindex="-1"></a>animals <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;cat&quot;</span>, <span class="st">&quot;dog&quot;</span>, <span class="st">&quot;cow&quot;</span>, <span class="st">&quot;parrot&quot;</span>, <span class="st">&quot;zebra&quot;</span>, <span class="st">&quot;sparrow&quot;</span>, <span class="st">&quot;lizard&quot;</span>)</span>
+<span id="cb48-5"><a href="week-1-descriptive-statistics-and-data-types.html#cb48-5" tabindex="-1"></a><span class="co"># Let&#39;s use the &quot;which()&quot; function now</span></span>
+<span id="cb48-6"><a href="week-1-descriptive-statistics-and-data-types.html#cb48-6" tabindex="-1"></a>animals[<span class="fu">which</span>(number <span class="sc">&gt;</span> <span class="dv">2</span>)]</span></code></pre></div>
+<pre><code>## [1] &quot;dog&quot;    &quot;cow&quot;    &quot;parrot&quot; &quot;lizard&quot;</code></pre>
+<p>We selected all animals from the “animals” vector that correspond to more than three individuals in the “number” vector.</p>
+</div>
+<div id="is.na" class="section level3 hasAnchor" number="1.2.2">
+<h3><span class="header-section-number">1.2.2</span> is.na()<a href="week-1-descriptive-statistics-and-data-types.html#is.na" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>is.na()</code> is used to determine if NA values are present in a given object. We can try a simple example with one variable being assigned as NA.</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="week-1-descriptive-statistics-and-data-types.html#cb50-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">2</span></span>
+<span id="cb50-2"><a href="week-1-descriptive-statistics-and-data-types.html#cb50-2" tabindex="-1"></a><span class="fu">is.na</span>(x)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="week-1-descriptive-statistics-and-data-types.html#cb52-1" tabindex="-1"></a>y <span class="ot">=</span> <span class="cn">NA</span></span>
+<span id="cb52-2"><a href="week-1-descriptive-statistics-and-data-types.html#cb52-2" tabindex="-1"></a><span class="fu">is.na</span>(y)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>We can do this with vectors obtained from <code>dat</code>. What class is the output in?</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="week-1-descriptive-statistics-and-data-types.html#cb54-1" tabindex="-1"></a><span class="fu">is.na</span>(dat<span class="sc">$</span>glyhb)</span></code></pre></div>
+</div>
+<div id="mutate" class="section level3 hasAnchor" number="1.2.3">
+<h3><span class="header-section-number">1.2.3</span> mutate()<a href="week-1-descriptive-statistics-and-data-types.html#mutate" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>mutate()</code> is often used to create a new column based on another column of the dataframe. Let us use this function to <em>mutate</em> two new columns including the weight in kilograms and the height in centimeters. <strong>The conversion from pounds to kilograms can be done by multiplying weight in pounds by 0.454. To covert height to centimeters we only need to multiply height (inches) by 2.54</strong>.</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="week-1-descriptive-statistics-and-data-types.html#cb55-1" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
+<span id="cb55-2"><a href="week-1-descriptive-statistics-and-data-types.html#cb55-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">weight.kg =</span> weight <span class="sc">*</span> <span class="fl">0.454</span>,        <span class="co"># you can generate both columns using the same mutate!</span></span>
+<span id="cb55-3"><a href="week-1-descriptive-statistics-and-data-types.html#cb55-3" tabindex="-1"></a>         <span class="at">height.cm =</span> height <span class="sc">*</span> <span class="fl">2.54</span>) <span class="sc">%&gt;%</span>     <span class="co"># we do not need to save this output</span></span>
+<span id="cb55-4"><a href="week-1-descriptive-statistics-and-data-types.html#cb55-4" tabindex="-1"></a>  <span class="fu">select</span>(id, weight.kg, height.cm)</span></code></pre></div>
+<pre><code>## # A tibble: 403 × 3
+##       id weight.kg height.cm
+##    &lt;int&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+##  1  1000      54.9      157.
+##  2  1001      99.0      163.
+##  3  1002     116.       155.
+##  4  1003      54.0      170.
+##  5  1005      83.1      173.
+##  6  1008      86.3      180.
+##  7  1011      86.7      175.
+##  8  1015      77.2      150.
+##  9  1016      75.4      175.
+## 10  1022      91.7      160.
+## # ℹ 393 more rows</code></pre>
+</div>
+<div id="accross" class="section level3 hasAnchor" number="1.2.4">
+<h3><span class="header-section-number">1.2.4</span> accross()<a href="week-1-descriptive-statistics-and-data-types.html#accross" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>accross()</code> is very often used together with <code>mutate()</code> and another helper function, like <code>everywhere()</code>, <code>starts_with()</code>, <code>ends_with()</code>, or <code>contains()</code>.
+Later, we will use <code>accross()</code> together with the other functions we learned previously to remove NAs like this:</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="week-1-descriptive-statistics-and-data-types.html#cb57-1" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
+<span id="cb57-2"><a href="week-1-descriptive-statistics-and-data-types.html#cb57-2" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb57-3"><a href="week-1-descriptive-statistics-and-data-types.html#cb57-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">na_count =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(<span class="fu">across</span>(<span class="fu">everything</span>()))))</span></code></pre></div>
+<p>There is much to unpack here:
++ <code>rowwise()</code> ensures that the next operations are applied by row.
++ <code>mutate()</code> adds a new column called na_count to the dataframe.
++ <code>across(everything())</code> selects all columns in the current row.
++ <code>sum(is.na(...))</code> calculates the sum of missing values for each row.</p>
+<blockquote>
+<p>Try to run the previous example without <code>rowwise()</code>. What does it look like?</p>
+</blockquote>
+</div>
+<div id="in" class="section level3 hasAnchor" number="1.2.5">
+<h3><span class="header-section-number">1.2.5</span> %in%<a href="week-1-descriptive-statistics-and-data-types.html#in" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This is an operator to check which elements of a first vector are inside a second vector.</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="week-1-descriptive-statistics-and-data-types.html#cb58-1" tabindex="-1"></a><span class="fu">c</span>(<span class="st">&#39;Frodo&#39;</span>,<span class="st">&#39;Sam&#39;</span>) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&#39;Pippin&#39;</span>,<span class="st">&#39;Sam&#39;</span>,<span class="st">&#39;Frodo&#39;</span>,<span class="st">&#39;Merry&#39;</span>)</span></code></pre></div>
+<pre><code>## [1] TRUE TRUE</code></pre>
+</div>
+<div id="ready-for-the-cleaning" class="section level3 hasAnchor" number="1.2.6">
+<h3><span class="header-section-number">1.2.6</span> Ready for the cleaning!<a href="week-1-descriptive-statistics-and-data-types.html#ready-for-the-cleaning" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The first column of the dataframe is the column with the name “id”.
+The rows are just numbered, without names.
+We are going to rename the rows using the column “id”. The function <code>column_to_rownames()</code> allows us to do this efficiently.</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="week-1-descriptive-statistics-and-data-types.html#cb60-1" tabindex="-1"></a><span class="co"># set the row names using the column id</span></span>
+<span id="cb60-2"><a href="week-1-descriptive-statistics-and-data-types.html#cb60-2" tabindex="-1"></a>dat <span class="ot">=</span> dat <span class="sc">%&gt;%</span></span>
+<span id="cb60-3"><a href="week-1-descriptive-statistics-and-data-types.html#cb60-3" tabindex="-1"></a>  <span class="fu">column_to_rownames</span>(<span class="at">var =</span> <span class="st">&#39;id&#39;</span>)</span></code></pre></div>
+<blockquote>
+<p>Keep in mind that rownames must be unique!</p>
+</blockquote>
+<p>The <em>na_count</em> column will then include the number of NAs per row. Do you understand how it works?
+We finally apply <code>filter</code> again to keep only rows with less than or 2 NAs.</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="week-1-descriptive-statistics-and-data-types.html#cb61-1" tabindex="-1"></a>dat <span class="ot">=</span> dat <span class="sc">%&gt;%</span></span>
+<span id="cb61-2"><a href="week-1-descriptive-statistics-and-data-types.html#cb61-2" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb61-3"><a href="week-1-descriptive-statistics-and-data-types.html#cb61-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">na_count =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(<span class="fu">across</span>(<span class="fu">everything</span>())))) <span class="sc">%&gt;%</span></span>
+<span id="cb61-4"><a href="week-1-descriptive-statistics-and-data-types.html#cb61-4" tabindex="-1"></a>  <span class="fu">filter</span>(na_count <span class="sc">&lt;=</span> <span class="dv">2</span>)</span></code></pre></div>
+<p>We will also remove the <em>na_count</em> and some problematic columns (<em>bp.2s</em>, <em>bp.2d</em> and <em>time.ppn</em>) by <strong>selecting the ones which are not these</strong>. We can do this using <code>!</code>, as this character can be used to invert results. Let us try it with <code>select()</code>.</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="week-1-descriptive-statistics-and-data-types.html#cb62-1" tabindex="-1"></a>dat <span class="ot">=</span> dat <span class="sc">%&gt;%</span></span>
+<span id="cb62-2"><a href="week-1-descriptive-statistics-and-data-types.html#cb62-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span><span class="fu">c</span>(na_count, time.ppn, bp<span class="fl">.2</span>d, bp<span class="fl">.2</span>s))</span></code></pre></div>
+<p>Next, we can re-order the remaining columns, in order to put the categorical columns first, and numerical columns after. We can use <code>select</code> to order columns too, but we need to combine it with <code>where()</code> and functions which verify the class of the columns, like <code>is.character()</code> or <code>is.numeric()</code>.</p>
+<p>Here is a simple example:</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="week-1-descriptive-statistics-and-data-types.html#cb63-1" tabindex="-1"></a><span class="co"># Create a character and numeric </span></span>
+<span id="cb63-2"><a href="week-1-descriptive-statistics-and-data-types.html#cb63-2" tabindex="-1"></a>name <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;Antonia&quot;</span>)</span>
+<span id="cb63-3"><a href="week-1-descriptive-statistics-and-data-types.html#cb63-3" tabindex="-1"></a>age <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">23</span>)</span>
+<span id="cb63-4"><a href="week-1-descriptive-statistics-and-data-types.html#cb63-4" tabindex="-1"></a></span>
+<span id="cb63-5"><a href="week-1-descriptive-statistics-and-data-types.html#cb63-5" tabindex="-1"></a><span class="co"># Verify if the previous object are from the character/numeric classes</span></span>
+<span id="cb63-6"><a href="week-1-descriptive-statistics-and-data-types.html#cb63-6" tabindex="-1"></a><span class="fu">is.character</span>(name)</span>
+<span id="cb63-7"><a href="week-1-descriptive-statistics-and-data-types.html#cb63-7" tabindex="-1"></a><span class="fu">is.character</span>(age)</span>
+<span id="cb63-8"><a href="week-1-descriptive-statistics-and-data-types.html#cb63-8" tabindex="-1"></a><span class="fu">is.numeric</span>(age)</span></code></pre></div>
+<p>And here we can apply the same principle to the re-ordering:</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="week-1-descriptive-statistics-and-data-types.html#cb64-1" tabindex="-1"></a>dat <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span></span>
+<span id="cb64-2"><a href="week-1-descriptive-statistics-and-data-types.html#cb64-2" tabindex="-1"></a>  <span class="fu">select</span>(</span>
+<span id="cb64-3"><a href="week-1-descriptive-statistics-and-data-types.html#cb64-3" tabindex="-1"></a>    <span class="co"># Select categorical columns</span></span>
+<span id="cb64-4"><a href="week-1-descriptive-statistics-and-data-types.html#cb64-4" tabindex="-1"></a>    <span class="fu">where</span>(is.character), </span>
+<span id="cb64-5"><a href="week-1-descriptive-statistics-and-data-types.html#cb64-5" tabindex="-1"></a>    <span class="co"># Select numerical columns</span></span>
+<span id="cb64-6"><a href="week-1-descriptive-statistics-and-data-types.html#cb64-6" tabindex="-1"></a>    <span class="fu">where</span>(is.numeric)</span>
+<span id="cb64-7"><a href="week-1-descriptive-statistics-and-data-types.html#cb64-7" tabindex="-1"></a>  )</span>
+<span id="cb64-8"><a href="week-1-descriptive-statistics-and-data-types.html#cb64-8" tabindex="-1"></a></span>
+<span id="cb64-9"><a href="week-1-descriptive-statistics-and-data-types.html#cb64-9" tabindex="-1"></a><span class="co"># OR you can use the indexes too, but if you more than 10-20 columns, that is not ideal</span></span>
+<span id="cb64-10"><a href="week-1-descriptive-statistics-and-data-types.html#cb64-10" tabindex="-1"></a><span class="co"># dat = dat[,c(8,6,11,9,10,14,15,2,5,1,3,4,12,13)]</span></span></code></pre></div>
+<p>Now lets look at our cleaned data:</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="week-1-descriptive-statistics-and-data-types.html#cb65-1" tabindex="-1"></a><span class="fu">summary</span>(dat)</span></code></pre></div>
+<pre><code>##    location            gender             frame                chol      
+##  Length:377         Length:377         Length:377         Min.   : 78.0  
+##  Class :character   Class :character   Class :character   1st Qu.:179.0  
+##  Mode  :character   Mode  :character   Mode  :character   Median :204.0  
+##                                                           Mean   :208.2  
+##                                                           3rd Qu.:230.0  
+##                                                           Max.   :443.0  
+##                                                                          
+##     stab.glu          hdl             ratio            glyhb       
+##  Min.   : 48.0   Min.   : 12.00   Min.   : 1.500   Min.   : 2.680  
+##  1st Qu.: 81.0   1st Qu.: 38.00   1st Qu.: 3.200   1st Qu.: 4.390  
+##  Median : 90.0   Median : 46.00   Median : 4.200   Median : 4.860  
+##  Mean   :107.3   Mean   : 50.36   Mean   : 4.538   Mean   : 5.594  
+##  3rd Qu.:108.0   3rd Qu.: 59.00   3rd Qu.: 5.400   3rd Qu.: 5.622  
+##  Max.   :385.0   Max.   :120.00   Max.   :19.300   Max.   :16.110  
+##                                                    NA&#39;s   :3       
+##       age           height          weight          bp.1s      
+##  Min.   :19.0   Min.   :52.00   Min.   : 99.0   Min.   : 90.0  
+##  1st Qu.:34.0   1st Qu.:63.00   1st Qu.:151.0   1st Qu.:122.0  
+##  Median :45.0   Median :66.00   Median :174.0   Median :136.0  
+##  Mean   :46.9   Mean   :66.02   Mean   :178.1   Mean   :137.4  
+##  3rd Qu.:60.0   3rd Qu.:69.00   3rd Qu.:200.0   3rd Qu.:148.0  
+##  Max.   :92.0   Max.   :76.00   Max.   :325.0   Max.   :250.0  
+##                                                                
+##      bp.1d            waist            hip       
+##  Min.   : 48.00   Min.   :26.00   Min.   :30.00  
+##  1st Qu.: 75.00   1st Qu.:33.00   1st Qu.:39.00  
+##  Median : 82.00   Median :37.00   Median :42.00  
+##  Mean   : 83.69   Mean   :37.95   Mean   :43.08  
+##  3rd Qu.: 92.00   3rd Qu.:41.25   3rd Qu.:46.00  
+##  Max.   :124.00   Max.   :56.00   Max.   :64.00  
+##                   NA&#39;s   :1       NA&#39;s   :1</code></pre>
+<p>The ordering and selection of columns looks right, however it seems that there are certain rows that have missing values still (like <code>glyhb</code> column has 3 <code>NA</code> values still).
+Lets remove all rows with any missing value using <code>na.omit()</code>.
+Remember, 1 row = 1 patient.</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="week-1-descriptive-statistics-and-data-types.html#cb67-1" tabindex="-1"></a>dat <span class="ot">=</span> dat <span class="sc">%&gt;%</span></span>
+<span id="cb67-2"><a href="week-1-descriptive-statistics-and-data-types.html#cb67-2" tabindex="-1"></a>  <span class="fu">na.omit</span>()</span></code></pre></div>
+<blockquote>
+<p>How many patients were removed because they were associated with missing values?</p>
+</blockquote>
+<p>Now our cleaned data has no missing values, columns are cleanly ordered and each column is in the right format</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="week-1-descriptive-statistics-and-data-types.html#cb68-1" tabindex="-1"></a><span class="fu">summary</span>(dat)</span></code></pre></div>
+<pre><code>##    location            gender             frame                chol      
+##  Length:367         Length:367         Length:367         Min.   : 78.0  
+##  Class :character   Class :character   Class :character   1st Qu.:179.0  
+##  Mode  :character   Mode  :character   Mode  :character   Median :204.0  
+##                                                           Mean   :207.5  
+##                                                           3rd Qu.:229.0  
+##                                                           Max.   :443.0  
+##     stab.glu          hdl             ratio            glyhb       
+##  Min.   : 48.0   Min.   : 12.00   Min.   : 1.500   Min.   : 2.680  
+##  1st Qu.: 81.0   1st Qu.: 38.00   1st Qu.: 3.200   1st Qu.: 4.390  
+##  Median : 90.0   Median : 46.00   Median : 4.200   Median : 4.860  
+##  Mean   :107.3   Mean   : 50.28   Mean   : 4.536   Mean   : 5.602  
+##  3rd Qu.:108.0   3rd Qu.: 59.00   3rd Qu.: 5.400   3rd Qu.: 5.630  
+##  Max.   :385.0   Max.   :120.00   Max.   :19.300   Max.   :16.110  
+##       age            height          weight          bp.1s      
+##  Min.   :19.00   Min.   :52.00   Min.   : 99.0   Min.   : 90.0  
+##  1st Qu.:34.00   1st Qu.:63.00   1st Qu.:151.0   1st Qu.:121.5  
+##  Median :45.00   Median :66.00   Median :174.0   Median :136.0  
+##  Mean   :46.68   Mean   :66.05   Mean   :178.1   Mean   :137.1  
+##  3rd Qu.:60.00   3rd Qu.:69.00   3rd Qu.:200.0   3rd Qu.:148.0  
+##  Max.   :92.00   Max.   :76.00   Max.   :325.0   Max.   :250.0  
+##      bp.1d           waist            hip       
+##  Min.   : 48.0   Min.   :26.00   Min.   :30.00  
+##  1st Qu.: 75.0   1st Qu.:33.00   1st Qu.:39.00  
+##  Median : 82.0   Median :37.00   Median :42.00  
+##  Mean   : 83.4   Mean   :37.93   Mean   :43.04  
+##  3rd Qu.: 92.0   3rd Qu.:41.50   3rd Qu.:46.00  
+##  Max.   :124.0   Max.   :56.00   Max.   :64.00</code></pre>
+<blockquote>
+<p>Can you identify which types of data (continuous, discrete etc) each column above represents and why?</p>
+</blockquote>
+<hr />
+</div>
+</div>
+<div id="visualizing-data-distribution" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Visualizing data distribution<a href="week-1-descriptive-statistics-and-data-types.html#visualizing-data-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In this section you will also learn the essential functions to plot data in an intuitive and useful way using the <code>ggplot2</code> package, just like in the introductory section to tidyverse.</p>
+<div id="histograms" class="section level3 hasAnchor" number="1.3.1">
+<h3><span class="header-section-number">1.3.1</span> Histograms<a href="week-1-descriptive-statistics-and-data-types.html#histograms" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We can plot the column “stab.glu” as a histogram using the <code>hist()</code> function:</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="week-1-descriptive-statistics-and-data-types.html#cb70-1" tabindex="-1"></a><span class="fu">ggplot</span>(dat,</span>
+<span id="cb70-2"><a href="week-1-descriptive-statistics-and-data-types.html#cb70-2" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> stab.glu)) <span class="sc">+</span></span>
+<span id="cb70-3"><a href="week-1-descriptive-statistics-and-data-types.html#cb70-3" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
+<span id="cb70-4"><a href="week-1-descriptive-statistics-and-data-types.html#cb70-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Stabilized Glucose concentration in blood&quot;</span>,  <span class="co"># add labels to the x-axis</span></span>
+<span id="cb70-5"><a href="week-1-descriptive-statistics-and-data-types.html#cb70-5" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;Glucose concentration&quot;</span>)                  <span class="co"># add title</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
+<blockquote>
+<p>Add the parameter <code>bins = 50</code> in the above lines of code (inside <code>geom_histogram</code>) and see what happens.
+Try different values for <code>bins</code> like <code>10, 20, 75, 100</code>. Can you interpret the differences?
+Is this a good or bad thing about histograms?</p>
+</blockquote>
+</div>
+<div id="density-plots" class="section level3 hasAnchor" number="1.3.2">
+<h3><span class="header-section-number">1.3.2</span> Density plots<a href="week-1-descriptive-statistics-and-data-types.html#density-plots" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>For density plots, we use the <code>geom_density()</code> function to estimate the probability density function for a given variable.</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="week-1-descriptive-statistics-and-data-types.html#cb71-1" tabindex="-1"></a><span class="fu">ggplot</span>(dat,</span>
+<span id="cb71-2"><a href="week-1-descriptive-statistics-and-data-types.html#cb71-2" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> stab.glu)) <span class="sc">+</span></span>
+<span id="cb71-3"><a href="week-1-descriptive-statistics-and-data-types.html#cb71-3" tabindex="-1"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span></span>
+<span id="cb71-4"><a href="week-1-descriptive-statistics-and-data-types.html#cb71-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Stabilized Glucose concentration in blood&quot;</span>,  <span class="co"># add labels to the x-axis</span></span>
+<span id="cb71-5"><a href="week-1-descriptive-statistics-and-data-types.html#cb71-5" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;Glucose concentration&quot;</span>)                  <span class="co"># add title</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
+</div>
+<div id="boxplots" class="section level3 hasAnchor" number="1.3.3">
+<h3><span class="header-section-number">1.3.3</span> Boxplots<a href="week-1-descriptive-statistics-and-data-types.html#boxplots" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <code>boxplot()</code> function produces a boxplot for a given variable:</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="week-1-descriptive-statistics-and-data-types.html#cb72-1" tabindex="-1"></a><span class="fu">ggplot</span>(dat,</span>
+<span id="cb72-2"><a href="week-1-descriptive-statistics-and-data-types.html#cb72-2" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> stab.glu)) <span class="sc">+</span></span>
+<span id="cb72-3"><a href="week-1-descriptive-statistics-and-data-types.html#cb72-3" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb72-4"><a href="week-1-descriptive-statistics-and-data-types.html#cb72-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span><span class="st">&quot;Stabilized Glucose concentration in blood&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-43-1.png" width="384" /></p>
+<blockquote>
+<p>Can you explain all features of this graph, such as upper/lower whisker, 25% quantile, …?</p>
+</blockquote>
+</div>
+<div id="qq-plots" class="section level3 hasAnchor" number="1.3.4">
+<h3><span class="header-section-number">1.3.4</span> QQ-plots<a href="week-1-descriptive-statistics-and-data-types.html#qq-plots" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We can use <strong>QQ-plots</strong> to either (1) compare two distributions, or (2) compare a distribution with a theoretical distribution (typically the normal distribution).</p>
+<p>We can for example compare the distribution of the blood pressure values to check if they are normally distributed</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="week-1-descriptive-statistics-and-data-types.html#cb73-1" tabindex="-1"></a><span class="do">## Let&#39;s first make a histogram</span></span>
+<span id="cb73-2"><a href="week-1-descriptive-statistics-and-data-types.html#cb73-2" tabindex="-1"></a><span class="fu">ggplot</span>(dat,</span>
+<span id="cb73-3"><a href="week-1-descriptive-statistics-and-data-types.html#cb73-3" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> bp<span class="fl">.1</span>s)) <span class="sc">+</span></span>
+<span id="cb73-4"><a href="week-1-descriptive-statistics-and-data-types.html#cb73-4" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">50</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
+<p>Now we can use the function <code>geom_qq()</code> to generate the <strong>QQ-plot</strong> of this distribution against the standard normal distribution:</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="week-1-descriptive-statistics-and-data-types.html#cb74-1" tabindex="-1"></a><span class="fu">ggplot</span>(dat,</span>
+<span id="cb74-2"><a href="week-1-descriptive-statistics-and-data-types.html#cb74-2" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">sample =</span> bp<span class="fl">.1</span>s)) <span class="sc">+</span>     <span class="co"># we use sample= inside aes for the QQ-plot</span></span>
+<span id="cb74-3"><a href="week-1-descriptive-statistics-and-data-types.html#cb74-3" tabindex="-1"></a>  <span class="fu">geom_qq</span>()                       <span class="co"># creates the QQ-plot</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-45-1.png" width="288" /></p>
+<p>Using the additional command <code>geom_qq_line()</code>, we can add a straight line that goes through the first and third quartile:</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="week-1-descriptive-statistics-and-data-types.html#cb75-1" tabindex="-1"></a><span class="fu">ggplot</span>(dat,</span>
+<span id="cb75-2"><a href="week-1-descriptive-statistics-and-data-types.html#cb75-2" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">sample =</span> bp<span class="fl">.1</span>s)) <span class="sc">+</span>     <span class="co"># we use sample= inside aes for the QQ-plot</span></span>
+<span id="cb75-3"><a href="week-1-descriptive-statistics-and-data-types.html#cb75-3" tabindex="-1"></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span></span>
+<span id="cb75-4"><a href="week-1-descriptive-statistics-and-data-types.html#cb75-4" tabindex="-1"></a>  <span class="fu">geom_qq_line</span>()                  <span class="co"># adds in the QQ-line on top</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-46-1.png" width="288" /></p>
+<blockquote>
+<p>So, is the distribution normal??</p>
+</blockquote>
+<p>Now let’s compare the quantiles of the cholesterol values by biological sex.
+<strong>Notes on <code>ggplot()</code> here:</strong> Rather than <code>ggplot(dataset, aes(...))</code> we use <code>ggplot() + geom_xx(aes(...))</code> for situations where the data we wish to plot is not in a dataframe.</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="week-1-descriptive-statistics-and-data-types.html#cb76-1" tabindex="-1"></a><span class="co"># We can use &quot;filter()&quot; to filter the cholesterol values for men and women</span></span>
+<span id="cb76-2"><a href="week-1-descriptive-statistics-and-data-types.html#cb76-2" tabindex="-1"></a>dat.male <span class="ot">=</span> dat <span class="sc">%&gt;%</span></span>
+<span id="cb76-3"><a href="week-1-descriptive-statistics-and-data-types.html#cb76-3" tabindex="-1"></a>  <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="st">&#39;male&#39;</span>)</span>
+<span id="cb76-4"><a href="week-1-descriptive-statistics-and-data-types.html#cb76-4" tabindex="-1"></a></span>
+<span id="cb76-5"><a href="week-1-descriptive-statistics-and-data-types.html#cb76-5" tabindex="-1"></a>dat.female <span class="ot">=</span> dat <span class="sc">%&gt;%</span></span>
+<span id="cb76-6"><a href="week-1-descriptive-statistics-and-data-types.html#cb76-6" tabindex="-1"></a>  <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="st">&#39;female&#39;</span>)</span>
+<span id="cb76-7"><a href="week-1-descriptive-statistics-and-data-types.html#cb76-7" tabindex="-1"></a></span>
+<span id="cb76-8"><a href="week-1-descriptive-statistics-and-data-types.html#cb76-8" tabindex="-1"></a><span class="co"># Compute the quantiles (note the &quot;na.rm&quot; option to ignore missing NA values!)</span></span>
+<span id="cb76-9"><a href="week-1-descriptive-statistics-and-data-types.html#cb76-9" tabindex="-1"></a>q.male <span class="ot">=</span> <span class="fu">quantile</span>(dat.male<span class="sc">$</span>bp<span class="fl">.1</span>s, </span>
+<span id="cb76-10"><a href="week-1-descriptive-statistics-and-data-types.html#cb76-10" tabindex="-1"></a>                  <span class="at">probs=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="at">by=</span><span class="fl">0.05</span>), </span>
+<span id="cb76-11"><a href="week-1-descriptive-statistics-and-data-types.html#cb76-11" tabindex="-1"></a>                  <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
+<span id="cb76-12"><a href="week-1-descriptive-statistics-and-data-types.html#cb76-12" tabindex="-1"></a>q.female <span class="ot">=</span> <span class="fu">quantile</span>(dat.female<span class="sc">$</span>bp<span class="fl">.1</span>s, </span>
+<span id="cb76-13"><a href="week-1-descriptive-statistics-and-data-types.html#cb76-13" tabindex="-1"></a>                    <span class="at">probs=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="at">by=</span><span class="fl">0.05</span>),</span>
+<span id="cb76-14"><a href="week-1-descriptive-statistics-and-data-types.html#cb76-14" tabindex="-1"></a>                    <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
+<span id="cb76-15"><a href="week-1-descriptive-statistics-and-data-types.html#cb76-15" tabindex="-1"></a></span>
+<span id="cb76-16"><a href="week-1-descriptive-statistics-and-data-types.html#cb76-16" tabindex="-1"></a><span class="co"># Now plot against each other!</span></span>
+<span id="cb76-17"><a href="week-1-descriptive-statistics-and-data-types.html#cb76-17" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb76-18"><a href="week-1-descriptive-statistics-and-data-types.html#cb76-18" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> q.male, <span class="at">y =</span> q.female)) <span class="sc">+</span></span>
+<span id="cb76-19"><a href="week-1-descriptive-statistics-and-data-types.html#cb76-19" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Quantiles&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Male quantiles&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Female quantiles&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-47-1.png" width="288" /></p>
+<hr />
+</div>
+</div>
+<div id="correlation" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> Correlation<a href="week-1-descriptive-statistics-and-data-types.html#correlation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="measuring-the-centrality-in-data" class="section level3 hasAnchor" number="1.4.1">
+<h3><span class="header-section-number">1.4.1</span> Measuring the centrality in data<a href="week-1-descriptive-statistics-and-data-types.html#measuring-the-centrality-in-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Before you begin, think back to the mean, median and quantiles we saw on the boxplot. Do you remember what these terms mean? How does an asymmetrical distribution influence mean and median?
+We have already seen that the <code>summary()</code> and <code>quantile()</code> functions in R can compute the mean, median and quantiles of any given data.</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="week-1-descriptive-statistics-and-data-types.html#cb77-1" tabindex="-1"></a><span class="fu">mean</span>(dat<span class="sc">$</span>stab.glu) </span>
+<span id="cb77-2"><a href="week-1-descriptive-statistics-and-data-types.html#cb77-2" tabindex="-1"></a><span class="fu">median</span>(dat<span class="sc">$</span>stab.glu) </span>
+<span id="cb77-3"><a href="week-1-descriptive-statistics-and-data-types.html#cb77-3" tabindex="-1"></a><span class="fu">quantile</span>(dat<span class="sc">$</span>stab.glu) </span></code></pre></div>
+<blockquote>
+<p>Calculate the mean and median of other continuous numeric data in the diabetes dataset and measure the difference between them. (a) Why is there a difference between the mean and median? (b) Why do you think there are larger differences for some and almost no difference for others?</p>
+</blockquote>
+</div>
+<div id="association-between-variables" class="section level3 hasAnchor" number="1.4.2">
+<h3><span class="header-section-number">1.4.2</span> Association between variables<a href="week-1-descriptive-statistics-and-data-types.html#association-between-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Often a common step during any data analysis project is to find associations between variables present in the dataset. Such associations helps us to decipher the underlying structure in the data.</p>
+<p>For instance, in our diabetes dataset we would expect a high correlation between free blood glucose levels and glycosylated blood levels or between waist and hip sizes. One of the most common ways of measuring associations is <em>correlations</em>.</p>
+<p>Let us start by producing a <strong>scatter plot</strong> between a pair of variables:</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="week-1-descriptive-statistics-and-data-types.html#cb78-1" tabindex="-1"></a><span class="fu">ggplot</span>(dat,</span>
+<span id="cb78-2"><a href="week-1-descriptive-statistics-and-data-types.html#cb78-2" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> stab.glu, <span class="at">y =</span> glyhb)) <span class="sc">+</span></span>
+<span id="cb78-3"><a href="week-1-descriptive-statistics-and-data-types.html#cb78-3" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb78-4"><a href="week-1-descriptive-statistics-and-data-types.html#cb78-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">&#39;Stabilized glucose&#39;</span>, <span class="at">y=</span><span class="st">&#39;Glycosylated hemoglobin&#39;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
+<blockquote>
+<p>Do you suspect that the two variables have a relationship? Do the scatter plot for other pairs of numerical variables!</p>
+</blockquote>
+<p>We now can compute the correlation of the two variables. We can compute the <strong>Pearson correlation</strong> or the <strong>Spearman correlation</strong>:</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="week-1-descriptive-statistics-and-data-types.html#cb79-1" tabindex="-1"></a><span class="do">## compute the Pearson correlation</span></span>
+<span id="cb79-2"><a href="week-1-descriptive-statistics-and-data-types.html#cb79-2" tabindex="-1"></a><span class="fu">cor</span>(dat<span class="sc">$</span>stab.glu, dat<span class="sc">$</span>glyhb, <span class="at">method=</span><span class="st">&#39;pearson&#39;</span>)</span></code></pre></div>
+<pre><code>## [1] 0.7411355</code></pre>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="week-1-descriptive-statistics-and-data-types.html#cb81-1" tabindex="-1"></a><span class="do">## compute the Spearman correlation</span></span>
+<span id="cb81-2"><a href="week-1-descriptive-statistics-and-data-types.html#cb81-2" tabindex="-1"></a><span class="fu">cor</span>(dat<span class="sc">$</span>stab.glu, dat<span class="sc">$</span>glyhb, <span class="at">method=</span><span class="st">&#39;spearman&#39;</span>)</span></code></pre></div>
+<pre><code>## [1] 0.5214866</code></pre>
+<p>The Spearman correlation seems much lower, right? To understand why, we can do a scatter plot between the <strong>ranks</strong> of the two variables:</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="week-1-descriptive-statistics-and-data-types.html#cb83-1" tabindex="-1"></a><span class="fu">ggplot</span>(dat,</span>
+<span id="cb83-2"><a href="week-1-descriptive-statistics-and-data-types.html#cb83-2" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">rank</span>(stab.glu), <span class="at">y =</span> <span class="fu">rank</span>(glyhb))) <span class="sc">+</span></span>
+<span id="cb83-3"><a href="week-1-descriptive-statistics-and-data-types.html#cb83-3" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb83-4"><a href="week-1-descriptive-statistics-and-data-types.html#cb83-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">&#39;Rank - Stabilized glucose&#39;</span>, <span class="at">y=</span><span class="st">&#39;Rank - Glycosylated hemoglobin&#39;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
+<p>Do you understand the usage of ranks here? Run `rank()`` on a vector like <em>c(3,5,10,1,23)</em> to see how the output looks like.</p>
+<blockquote>
+<p>Associations are among the simplest forms of structure in the data! It is important to remember that <em>Association does not imply correlation</em> and <em>Correlation does not imply causation</em>. Take a look at this page to view few common logical fallacies. <a href="https://en.wikipedia.org/wiki/Fallacy">see here</a></p>
+</blockquote>
+<hr />
+</div>
+</div>
+<div id="exercises" class="section level2 hasAnchor" number="1.5">
+<h2><span class="header-section-number">1.5</span> EXERCISES<a href="week-1-descriptive-statistics-and-data-types.html#exercises" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="exercise-1-data-features" class="section level3 hasAnchor" number="1.5.1">
+<h3><span class="header-section-number">1.5.1</span> Exercise 1: Data features<a href="week-1-descriptive-statistics-and-data-types.html#exercise-1-data-features" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li><p>Try to obtain the same result of the <code>head()</code> function by using slicing on the dataset “dat” using row indexes.</p></li>
+<li><p>Print out the first three column names of “dat” using <code>colnames()</code>.</p></li>
+<li><p>Print out the last element in the last column of “dat” using the <code>dim()</code> function instead of using numerals.</p></li>
+<li><p>Write a code to calculate the mean of 3 numerical columns of “dat” (you can choose which ones) without using the <code>mean()</code> function and make a new column.</p></li>
+<li><p>Add one line of code that prints out the results from exercise 1 that are greater than 10 by using the <code>which()</code> function</p></li>
+</ol>
+</div>
+<div id="exercise-2-visualization" class="section level3 hasAnchor" number="1.5.2">
+<h3><span class="header-section-number">1.5.2</span> Exercise 2: Visualization<a href="week-1-descriptive-statistics-and-data-types.html#exercise-2-visualization" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li><p>Visualize the cholesterol levels of all patients with a histogram using the <code>geom_histogram()</code> function.</p></li>
+<li><p>Visualize the cholesterol levels of all <strong>male</strong> patients with a histogram using <code>geom_histogram()</code>.
+<em>(expert):</em> Mark the median, first and third quartile with vertical lines using <code>geom_vline()</code>. The values are defined using <code>xintercept</code> (as in which value of x should the vertical line intercept).
+Then mark median, first and third quartile for <strong>female</strong> patients in the same graph with a different color.
+What can you tell from the differences in these values?</p></li>
+</ol>
+</div>
+<div id="exercise-3-correlation" class="section level3 hasAnchor" number="1.5.3">
+<h3><span class="header-section-number">1.5.3</span> Exercise 3: Correlation<a href="week-1-descriptive-statistics-and-data-types.html#exercise-3-correlation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li><p>Is there an association between “hip” and “waist” on the data frame “dat”? Use the <code>geom_point()</code> function to do a scatter plot of the <strong>values</strong> and of the <strong>ranks</strong> (as determined by the <code>rank()</code> function). Compute both the <strong>Pearson</strong> and <strong>Spearman</strong> correlation values.</p></li>
+<li><p>Select only the numerical columns (using <code>select(where(is.numeric))</code>), and apply the function <code>cor()</code> <strong>directly</strong>: <code>%&gt;% cor()</code> . What happens? What is the output? Store the result of this command in a new variable named “all.cor”. Plot a heatmap of these results using the <code>pheatmap()</code> function from the “pheatmap” package. Remember that you first have to install and then activate this package using <code>library("pheatmap")</code>.</p></li>
+<li><p>Find the <strong>highest</strong> and <strong>lowest</strong> Pearson correlation value of the result from exercise 2.2. To which pair of variables do they correspond? Plot the corresponding scatter plots using <code>geom_point()</code>! <em>Hint</em>: Before finding the highest Pearson correlation value, use the <code>diag()</code> function to set all diagonal values (=1) of “all.cor” to NA.</p></li>
+</ol>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="week-1-dimensionality-reduction-and-unsupervised-learning.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/01-Data_intro.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

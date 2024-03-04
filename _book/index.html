@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Bioinformatics introductory course - MSc Molekulare Biotechnologie</title>
+  <meta name="description" content="RMarkdowns for the Data Analysis introduction course (SoSe2024), MoBi MA" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Bioinformatics introductory course - MSc Molekulare Biotechnologie" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="RMarkdowns for the Data Analysis introduction course (SoSe2024), MoBi MA" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Bioinformatics introductory course - MSc Molekulare Biotechnologie" />
+  
+  <meta name="twitter:description" content="RMarkdowns for the Data Analysis introduction course (SoSe2024), MoBi MA" />
+  
+
+<meta name="author" content="Biomedical Genomics group, IPMB" />
+
+
+<meta name="date" content="2024-03-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="week-1-descriptive-statistics-and-data-types.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Bioinformatics Introduction course (MoBi MA)</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#where-to-start"><i class="fa fa-check"></i>Where to start</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#r"><i class="fa fa-check"></i>R</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#rstudio"><i class="fa fa-check"></i>RStudio</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#variable-assignment-in-r"><i class="fa fa-check"></i>Variable assignment in R</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#classes"><i class="fa fa-check"></i>Classes</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#logical-operations"><i class="fa fa-check"></i>Logical operations</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#vectors"><i class="fa fa-check"></i>Vectors</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#matrixes"><i class="fa fa-check"></i>Matrixes</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#dataframes"><i class="fa fa-check"></i>Dataframes</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#r-markdown"><i class="fa fa-check"></i>R Markdown</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#advanced-data-manipulation-with-tidyverse"><i class="fa fa-check"></i>Advanced data manipulation with tidyverse</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#filter-based-on-conditions"><i class="fa fa-check"></i>Filter based on conditions</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#select-specific-columns"><i class="fa fa-check"></i>Select specific columns</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#operations-on-groups"><i class="fa fa-check"></i>Operations on groups</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#pretty-plots-using-ggplot2"><i class="fa fa-check"></i>Pretty plots using ggplot2</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#histogram"><i class="fa fa-check"></i>Histogram</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#scatter-plot"><i class="fa fa-check"></i>Scatter plot</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#boxplot"><i class="fa fa-check"></i>Boxplot</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html"><i class="fa fa-check"></i><b>1</b> WEEK 1: Descriptive statistics and data types</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#data-features-and-where-to-find-them"><i class="fa fa-check"></i><b>1.1</b> Data features and where to find them</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#load-the-data"><i class="fa fa-check"></i><b>1.1.1</b> Load the data</a></li>
+<li class="chapter" data-level="1.1.2" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#dimensions-and-naming"><i class="fa fa-check"></i><b>1.1.2</b> Dimensions and naming</a></li>
+<li class="chapter" data-level="1.1.3" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#numerical-features"><i class="fa fa-check"></i><b>1.1.3</b> Numerical features</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#data-cleaning"><i class="fa fa-check"></i><b>1.2</b> Data cleaning</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#filter"><i class="fa fa-check"></i><b>1.2.1</b> filter()</a></li>
+<li class="chapter" data-level="1.2.2" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#is.na"><i class="fa fa-check"></i><b>1.2.2</b> is.na()</a></li>
+<li class="chapter" data-level="1.2.3" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#mutate"><i class="fa fa-check"></i><b>1.2.3</b> mutate()</a></li>
+<li class="chapter" data-level="1.2.4" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#accross"><i class="fa fa-check"></i><b>1.2.4</b> accross()</a></li>
+<li class="chapter" data-level="1.2.5" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#in"><i class="fa fa-check"></i><b>1.2.5</b> %in%</a></li>
+<li class="chapter" data-level="1.2.6" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#ready-for-the-cleaning"><i class="fa fa-check"></i><b>1.2.6</b> Ready for the cleaning!</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#visualizing-data-distribution"><i class="fa fa-check"></i><b>1.3</b> Visualizing data distribution</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#histograms"><i class="fa fa-check"></i><b>1.3.1</b> Histograms</a></li>
+<li class="chapter" data-level="1.3.2" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#density-plots"><i class="fa fa-check"></i><b>1.3.2</b> Density plots</a></li>
+<li class="chapter" data-level="1.3.3" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#boxplots"><i class="fa fa-check"></i><b>1.3.3</b> Boxplots</a></li>
+<li class="chapter" data-level="1.3.4" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#qq-plots"><i class="fa fa-check"></i><b>1.3.4</b> QQ-plots</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#correlation"><i class="fa fa-check"></i><b>1.4</b> Correlation</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#measuring-the-centrality-in-data"><i class="fa fa-check"></i><b>1.4.1</b> Measuring the centrality in data</a></li>
+<li class="chapter" data-level="1.4.2" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#association-between-variables"><i class="fa fa-check"></i><b>1.4.2</b> Association between variables</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#exercises"><i class="fa fa-check"></i><b>1.5</b> EXERCISES</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#exercise-1-data-features"><i class="fa fa-check"></i><b>1.5.1</b> Exercise 1: Data features</a></li>
+<li class="chapter" data-level="1.5.2" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#exercise-2-visualization"><i class="fa fa-check"></i><b>1.5.2</b> Exercise 2: Visualization</a></li>
+<li class="chapter" data-level="1.5.3" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#exercise-3-correlation"><i class="fa fa-check"></i><b>1.5.3</b> Exercise 3: Correlation</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html"><i class="fa fa-check"></i><b>2</b> WEEK 1: Dimensionality reduction and unsupervised learning</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#preparing-the-data"><i class="fa fa-check"></i><b>2.1</b> Preparing the data</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#load-data"><i class="fa fa-check"></i><b>2.1.1</b> Load data</a></li>
+<li class="chapter" data-level="2.1.2" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#data-transformation"><i class="fa fa-check"></i><b>2.1.2</b> Data transformation</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#k-means-clustering"><i class="fa fa-check"></i><b>2.2</b> k-means clustering</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#performing-k-means"><i class="fa fa-check"></i><b>2.2.1</b> Performing k-means</a></li>
+<li class="chapter" data-level="2.2.2" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#quality-of-the-clustering"><i class="fa fa-check"></i><b>2.2.2</b> Quality of the clustering</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#hierarchical-clustering"><i class="fa fa-check"></i><b>2.3</b> Hierarchical clustering</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#determine-the-most-variable-genes"><i class="fa fa-check"></i><b>2.3.1</b> Determine the most variable genes</a></li>
+<li class="chapter" data-level="2.3.2" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#computing-the-correlation-between-all-patients"><i class="fa fa-check"></i><b>2.3.2</b> Computing the correlation between all patients</a></li>
+<li class="chapter" data-level="2.3.3" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#including-clinical-annotations-in-the-heatmap"><i class="fa fa-check"></i><b>2.3.3</b> Including clinical annotations in the heatmap</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#principal-component-analysis"><i class="fa fa-check"></i><b>2.4</b> Principal component analysis</a></li>
+<li class="chapter" data-level="2.5" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#exercises-1"><i class="fa fa-check"></i><b>2.5</b> EXERCISES</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#exercise-1-variance"><i class="fa fa-check"></i><b>2.5.1</b> Exercise 1: Variance</a></li>
+<li class="chapter" data-level="2.5.2" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#exercise-2-hierarchical-clustering"><i class="fa fa-check"></i><b>2.5.2</b> Exercise 2: Hierarchical clustering</a></li>
+<li class="chapter" data-level="2.5.3" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#exercise-3-pca"><i class="fa fa-check"></i><b>2.5.3</b> Exercise 3: PCA</a></li>
+<li class="chapter" data-level="2.5.4" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#going-further-expert"><i class="fa fa-check"></i><b>2.5.4</b> Going further <em>(expert)</em></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html"><i class="fa fa-check"></i><b>3</b> WEEK 1: Probability distributions</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html#probability-distributions"><i class="fa fa-check"></i><b>3.1</b> Probability distributions</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html#getting-to-know-the-various-functions"><i class="fa fa-check"></i><b>3.1.1</b> Getting to know the various functions</a></li>
+<li class="chapter" data-level="3.1.2" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html#normalgaussian-distribution"><i class="fa fa-check"></i><b>3.1.2</b> Normal/Gaussian distribution</a></li>
+<li class="chapter" data-level="3.1.3" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html#visualization"><i class="fa fa-check"></i><b>3.1.3</b> Visualization</a></li>
+<li class="chapter" data-level="3.1.4" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html#application-on-a-real-dataset"><i class="fa fa-check"></i><b>3.1.4</b> Application on a real dataset</a></li>
+<li class="chapter" data-level="3.1.5" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html#binomial-distribution"><i class="fa fa-check"></i><b>3.1.5</b> Binomial distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html#confidence-interval"><i class="fa fa-check"></i><b>3.2</b> Confidence interval</a></li>
+<li class="chapter" data-level="3.3" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html#exercises-2"><i class="fa fa-check"></i><b>3.3</b> EXERCISES</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html#exercise-1-probability-distributions"><i class="fa fa-check"></i><b>3.3.1</b> Exercise 1: Probability distributions</a></li>
+<li class="chapter" data-level="3.3.2" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html#exercise-2-binomial-distribution"><i class="fa fa-check"></i><b>3.3.2</b> Exercise 2: Binomial distribution</a></li>
+<li class="chapter" data-level="3.3.3" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html#exercise-3-confidence-intervals"><i class="fa fa-check"></i><b>3.3.3</b> Exercise 3: Confidence intervals</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="week-1-hypothesis-testing.html"><a href="week-1-hypothesis-testing.html"><i class="fa fa-check"></i><b>4</b> WEEK 1: Hypothesis testing</a>
+<ul>
+<li class="chapter" data-level="4.0.1" data-path="week-1-hypothesis-testing.html"><a href="week-1-hypothesis-testing.html#one-sample-t-test"><i class="fa fa-check"></i><b>4.0.1</b> One sample t-test</a></li>
+<li class="chapter" data-level="4.0.2" data-path="week-1-hypothesis-testing.html"><a href="week-1-hypothesis-testing.html#two-sample-t-test-2-sided"><i class="fa fa-check"></i><b>4.0.2</b> Two-sample t-test (2-sided)</a></li>
+<li class="chapter" data-level="4.0.3" data-path="week-1-hypothesis-testing.html"><a href="week-1-hypothesis-testing.html#two-sample-t-test-1-sided"><i class="fa fa-check"></i><b>4.0.3</b> Two-sample t-test (1-sided)</a></li>
+<li class="chapter" data-level="4.1" data-path="week-1-hypothesis-testing.html"><a href="week-1-hypothesis-testing.html#exercises-3"><i class="fa fa-check"></i><b>4.1</b> EXERCISES</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="week-1-hypothesis-testing.html"><a href="week-1-hypothesis-testing.html#exercise-1-one-sided-t-test"><i class="fa fa-check"></i><b>4.1.1</b> Exercise 1: One-sided t-test</a></li>
+<li class="chapter" data-level="4.1.2" data-path="week-1-hypothesis-testing.html"><a href="week-1-hypothesis-testing.html#exercice-2-two-sided-t-test"><i class="fa fa-check"></i><b>4.1.2</b> Exercice 2: Two-sided t-test</a></li>
+<li class="chapter" data-level="4.1.3" data-path="week-1-hypothesis-testing.html"><a href="week-1-hypothesis-testing.html#exercise-3.-going-further-checking-the-normality-of-the-distribution"><i class="fa fa-check"></i><b>4.1.3</b> Exercise 3. Going further … Checking the normality of the distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="week-1-hypothesis-testing.html"><a href="week-1-hypothesis-testing.html#wilcoxon-test"><i class="fa fa-check"></i><b>4.2</b> Wilcoxon test</a></li>
+<li class="chapter" data-level="4.3" data-path="week-1-hypothesis-testing.html"><a href="week-1-hypothesis-testing.html#chi-squared-test"><i class="fa fa-check"></i><b>4.3</b> Chi-squared test</a></li>
+<li class="chapter" data-level="4.4" data-path="week-1-hypothesis-testing.html"><a href="week-1-hypothesis-testing.html#fishers-exact-test"><i class="fa fa-check"></i><b>4.4</b> Fisher’s exact test</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="week-1-multiple-testing-and-regression.html"><a href="week-1-multiple-testing-and-regression.html"><i class="fa fa-check"></i><b>5</b> WEEK 1: Multiple testing and regression</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="week-1-multiple-testing-and-regression.html"><a href="week-1-multiple-testing-and-regression.html#multiple-testing"><i class="fa fa-check"></i><b>5.1</b> Multiple testing</a></li>
+<li class="chapter" data-level="5.2" data-path="week-1-multiple-testing-and-regression.html"><a href="week-1-multiple-testing-and-regression.html#regression"><i class="fa fa-check"></i><b>5.2</b> Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="week-2-annotathon.html"><a href="week-2-annotathon.html"><i class="fa fa-check"></i><b>6</b> WEEK 2: Annotathon!</a></li>
+<li class="chapter" data-level="7" data-path="week-2-data-formats-and-where-to-find-them.html"><a href="week-2-data-formats-and-where-to-find-them.html"><i class="fa fa-check"></i><b>7</b> WEEK 2: Data formats and where to find them</a></li>
+<li class="chapter" data-level="8" data-path="week-2-rna-seq---from-fastq-to-count-matrix.html"><a href="week-2-rna-seq---from-fastq-to-count-matrix.html"><i class="fa fa-check"></i><b>8</b> WEEK 2: RNA-seq - from FASTQ to count matrix</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="9" data-path="instructions.html"><a href="instructions.html"><i class="fa fa-check"></i><b>9</b> instructions</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="instructions.html"><a href="instructions.html#chapters-and-sub-chapters"><i class="fa fa-check"></i><b>9.1</b> Chapters and sub-chapters</a></li>
+<li class="chapter" data-level="9.2" data-path="instructions.html"><a href="instructions.html#captioned-figures-and-tables"><i class="fa fa-check"></i><b>9.2</b> Captioned figures and tables</a></li>
+<li class="chapter" data-level="9.3" data-path="instructions.html"><a href="instructions.html#footnotes"><i class="fa fa-check"></i><b>9.3</b> Footnotes</a></li>
+<li class="chapter" data-level="9.4" data-path="instructions.html"><a href="instructions.html#citations"><i class="fa fa-check"></i><b>9.4</b> Citations</a></li>
+<li class="chapter" data-level="9.5" data-path="instructions.html"><a href="instructions.html#equations"><i class="fa fa-check"></i><b>9.5</b> Equations</a></li>
+<li class="chapter" data-level="9.6" data-path="instructions.html"><a href="instructions.html#theorems-and-proofs"><i class="fa fa-check"></i><b>9.6</b> Theorems and proofs</a></li>
+<li class="chapter" data-level="9.7" data-path="instructions.html"><a href="instructions.html#callout-blocks"><i class="fa fa-check"></i><b>9.7</b> Callout blocks</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Bioinformatics introductory course - MSc Molekulare Biotechnologie</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Bioinformatics introductory course - MSc Molekulare Biotechnologie</h1>
+<p class="author"><em>Biomedical Genomics group, IPMB</em></p>
+<p class="date"><em>2024-03-04</em></p>
+</div>
+<div id="introduction" class="section level1 unnumbered hasAnchor">
+<h1>Introduction<a href="index.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="where-to-start" class="section level2 unnumbered hasAnchor">
+<h2>Where to start<a href="index.html#where-to-start" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>It is recommended that you take the introductory classes for R in <strong>DataCamp</strong> to get to know this language before you start coding here. In this course you will learn to use RStudio, a software that allows you to use R in a very user-friendly way.</p>
+<p>You can find more resources here:</p>
+<blockquote>
+<ul>
+<li>R Tutorial for Beginners at <a href="https://www.guru99.com/r-tutorial.html">guru99</a></li>
+<li>R courses at <a href="https://www.bioinformatics.babraham.ac.uk/training.html#advancedrtidy">Babraham Bioinformatics</a></li>
+<li>R for <a href="https://r4ds.had.co.nz">Data Science</a></li>
+<li>R markdown at <a href="https://rmarkdown.rstudio.com/lesson-1.html">RStudio</a> and in this <a href="https://www.markdownguide.org/cheat-sheet/">cheatsheet</a></li>
+<li><a href="https://www.youtube.com/watch?v=h29g21z0a68">Youtube tutorial</a> on ggplot2 with one of its developers</li>
+</ul>
+</blockquote>
+</div>
+<div id="r" class="section level2 unnumbered hasAnchor">
+<h2>R<a href="index.html#r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>R is a powerful programming language for the analysis of data.<br />
+Two notes of advice about good practice now that your journey is about to start:</p>
+<blockquote>
+<p><strong>Commenting</strong>: Comment your code as you go with <code>#</code>! This way you avoid forgetting the meaning of a given line. This is also important if you want to share your code with others. Trust me, you will not remember what you are writing today in this class one week from now, so it will be best to have a reminder.<br />
+<strong>Clean and tidy code</strong>: See that weird line in the middle of your script/markdown? This is meant to be a guideline about code length. If your code is so long that it crosses the line, please find a way to make it shorter. In addition, avoid making your chunks too long and make separate scripts for each class or topic, it will keep everything more organised and easy to track.</p>
+</blockquote>
+<div id="rstudio" class="section level3 unnumbered hasAnchor">
+<h3>RStudio<a href="index.html#rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We will work with RStudio that is composed of 4 main windows/panels.<br />
+The <strong>Editor</strong>, the <strong>Environment</strong>, the <strong>Console</strong>, and the <strong>Files</strong> window/panel. Order can vary.</p>
+<div class="float">
+<img src="figures/RstudioLayout.png" alt="In Editor (1), you can find the area where you usually write most code, like a Rscript or a Rmarkdown. Environment (2) shows you your variables, history, among others. Here, you can see any variable you define in your session. You can use this to do a very basic inspection of objects you create or import. Console (3) is where all your code gets processed when you run it. The console remembers (which is why when you click arrow up or down, it shows you commands you ran before), but it does not keep! Therefore, ALWAYS write the meaningful code lines in a script/markdown (1). Lastly, 4 can be used for browsing documents (Files), see the plots you produce (Plots), searching/managing packages (Packages), or find help on functions (Help)." />
+<div class="figcaption">In <strong>Editor (1)</strong>, you can find the area where you usually write most code, like a Rscript or a Rmarkdown. <strong>Environment (2)</strong> shows you your variables, history, among others. Here, you can see any variable you define in your session. You can use this to do a very basic inspection of objects you create or import. <strong>Console (3)</strong> is where all your code gets processed when you run it. The console remembers (which is why when you click arrow up or down, it shows you commands you ran before), but it does not keep! Therefore, ALWAYS write the meaningful code lines in a script/markdown (1). Lastly, <strong>4</strong> can be used for browsing documents (<em>Files</em>), see the plots you produce (<em>Plots</em>), searching/managing packages (<em>Packages</em>), or find help on functions (<em>Help</em>).</div>
+</div>
+</div>
+<div id="variable-assignment-in-r" class="section level3 unnumbered hasAnchor">
+<h3>Variable assignment in R<a href="index.html#variable-assignment-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>You can start by testing one of the most basic tasks - variable assignment. Variable assignments in R can be done using either the <code>&lt;-</code> symbol, or the <code>=</code> symbol.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="st">&quot;Hello world!&quot;</span></span>
+<span id="cb1-2"><a href="index.html#cb1-2" tabindex="-1"></a><span class="co"># or</span></span>
+<span id="cb1-3"><a href="index.html#cb1-3" tabindex="-1"></a>hello <span class="ot">=</span> <span class="st">&quot;Hello world!&quot;</span></span></code></pre></div>
+<p>You can now run <code>print(a)</code> and <code>print(hello)</code>.
+Note that after assignment both variables (a and hello) are listed in the “Environment” window of RStudio.</p>
+<blockquote>
+<p>R is case sensitive. <code>hello</code> is a known variable, but <code>Hello</code> is not!</p>
+</blockquote>
+<p>You can remove variables too…</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="index.html#cb2-1" tabindex="-1"></a><span class="fu">rm</span>(a)</span></code></pre></div>
+</div>
+<div id="classes" class="section level3 unnumbered hasAnchor">
+<h3>Classes<a href="index.html#classes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In the same way that a orange is a fruit or Malta is a country, any R variable corresponds to a class and holds a given structure. Classes
+Let us say you generate a new variable (<code>name</code>). How can you know more about it?</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="index.html#cb3-1" tabindex="-1"></a>name <span class="ot">=</span> <span class="st">&quot;Marie&quot;</span></span></code></pre></div>
+<p>The function <code>str()</code> gives you the <strong>structure</strong> of the variable.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="index.html#cb4-1" tabindex="-1"></a><span class="fu">str</span>(name)</span></code></pre></div>
+<pre><code>##  chr &quot;Marie&quot;</code></pre>
+<p>where <em>chr</em> stands for character, the class of this variable.</p>
+<p>The function <code>class()</code> gives you the <strong>class</strong> of the variable.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="index.html#cb6-1" tabindex="-1"></a><span class="fu">class</span>(name)</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+</div>
+<div id="logical-operations" class="section level3 unnumbered hasAnchor">
+<h3>Logical operations<a href="index.html#logical-operations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We can perform tests on simple variables using the <code>==</code>, <code>&gt;</code>,<code>&lt;</code> operators:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="index.html#cb8-1" tabindex="-1"></a>name <span class="sc">==</span> <span class="st">&quot;Harry Potter&quot;</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<p>The output of this test will be either FALSE/TRUE. You can test these using numbers too:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="index.html#cb10-1" tabindex="-1"></a><span class="dv">33</span> <span class="sc">&gt;</span> <span class="dv">23</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+</div>
+<div id="vectors" class="section level3 unnumbered hasAnchor">
+<h3>Vectors<a href="index.html#vectors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We can make any vector using <code>c()</code>. Try it with some numbers.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="index.html#cb12-1" tabindex="-1"></a>var1 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">7</span>,<span class="dv">12</span>,<span class="dv">2</span>)</span></code></pre></div>
+<p>If you want to identify the specific number of this vector by position, you can use square brackets. Like this:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="index.html#cb13-1" tabindex="-1"></a>var1[<span class="dv">1</span>]     <span class="co"># outputs the first element</span></span>
+<span id="cb13-2"><a href="index.html#cb13-2" tabindex="-1"></a>var1[<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>]   <span class="co"># outputs the 2nd to 3rd elements</span></span>
+<span id="cb13-3"><a href="index.html#cb13-3" tabindex="-1"></a>var1[<span class="sc">-</span><span class="dv">3</span>]    <span class="co"># outputs all except the 3rd element</span></span></code></pre></div>
+</div>
+<div id="matrixes" class="section level3 unnumbered hasAnchor">
+<h3>Matrixes<a href="index.html#matrixes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A matrix is a two-dimensional <strong>array</strong> of numbers. They are defined using the <code>matrix()</code> function as follows:
+Take note of the difference between <code>byrow=FALSE</code> and <code>byrow=TRUE</code>.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="index.html#cb14-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>)</span>
+<span id="cb14-2"><a href="index.html#cb14-2" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="index.html#cb14-3" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> x, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb14-4"><a href="index.html#cb14-4" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> x, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<blockquote>
+<p>Do you understand all parameters (“nrow”, “ncol”, “byrow”) of the <code>matrix()</code> function? What happens if you do not specify “byrow” as TRUE or FALSE?</p>
+</blockquote>
+<p>You can ask for the <strong>dimensions</strong> of a matrix (and see later also for data frames) using the function <code>dim()</code>. Do it for X.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="index.html#cb15-1" tabindex="-1"></a><span class="fu">dim</span>(X)</span></code></pre></div>
+<p>To access the elements of a matrix, it is similar to the vector but with 2 indexes:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="index.html#cb16-1" tabindex="-1"></a>X[<span class="dv">1</span>, <span class="dv">2</span>]                     <span class="co"># [1] 3  -&gt; element in the first row and second column</span></span>
+<span id="cb16-2"><a href="index.html#cb16-2" tabindex="-1"></a>X[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">1</span>]                     <span class="co"># [1] 1 2 </span></span>
+<span id="cb16-3"><a href="index.html#cb16-3" tabindex="-1"></a>X[<span class="dv">2</span>, ]                      <span class="co"># [1] 2 4 6  -&gt; all elements of the second row</span></span>
+<span id="cb16-4"><a href="index.html#cb16-4" tabindex="-1"></a><span class="fu">length</span>(X[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">1</span>])             <span class="co"># [1] 2  -&gt; X[1:2, 1] is a vector of length 2</span></span></code></pre></div>
+</div>
+<div id="dataframes" class="section level3 unnumbered hasAnchor">
+<h3>Dataframes<a href="index.html#dataframes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Data frames are like matrices, but they can contain <strong>multiple types</strong> of values mixed.<br />
+We can create a data frame using the <code>data.frame()</code> function. We can also convert a matrix into a data frame with the <code>as.data.frame()</code> function.</p>
+<p>We can prepare three vectors of the same length (for example 4 elements) and create a data frame:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="index.html#cb17-1" tabindex="-1"></a>Name <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Leah&quot;</span>, <span class="st">&quot;Alice&quot;</span>, <span class="st">&quot;Jonas&quot;</span>, <span class="st">&quot;Paula&quot;</span>)</span>
+<span id="cb17-2"><a href="index.html#cb17-2" tabindex="-1"></a>Age <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">21</span>, <span class="dv">22</span>, <span class="dv">20</span>, <span class="dv">22</span>)</span>
+<span id="cb17-3"><a href="index.html#cb17-3" tabindex="-1"></a>Course <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Mathematics&quot;</span>, <span class="st">&quot;Physics&quot;</span>, <span class="st">&quot;Medicine&quot;</span>, <span class="st">&quot;Biology&quot;</span>)</span>
+<span id="cb17-4"><a href="index.html#cb17-4" tabindex="-1"></a>Place_of_birth <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;USA&quot;</span>, <span class="st">&quot;Germany&quot;</span>, <span class="st">&quot;Germany&quot;</span>, <span class="st">&quot;France&quot;</span>)</span>
+<span id="cb17-5"><a href="index.html#cb17-5" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="index.html#cb17-6" tabindex="-1"></a>Students <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">First_Name =</span> Name, </span>
+<span id="cb17-7"><a href="index.html#cb17-7" tabindex="-1"></a>                       <span class="at">Age =</span> Age, </span>
+<span id="cb17-8"><a href="index.html#cb17-8" tabindex="-1"></a>                       <span class="at">Course =</span> Course,</span>
+<span id="cb17-9"><a href="index.html#cb17-9" tabindex="-1"></a>                       <span class="at">Place_of_birth =</span> Place_of_birth)</span>
+<span id="cb17-10"><a href="index.html#cb17-10" tabindex="-1"></a>Students</span></code></pre></div>
+<pre><code>##   First_Name Age      Course Place_of_birth
+## 1       Leah  21 Mathematics            USA
+## 2      Alice  22     Physics        Germany
+## 3      Jonas  20    Medicine        Germany
+## 4      Paula  22     Biology         France</code></pre>
+<p>We can again access specific elements in a similar manner to the matrix before. Try some of these examples:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="index.html#cb19-1" tabindex="-1"></a><span class="co"># Columns</span></span>
+<span id="cb19-2"><a href="index.html#cb19-2" tabindex="-1"></a>Students<span class="sc">$</span>Age </span>
+<span id="cb19-3"><a href="index.html#cb19-3" tabindex="-1"></a>Students[[<span class="st">&quot;Age&quot;</span>]]</span>
+<span id="cb19-4"><a href="index.html#cb19-4" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="index.html#cb19-5" tabindex="-1"></a><span class="co"># Rows or columns</span></span>
+<span id="cb19-6"><a href="index.html#cb19-6" tabindex="-1"></a>Students[, <span class="dv">3</span>]</span>
+<span id="cb19-7"><a href="index.html#cb19-7" tabindex="-1"></a>Students[<span class="dv">3</span>,]</span>
+<span id="cb19-8"><a href="index.html#cb19-8" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="index.html#cb19-9" tabindex="-1"></a><span class="co"># Elements</span></span>
+<span id="cb19-10"><a href="index.html#cb19-10" tabindex="-1"></a>Students<span class="sc">$</span>Course[<span class="dv">3</span>]    <span class="co"># access element 3 of the column &quot;Course&quot;</span></span>
+<span id="cb19-11"><a href="index.html#cb19-11" tabindex="-1"></a>Students[<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">3</span>]      <span class="co"># select elements 2 and 3 of column 3 </span></span></code></pre></div>
+</div>
+</div>
+<div id="r-markdown" class="section level2 unnumbered hasAnchor">
+<h2>R Markdown<a href="index.html#r-markdown" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>R Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. You will be working with R Markdown during this course. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a> or <a href="https://www.markdownguide.org/basic-syntax/" class="uri">https://www.markdownguide.org/basic-syntax/</a>.</p>
+<p>R instructions in a markdown file are written in a “chunk”, the one below.<br />
+Chunks can be added using the <code>+C</code> icon at the top right corner of this panel/editor.<br />
+There is also a keyboard shortcut for it.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="index.html#cb20-1" tabindex="-1"></a><span class="co"># Sentences written after &quot;#&quot; are comments. Comments are ignored during the execution of the code.</span></span>
+<span id="cb20-2"><a href="index.html#cb20-2" tabindex="-1"></a><span class="co"># print &quot;Hello world!&quot; on the screen.</span></span>
+<span id="cb20-3"><a href="index.html#cb20-3" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;Hello world!&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;Hello world!&quot;</code></pre>
+<blockquote>
+<p>What happens in the editor if you remove the second parenthesis? Do you see the red cross appearing? You can click on it and read the comment.<br />
+And what happens if you press “enter” while the second parenthesis is missing?<br />
+</p>
+</blockquote>
+<p>R will usually let know know when there is a simple syntax mistake like this one on your code.</p>
+</div>
+<div id="advanced-data-manipulation-with-tidyverse" class="section level2 unnumbered hasAnchor">
+<h2>Advanced data manipulation with tidyverse<a href="index.html#advanced-data-manipulation-with-tidyverse" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Tidyverse</strong> is a set of packages often used to manipulate data. You can think of tidyverse as a variation of the original R, which is meant to be a grammar specific to data manipulation.</p>
+<p>You can install these through:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="index.html#cb22-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
+<p>And load it using</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="index.html#cb23-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<pre><code>## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+## ✔ dplyr     1.1.4     ✔ readr     2.1.5
+## ✔ forcats   1.0.0     ✔ stringr   1.5.1
+## ✔ ggplot2   3.4.4     ✔ tibble    3.2.1
+## ✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+## ✔ purrr     1.0.2     
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+<p>We will learn a couple of functions from this framework which will make the next tasks a lot easier. Tidyverse works with the <em>tibble</em> class, which is very similar to a the dataframe class, only faster and tidier.</p>
+<p>Start by loading a default tibble including sleeping patterns from different mammals. It also includes information on the animal order, genus, diet, or body weight. To do so, run the following:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="index.html#cb25-1" tabindex="-1"></a><span class="fu">data</span>(msleep)</span></code></pre></div>
+<p>We can start by inspecting <code>msleep</code>.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="index.html#cb26-1" tabindex="-1"></a><span class="fu">str</span>(msleep)</span></code></pre></div>
+<p>We can print the first rows of a dataframe using <code>head()</code>. Try it out.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="index.html#cb27-1" tabindex="-1"></a><span class="fu">head</span>(msleep)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 11
+##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
+##   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
+## 1 Cheetah Acin… carni Carn… lc                  12.1      NA        NA      11.9
+## 2 Owl mo… Aotus omni  Prim… &lt;NA&gt;                17         1.8      NA       7  
+## 3 Mounta… Aplo… herbi Rode… nt                  14.4       2.4      NA       9.6
+## 4 Greate… Blar… omni  Sori… lc                  14.9       2.3       0.133   9.1
+## 5 Cow     Bos   herbi Arti… domesticated         4         0.7       0.667  20  
+## 6 Three-… Brad… herbi Pilo… &lt;NA&gt;                14.4       2.2       0.767   9.6
+## # ℹ 2 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;</code></pre>
+<div id="filter-based-on-conditions" class="section level3 unnumbered hasAnchor">
+<h3>Filter based on conditions<a href="index.html#filter-based-on-conditions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Now that we know how this dataset looks like, we can start doing more with it. Let us see the information for the domestic cat.<br />
+We can do it using <code>filter()</code> on the <strong>genus</strong> column:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="index.html#cb29-1" tabindex="-1"></a>msleep <span class="sc">%&gt;%</span></span>
+<span id="cb29-2"><a href="index.html#cb29-2" tabindex="-1"></a>  <span class="fu">filter</span>(genus <span class="sc">==</span> <span class="st">&quot;Felis&quot;</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 11
+##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
+##   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
+## 1 Domest… Felis carni Carn… domesticated        12.5       3.2       0.417  11.5
+## # ℹ 2 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;</code></pre>
+<p>We also use the <code>%&gt;%</code> operator here. This is a <strong>pipe operator</strong> and you will use it very often.</p>
+<p>To understand piping, let’s imagine you are making a three layer cake in a factory. Instead of manually carrying the cake from one station to another to add layers and frosting, you have a conveyor belt transporting the cake through the stations automatically to make the process much more efficient. Piping avoids that you have to create multiple intermediate objects to achieve your final result when performing multiple functions.</p>
+<blockquote>
+<p>Try filtering other columns based on numeric conditions. Use <code>filter()</code> to see which 7 animals in the datasets have a body weight superior to 200 (kg).</p>
+</blockquote>
+</div>
+<div id="select-specific-columns" class="section level3 unnumbered hasAnchor">
+<h3>Select specific columns<a href="index.html#select-specific-columns" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Now, let’s say you want to <em>select</em> only specific columns. Use the <code>select()</code> function to select the columns <code>name</code>, <code>order</code>, and <code>bodywt</code> (body weight).</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="index.html#cb31-1" tabindex="-1"></a>body_weights <span class="ot">=</span> msleep <span class="sc">%&gt;%</span></span>
+<span id="cb31-2"><a href="index.html#cb31-2" tabindex="-1"></a>  <span class="fu">select</span>(name, order, bodywt)</span></code></pre></div>
+</div>
+<div id="operations-on-groups" class="section level3 unnumbered hasAnchor">
+<h3>Operations on groups<a href="index.html#operations-on-groups" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We can assess the average (<code>mean()</code>) and standard deviation (<code>sd()</code>) body weight by animal order present. To do so, we will use <code>summarise()</code> and <code>group_by()</code> functions on the <em>body_weights</em> we generated previously.</p>
+<ul>
+<li><code>group_by()</code>: Assigns a group to a given set of rows (observations).<br />
+</li>
+<li><code>summarise()</code>: Makes calculations for a given group based on the row values assigned to it.</li>
+</ul>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="index.html#cb32-1" tabindex="-1"></a>body_weights <span class="sc">%&gt;%</span> </span>
+<span id="cb32-2"><a href="index.html#cb32-2" tabindex="-1"></a>  <span class="fu">group_by</span>(order) <span class="sc">%&gt;%</span></span>
+<span id="cb32-3"><a href="index.html#cb32-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_bweight =</span> <span class="fu">mean</span>(bodywt, <span class="at">na.rm =</span> T),    <span class="co"># na.rm = T will exclude missing values (NA)</span></span>
+<span id="cb32-4"><a href="index.html#cb32-4" tabindex="-1"></a>            <span class="at">sd_bweight =</span> <span class="fu">sd</span>(bodywt))</span></code></pre></div>
+<pre><code>## # A tibble: 19 × 3
+##    order           mean_bweight sd_bweight
+##    &lt;chr&gt;                  &lt;dbl&gt;      &lt;dbl&gt;
+##  1 Afrosoricida          0.9      NA      
+##  2 Artiodactyla        282.      376.     
+##  3 Carnivora            57.7      60.6    
+##  4 Cetacea             342.      401.     
+##  5 Chiroptera            0.0165    0.00919
+##  6 Cingulata            31.8      40.0    
+##  7 Didelphimorphia       1.03      0.940  
+##  8 Diprotodontia         1.36      0.368  
+##  9 Erinaceomorpha        0.66      0.156  
+## 10 Hyracoidea            3.06      0.496  
+## 11 Lagomorpha            2.5      NA      
+## 12 Monotremata           4.5      NA      
+## 13 Perissodactyla      305.      187.     
+## 14 Pilosa                3.85     NA      
+## 15 Primates             13.9      21.5    
+## 16 Proboscidea        4600.     2904.     
+## 17 Rodentia              0.288     0.371  
+## 18 Scandentia            0.104    NA      
+## 19 Soricomorpha          0.0414    0.0289</code></pre>
+</div>
+</div>
+<div id="pretty-plots-using-ggplot2" class="section level2 unnumbered hasAnchor">
+<h2>Pretty plots using ggplot2<a href="index.html#pretty-plots-using-ggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>One of the many advantages of tidyverse is how compatible it is with <code>ggplot2</code>. Thanks to the wonders of the <code>%&gt;%</code> operator, you can generate a basic plot instantly without creating intermediate objects.</p>
+<p><strong>The structure of any <code>ggplot()</code> is always based on two essential elements: the aesthetics (<code>aes()</code>) and the plot layers (named as <code>geom_something()</code>. <code>aes()</code> is always found within the <code>ggplot()</code> function.</strong></p>
+<div id="histogram" class="section level3 unnumbered hasAnchor">
+<h3>Histogram<a href="index.html#histogram" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Let us start by making an histogram, as we will work with distributions over this course. If we want to see the global distribution of sleep time (total, in hours) for all animals in the dataset, we will use <code>geom_histogram()</code>. Like this:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="index.html#cb34-1" tabindex="-1"></a><span class="fu">ggplot</span>(msleep,                    <span class="co"># start by picking the dataframe to plot</span></span>
+<span id="cb34-2"><a href="index.html#cb34-2" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> sleep_total)) <span class="sc">+</span>    <span class="co"># column to use for y-axis</span></span>
+<span id="cb34-3"><a href="index.html#cb34-3" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()                <span class="co"># plot layer for histogram</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-16-1.png" width="480" /></p>
+</div>
+<div id="scatter-plot" class="section level3 unnumbered hasAnchor">
+<h3>Scatter plot<a href="index.html#scatter-plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>For example, if we want to see the relationship between the sleep time (total, in hours) and the body weights, we use this formula:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="index.html#cb35-1" tabindex="-1"></a><span class="fu">ggplot</span>(msleep,                    <span class="co"># start by picking the dataframe to plot</span></span>
+<span id="cb35-2"><a href="index.html#cb35-2" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> bodywt,            <span class="co"># column to use for x-axis</span></span>
+<span id="cb35-3"><a href="index.html#cb35-3" tabindex="-1"></a>           <span class="at">y =</span> sleep_total)) <span class="sc">+</span>    <span class="co"># column to use for y-axis</span></span>
+<span id="cb35-4"><a href="index.html#cb35-4" tabindex="-1"></a>  <span class="fu">geom_point</span>()                    <span class="co"># plot layer for points</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-17-1.png" width="384" /></p>
+<blockquote>
+<p>The x-axis looks a little squished, so it will be hard to view many of the trends. We can then log-transform this scale using the <code>log()</code> function. Try it out!</p>
+</blockquote>
+<p>There are multiple options for <code>geom_X()</code> depending on the information you are plotting. You can find all possibilities <a href="https://ggplot2.tidyverse.org/reference/">here</a>.</p>
+</div>
+<div id="boxplot" class="section level3 unnumbered hasAnchor">
+<h3>Boxplot<a href="index.html#boxplot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In this next example, we are creating a boxplot with the sleep time (total, in hours) for each dietary group (<code>vore</code>).</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="index.html#cb36-1" tabindex="-1"></a><span class="fu">ggplot</span>(msleep,</span>
+<span id="cb36-2"><a href="index.html#cb36-2" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> vore,</span>
+<span id="cb36-3"><a href="index.html#cb36-3" tabindex="-1"></a>           <span class="at">y =</span> sleep_total)) <span class="sc">+</span></span>
+<span id="cb36-4"><a href="index.html#cb36-4" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-18-1.png" width="384" /></p>
+<blockquote>
+<p>Try some of the other geom_ layers available. As an example, <code>geom_violin()</code> can be used in a similar way to <code>geom_boxplot()</code>.</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="week-1-descriptive-statistics-and-data-types.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/index.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

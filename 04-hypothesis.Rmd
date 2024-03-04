@@ -1,0 +1,393 @@
+# WEEK 1: Hypothesis testing
+
+
+
+On this section, we will go through hypothesis testing. You will start to see how to *formulate hypotheses* and how to *test* them.
+In addition, we want to learn how to use and interpret hypothesis tests.
+
+We will work again with the diabetes dataset that we used previously.
+
+```{r}
+dat = read.delim('https://tinyurl.com/y4fark9g')
+
+# set the row names using the column id
+rownames(dat) = dat$id
+```
+
+Load the required packages
+```{r, message=F, warning=F}
+library(dplyr)
+library(ggplot2)
+library(tibble)
+```
+
+Check out the content of the dataset using the summary function
+```{r}
+summary(dat)
+```
+
+How can we inspect the differences between the weight of men and women? We can start by ploting two histograms or density plots representing the weight by biological sex. 
+```{r, warning=FALSE}
+ggplot(dat,
+       aes(x = weight, 
+           fill = gender)) +
+  geom_density(alpha = 0.5)
+```
+
+The distributions look different in shape, right? Where do you think the mean would be located in the plot? 
+```{r}
+# We can use "filter()" to filter the cholesterol values for men and women
+dat.male = dat %>%
+  filter(gender == 'male')
+
+dat.female = dat %>%
+  filter(gender == 'female')
+
+# we will calculate the mean weight by sex.
+mean.men <- mean(dat.male$weight, na.rm = TRUE)
+mean.women <- mean(dat.female$weight, na.rm = TRUE)
+```
+
+And we can then add in the means to the plot as vertical lines. 
+
+```{r, warning=FALSE}
+ggplot(dat,
+       aes(x = weight, 
+           fill = gender)) +
+  geom_density(alpha = 0.5) +
+  geom_vline(xintercept = mean.men, colour = "cyan") +
+  geom_vline(xintercept = mean.women, colour = "salmon")
+```
+
+> Do you think that the mean of the male weight is lower than 180?
+> Do you think that the mean of the female weight is **really** different from the mean of the male weights?
+> Do you think that the mean of the male weight is higher than that of the females?
+
+------------------------------------------------------------------------
+
+Now, we want to use a statistical test to check if,
+
+-   males have a mean weight that is **significantly** lower than a specific value (one-sample, one-tailed test)
+-   there is a **significant** difference in the mean of the weights between the two groups (two-sample, two-sided test)
+-   male have a **significantly** higher mean weight than females (two-sample, one-sided test)
+
+Note the use of the word **significant** in the previous statements!
+
+This is exactly what **mean tests** such as the t-test (or the Wilcoxon test) are designed for!
+We will perform here a **t-test**.
+
+### One sample t-test
+
+Using a one-sample t-test, we can check if values differ significantly from a target value.
+For example, you could sample 10 chocolate bars, and test if they significantly differ from the expected weight of 100 g:
+
+> Should we perform a one- or two-sided test?
+
+```{r}
+bars = c(103,103,97,102.5,100.5,103,101.3,99.5,101,104) # weights of 10 chocolate bars
+chocbar.mean = 100 # expected weight
+```
+
+The function `t.test()` offers three **alternative** options: *two.sided*, *less* and *greater*.
+Here, if we want to test whether the mean weight of the 10 chocolate bars is **different** from the expected weight of 100 g, we want to perform a *two sided* test and use the alternative *two.sided*.
+
+It is essential to **clearly formulate the H0 and H1 hypothesis**.
+There are two alternative but equivalent ways to do so.
+Either:
+
+\> H0: the expectation value of the random variable "Weight of a chocolate bar" is **equal** to 100 g.\
+
+\> H1: the expectation value of the random variable "Weight of a chocolate bar" is **different** from 100 g.
+
+or
+
+\> H0: the mean weight of a chocolate bar is not significantly different from 100 g.\
+
+\> H1: the mean weight of a chocolate bar is significantly different from 100 g.
+
+Note the difference between these two formulations, and ask for help if you have questions about this!
+
+```{r}
+t.test(x = bars, mu = chocbar.mean, alternative = "two.sided")
+
+# equivalent to:
+# t.test(bars,mu = chocbar.mean)
+# "alternative" is set to "two.sided" per default.
+
+# x is a vector containing the data values
+# mu indicates the true value of the mean (here: 100g)
+```
+
+> How would you interpret this result?
+> Can you reject the H0 hypothesis?
+
+Using alpha = 0.05, the H0 hypothesis can not be rejected as the p-value is 0.05244 (p-value \>= 0.05).
+With alpha = 0.05, the mean weight of the chocolate bars is not significantly different from 100 g.
+
+Using alpha = 0.1, the H0 hypothesis can be rejected (p-value \< 0.1).
+With alpha = 0.1, the mean weight of the chocolate bars is significantly different from 100 g.
+
+**BUT** ... It does not mean that alpha should be chosen with respect to the results of the t.test!!!
+
+Before running a t.test, **formulate the null hypothesis H0 and the alternative hypothesis H1** and **decide about the alpha** value.
+Remember, **alpha** represent the **false positive rate**: under the H0 hypothesis (test of two identical distributions), this is the proportion of tests that will detect a difference between the two groups (p-value \< alpha).
+
+**Beware not to get confused between one-/two-sample tests, and one-/two-sided tests!**
+
+Regarding the mean weight of the males, we would like to check whether males have a mean weight that is significantly **lower** than 180.
+Here as well, we will perform a **one-sample test**, with mu = 180.
+However, we will perform a **one-sided** test using the alternative option **less**.
+
+The hypotheses can be formulated as:\
+\> H0: the expectation value of the random variable "Weight of male patients" is **equal or greater** 180.\
+
+\> H1: the expectation value of the random variable "Weight of male patients" is **less** than 180.
+
+```{r}
+t.test(dat.male$weight, mu = 180, alternative = "less")
+```
+
+> How would you interpret the result with alpha = 0.05?
+> Can you reject the H0 hypothesis?
+
+### Two-sample t-test (2-sided)
+
+Now, we will compare the mean of the weights between males and females.\
+
+According to the previous histogram, females have a different mean weight as males.
+This can be tested using a *two-sample and two.tailed* t.test.
+
+```{r, warning=FALSE}
+ggplot(dat,
+       aes(x = weight, 
+           fill = gender)) +
+  geom_density(alpha = 0.5) +
+  geom_vline(xintercept = mean.men, colour = "cyan") +
+  geom_vline(xintercept = mean.women, colour = "salmon")
+```
+
+The hypotheses can be formulated as:\
+\> H0: the expectation value of the random variable "Weight of male patients" is **equal** to the expectation value of the random variable "Weight of female patients".\
+
+\> H1: the expectation value of the random variable "Weight of male patients" is **different** from the expectation value of the random variable "Weight of female patients".
+
+```{r}
+t.test(dat.male$weight, 
+       dat.female$weight)
+# remember, alternative = "two.sided" per default.
+```
+
+> How would you interpret the result with alpha = 0.05?
+> Can you reject the H0 hypothesis?
+
+### Two-sample t-test (1-sided)
+
+Looking at the histogram, other observers could in principle see a difference between the mean values of the weights and formulate the following hypotheses:
+
+\> H0: the expectation value of the random variable "Weight of male patients" is **equal or lower** to the expectation value of the random variable "Weight of female patients".\
+
+\> H1: the expectation value of the random variable "Weight of male patients" is **higher** than the expectation value of the random variable "Weight of female patients".
+
+```{r}
+t.test(dat.male$weight, 
+       dat.female$weight, alternative = "greater")
+```
+
+> How would you interpret the result with alpha = 0.05?
+
+> Can you explain why the p-value of the one-tailed t.test is lower than the p-value of the two-tailed t.test?
+> What is the relation between these two values?
+
+```{r}
+# p-value of the two-sided t-test versus p-value of the one-sided t-test: 
+t.test(dat.male$weight, 
+       dat.female$weight, alternative = "two.sided")$p.value # two-tailed
+t.test(dat.male$weight, 
+       dat.female$weight, alternative = "greater")$p.value # one-tailed
+# divide the one by the other and see ... 
+```
+
+This can be visualized using the t-distribution.
+Here (see above result of the t.test), *t = 1.8453* and *df = 372.45*.
+
+In the **one-tailed t.test**, the p-value is the area under the curve for t \> 1.8453 (alternative greater) **OR** for t \< -1.8453 (alternative less).
+
+```{r, echo=F, fig.height=3, fig.width=5}
+# No need to understand this code - just look at the graph and shaded areas.
+x = seq(-5,5,by=0.01)
+y = dt(x,df=372.45)
+z = dt(seq(1.84,5,0.01),df=372.45)
+
+ggplot() +
+  geom_line(aes(x = x, y = y), 
+            linewidth = 0.8) +
+  geom_vline(xintercept = 1.8453, colour = "blue",
+             linetype = 'dashed') +
+  geom_ribbon(aes(x = ifelse(x >= 1.84, x, NA), 
+                  ymin = 0, ymax = y), 
+              alpha = 0.8, fill = 'pink')
+```
+
+In the **two-tailed t.test**, the p-value is the area under the curve for t \> 1.8453 (alternative greater) **AND** for t \< -1.8453 (alternative less).
+It is two times the p-value of the one-sided t.test!
+
+```{r, echo=FALSE, fig.height=3, fig.width=5}
+# No need to understand this code - just look at the graph and shaded areas.
+x = seq(-5,5,by=0.01)
+y = dt(x,df=372.45)
+
+ggplot() +
+  geom_line(aes(x = x, y = y), 
+            linewidth = 0.8) +
+  geom_vline(xintercept = 1.8453, colour = "blue",
+             linetype = 'dashed') +
+  geom_vline(xintercept = -1.8453, colour = "blue",
+             linetype = 'dashed') +
+  geom_ribbon(aes(x = ifelse(x >= 1.84, x, NA), 
+                  ymin = 0, ymax = y), 
+              alpha = 0.8, fill = 'pink') +
+  geom_ribbon(aes(x = ifelse(x <= -1.84, x, NA), 
+                  ymin = 0, ymax = y), 
+              alpha = 0.8, fill = 'pink')
+```
+
+IMPORTANTLY, a t-test can only be performed if the data is **normally distributed**!
+If the data is not normally distributed, you will need to use a non-parametric test, like Wilcoxon test. 
+
+
+------------------------------------------------------------------------
+
+## Wilcoxon test
+
+What if the data is not normally distributed?
+In that case, we are not supposed to use the t-test for testing differences between mean values!
+Let us us see an example.
+
+Let us start by loading the data.
+```{r}
+all.aml = read.delim('http://bioinfo.ipmb.uni-heidelberg.de/crg/datascience3fs/practicals/data/all.aml.cleaned.csv',
+                     header=TRUE)
+all.aml.anno = read.delim("http://bioinfo.ipmb.uni-heidelberg.de/crg/datascience3fs/practicals/data/all.aml.anno.cleaned.csv",
+                          header=TRUE) %>%
+  mutate(id = paste0("pat", Samples))
+```
+
+We check whether the distribution of the expression values for the gene "SOX4" corresponds to a normal distribution:
+
+```{r fig.height=5, fig.width=5.5, warning=FALSE}
+expression = all.aml %>%
+  t() %>%
+  as.data.frame() %>%
+  na.omit()
+
+# Plot histogram 
+ggplot(expression,
+       aes(x = SOX4)) +
+  geom_histogram(bins = 20)
+
+# Check if it's normally distributed using a QQ-plot 
+ggplot(expression,
+       aes(sample = SOX4)) +
+  geom_qq() +
+  geom_qq_line(colour = 'red')
+```
+
+This looks everything but normal!
+In that case, we cannot apply the t.test, but need to apply a **non-parametric test** called the *Wilcoxon test*.
+This test is performed not on the *values* (like the t-test) but on the *ranks* of these values (remember the difference between the Pearson's and the Spearman's correlations!)
+
+```{r}
+# divide the gene expression data in two groups according to ALL or AML patients:
+# obtain the AML and rest
+aml.patient.id = all.aml.anno %>%
+  filter(ALL.AML == "AML")
+other.id = all.aml.anno %>%
+  filter(ALL.AML != "AML") # filters for those which are not labeled AML
+
+gene.all = expression %>%
+  rownames_to_column("id") %>%
+  filter(id %in% other.id$id)
+
+gene.aml = expression %>%
+  rownames_to_column("id") %>%
+  filter(id %in% aml.patient.id$id)
+  
+# test for a difference in the mean expression values using the Wilcoxon test:
+wilcox.test(gene.aml$SOX4, gene.all$SOX4)
+```
+
+Compare the obtained p-value with the p-value obtained if we would have used the t-test:
+
+```{r}
+t.test(gene.aml$SOX4, gene.all$SOX4)
+```
+
+The p-values are very different!!
+So is the difference of expression between ALL and AML patients for this gene significant or not taking $\alpha=0.05$?
+
+Here, we **cannot** trust the t-test due to the non-normality of the data!
+Hence, the correct p-value is the one from the Wilcoxon test.
+
+------------------------------------------------------------------------
+
+## Chi-squared test 
+
+
+
+------------------------------------------------------------------------
+
+## Fisher's exact test
+
+------------------------------------------------------------------------
+
+## EXERCISES
+
+### Exercise 1: One-sided t-test
+
+1. Consider the following graph, formulate the hypotheses H0 and H1 and perform a (one-sided) t-test.
+Interpret the result using alpha = 0.05.
+
+```{r, warning=FALSE, echo=T}
+mean.height.f = mean(dat.female$height, na.rm = T)
+mean.height.m = mean(dat.male$height, na.rm = T)
+
+ggplot(dat,
+       aes(x = height, 
+           fill = gender)) +
+  geom_histogram(alpha = 0.5, bins = 20,
+                 colour = "black") +
+  geom_vline(xintercept = mean.height.m, 
+             colour = "cyan", linetype = 'dashed',
+             linewidth = 1) +
+  geom_vline(xintercept = mean.height.f, 
+             colour = "salmon", linetype = 'dashed',
+             linewidth = 1)
+```
+
+2.  Calculate the mean age of the men.
+3.  Compare it to age = 50. Formulate the hypotheses H0 and H1 and perform a (one-sided) t-test. Interpret the result using alpha = 0.05.
+
+### Exercice 2: Two-sided t-test
+
+Can you find interesting differences in the mean values of parameters of the dataset **dat** for the two groups defined by the **location**?
+Follow these steps:
+
+1.  Select the two groups according to the location.
+To do so, check the result of `distinct(location)` and create two tibbles corresponding to each of possible the locations.
+
+2.  Calculate the mean values of the numerical parameters for each group (ex: age, height, weight, waist, hip, ...).
+*Hint*: create first a dataframe with numeric columns only (use `select(which(is.numerical))`).
+Select the rows corresponding to the two groups and use an `summarise()` and `group_by` loop to calculate the mean values (grouped by location).
+
+3.  Select one of these, formulate the H0 and H1 hypotheses and perform a (two-sided) t-test.
+Interpret the result (alpha = 0.05).
+
+### Exercise 3. Going further ... Checking the normality of the distribution
+
+In principle, t-tests require that the data is approximately normally distributed.
+If not, we can use **non-parametric** tests (see next lecture).
+
+In order to check whether the data is normally distributed or not, it is possible to perform a **Shapiro-Wilk** normality test (see lecture).
+This statistical test is implemented in R in the function `shapiro.test()`.
+
+

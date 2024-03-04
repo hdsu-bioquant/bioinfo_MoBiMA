@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 WEEK 1: Dimensionality reduction and unsupervised learning | Bioinformatics introductory course - MSc Molekulare Biotechnologie</title>
+  <meta name="description" content="RMarkdowns for the Data Analysis introduction course (SoSe2024), MoBi MA" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 WEEK 1: Dimensionality reduction and unsupervised learning | Bioinformatics introductory course - MSc Molekulare Biotechnologie" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="RMarkdowns for the Data Analysis introduction course (SoSe2024), MoBi MA" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 WEEK 1: Dimensionality reduction and unsupervised learning | Bioinformatics introductory course - MSc Molekulare Biotechnologie" />
+  
+  <meta name="twitter:description" content="RMarkdowns for the Data Analysis introduction course (SoSe2024), MoBi MA" />
+  
+
+<meta name="author" content="Biomedical Genomics group, IPMB" />
+
+
+<meta name="date" content="2024-03-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="week-1-descriptive-statistics-and-data-types.html"/>
+<link rel="next" href="week-1-probability-distributions.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Bioinformatics Introduction course (MoBi MA)</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#where-to-start"><i class="fa fa-check"></i>Where to start</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#r"><i class="fa fa-check"></i>R</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#rstudio"><i class="fa fa-check"></i>RStudio</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#variable-assignment-in-r"><i class="fa fa-check"></i>Variable assignment in R</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#classes"><i class="fa fa-check"></i>Classes</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#logical-operations"><i class="fa fa-check"></i>Logical operations</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#vectors"><i class="fa fa-check"></i>Vectors</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#matrixes"><i class="fa fa-check"></i>Matrixes</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#dataframes"><i class="fa fa-check"></i>Dataframes</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#r-markdown"><i class="fa fa-check"></i>R Markdown</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#advanced-data-manipulation-with-tidyverse"><i class="fa fa-check"></i>Advanced data manipulation with tidyverse</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#filter-based-on-conditions"><i class="fa fa-check"></i>Filter based on conditions</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#select-specific-columns"><i class="fa fa-check"></i>Select specific columns</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#operations-on-groups"><i class="fa fa-check"></i>Operations on groups</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#pretty-plots-using-ggplot2"><i class="fa fa-check"></i>Pretty plots using ggplot2</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#histogram"><i class="fa fa-check"></i>Histogram</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#scatter-plot"><i class="fa fa-check"></i>Scatter plot</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#boxplot"><i class="fa fa-check"></i>Boxplot</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html"><i class="fa fa-check"></i><b>1</b> WEEK 1: Descriptive statistics and data types</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#data-features-and-where-to-find-them"><i class="fa fa-check"></i><b>1.1</b> Data features and where to find them</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#load-the-data"><i class="fa fa-check"></i><b>1.1.1</b> Load the data</a></li>
+<li class="chapter" data-level="1.1.2" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#dimensions-and-naming"><i class="fa fa-check"></i><b>1.1.2</b> Dimensions and naming</a></li>
+<li class="chapter" data-level="1.1.3" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#numerical-features"><i class="fa fa-check"></i><b>1.1.3</b> Numerical features</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#data-cleaning"><i class="fa fa-check"></i><b>1.2</b> Data cleaning</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#filter"><i class="fa fa-check"></i><b>1.2.1</b> filter()</a></li>
+<li class="chapter" data-level="1.2.2" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#is.na"><i class="fa fa-check"></i><b>1.2.2</b> is.na()</a></li>
+<li class="chapter" data-level="1.2.3" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#mutate"><i class="fa fa-check"></i><b>1.2.3</b> mutate()</a></li>
+<li class="chapter" data-level="1.2.4" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#accross"><i class="fa fa-check"></i><b>1.2.4</b> accross()</a></li>
+<li class="chapter" data-level="1.2.5" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#in"><i class="fa fa-check"></i><b>1.2.5</b> %in%</a></li>
+<li class="chapter" data-level="1.2.6" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#ready-for-the-cleaning"><i class="fa fa-check"></i><b>1.2.6</b> Ready for the cleaning!</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#visualizing-data-distribution"><i class="fa fa-check"></i><b>1.3</b> Visualizing data distribution</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#histograms"><i class="fa fa-check"></i><b>1.3.1</b> Histograms</a></li>
+<li class="chapter" data-level="1.3.2" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#density-plots"><i class="fa fa-check"></i><b>1.3.2</b> Density plots</a></li>
+<li class="chapter" data-level="1.3.3" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#boxplots"><i class="fa fa-check"></i><b>1.3.3</b> Boxplots</a></li>
+<li class="chapter" data-level="1.3.4" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#qq-plots"><i class="fa fa-check"></i><b>1.3.4</b> QQ-plots</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#correlation"><i class="fa fa-check"></i><b>1.4</b> Correlation</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#measuring-the-centrality-in-data"><i class="fa fa-check"></i><b>1.4.1</b> Measuring the centrality in data</a></li>
+<li class="chapter" data-level="1.4.2" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#association-between-variables"><i class="fa fa-check"></i><b>1.4.2</b> Association between variables</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#exercises"><i class="fa fa-check"></i><b>1.5</b> EXERCISES</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#exercise-1-data-features"><i class="fa fa-check"></i><b>1.5.1</b> Exercise 1: Data features</a></li>
+<li class="chapter" data-level="1.5.2" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#exercise-2-visualization"><i class="fa fa-check"></i><b>1.5.2</b> Exercise 2: Visualization</a></li>
+<li class="chapter" data-level="1.5.3" data-path="week-1-descriptive-statistics-and-data-types.html"><a href="week-1-descriptive-statistics-and-data-types.html#exercise-3-correlation"><i class="fa fa-check"></i><b>1.5.3</b> Exercise 3: Correlation</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html"><i class="fa fa-check"></i><b>2</b> WEEK 1: Dimensionality reduction and unsupervised learning</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#preparing-the-data"><i class="fa fa-check"></i><b>2.1</b> Preparing the data</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#load-data"><i class="fa fa-check"></i><b>2.1.1</b> Load data</a></li>
+<li class="chapter" data-level="2.1.2" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#data-transformation"><i class="fa fa-check"></i><b>2.1.2</b> Data transformation</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#k-means-clustering"><i class="fa fa-check"></i><b>2.2</b> k-means clustering</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#performing-k-means"><i class="fa fa-check"></i><b>2.2.1</b> Performing k-means</a></li>
+<li class="chapter" data-level="2.2.2" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#quality-of-the-clustering"><i class="fa fa-check"></i><b>2.2.2</b> Quality of the clustering</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#hierarchical-clustering"><i class="fa fa-check"></i><b>2.3</b> Hierarchical clustering</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#determine-the-most-variable-genes"><i class="fa fa-check"></i><b>2.3.1</b> Determine the most variable genes</a></li>
+<li class="chapter" data-level="2.3.2" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#computing-the-correlation-between-all-patients"><i class="fa fa-check"></i><b>2.3.2</b> Computing the correlation between all patients</a></li>
+<li class="chapter" data-level="2.3.3" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#including-clinical-annotations-in-the-heatmap"><i class="fa fa-check"></i><b>2.3.3</b> Including clinical annotations in the heatmap</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#principal-component-analysis"><i class="fa fa-check"></i><b>2.4</b> Principal component analysis</a></li>
+<li class="chapter" data-level="2.5" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#exercises-1"><i class="fa fa-check"></i><b>2.5</b> EXERCISES</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#exercise-1-variance"><i class="fa fa-check"></i><b>2.5.1</b> Exercise 1: Variance</a></li>
+<li class="chapter" data-level="2.5.2" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#exercise-2-hierarchical-clustering"><i class="fa fa-check"></i><b>2.5.2</b> Exercise 2: Hierarchical clustering</a></li>
+<li class="chapter" data-level="2.5.3" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#exercise-3-pca"><i class="fa fa-check"></i><b>2.5.3</b> Exercise 3: PCA</a></li>
+<li class="chapter" data-level="2.5.4" data-path="week-1-dimensionality-reduction-and-unsupervised-learning.html"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#going-further-expert"><i class="fa fa-check"></i><b>2.5.4</b> Going further <em>(expert)</em></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html"><i class="fa fa-check"></i><b>3</b> WEEK 1: Probability distributions</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html#probability-distributions"><i class="fa fa-check"></i><b>3.1</b> Probability distributions</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html#getting-to-know-the-various-functions"><i class="fa fa-check"></i><b>3.1.1</b> Getting to know the various functions</a></li>
+<li class="chapter" data-level="3.1.2" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html#normalgaussian-distribution"><i class="fa fa-check"></i><b>3.1.2</b> Normal/Gaussian distribution</a></li>
+<li class="chapter" data-level="3.1.3" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html#visualization"><i class="fa fa-check"></i><b>3.1.3</b> Visualization</a></li>
+<li class="chapter" data-level="3.1.4" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html#application-on-a-real-dataset"><i class="fa fa-check"></i><b>3.1.4</b> Application on a real dataset</a></li>
+<li class="chapter" data-level="3.1.5" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html#binomial-distribution"><i class="fa fa-check"></i><b>3.1.5</b> Binomial distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html#confidence-interval"><i class="fa fa-check"></i><b>3.2</b> Confidence interval</a></li>
+<li class="chapter" data-level="3.3" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html#exercises-2"><i class="fa fa-check"></i><b>3.3</b> EXERCISES</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html#exercise-1-probability-distributions"><i class="fa fa-check"></i><b>3.3.1</b> Exercise 1: Probability distributions</a></li>
+<li class="chapter" data-level="3.3.2" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html#exercise-2-binomial-distribution"><i class="fa fa-check"></i><b>3.3.2</b> Exercise 2: Binomial distribution</a></li>
+<li class="chapter" data-level="3.3.3" data-path="week-1-probability-distributions.html"><a href="week-1-probability-distributions.html#exercise-3-confidence-intervals"><i class="fa fa-check"></i><b>3.3.3</b> Exercise 3: Confidence intervals</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="week-1-hypothesis-testing.html"><a href="week-1-hypothesis-testing.html"><i class="fa fa-check"></i><b>4</b> WEEK 1: Hypothesis testing</a>
+<ul>
+<li class="chapter" data-level="4.0.1" data-path="week-1-hypothesis-testing.html"><a href="week-1-hypothesis-testing.html#one-sample-t-test"><i class="fa fa-check"></i><b>4.0.1</b> One sample t-test</a></li>
+<li class="chapter" data-level="4.0.2" data-path="week-1-hypothesis-testing.html"><a href="week-1-hypothesis-testing.html#two-sample-t-test-2-sided"><i class="fa fa-check"></i><b>4.0.2</b> Two-sample t-test (2-sided)</a></li>
+<li class="chapter" data-level="4.0.3" data-path="week-1-hypothesis-testing.html"><a href="week-1-hypothesis-testing.html#two-sample-t-test-1-sided"><i class="fa fa-check"></i><b>4.0.3</b> Two-sample t-test (1-sided)</a></li>
+<li class="chapter" data-level="4.1" data-path="week-1-hypothesis-testing.html"><a href="week-1-hypothesis-testing.html#exercises-3"><i class="fa fa-check"></i><b>4.1</b> EXERCISES</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="week-1-hypothesis-testing.html"><a href="week-1-hypothesis-testing.html#exercise-1-one-sided-t-test"><i class="fa fa-check"></i><b>4.1.1</b> Exercise 1: One-sided t-test</a></li>
+<li class="chapter" data-level="4.1.2" data-path="week-1-hypothesis-testing.html"><a href="week-1-hypothesis-testing.html#exercice-2-two-sided-t-test"><i class="fa fa-check"></i><b>4.1.2</b> Exercice 2: Two-sided t-test</a></li>
+<li class="chapter" data-level="4.1.3" data-path="week-1-hypothesis-testing.html"><a href="week-1-hypothesis-testing.html#exercise-3.-going-further-checking-the-normality-of-the-distribution"><i class="fa fa-check"></i><b>4.1.3</b> Exercise 3. Going further … Checking the normality of the distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="week-1-hypothesis-testing.html"><a href="week-1-hypothesis-testing.html#wilcoxon-test"><i class="fa fa-check"></i><b>4.2</b> Wilcoxon test</a></li>
+<li class="chapter" data-level="4.3" data-path="week-1-hypothesis-testing.html"><a href="week-1-hypothesis-testing.html#chi-squared-test"><i class="fa fa-check"></i><b>4.3</b> Chi-squared test</a></li>
+<li class="chapter" data-level="4.4" data-path="week-1-hypothesis-testing.html"><a href="week-1-hypothesis-testing.html#fishers-exact-test"><i class="fa fa-check"></i><b>4.4</b> Fisher’s exact test</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="week-1-multiple-testing-and-regression.html"><a href="week-1-multiple-testing-and-regression.html"><i class="fa fa-check"></i><b>5</b> WEEK 1: Multiple testing and regression</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="week-1-multiple-testing-and-regression.html"><a href="week-1-multiple-testing-and-regression.html#multiple-testing"><i class="fa fa-check"></i><b>5.1</b> Multiple testing</a></li>
+<li class="chapter" data-level="5.2" data-path="week-1-multiple-testing-and-regression.html"><a href="week-1-multiple-testing-and-regression.html#regression"><i class="fa fa-check"></i><b>5.2</b> Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="week-2-annotathon.html"><a href="week-2-annotathon.html"><i class="fa fa-check"></i><b>6</b> WEEK 2: Annotathon!</a></li>
+<li class="chapter" data-level="7" data-path="week-2-data-formats-and-where-to-find-them.html"><a href="week-2-data-formats-and-where-to-find-them.html"><i class="fa fa-check"></i><b>7</b> WEEK 2: Data formats and where to find them</a></li>
+<li class="chapter" data-level="8" data-path="week-2-rna-seq---from-fastq-to-count-matrix.html"><a href="week-2-rna-seq---from-fastq-to-count-matrix.html"><i class="fa fa-check"></i><b>8</b> WEEK 2: RNA-seq - from FASTQ to count matrix</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="9" data-path="instructions.html"><a href="instructions.html"><i class="fa fa-check"></i><b>9</b> instructions</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="instructions.html"><a href="instructions.html#chapters-and-sub-chapters"><i class="fa fa-check"></i><b>9.1</b> Chapters and sub-chapters</a></li>
+<li class="chapter" data-level="9.2" data-path="instructions.html"><a href="instructions.html#captioned-figures-and-tables"><i class="fa fa-check"></i><b>9.2</b> Captioned figures and tables</a></li>
+<li class="chapter" data-level="9.3" data-path="instructions.html"><a href="instructions.html#footnotes"><i class="fa fa-check"></i><b>9.3</b> Footnotes</a></li>
+<li class="chapter" data-level="9.4" data-path="instructions.html"><a href="instructions.html#citations"><i class="fa fa-check"></i><b>9.4</b> Citations</a></li>
+<li class="chapter" data-level="9.5" data-path="instructions.html"><a href="instructions.html#equations"><i class="fa fa-check"></i><b>9.5</b> Equations</a></li>
+<li class="chapter" data-level="9.6" data-path="instructions.html"><a href="instructions.html#theorems-and-proofs"><i class="fa fa-check"></i><b>9.6</b> Theorems and proofs</a></li>
+<li class="chapter" data-level="9.7" data-path="instructions.html"><a href="instructions.html#callout-blocks"><i class="fa fa-check"></i><b>9.7</b> Callout blocks</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Bioinformatics introductory course - MSc Molekulare Biotechnologie</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="week-1-dimensionality-reduction-and-unsupervised-learning" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">2</span> WEEK 1: Dimensionality reduction and unsupervised learning<a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#week-1-dimensionality-reduction-and-unsupervised-learning" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="preparing-the-data" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Preparing the data<a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#preparing-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Unsupervised clustering</strong> is one of the most basic data analysis techniques. It allows to identify groups (or clusters) or observations (here: patients) or variables. <em>Unsupervised</em> means that you are not using any prior knowledge about groups of variables or associations. <strong>K-means clustering</strong> is a good example of unsupervised learning because the method categorizes sample based uniquely on the data.</p>
+<p>In this part, we will use a dataset of gene expression data from the TCGA (The Cancer Genome Atlas) project. This project has sequenced several thousand samples from cancer patients of more than 30 cancer types. We will use a subset of this data, containing 200 samples (=patients, as columns) , for which the expression of 300 genes (= rows) has been measured.</p>
+<div id="load-data" class="section level3 hasAnchor" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> Load data<a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#load-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We will start by reading the gene expression data. The columns are the samples and the rows are the genes. This is matrix, which allows some numerical operations to be conducted directly.</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb84-1" tabindex="-1"></a>brca.exp <span class="ot">=</span> <span class="fu">readRDS</span>(<span class="fu">url</span>(<span class="st">&#39;https://www.dropbox.com/s/qububmfvtv443mq/brca.exp.rds?dl=1&#39;</span>))</span>
+<span id="cb84-2"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb84-2" tabindex="-1"></a><span class="fu">dim</span>(brca.exp)</span></code></pre></div>
+<pre><code>## [1] 100 200</code></pre>
+<p><strong>WARNING</strong>: If you have problem loading the data, please download <a href="https://www.dropbox.com/s/qububmfvtv443mq/brca.exp.rds?dl=1">this file</a>, store it on your disk, and open it with the following command:</p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb86-1" tabindex="-1"></a><span class="co">#brca.exp = readRDS(&quot;xxxx&quot;) # xxxx should be replaced with the path to the downloaded file in your device</span></span></code></pre></div>
+<p>Next we will load the clinical annotation file for this gene expression data and explore it</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb87-1" tabindex="-1"></a>brca.anno <span class="ot">=</span> <span class="fu">readRDS</span>(<span class="fu">url</span>(<span class="st">&#39;https://www.dropbox.com/s/9xlivejqkj77llc/brca.anno.rds?dl=1&#39;</span>))</span>
+<span id="cb87-2"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb87-2" tabindex="-1"></a><span class="fu">head</span>(brca.anno)</span></code></pre></div>
+<pre><code>##                 Age ER_status HER2_status Classification
+## TCGA-BH-A1EO-01  68  Positive    Negative      Luminal A
+## TCGA-E2-A14N-01  37  Negative    Negative     Basal-like
+## TCGA-AN-A0FF-01  32  Positive    Negative      Luminal B
+## TCGA-A2-A04V-01  39  Positive    Negative      Luminal A
+## TCGA-AN-A0XP-01  69  Positive    Negative      Luminal A
+## TCGA-C8-A12U-01  46  Positive    Negative      Luminal B</code></pre>
+<p>Same here: if you have issues running the previous <code>readRDS</code> command, download <a href="https://www.dropbox.com/s/z6bzwzgzdhky1qz/brca.anno.rds?dl=1">this file</a>, save it on your disk and load it with</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb89-1" tabindex="-1"></a><span class="do">### brca.anno = readRDS(xxx)</span></span></code></pre></div>
+<p>You can check the number of samples for each tumor type using the <code>table()</code> function, applied to a specific column (here, there is only one column…)</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb90-1" tabindex="-1"></a><span class="fu">table</span>(brca.anno<span class="sc">$</span>HER2_status)</span></code></pre></div>
+<pre><code>## 
+## Equivocal  Negative  Positive 
+##         4       174        22</code></pre>
+</div>
+<div id="data-transformation" class="section level3 hasAnchor" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> Data transformation<a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#data-transformation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>You will see that the distribution of the data is extremely squeezed due to <strong>outliers</strong> with very high or low values. We will need to make the data more homogeneous, so that our downstream analysis is not affected by these very large magnitude numbers.</p>
+<p>We will carry out the following data processing steps. Some of these steps use rather arbitrary values, which come from visually inspecting the data!</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Thresholding:</strong> cap the values to the 95th percentile</p></li>
+<li><p><strong>Homogenization:</strong> base-2 logarithmic transformation of the entire dataset</p></li>
+<li><p><strong>Scaling:</strong> standardize the data so that across genes the mean = 0 and variance = 1.</p></li>
+</ol>
+<p><strong>Before we start modifying the data, we will store the original data frame into a variable, so that in case of problems we can revert back to the initial data!!</strong></p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb92-1" tabindex="-1"></a>brca.exp.original <span class="ot">=</span> brca.exp <span class="co"># keeps the original as matrix</span></span></code></pre></div>
+<p><strong>Thresholding</strong></p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb93-1" tabindex="-1"></a><span class="do">## what is the value of the 95th percent percentile?</span></span>
+<span id="cb93-2"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb93-2" tabindex="-1"></a>q95 <span class="ot">=</span> <span class="fu">quantile</span>(brca.exp,<span class="at">probs=</span><span class="fl">0.95</span>)</span>
+<span id="cb93-3"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb93-3" tabindex="-1"></a></span>
+<span id="cb93-4"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb93-4" tabindex="-1"></a><span class="do">## set all values above to this value</span></span>
+<span id="cb93-5"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb93-5" tabindex="-1"></a>brca.exp[brca.exp<span class="sc">&gt;</span>q95] <span class="ot">=</span> q95</span></code></pre></div>
+<p><strong>Homogenization and Scaling</strong></p>
+<p>We will perform this step by log-transforming the data. We are able to use this operation because the data is still in a matrix.</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb94-1" tabindex="-1"></a>brca.exp <span class="ot">=</span> <span class="fu">log2</span>(brca.exp<span class="sc">+</span><span class="dv">1</span>)</span></code></pre></div>
+<blockquote>
+<p>Why do we add +1 ?</p>
+</blockquote>
+<p>Next, we will scale the data and plot its distribution. To do this efficient, we need to convert the data to tibble first, make it tidy, and then plot.</p>
+<p>Conversion to tibble can be done using <code>as_tibble(brca.exp, rownames = NA)</code>, where <code>rownames = NA</code> is meant to keep the original rownames (in this case, gene names) in the new tibble, although they are invisible.</p>
+<p>Check this out:</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb95-1" tabindex="-1"></a><span class="fu">rownames</span>(<span class="fu">as_tibble</span>(brca.exp, <span class="at">rownames =</span> <span class="cn">NA</span>))[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code></pre></div>
+<pre><code>## [1] &quot;TFF1&quot;    &quot;C4orf7&quot;  &quot;AGR3&quot;    &quot;GABRP&quot;   &quot;C1orf64&quot;</code></pre>
+<p>In addition, <code>gather(key = "sample", value = "expression")</code> converts the tibble to a long format, where “sample” represents the original column names, and “expression” represents the values present in the initial matrix.</p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb97-1" tabindex="-1"></a><span class="do">## scaling</span></span>
+<span id="cb97-2"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb97-2" tabindex="-1"></a>brca.exp <span class="ot">=</span> <span class="fu">scale</span>(brca.exp)</span>
+<span id="cb97-3"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb97-3" tabindex="-1"></a></span>
+<span id="cb97-4"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb97-4" tabindex="-1"></a><span class="do">## plotting the density</span></span>
+<span id="cb97-5"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb97-5" tabindex="-1"></a><span class="fu">as_tibble</span>(brca.exp, <span class="at">rownames =</span> <span class="cn">NA</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb97-6"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb97-6" tabindex="-1"></a>  <span class="fu">gather</span>(<span class="at">key =</span> <span class="st">&quot;sample&quot;</span>, </span>
+<span id="cb97-7"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb97-7" tabindex="-1"></a>         <span class="at">value =</span> <span class="st">&quot;expression&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb97-8"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb97-8" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> expression)) <span class="sc">+</span></span>
+<span id="cb97-9"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb97-9" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
+<span id="cb97-10"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb97-10" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Transformed data&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-61-1.png" width="672" /></p>
+<p>Compare to the density plot before these pre-processing steps using the same strategy.</p>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb98-1" tabindex="-1"></a><span class="fu">as_tibble</span>(brca.exp.original, <span class="at">rownames =</span> <span class="cn">NA</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb98-2"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb98-2" tabindex="-1"></a>  <span class="fu">gather</span>(<span class="at">key =</span> <span class="st">&quot;sample&quot;</span>, <span class="at">value =</span> <span class="st">&quot;expression&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb98-3"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb98-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> expression)) <span class="sc">+</span></span>
+<span id="cb98-4"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb98-4" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
+<span id="cb98-5"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb98-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Untransformed data&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
+<hr />
+</div>
+</div>
+<div id="k-means-clustering" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> k-means clustering<a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#k-means-clustering" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Another widely used method for grouping observations is the k-means clustering. Now we will cluster our dataset using k-means and explore the underlying structure of the data. In this dataset, different clusters could represent different batches, different tumour subtypes, among other features.</p>
+<div id="performing-k-means" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Performing k-means<a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#performing-k-means" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We use the function <code>kmeans()</code> in R on our matrix. You can check the options and usage in the help panel on the right. The parameter <code>centers</code> indicates how many clusters are requested.</p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb99-1" tabindex="-1"></a>km <span class="ot">=</span> <span class="fu">kmeans</span>(<span class="at">x=</span><span class="fu">t</span>(brca.exp), </span>
+<span id="cb99-2"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb99-2" tabindex="-1"></a>            <span class="at">centers =</span> <span class="dv">2</span>, </span>
+<span id="cb99-3"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb99-3" tabindex="-1"></a>            <span class="at">nstart =</span> <span class="dv">10</span>)</span></code></pre></div>
+<blockquote>
+<p>Just type <code>km</code> in your console and check all results generated. Play around with the <code>centers</code> parameter. See cluster assignments by typing <code>table(km$cluster)</code></p>
+</blockquote>
+</div>
+<div id="quality-of-the-clustering" class="section level3 hasAnchor" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Quality of the clustering<a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#quality-of-the-clustering" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We can judge the quality of the clustering by computing the <strong>intra</strong>-cluster distances, i.e. the sum (squared) of all distances between pairs of objects belonging to the same cluster. This is called the <strong>within sum of squares (WSS)</strong>. The better the clustering, the smaller WSS should be. However, it also automatically decreases with increasing k.</p>
+<blockquote>
+<p>What would be WSS if we request a number of clusters equal to the number of data points? You can check what the WSS is for a particular clustering by typing</p>
+</blockquote>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb100-1" tabindex="-1"></a>km<span class="sc">$</span>tot.withinss</span></code></pre></div>
+<pre><code>## [1] 4123.459</code></pre>
+<blockquote>
+<p>run k-means for k=2 to k=7 clusters, and for each k check the WSS value. How does WSS evolve with increasing k?</p>
+</blockquote>
+<p>We can also run a little loop to test different k. Loops are very important structures in any programming language.
+We can test a simple scenario before. Check how the output of this simple loop looks like.</p>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb102-1" tabindex="-1"></a>k_to_test <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">7</span>)</span>
+<span id="cb102-2"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb102-2" tabindex="-1"></a></span>
+<span id="cb102-3"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb102-3" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(k_to_test)) {</span>
+<span id="cb102-4"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb102-4" tabindex="-1"></a>  <span class="fu">print</span>(i) <span class="co"># We can print the indexes</span></span>
+<span id="cb102-5"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb102-5" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] 1
+## [1] 2
+## [1] 3
+## [1] 4
+## [1] 5
+## [1] 6</code></pre>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb104-1" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(k_to_test)) {</span>
+<span id="cb104-2"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb104-2" tabindex="-1"></a>  <span class="fu">print</span>(k_to_test[i]) <span class="co"># or the actual elements</span></span>
+<span id="cb104-3"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb104-3" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] 2
+## [1] 3
+## [1] 4
+## [1] 5
+## [1] 6
+## [1] 7</code></pre>
+<blockquote>
+<p>Do you understand the difference between the 2 previous for loops? Try to make your own for loop.</p>
+</blockquote>
+<p>Now we can make one to test k from 2 to 7:</p>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb106-1" tabindex="-1"></a>km_wws <span class="ot">=</span> <span class="fu">numeric</span>() <span class="co"># we start by creating an empty vector</span></span>
+<span id="cb106-2"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb106-2" tabindex="-1"></a></span>
+<span id="cb106-3"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb106-3" tabindex="-1"></a><span class="co"># To write in the position 1, we use i</span></span>
+<span id="cb106-4"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb106-4" tabindex="-1"></a><span class="co"># to find the 1st element, we use k_to_test[i]</span></span>
+<span id="cb106-5"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb106-5" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(k_to_test)) {</span>
+<span id="cb106-6"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb106-6" tabindex="-1"></a>  km_wws[i] <span class="ot">=</span> <span class="fu">kmeans</span>(<span class="at">x=</span><span class="fu">t</span>(brca.exp), </span>
+<span id="cb106-7"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb106-7" tabindex="-1"></a>                     <span class="at">centers =</span> k_to_test[i])<span class="sc">$</span>tot.withinss</span>
+<span id="cb106-8"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb106-8" tabindex="-1"></a>}</span>
+<span id="cb106-9"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb106-9" tabindex="-1"></a></span>
+<span id="cb106-10"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb106-10" tabindex="-1"></a><span class="co"># We can plot the k against WSS using geom_line</span></span>
+<span id="cb106-11"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb106-11" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb106-12"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb106-12" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> k_to_test, <span class="at">y =</span> km_wws)) <span class="sc">+</span></span>
+<span id="cb106-13"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb106-13" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">&quot;Number of clusters K&quot;</span>,</span>
+<span id="cb106-14"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb106-14" tabindex="-1"></a>       <span class="at">y=</span><span class="st">&quot;Total within-clusters sum of squares&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-66-1.png" width="672" /></p>
+<blockquote>
+<p>Do you see an obvious “elbow” or “kink” in the curve?? Another criteria for the quality of the clustering is the <strong>silhouette</strong> method.</p>
+</blockquote>
+<p>To run the silhouette method, we need to compute the pairwise distances between all objects (i.e. patients) in the data matrix. This is done with the <code>dist</code> function, which can take different metrics (euclidean, …)</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb107-1" tabindex="-1"></a><span class="do">## compute the patient-patient distance matrix (this is why we transpose using the `t()` function)</span></span>
+<span id="cb107-2"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb107-2" tabindex="-1"></a>D <span class="ot">=</span> <span class="fu">dist</span>(<span class="fu">t</span>(brca.exp))</span></code></pre></div>
+<p>We now compute the silhouette for a specific k-means clustering:</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb108-1" tabindex="-1"></a><span class="fu">library</span>(cluster)</span></code></pre></div>
+<pre><code>## Warning: package &#39;cluster&#39; was built under R version 4.3.1</code></pre>
+<pre><code>## 
+## Attaching package: &#39;cluster&#39;</code></pre>
+<pre><code>## The following object is masked _by_ &#39;.GlobalEnv&#39;:
+## 
+##     animals</code></pre>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb112-1" tabindex="-1"></a>km <span class="ot">=</span> <span class="fu">kmeans</span>(<span class="at">x=</span><span class="fu">t</span>(brca.exp), <span class="at">centers =</span> <span class="dv">3</span>, <span class="at">nstart =</span> <span class="dv">10</span>)</span>
+<span id="cb112-2"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb112-2" tabindex="-1"></a>s <span class="ot">=</span> <span class="fu">silhouette</span>(km<span class="sc">$</span>cluster,D)</span>
+<span id="cb112-3"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb112-3" tabindex="-1"></a></span>
+<span id="cb112-4"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb112-4" tabindex="-1"></a><span class="co"># Let us use the basic R function plot() to see the results</span></span>
+<span id="cb112-5"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb112-5" tabindex="-1"></a><span class="fu">plot</span>(s)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-68-1.png" width="672" /></p>
+<hr />
+</div>
+</div>
+<div id="hierarchical-clustering" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Hierarchical clustering<a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#hierarchical-clustering" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Clustering is a method by which we group together similar observations while separating out the dissimilar ones. We will cluster our samples from the cancer dataset to see which samples cluster together or separately. Hierarchical clustering does not generate discrete clusters of datapoints, but rather creates a dendrogram that indicates the magnitude of similitude between samples. Once again is up to the Data Scientist to decide the right amount of clusters.</p>
+<div id="determine-the-most-variable-genes" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Determine the most variable genes<a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#determine-the-most-variable-genes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When performing clustering, we usually reduce the number of genes used, as some of them are not informative. For example, genes that show a mostly constant expression across all samples will not be useful to distinguish the samples, right? One simple method is to select genes that show a <strong>high variance</strong> across all samples.</p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb113-1" tabindex="-1"></a>brca.exp.tibble <span class="ot">=</span> <span class="fu">as_tibble</span>(brca.exp, <span class="at">rownames=</span><span class="cn">NA</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb113-2"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb113-2" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(<span class="st">&quot;gene&quot;</span>)</span>
+<span id="cb113-3"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb113-3" tabindex="-1"></a></span>
+<span id="cb113-4"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb113-4" tabindex="-1"></a><span class="do">## create a new column with the variance for all genes across all samples</span></span>
+<span id="cb113-5"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb113-5" tabindex="-1"></a>brca.exp.var <span class="ot">=</span> brca.exp.tibble <span class="sc">%&gt;%</span></span>
+<span id="cb113-6"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb113-6" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb113-7"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb113-7" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">variance =</span> <span class="fu">var</span>(<span class="fu">c_across</span>(<span class="fu">starts_with</span>(<span class="st">&quot;TCGA&quot;</span>)))) </span>
+<span id="cb113-8"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb113-8" tabindex="-1"></a><span class="co"># only includes the columns starting with TCGA</span></span></code></pre></div>
+<p>We now want to find the top 25% with the highest variance</p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb114-1" tabindex="-1"></a><span class="do">## what is the 75% quantile of the variance?</span></span>
+<span id="cb114-2"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb114-2" tabindex="-1"></a>q75 <span class="ot">=</span> <span class="fu">quantile</span>(brca.exp.var<span class="sc">$</span>variance, <span class="at">probs =</span> <span class="fl">0.75</span>)</span>
+<span id="cb114-3"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb114-3" tabindex="-1"></a>q75</span></code></pre></div>
+<pre><code>##       75% 
+## 0.4934196</code></pre>
+<p>So let us select all rows (genes) with a variance higher than or equal to <code>q75</code>:</p>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb116-1" tabindex="-1"></a><span class="do">## only select the genes with a variance in the top 25%</span></span>
+<span id="cb116-2"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb116-2" tabindex="-1"></a>topVariantGenes <span class="ot">&lt;-</span> brca.exp.var <span class="sc">%&gt;%</span></span>
+<span id="cb116-3"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb116-3" tabindex="-1"></a>  <span class="fu">filter</span>(variance <span class="sc">&gt;=</span> q75)</span>
+<span id="cb116-4"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb116-4" tabindex="-1"></a></span>
+<span id="cb116-5"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb116-5" tabindex="-1"></a><span class="fu">print</span>(topVariantGenes<span class="sc">$</span>gene)</span></code></pre></div>
+<pre><code>##  [1] &quot;TFF1&quot;      &quot;C4orf7&quot;    &quot;AGR3&quot;      &quot;GABRP&quot;     &quot;C1orf64&quot;   &quot;TFF3&quot;     
+##  [7] &quot;ABCC11&quot;    &quot;PGR&quot;       &quot;FABP7&quot;     &quot;SERPINA11&quot; &quot;VGLL1&quot;     &quot;A2ML1&quot;    
+## [13] &quot;ELF5&quot;      &quot;PROM1&quot;     &quot;CYP4Z2P&quot;   &quot;SLC6A14&quot;   &quot;CAPN8&quot;     &quot;ABCC8&quot;    
+## [19] &quot;SYTL5&quot;     &quot;SFRP1&quot;     &quot;ART3&quot;      &quot;GABBR2&quot;    &quot;PPP1R14C&quot;  &quot;HORMAD1&quot;  
+## [25] &quot;LOC84740&quot;</code></pre>
+</div>
+<div id="computing-the-correlation-between-all-patients" class="section level3 hasAnchor" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> Computing the correlation between all patients<a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#computing-the-correlation-between-all-patients" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Let us start by filtering for only the highly variable genes. Then we can directly calculate Spearman correlation.</p>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb118-1" tabindex="-1"></a>brca.exp.highvar.cor <span class="ot">=</span> brca.exp.tibble <span class="sc">%&gt;%</span></span>
+<span id="cb118-2"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb118-2" tabindex="-1"></a>  <span class="fu">filter</span>(gene <span class="sc">%in%</span> topVariantGenes<span class="sc">$</span>gene) <span class="sc">%&gt;%</span>        <span class="co"># from the whole list, select only high variable</span></span>
+<span id="cb118-3"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb118-3" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span>                     <span class="co"># get only numerical columns</span></span>
+<span id="cb118-4"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb118-4" tabindex="-1"></a>  <span class="fu">cor</span>(<span class="at">method=</span><span class="st">&quot;spearman&quot;</span>)                            <span class="co"># create correlation-based distance matrix</span></span></code></pre></div>
+<p>If we want to display the correlation matrix as a heatmap, we can use the <code>pheatmap</code> function as before:</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb119-1" tabindex="-1"></a><span class="fu">library</span>(pheatmap)</span>
+<span id="cb119-2"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb119-2" tabindex="-1"></a><span class="fu">pheatmap</span>(brca.exp.highvar.cor, </span>
+<span id="cb119-3"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb119-3" tabindex="-1"></a>         <span class="at">show_rownames =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb119-4"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb119-4" tabindex="-1"></a>         <span class="at">show_colnames =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-73-1.png" width="672" /></p>
+<p>Each cell of this heatmap represents the correlation value between the sample in the row and the sample in the column. The correlation of a sample to itself is always 1 (red diagonal).</p>
+<p>The function automatically determines the clustering trees of the rows and columns (which are identical, since the correlation matrix is symmetrical!)</p>
+</div>
+<div id="including-clinical-annotations-in-the-heatmap" class="section level3 hasAnchor" number="2.3.3">
+<h3><span class="header-section-number">2.3.3</span> Including clinical annotations in the heatmap<a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#including-clinical-annotations-in-the-heatmap" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This is a nice representation, but in order to interpret this clustering, we need to add some additional (clinical) information to interpret the clustering structure. To do this, we use an annotation data frame containing as columns a number of clinical features.</p>
+<p>The clinical annotation is stored in the <code>brca.anno</code> data frame.
+We can now plot again the heatmap, using the annotation dataframe to add additional information</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb120-1" tabindex="-1"></a><span class="fu">pheatmap</span>(brca.exp.highvar.cor,</span>
+<span id="cb120-2"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb120-2" tabindex="-1"></a>         <span class="at">annotation_row =</span> brca.anno,</span>
+<span id="cb120-3"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb120-3" tabindex="-1"></a>         <span class="at">show_rownames =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb120-4"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb120-4" tabindex="-1"></a>         <span class="at">show_colnames =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-74-1.png" width="768" /></p>
+<blockquote>
+<p>How would you interpret this dendrogram? Do the clusters you observe make any sense? What are the parameters by which the samples cluster together? How many meaningful clusters can you observe? Do you see any relation between the distribution of the data and your clusters ?</p>
+</blockquote>
+<blockquote>
+<p>The function <code>pheatmap</code> accepts a parameter clustering_method to indicate alternative linkage methods; try other linkage methods (check which are available with the pheatmap help page, which can be accessed by typing <code>?pheatmap</code> in the console!)</p>
+</blockquote>
+<hr />
+</div>
+</div>
+<div id="principal-component-analysis" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Principal component analysis<a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#principal-component-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We will now use principal component analysis to explore the same dataset, and identify directions (i.e. principal components) with maximal variance. Principal components analysis finds n-dimensional vectors (Principal Components) in the direction of the largest variance, thereby allowing you to describe an n-dimensional dataset with just a few dimensions.</p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb121-1" tabindex="-1"></a>pca <span class="ot">=</span> topVariantGenes <span class="sc">%&gt;%</span></span>
+<span id="cb121-2"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb121-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span></span>
+<span id="cb121-3"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb121-3" tabindex="-1"></a>  <span class="fu">t</span>() <span class="sc">%&gt;%</span> <span class="co"># do not forget to transpose the data!</span></span>
+<span id="cb121-4"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb121-4" tabindex="-1"></a>  <span class="fu">prcomp</span>(<span class="at">center =</span> <span class="cn">FALSE</span>, <span class="at">scale =</span> <span class="cn">FALSE</span>) <span class="co"># We set these as false as we have already scaled our data</span></span>
+<span id="cb121-5"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb121-5" tabindex="-1"></a><span class="fu">summary</span>(pca)</span></code></pre></div>
+<pre><code>## Importance of components:
+##                          PC1    PC2     PC3     PC4     PC5     PC6     PC7
+## Standard deviation     3.719 2.1886 0.89796 0.86195 0.69326 0.62793 0.61645
+## Proportion of Variance 0.559 0.1936 0.03259 0.03003 0.01942 0.01593 0.01536
+## Cumulative Proportion  0.559 0.7526 0.78514 0.81516 0.83458 0.85052 0.86588
+##                            PC8     PC9    PC10    PC11    PC12   PC13    PC14
+## Standard deviation     0.59717 0.55556 0.53665 0.52007 0.50060 0.4900 0.45974
+## Proportion of Variance 0.01441 0.01247 0.01164 0.01093 0.01013 0.0097 0.00854
+## Cumulative Proportion  0.88029 0.89276 0.90440 0.91533 0.92546 0.9352 0.94370
+##                           PC15    PC16   PC17    PC18    PC19    PC20    PC21
+## Standard deviation     0.44696 0.43284 0.4009 0.39542 0.38101 0.35781 0.34271
+## Proportion of Variance 0.00807 0.00757 0.0065 0.00632 0.00587 0.00517 0.00475
+## Cumulative Proportion  0.95178 0.95935 0.9658 0.97216 0.97803 0.98320 0.98795
+##                           PC22    PC23    PC24    PC25
+## Standard deviation     0.30347 0.28452 0.26505 0.23424
+## Proportion of Variance 0.00372 0.00327 0.00284 0.00222
+## Cumulative Proportion  0.99167 0.99494 0.99778 1.00000</code></pre>
+<blockquote>
+<p>How many principal components do you obtain? Compare this to the dimension of the matrix using the <code>dim()</code> function!</p>
+</blockquote>
+<blockquote>
+<p>What would happen if you would not transpose the matrix with t(…) in the prcomp function?</p>
+</blockquote>
+<p>Principal components are ranked by the amount of variance that they explain. This can be visualized using a <strong>scree plot</strong>, indicating how much variance each PC explains: the <strong>standard deviation</strong> explained by each principal component is contained in the <code>pca$sdev</code> vector:</p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb123-1" tabindex="-1"></a>pca<span class="sc">$</span>sdev</span></code></pre></div>
+<pre><code>##  [1] 3.7190077 2.1886234 0.8979609 0.8619466 0.6932587 0.6279258 0.6164472
+##  [8] 0.5971745 0.5555603 0.5366514 0.5200662 0.5006037 0.4899632 0.4597383
+## [15] 0.4469622 0.4328397 0.4008966 0.3954205 0.3810141 0.3578084 0.3427089
+## [22] 0.3034732 0.2845180 0.2650462 0.2342352</code></pre>
+<p>We see that the standard deviation is indeed going down! Let us now plot the proportion of total variance explained by each PC</p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb125-1" tabindex="-1"></a>variance <span class="ot">=</span> (pca<span class="sc">$</span>sdev)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb125-2"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb125-2" tabindex="-1"></a>prop.variance <span class="ot">=</span> variance<span class="sc">/</span><span class="fu">sum</span>(variance)</span>
+<span id="cb125-3"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb125-3" tabindex="-1"></a><span class="fu">names</span>(prop.variance) <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(prop.variance)</span>
+<span id="cb125-4"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb125-4" tabindex="-1"></a></span>
+<span id="cb125-5"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb125-5" tabindex="-1"></a><span class="co"># We make a data.frame from the prop.variance and the PC it corresponds to </span></span>
+<span id="cb125-6"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb125-6" tabindex="-1"></a><span class="co"># we can obtain the PCs using names()</span></span>
+<span id="cb125-7"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb125-7" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">proportion =</span> prop.variance, </span>
+<span id="cb125-8"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb125-8" tabindex="-1"></a>           <span class="at">PCs =</span> <span class="fu">as.numeric</span>(<span class="fu">names</span>(prop.variance))) <span class="sc">%&gt;%</span></span>
+<span id="cb125-9"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb125-9" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> PCs, <span class="at">y =</span> proportion)) <span class="sc">+</span></span>
+<span id="cb125-10"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb125-10" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span>                               <span class="co"># to make the barplot</span></span>
+<span id="cb125-11"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb125-11" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">&#39;Proportion of variance&#39;</span>)           <span class="co"># we only plot the first 20 PCs</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-77-1.png" width="672" /></p>
+<p>Principal component analysis represents each data point (here: patient) in a new space in which the coordinates are principal components. Check the following output:</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb126-1" tabindex="-1"></a><span class="fu">head</span>(pca<span class="sc">$</span>x)</span></code></pre></div>
+<p>We can now display the data points (i.e. patients) in the first two principal components. In addition, we can color the dots according to certain clinical parameters:</p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb127-1" tabindex="-1"></a><span class="co"># We start by creating a dataframe and combining it with the annotation</span></span>
+<span id="cb127-2"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb127-2" tabindex="-1"></a>pca_with_annot <span class="ot">=</span> <span class="fu">as.data.frame</span>(pca<span class="sc">$</span>x) <span class="sc">%&gt;%</span></span>
+<span id="cb127-3"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb127-3" tabindex="-1"></a>  <span class="fu">merge</span>(brca.anno, <span class="at">by =</span> <span class="dv">0</span>) <span class="co"># by = 0 makes use of the rownames as common information</span></span>
+<span id="cb127-4"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb127-4" tabindex="-1"></a></span>
+<span id="cb127-5"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb127-5" tabindex="-1"></a><span class="do">## Now the object is in a ggplot2 friendly format</span></span>
+<span id="cb127-6"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb127-6" tabindex="-1"></a><span class="fu">ggplot</span>(pca_with_annot,</span>
+<span id="cb127-7"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb127-7" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> PC1, <span class="at">y =</span> PC2, <span class="at">colour =</span> ER_status)) <span class="sc">+</span></span>
+<span id="cb127-8"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb127-8" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb127-9"><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#cb127-9" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;grey&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;navy&quot;</span>)) <span class="co"># scale_colour_manual can be used to change colours</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-79-1.png" width="576" /></p>
+<blockquote>
+<p>Choose different PCs for this plot. Can you still observe the two clusters corresponding to the ER_status of the patients?</p>
+</blockquote>
+<hr />
+</div>
+<div id="exercises-1" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> EXERCISES<a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#exercises-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="exercise-1-variance" class="section level3 hasAnchor" number="2.5.1">
+<h3><span class="header-section-number">2.5.1</span> Exercise 1: Variance<a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#exercise-1-variance" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><em>For this exercise set it is given that all the data cleanup steps have been taken, you don’t need to put them in the results.</em></p>
+<ol style="list-style-type: decimal">
+<li><p>Make a heatmap of the reduced matrix “topVariantGenes” using the <code>pheatmap()</code> function of the <code>pheatmap</code> library (do not forget to select only for numerical columns). Check for parameters that might change the style of the heatmap (column names, row names, etc..). How is this heatmap different from the heatmap in section 2?</p></li>
+<li><p>Repeat the selection of top variable genes (apply the same quantile used to generate “topVariantGenes”), but using the median absolute deviation (or MAD) using the <code>mad()</code> function instead of the <code>sd()</code> function, and store into as <code>brca.topMAD</code></p></li>
+<li><p>Extract the gene names of <code>topVariantGenes</code> and <code>brca.topMAD</code> and check how many overlap using the <code>intersect()</code> function.</p></li>
+</ol>
+</div>
+<div id="exercise-2-hierarchical-clustering" class="section level3 hasAnchor" number="2.5.2">
+<h3><span class="header-section-number">2.5.2</span> Exercise 2: Hierarchical clustering<a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#exercise-2-hierarchical-clustering" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In section 2, we have computed a correlation matrix, and used this matrix to build a clustering tree.</p>
+<p>Try different linkage methods using the <code>clustering_method</code> parameter to see if the topology of the dendrogram changes!</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Try building a distance matrix which would lead to different topologies of the dendrogram, depending on which linkage method is used! Show the dendrograms built with different linkage methods!</li>
+</ol>
+</div>
+<div id="exercise-3-pca" class="section level3 hasAnchor" number="2.5.3">
+<h3><span class="header-section-number">2.5.3</span> Exercise 3: PCA<a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#exercise-3-pca" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li><p>Display the patients in the first two principal components (available in <code>pca_with_annot</code>) using <code>geom_point()</code>. Color the patients in the PCA plot according to <code>HER2_status</code>.</p></li>
+<li><p>Color the patients in the PCA plot according to <code>Classification</code>; you will probably need to define some more colors… You can check available colors <a href="http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf">here</a></p></li>
+</ol>
+</div>
+<div id="going-further-expert" class="section level3 hasAnchor" number="2.5.4">
+<h3><span class="header-section-number">2.5.4</span> Going further <em>(expert)</em><a href="week-1-dimensionality-reduction-and-unsupervised-learning.html#going-further-expert" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Instead of performing the k-means on the whole gene expression matrix, we can run k-means on the space in which each patient is represented by the first k principal components.</p>
+<ol style="list-style-type: decimal">
+<li><p>Run k-means with different numbers of clusters (1-10) on the patients using the first 2, 4, 6,… principal components (i.e. the first columns of <code>pca_with_annot</code>). Use the elbow method to evaluate how the within sum of squares (WSS) evolves. What is the optimal number of clusters?</p></li>
+<li><p>Represent the patients in the PCA plot as previously, but color them according to the cluster they belong to! Run kmeans with two clusters for this and merge the k-means results.</p></li>
+</ol>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="week-1-descriptive-statistics-and-data-types.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="week-1-probability-distributions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/02-clust_dimensiRed.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

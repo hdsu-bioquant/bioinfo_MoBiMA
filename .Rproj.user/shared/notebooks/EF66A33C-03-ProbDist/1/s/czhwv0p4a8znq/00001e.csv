@@ -1,0 +1,15 @@
+"0","# Correlate the above two values
+ggplot(aes(x = q.theoretical, 
+                 y = q.observed)) +
+  geom_point(size = 1) +
+  geom_abline(intercept = 0, slope = 1, 
+              size = 1, color = ""red"") 
+"
+"1","[1m[33mError[39m in `fortify()`:[22m
+[38;5;255m[33m![38;5;255m `data` must be a [34m<data.frame>[38;5;255m, or an object coercible by `fortify()`, not a <uneval> object.
+[36mℹ[38;5;255m Did you accidentally pass `aes()` to the `data` argument?[39m
+Backtrace:
+[90m 1. [39mggplot2::ggplot(aes(x = q.theoretical, y = q.observed))
+[90m 2. [39mggplot2:::ggplot.default(aes(x = q.theoretical, y = q.observed))
+[90m 4. [39m[1m[94mggplot2:::fortify.default([39m[22mdata, ...[1m[94m)[39m[22m
+"

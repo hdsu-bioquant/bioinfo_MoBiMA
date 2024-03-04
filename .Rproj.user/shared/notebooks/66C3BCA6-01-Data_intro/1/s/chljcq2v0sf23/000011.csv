@@ -1,0 +1,3 @@
+"0","# set the row names using the column id"
+"0","dat = dat %>%"
+"0","  column_to_rownames(var = 'id')"

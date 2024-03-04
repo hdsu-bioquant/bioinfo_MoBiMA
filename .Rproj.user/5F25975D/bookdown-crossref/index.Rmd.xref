@@ -1,0 +1,20 @@
+h1:introduction Introduction
+h2:where-to-start Where to start
+h2:r R
+h3:rstudio RStudio
+h3:variable-assignment-in-r Variable assignment in R
+h3:classes Classes
+h3:logical-operations Logical operations
+h3:vectors Vectors
+h3:matrixes Matrixes
+h3:dataframes Dataframes
+h2:r-markdown R Markdown
+h2:advanced-data-manipulation-with-tidyverse Advanced data manipulation with tidyverse
+h3:filter-based-on-conditions Filter based on conditions
+h3:select-specific-columns Select specific columns
+h3:operations-on-groups Operations on groups
+h2:pretty-plots-using-ggplot2 Pretty plots using ggplot2
+h3:histogram Histogram
+h3:scatter-plot Scatter plot
+h3:boxplot Boxplot
+

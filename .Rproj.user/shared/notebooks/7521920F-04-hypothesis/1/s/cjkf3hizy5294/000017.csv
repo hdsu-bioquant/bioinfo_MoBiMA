@@ -1,0 +1,6 @@
+"0","ggplot(dat,"
+"0","       aes(x = weight, "
+"0","           fill = gender)) +"
+"0","  geom_density(alpha = 0.5) +"
+"0","  geom_vline(xintercept = mean.men, colour = ""cyan"") +"
+"0","  geom_vline(xintercept = mean.women, colour = ""salmon"")"

@@ -1,0 +1,3 @@
+"0","rmv.rows = apply(dat, 1,function(x) {sum(is.na(x))})"
+"2","Error: object 'dat' not found
+"

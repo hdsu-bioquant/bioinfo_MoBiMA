@@ -1,0 +1,6 @@
+"0",""
+"0","# Check if it's normally distributed using a QQ-plot "
+"0","ggplot(expression,"
+"0","       aes(sample = SOX4)) +"
+"0","  geom_qq() +"
+"0","  geom_qq_line(colour = 'red')"

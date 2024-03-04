@@ -1,0 +1,2 @@
+"0","## compute the patient-patient distance matrix (this is why we transpose using the `t()` function)"
+"0","D = dist(t(brca.exp))"

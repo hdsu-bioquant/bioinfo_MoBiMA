@@ -1,0 +1,4 @@
+"0","## Let's first make a histogram"
+"0","ggplot(dat,"
+"0","       aes(x = bp.1s)) +"
+"0","  geom_histogram(bins = 50)"

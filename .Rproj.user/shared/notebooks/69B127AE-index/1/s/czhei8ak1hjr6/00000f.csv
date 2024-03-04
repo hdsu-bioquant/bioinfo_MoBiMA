@@ -1,0 +1,4 @@
+"0","ggplot(msleep,                    # start by picking the dataframe to plot"
+"0","       aes(x = bodywt,            # column to use for x-axis"
+"0","           y = sleep_total)) +    # column to use for y-axis"
+"0","  geom_point()                    # plot layer for points"

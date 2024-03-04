@@ -1,0 +1,5 @@
+"0","brca.exp <- brca.exp %>%"
+"0","  mutate_all(~ log2(. + 1))"
+"2","Error in UseMethod(""tbl_vars"") : 
+  no applicable method for 'tbl_vars' applied to an object of class ""c('matrix', 'array', 'double', 'numeric')""
+"

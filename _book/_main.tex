@@ -1,0 +1,3554 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{book}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\usepackage{booktabs}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{plainnat}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Bioinformatics introductory course - MSc Molekulare Biotechnologie},
+  pdfauthor={Biomedical Genomics group, IPMB},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Bioinformatics introductory course - MSc Molekulare Biotechnologie}
+\author{Biomedical Genomics group, IPMB}
+\date{2024-03-04}
+
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}{Lemma}[chapter]
+\newtheorem{corollary}{Corollary}[chapter]
+\newtheorem{proposition}{Proposition}[chapter]
+\newtheorem{conjecture}{Conjecture}[chapter]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[chapter]
+\theoremstyle{definition}
+\newtheorem{example}{Example}[chapter]
+\theoremstyle{definition}
+\newtheorem{exercise}{Exercise}[chapter]
+\theoremstyle{definition}
+\newtheorem{hypothesis}{Hypothesis}[chapter]
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{solution}{Solution}
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\hypertarget{introduction}{%
+\chapter*{Introduction}\label{introduction}}
+\addcontentsline{toc}{chapter}{Introduction}
+
+\hypertarget{where-to-start}{%
+\section*{Where to start}\label{where-to-start}}
+\addcontentsline{toc}{section}{Where to start}
+
+It is recommended that you take the introductory classes for R in \textbf{DataCamp} to get to know this language before you start coding here. In this course you will learn to use RStudio, a software that allows you to use R in a very user-friendly way.
+
+You can find more resources here:
+
+\begin{quote}
+\begin{itemize}
+\tightlist
+\item
+  R Tutorial for Beginners at \href{https://www.guru99.com/r-tutorial.html}{guru99}
+\item
+  R courses at \href{https://www.bioinformatics.babraham.ac.uk/training.html\#advancedrtidy}{Babraham Bioinformatics}
+\item
+  R for \href{https://r4ds.had.co.nz}{Data Science}
+\item
+  R markdown at \href{https://rmarkdown.rstudio.com/lesson-1.html}{RStudio} and in this \href{https://www.markdownguide.org/cheat-sheet/}{cheatsheet}
+\item
+  \href{https://www.youtube.com/watch?v=h29g21z0a68}{Youtube tutorial} on ggplot2 with one of its developers
+\end{itemize}
+\end{quote}
+
+\hypertarget{r}{%
+\section*{R}\label{r}}
+\addcontentsline{toc}{section}{R}
+
+R is a powerful programming language for the analysis of data.\\
+Two notes of advice about good practice now that your journey is about to start:
+
+\begin{quote}
+\textbf{Commenting}: Comment your code as you go with \texttt{\#}! This way you avoid forgetting the meaning of a given line. This is also important if you want to share your code with others. Trust me, you will not remember what you are writing today in this class one week from now, so it will be best to have a reminder.\\
+\textbf{Clean and tidy code}: See that weird line in the middle of your script/markdown? This is meant to be a guideline about code length. If your code is so long that it crosses the line, please find a way to make it shorter. In addition, avoid making your chunks too long and make separate scripts for each class or topic, it will keep everything more organised and easy to track.
+\end{quote}
+
+\hypertarget{rstudio}{%
+\subsection*{RStudio}\label{rstudio}}
+\addcontentsline{toc}{subsection}{RStudio}
+
+We will work with RStudio that is composed of 4 main windows/panels.\\
+The \textbf{Editor}, the \textbf{Environment}, the \textbf{Console}, and the \textbf{Files} window/panel. Order can vary.
+
+\begin{figure}
+\centering
+\includegraphics{figures/RstudioLayout.png}
+\caption{In \textbf{Editor (1)}, you can find the area where you usually write most code, like a Rscript or a Rmarkdown. \textbf{Environment (2)} shows you your variables, history, among others. Here, you can see any variable you define in your session. You can use this to do a very basic inspection of objects you create or import. \textbf{Console (3)} is where all your code gets processed when you run it. The console remembers (which is why when you click arrow up or down, it shows you commands you ran before), but it does not keep! Therefore, ALWAYS write the meaningful code lines in a script/markdown (1). Lastly, \textbf{4} can be used for browsing documents (\emph{Files}), see the plots you produce (\emph{Plots}), searching/managing packages (\emph{Packages}), or find help on functions (\emph{Help}).}
+\end{figure}
+
+\hypertarget{variable-assignment-in-r}{%
+\subsection*{Variable assignment in R}\label{variable-assignment-in-r}}
+\addcontentsline{toc}{subsection}{Variable assignment in R}
+
+You can start by testing one of the most basic tasks - variable assignment. Variable assignments in R can be done using either the \texttt{\textless{}-} symbol, or the \texttt{=} symbol.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a }\OtherTok{\textless{}{-}} \StringTok{"Hello world!"}
+\CommentTok{\# or}
+\NormalTok{hello }\OtherTok{=} \StringTok{"Hello world!"}
+\end{Highlighting}
+\end{Shaded}
+
+You can now run \texttt{print(a)} and \texttt{print(hello)}.
+Note that after assignment both variables (a and hello) are listed in the ``Environment'' window of RStudio.
+
+\begin{quote}
+R is case sensitive. \texttt{hello} is a known variable, but \texttt{Hello} is not!
+\end{quote}
+
+You can remove variables too\ldots{}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{rm}\NormalTok{(a)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{classes}{%
+\subsection*{Classes}\label{classes}}
+\addcontentsline{toc}{subsection}{Classes}
+
+In the same way that a orange is a fruit or Malta is a country, any R variable corresponds to a class and holds a given structure. Classes
+Let us say you generate a new variable (\texttt{name}). How can you know more about it?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{name }\OtherTok{=} \StringTok{"Marie"}
+\end{Highlighting}
+\end{Shaded}
+
+The function \texttt{str()} gives you the \textbf{structure} of the variable.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str}\NormalTok{(name)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  chr "Marie"
+\end{verbatim}
+
+where \emph{chr} stands for character, the class of this variable.
+
+The function \texttt{class()} gives you the \textbf{class} of the variable.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{class}\NormalTok{(name)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "character"
+\end{verbatim}
+
+\hypertarget{logical-operations}{%
+\subsection*{Logical operations}\label{logical-operations}}
+\addcontentsline{toc}{subsection}{Logical operations}
+
+We can perform tests on simple variables using the \texttt{==}, \texttt{\textgreater{}},\texttt{\textless{}} operators:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{name }\SpecialCharTok{==} \StringTok{"Harry Potter"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+The output of this test will be either FALSE/TRUE. You can test these using numbers too:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{33} \SpecialCharTok{\textgreater{}} \DecValTok{23}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\hypertarget{vectors}{%
+\subsection*{Vectors}\label{vectors}}
+\addcontentsline{toc}{subsection}{Vectors}
+
+We can make any vector using \texttt{c()}. Try it with some numbers.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{var1 }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{7}\NormalTok{,}\DecValTok{12}\NormalTok{,}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+If you want to identify the specific number of this vector by position, you can use square brackets. Like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{var1[}\DecValTok{1}\NormalTok{]     }\CommentTok{\# outputs the first element}
+\NormalTok{var1[}\DecValTok{2}\SpecialCharTok{:}\DecValTok{3}\NormalTok{]   }\CommentTok{\# outputs the 2nd to 3rd elements}
+\NormalTok{var1[}\SpecialCharTok{{-}}\DecValTok{3}\NormalTok{]    }\CommentTok{\# outputs all except the 3rd element}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{matrixes}{%
+\subsection*{Matrixes}\label{matrixes}}
+\addcontentsline{toc}{subsection}{Matrixes}
+
+A matrix is a two-dimensional \textbf{array} of numbers. They are defined using the \texttt{matrix()} function as follows:
+Take note of the difference between \texttt{byrow=FALSE} and \texttt{byrow=TRUE}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{6}\NormalTok{)}
+
+\NormalTok{X }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\AttributeTok{data =}\NormalTok{ x, }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{3}\NormalTok{, }\AttributeTok{byrow =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{X }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\AttributeTok{data =}\NormalTok{ x, }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{3}\NormalTok{, }\AttributeTok{byrow =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{quote}
+Do you understand all parameters (``nrow'', ``ncol'', ``byrow'') of the \texttt{matrix()} function? What happens if you do not specify ``byrow'' as TRUE or FALSE?
+\end{quote}
+
+You can ask for the \textbf{dimensions} of a matrix (and see later also for data frames) using the function \texttt{dim()}. Do it for X.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dim}\NormalTok{(X)}
+\end{Highlighting}
+\end{Shaded}
+
+To access the elements of a matrix, it is similar to the vector but with 2 indexes:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X[}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{]                     }\CommentTok{\# [1] 3  {-}\textgreater{} element in the first row and second column}
+\NormalTok{X[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{]                     }\CommentTok{\# [1] 1 2 }
+\NormalTok{X[}\DecValTok{2}\NormalTok{, ]                      }\CommentTok{\# [1] 2 4 6  {-}\textgreater{} all elements of the second row}
+\FunctionTok{length}\NormalTok{(X[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{])             }\CommentTok{\# [1] 2  {-}\textgreater{} X[1:2, 1] is a vector of length 2}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{dataframes}{%
+\subsection*{Dataframes}\label{dataframes}}
+\addcontentsline{toc}{subsection}{Dataframes}
+
+Data frames are like matrices, but they can contain \textbf{multiple types} of values mixed.\\
+We can create a data frame using the \texttt{data.frame()} function. We can also convert a matrix into a data frame with the \texttt{as.data.frame()} function.
+
+We can prepare three vectors of the same length (for example 4 elements) and create a data frame:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Name }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Leah"}\NormalTok{, }\StringTok{"Alice"}\NormalTok{, }\StringTok{"Jonas"}\NormalTok{, }\StringTok{"Paula"}\NormalTok{)}
+\NormalTok{Age }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{21}\NormalTok{, }\DecValTok{22}\NormalTok{, }\DecValTok{20}\NormalTok{, }\DecValTok{22}\NormalTok{)}
+\NormalTok{Course }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Mathematics"}\NormalTok{, }\StringTok{"Physics"}\NormalTok{, }\StringTok{"Medicine"}\NormalTok{, }\StringTok{"Biology"}\NormalTok{)}
+\NormalTok{Place\_of\_birth }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"USA"}\NormalTok{, }\StringTok{"Germany"}\NormalTok{, }\StringTok{"Germany"}\NormalTok{, }\StringTok{"France"}\NormalTok{)}
+
+\NormalTok{Students }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{First\_Name =}\NormalTok{ Name, }
+                       \AttributeTok{Age =}\NormalTok{ Age, }
+                       \AttributeTok{Course =}\NormalTok{ Course,}
+                       \AttributeTok{Place\_of\_birth =}\NormalTok{ Place\_of\_birth)}
+\NormalTok{Students}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   First_Name Age      Course Place_of_birth
+## 1       Leah  21 Mathematics            USA
+## 2      Alice  22     Physics        Germany
+## 3      Jonas  20    Medicine        Germany
+## 4      Paula  22     Biology         France
+\end{verbatim}
+
+We can again access specific elements in a similar manner to the matrix before. Try some of these examples:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Columns}
+\NormalTok{Students}\SpecialCharTok{$}\NormalTok{Age }
+\NormalTok{Students[[}\StringTok{"Age"}\NormalTok{]]}
+
+\CommentTok{\# Rows or columns}
+\NormalTok{Students[, }\DecValTok{3}\NormalTok{]}
+\NormalTok{Students[}\DecValTok{3}\NormalTok{,]}
+
+\CommentTok{\# Elements}
+\NormalTok{Students}\SpecialCharTok{$}\NormalTok{Course[}\DecValTok{3}\NormalTok{]    }\CommentTok{\# access element 3 of the column "Course"}
+\NormalTok{Students[}\DecValTok{2}\SpecialCharTok{:}\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{]      }\CommentTok{\# select elements 2 and 3 of column 3 }
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{r-markdown}{%
+\section*{R Markdown}\label{r-markdown}}
+\addcontentsline{toc}{section}{R Markdown}
+
+R Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. You will be working with R Markdown during this course. For more details on using R Markdown see \url{http://rmarkdown.rstudio.com} or \url{https://www.markdownguide.org/basic-syntax/}.
+
+R instructions in a markdown file are written in a ``chunk'', the one below.\\
+Chunks can be added using the \texttt{+C} icon at the top right corner of this panel/editor.\\
+There is also a keyboard shortcut for it.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Sentences written after "\#" are comments. Comments are ignored during the execution of the code.}
+\CommentTok{\# print "Hello world!" on the screen.}
+\FunctionTok{print}\NormalTok{(}\StringTok{"Hello world!"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Hello world!"
+\end{verbatim}
+
+\begin{quote}
+What happens in the editor if you remove the second parenthesis? Do you see the red cross appearing? You can click on it and read the comment.\\
+And what happens if you press ``enter'' while the second parenthesis is missing?\\
+\end{quote}
+
+R will usually let know know when there is a simple syntax mistake like this one on your code.
+
+\hypertarget{advanced-data-manipulation-with-tidyverse}{%
+\section*{Advanced data manipulation with tidyverse}\label{advanced-data-manipulation-with-tidyverse}}
+\addcontentsline{toc}{section}{Advanced data manipulation with tidyverse}
+
+\textbf{Tidyverse} is a set of packages often used to manipulate data. You can think of tidyverse as a variation of the original R, which is meant to be a grammar specific to data manipulation.
+
+You can install these through:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"tidyverse"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+And load it using
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## -- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --
+## v dplyr     1.1.4     v readr     2.1.5
+## v forcats   1.0.0     v stringr   1.5.1
+## v ggplot2   3.4.4     v tibble    3.2.1
+## v lubridate 1.9.3     v tidyr     1.3.1
+## v purrr     1.0.2     
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+## i Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+\end{verbatim}
+
+We will learn a couple of functions from this framework which will make the next tasks a lot easier. Tidyverse works with the \emph{tibble} class, which is very similar to a the dataframe class, only faster and tidier.
+
+Start by loading a default tibble including sleeping patterns from different mammals. It also includes information on the animal order, genus, diet, or body weight. To do so, run the following:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{data}\NormalTok{(msleep)}
+\end{Highlighting}
+\end{Shaded}
+
+We can start by inspecting \texttt{msleep}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str}\NormalTok{(msleep)}
+\end{Highlighting}
+\end{Shaded}
+
+We can print the first rows of a dataframe using \texttt{head()}. Try it out.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(msleep)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 11
+##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
+##   <chr>   <chr> <chr> <chr> <chr>              <dbl>     <dbl>       <dbl> <dbl>
+## 1 Cheetah Acin~ carni Carn~ lc                  12.1      NA        NA      11.9
+## 2 Owl mo~ Aotus omni  Prim~ <NA>                17         1.8      NA       7  
+## 3 Mounta~ Aplo~ herbi Rode~ nt                  14.4       2.4      NA       9.6
+## 4 Greate~ Blar~ omni  Sori~ lc                  14.9       2.3       0.133   9.1
+## 5 Cow     Bos   herbi Arti~ domesticated         4         0.7       0.667  20  
+## 6 Three-~ Brad~ herbi Pilo~ <NA>                14.4       2.2       0.767   9.6
+## # i 2 more variables: brainwt <dbl>, bodywt <dbl>
+\end{verbatim}
+
+\hypertarget{filter-based-on-conditions}{%
+\subsection*{Filter based on conditions}\label{filter-based-on-conditions}}
+\addcontentsline{toc}{subsection}{Filter based on conditions}
+
+Now that we know how this dataset looks like, we can start doing more with it. Let us see the information for the domestic cat.\\
+We can do it using \texttt{filter()} on the \textbf{genus} column:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{msleep }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(genus }\SpecialCharTok{==} \StringTok{"Felis"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 11
+##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
+##   <chr>   <chr> <chr> <chr> <chr>              <dbl>     <dbl>       <dbl> <dbl>
+## 1 Domest~ Felis carni Carn~ domesticated        12.5       3.2       0.417  11.5
+## # i 2 more variables: brainwt <dbl>, bodywt <dbl>
+\end{verbatim}
+
+We also use the \texttt{\%\textgreater{}\%} operator here. This is a \textbf{pipe operator} and you will use it very often.
+
+To understand piping, let's imagine you are making a three layer cake in a factory. Instead of manually carrying the cake from one station to another to add layers and frosting, you have a conveyor belt transporting the cake through the stations automatically to make the process much more efficient. Piping avoids that you have to create multiple intermediate objects to achieve your final result when performing multiple functions.
+
+\begin{quote}
+Try filtering other columns based on numeric conditions. Use \texttt{filter()} to see which 7 animals in the datasets have a body weight superior to 200 (kg).
+\end{quote}
+
+\hypertarget{select-specific-columns}{%
+\subsection*{Select specific columns}\label{select-specific-columns}}
+\addcontentsline{toc}{subsection}{Select specific columns}
+
+Now, let's say you want to \emph{select} only specific columns. Use the \texttt{select()} function to select the columns \texttt{name}, \texttt{order}, and \texttt{bodywt} (body weight).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{body\_weights }\OtherTok{=}\NormalTok{ msleep }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(name, order, bodywt)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{operations-on-groups}{%
+\subsection*{Operations on groups}\label{operations-on-groups}}
+\addcontentsline{toc}{subsection}{Operations on groups}
+
+We can assess the average (\texttt{mean()}) and standard deviation (\texttt{sd()}) body weight by animal order present. To do so, we will use \texttt{summarise()} and \texttt{group\_by()} functions on the \emph{body\_weights} we generated previously.
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{group\_by()}: Assigns a group to a given set of rows (observations).\\
+\item
+  \texttt{summarise()}: Makes calculations for a given group based on the row values assigned to it.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{body\_weights }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(order) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{mean\_bweight =} \FunctionTok{mean}\NormalTok{(bodywt, }\AttributeTok{na.rm =}\NormalTok{ T),    }\CommentTok{\# na.rm = T will exclude missing values (NA)}
+            \AttributeTok{sd\_bweight =} \FunctionTok{sd}\NormalTok{(bodywt))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 19 x 3
+##    order           mean_bweight sd_bweight
+##    <chr>                  <dbl>      <dbl>
+##  1 Afrosoricida          0.9      NA      
+##  2 Artiodactyla        282.      376.     
+##  3 Carnivora            57.7      60.6    
+##  4 Cetacea             342.      401.     
+##  5 Chiroptera            0.0165    0.00919
+##  6 Cingulata            31.8      40.0    
+##  7 Didelphimorphia       1.03      0.940  
+##  8 Diprotodontia         1.36      0.368  
+##  9 Erinaceomorpha        0.66      0.156  
+## 10 Hyracoidea            3.06      0.496  
+## 11 Lagomorpha            2.5      NA      
+## 12 Monotremata           4.5      NA      
+## 13 Perissodactyla      305.      187.     
+## 14 Pilosa                3.85     NA      
+## 15 Primates             13.9      21.5    
+## 16 Proboscidea        4600.     2904.     
+## 17 Rodentia              0.288     0.371  
+## 18 Scandentia            0.104    NA      
+## 19 Soricomorpha          0.0414    0.0289
+\end{verbatim}
+
+\hypertarget{pretty-plots-using-ggplot2}{%
+\section*{Pretty plots using ggplot2}\label{pretty-plots-using-ggplot2}}
+\addcontentsline{toc}{section}{Pretty plots using ggplot2}
+
+One of the many advantages of tidyverse is how compatible it is with \texttt{ggplot2}. Thanks to the wonders of the \texttt{\%\textgreater{}\%} operator, you can generate a basic plot instantly without creating intermediate objects.
+
+\textbf{The structure of any \texttt{ggplot()} is always based on two essential elements: the aesthetics (\texttt{aes()}) and the plot layers (named as \texttt{geom\_something()}. \texttt{aes()} is always found within the \texttt{ggplot()} function.}
+
+\hypertarget{histogram}{%
+\subsection*{Histogram}\label{histogram}}
+\addcontentsline{toc}{subsection}{Histogram}
+
+Let us start by making an histogram, as we will work with distributions over this course. If we want to see the global distribution of sleep time (total, in hours) for all animals in the dataset, we will use \texttt{geom\_histogram()}. Like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(msleep,                    }\CommentTok{\# start by picking the dataframe to plot}
+       \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ sleep\_total)) }\SpecialCharTok{+}    \CommentTok{\# column to use for y{-}axis}
+  \FunctionTok{geom\_histogram}\NormalTok{()                }\CommentTok{\# plot layer for histogram}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-16-1.pdf}
+
+\hypertarget{scatter-plot}{%
+\subsection*{Scatter plot}\label{scatter-plot}}
+\addcontentsline{toc}{subsection}{Scatter plot}
+
+For example, if we want to see the relationship between the sleep time (total, in hours) and the body weights, we use this formula:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(msleep,                    }\CommentTok{\# start by picking the dataframe to plot}
+       \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ bodywt,            }\CommentTok{\# column to use for x{-}axis}
+           \AttributeTok{y =}\NormalTok{ sleep\_total)) }\SpecialCharTok{+}    \CommentTok{\# column to use for y{-}axis}
+  \FunctionTok{geom\_point}\NormalTok{()                    }\CommentTok{\# plot layer for points}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-17-1.pdf}
+
+\begin{quote}
+The x-axis looks a little squished, so it will be hard to view many of the trends. We can then log-transform this scale using the \texttt{log()} function. Try it out!
+\end{quote}
+
+There are multiple options for \texttt{geom\_X()} depending on the information you are plotting. You can find all possibilities \href{https://ggplot2.tidyverse.org/reference/}{here}.
+
+\hypertarget{boxplot}{%
+\subsection*{Boxplot}\label{boxplot}}
+\addcontentsline{toc}{subsection}{Boxplot}
+
+In this next example, we are creating a boxplot with the sleep time (total, in hours) for each dietary group (\texttt{vore}).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(msleep,}
+       \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ vore,}
+           \AttributeTok{y =}\NormalTok{ sleep\_total)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-18-1.pdf}
+
+\begin{quote}
+Try some of the other geom\_ layers available. As an example, \texttt{geom\_violin()} can be used in a similar way to \texttt{geom\_boxplot()}.
+\end{quote}
+
+\hypertarget{week-1-descriptive-statistics-and-data-types}{%
+\chapter{WEEK 1: Descriptive statistics and data types}\label{week-1-descriptive-statistics-and-data-types}}
+
+Today, you will learn how to perform basic tasks on a dataframe/tibble, descriptive statistics, perform data cleaning, and plotting.
+
+\hypertarget{data-features-and-where-to-find-them}{%
+\section{Data features and where to find them}\label{data-features-and-where-to-find-them}}
+
+\hypertarget{load-the-data}{%
+\subsection{Load the data}\label{load-the-data}}
+
+The diabetes dataset, which we will be using in this practical class will be downloaded from an online repository.
+We will load that into R and have a sneak peek into how it looks like with the console.
+In the following you will see several functions that give us information about our dataset.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dat }\OtherTok{=} \FunctionTok{as\_tibble}\NormalTok{(}\FunctionTok{read.delim}\NormalTok{(}\StringTok{\textquotesingle{}https://tinyurl.com/y4fark9g\textquotesingle{}}\NormalTok{)) }\CommentTok{\# Load the dataset}
+\FunctionTok{head}\NormalTok{(dat, }\DecValTok{10}\NormalTok{) }\CommentTok{\# Look at the first 10 lines of the table}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 10 x 19
+##       id  chol stab.glu   hdl ratio glyhb location     age gender height weight
+##    <int> <int>    <int> <int> <dbl> <dbl> <chr>      <int> <chr>   <int>  <int>
+##  1  1000   203       82    56  3.60  4.31 Buckingham    46 female     62    121
+##  2  1001   165       97    24  6.90  4.44 Buckingham    29 female     64    218
+##  3  1002   228       92    37  6.20  4.64 Buckingham    58 female     61    256
+##  4  1003    78       93    12  6.5   4.63 Buckingham    67 male       67    119
+##  5  1005   249       90    28  8.90  7.72 Buckingham    64 male       68    183
+##  6  1008   248       94    69  3.60  4.81 Buckingham    34 male       71    190
+##  7  1011   195       92    41  4.80  4.84 Buckingham    30 male       69    191
+##  8  1015   227       75    44  5.20  3.94 Buckingham    37 male       59    170
+##  9  1016   177       87    49  3.60  4.84 Buckingham    45 male       69    166
+## 10  1022   263       89    40  6.60  5.78 Buckingham    55 female     63    202
+## # i 8 more variables: frame <chr>, bp.1s <int>, bp.1d <int>, bp.2s <int>,
+## #   bp.2d <int>, waist <int>, hip <int>, time.ppn <int>
+\end{verbatim}
+
+\hypertarget{dimensions-and-naming}{%
+\subsection{Dimensions and naming}\label{dimensions-and-naming}}
+
+\textbf{1.} What is the dimension of our dataset (i.e.~how many rows/columns are there in our data)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Dimension}
+\FunctionTok{dim}\NormalTok{(dat)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 403  19
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Number of columns}
+\FunctionTok{ncol}\NormalTok{(dat)}
+\CommentTok{\# Number of rows}
+\FunctionTok{nrow}\NormalTok{(dat)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{2.} What are the column names of our dataset
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{colnames}\NormalTok{(dat) }\CommentTok{\# Similarly rownames() for rows}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "id"       "chol"     "stab.glu" "hdl"      "ratio"    "glyhb"   
+##  [7] "location" "age"      "gender"   "height"   "weight"   "frame"   
+## [13] "bp.1s"    "bp.1d"    "bp.2s"    "bp.2d"    "waist"    "hip"     
+## [19] "time.ppn"
+\end{verbatim}
+
+Probably you are confused about what these column names mean.
+For more description on these values \href{https://biostat.app.vumc.org/wiki/pub/Main/DataSets/Cdiabetes.html}{look here}
+
+\hypertarget{numerical-features}{%
+\subsection{Numerical features}\label{numerical-features}}
+
+\textbf{3.} How do we extract the minimum and maximum age of patients in our dataset?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{min}\NormalTok{(dat}\SpecialCharTok{$}\NormalTok{age)}
+\FunctionTok{max}\NormalTok{(dat}\SpecialCharTok{$}\NormalTok{age)}
+\FunctionTok{range}\NormalTok{(dat}\SpecialCharTok{$}\NormalTok{age)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{quote}
+Can you find out the same for height and weight?
+\end{quote}
+
+\textbf{4.} How does the overall summary of our entire dataset look like?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(dat)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{quote}
+Can you explain what you see after you run the \texttt{summary()} function?
+\end{quote}
+
+Feel free to play around with this syntax until you feel comfortable with it.
+You can open a window with \texttt{View(dat)} to compare your results.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{data-cleaning}{%
+\section{Data cleaning}\label{data-cleaning}}
+
+Very often the first thing one needs to do before any data science project is to clean up the raw data and transform it into a format that is readily understood and easy to use for all downstream analysis.
+This process usually involves: --
+
+\begin{itemize}
+\tightlist
+\item
+  Removing empty value rows/columns
+\item
+  Removing unused or unnecessary rows/columns
+\item
+  Reordering the data matrix
+\item
+  Keeping columns uniformly numeric (age, weight etc) or string (names, places etc) or logical (TRUE/FALSE, 1/0)
+\item
+  Handling strange caveats which are data specific like replacing \texttt{,} or \texttt{.}, or \texttt{;} from numbers etc
+\end{itemize}
+
+Lets do some clean up of our own diabetes data
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  We will make the \texttt{id} column the row names for the dataset;
+\item
+  We will remove the \texttt{bp.2s} and \texttt{bp.2d} columns as it has mostly missing values (see summary above);
+\item
+  We will also remove the column \texttt{time.ppn} which will not be required in our analysis;
+\item
+  We will reorder the columns of the data such that all the qualitative and quantitative values are separated.
+\end{enumerate}
+
+To perform this cleanup, we need a couple of important functions, that we will first discuss:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{filter}
+\item
+  \texttt{is.na}
+\item
+  \texttt{mutate}
+\item
+  \texttt{accross}
+\item
+  \texttt{\%in\%}
+\end{itemize}
+
+\hypertarget{filter}{%
+\subsection{filter()}\label{filter}}
+
+\texttt{filter()} is used on a dataset to filter rows satisfying a condition you specify like we saw previously (Introduction).
+Let's look at an example. We are only filtering for senior individuals in our dataset.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dat\_seniors }\OtherTok{=}\NormalTok{ dat }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(age }\SpecialCharTok{\textless{}=} \DecValTok{65}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+We can also filter based on other conditions, like location, sex, among others.
+In some cases, we can also use \texttt{which()} to filter values. The syntax is different\ldots{}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dat[dat}\SpecialCharTok{$}\NormalTok{age }\SpecialCharTok{\textless{}=} \DecValTok{65}\NormalTok{,]}
+\end{Highlighting}
+\end{Shaded}
+
+\ldots{} but it works for vectors and other classes. Let's see the next example.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# number of animals you have}
+\NormalTok{number }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{5}\NormalTok{)}
+\CommentTok{\# Let\textquotesingle{}s create a different vector (of the same length)}
+\NormalTok{animals }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"cat"}\NormalTok{, }\StringTok{"dog"}\NormalTok{, }\StringTok{"cow"}\NormalTok{, }\StringTok{"parrot"}\NormalTok{, }\StringTok{"zebra"}\NormalTok{, }\StringTok{"sparrow"}\NormalTok{, }\StringTok{"lizard"}\NormalTok{)}
+\CommentTok{\# Let\textquotesingle{}s use the "which()" function now}
+\NormalTok{animals[}\FunctionTok{which}\NormalTok{(number }\SpecialCharTok{\textgreater{}} \DecValTok{2}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "dog"    "cow"    "parrot" "lizard"
+\end{verbatim}
+
+We selected all animals from the ``animals'' vector that correspond to more than three individuals in the ``number'' vector.
+
+\hypertarget{is.na}{%
+\subsection{is.na()}\label{is.na}}
+
+\texttt{is.na()} is used to determine if NA values are present in a given object. We can try a simple example with one variable being assigned as NA.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{=} \DecValTok{2}
+\FunctionTok{is.na}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y }\OtherTok{=} \ConstantTok{NA}
+\FunctionTok{is.na}\NormalTok{(y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+We can do this with vectors obtained from \texttt{dat}. What class is the output in?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{is.na}\NormalTok{(dat}\SpecialCharTok{$}\NormalTok{glyhb)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{mutate}{%
+\subsection{mutate()}\label{mutate}}
+
+\texttt{mutate()} is often used to create a new column based on another column of the dataframe. Let us use this function to \emph{mutate} two new columns including the weight in kilograms and the height in centimeters. \textbf{The conversion from pounds to kilograms can be done by multiplying weight in pounds by 0.454. To covert height to centimeters we only need to multiply height (inches) by 2.54}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dat }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{weight.kg =}\NormalTok{ weight }\SpecialCharTok{*} \FloatTok{0.454}\NormalTok{,        }\CommentTok{\# you can generate both columns using the same mutate!}
+         \AttributeTok{height.cm =}\NormalTok{ height }\SpecialCharTok{*} \FloatTok{2.54}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}     \CommentTok{\# we do not need to save this output}
+  \FunctionTok{select}\NormalTok{(id, weight.kg, height.cm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 403 x 3
+##       id weight.kg height.cm
+##    <int>     <dbl>     <dbl>
+##  1  1000      54.9      157.
+##  2  1001      99.0      163.
+##  3  1002     116.       155.
+##  4  1003      54.0      170.
+##  5  1005      83.1      173.
+##  6  1008      86.3      180.
+##  7  1011      86.7      175.
+##  8  1015      77.2      150.
+##  9  1016      75.4      175.
+## 10  1022      91.7      160.
+## # i 393 more rows
+\end{verbatim}
+
+\hypertarget{accross}{%
+\subsection{accross()}\label{accross}}
+
+\texttt{accross()} is very often used together with \texttt{mutate()} and another helper function, like \texttt{everywhere()}, \texttt{starts\_with()}, \texttt{ends\_with()}, or \texttt{contains()}.
+Later, we will use \texttt{accross()} together with the other functions we learned previously to remove NAs like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dat }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{rowwise}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{na\_count =} \FunctionTok{sum}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(}\FunctionTok{across}\NormalTok{(}\FunctionTok{everything}\NormalTok{()))))}
+\end{Highlighting}
+\end{Shaded}
+
+There is much to unpack here:
++ \texttt{rowwise()} ensures that the next operations are applied by row.
++ \texttt{mutate()} adds a new column called na\_count to the dataframe.
++ \texttt{across(everything())} selects all columns in the current row.
++ \texttt{sum(is.na(...))} calculates the sum of missing values for each row.
+
+\begin{quote}
+Try to run the previous example without \texttt{rowwise()}. What does it look like?
+\end{quote}
+
+\hypertarget{in}{%
+\subsection{\%in\%}\label{in}}
+
+This is an operator to check which elements of a first vector are inside a second vector.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}Frodo\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Sam\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}Pippin\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Sam\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Frodo\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Merry\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE TRUE
+\end{verbatim}
+
+\hypertarget{ready-for-the-cleaning}{%
+\subsection{Ready for the cleaning!}\label{ready-for-the-cleaning}}
+
+The first column of the dataframe is the column with the name ``id''.
+The rows are just numbered, without names.
+We are going to rename the rows using the column ``id''. The function \texttt{column\_to\_rownames()} allows us to do this efficiently.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# set the row names using the column id}
+\NormalTok{dat }\OtherTok{=}\NormalTok{ dat }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{column\_to\_rownames}\NormalTok{(}\AttributeTok{var =} \StringTok{\textquotesingle{}id\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{quote}
+Keep in mind that rownames must be unique!
+\end{quote}
+
+The \emph{na\_count} column will then include the number of NAs per row. Do you understand how it works?
+We finally apply \texttt{filter} again to keep only rows with less than or 2 NAs.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dat }\OtherTok{=}\NormalTok{ dat }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{rowwise}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{na\_count =} \FunctionTok{sum}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(}\FunctionTok{across}\NormalTok{(}\FunctionTok{everything}\NormalTok{())))) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(na\_count }\SpecialCharTok{\textless{}=} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+We will also remove the \emph{na\_count} and some problematic columns (\emph{bp.2s}, \emph{bp.2d} and \emph{time.ppn}) by \textbf{selecting the ones which are not these}. We can do this using \texttt{!}, as this character can be used to invert results. Let us try it with \texttt{select()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dat }\OtherTok{=}\NormalTok{ dat }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{c}\NormalTok{(na\_count, time.ppn, bp}\FloatTok{.2}\NormalTok{d, bp}\FloatTok{.2}\NormalTok{s))}
+\end{Highlighting}
+\end{Shaded}
+
+Next, we can re-order the remaining columns, in order to put the categorical columns first, and numerical columns after. We can use \texttt{select} to order columns too, but we need to combine it with \texttt{where()} and functions which verify the class of the columns, like \texttt{is.character()} or \texttt{is.numeric()}.
+
+Here is a simple example:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create a character and numeric }
+\NormalTok{name }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"Antonia"}\NormalTok{)}
+\NormalTok{age }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\DecValTok{23}\NormalTok{)}
+
+\CommentTok{\# Verify if the previous object are from the character/numeric classes}
+\FunctionTok{is.character}\NormalTok{(name)}
+\FunctionTok{is.character}\NormalTok{(age)}
+\FunctionTok{is.numeric}\NormalTok{(age)}
+\end{Highlighting}
+\end{Shaded}
+
+And here we can apply the same principle to the re-ordering:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dat }\OtherTok{\textless{}{-}}\NormalTok{ dat }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(}
+    \CommentTok{\# Select categorical columns}
+    \FunctionTok{where}\NormalTok{(is.character), }
+    \CommentTok{\# Select numerical columns}
+    \FunctionTok{where}\NormalTok{(is.numeric)}
+\NormalTok{  )}
+
+\CommentTok{\# OR you can use the indexes too, but if you more than 10{-}20 columns, that is not ideal}
+\CommentTok{\# dat = dat[,c(8,6,11,9,10,14,15,2,5,1,3,4,12,13)]}
+\end{Highlighting}
+\end{Shaded}
+
+Now lets look at our cleaned data:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(dat)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    location            gender             frame                chol      
+##  Length:377         Length:377         Length:377         Min.   : 78.0  
+##  Class :character   Class :character   Class :character   1st Qu.:179.0  
+##  Mode  :character   Mode  :character   Mode  :character   Median :204.0  
+##                                                           Mean   :208.2  
+##                                                           3rd Qu.:230.0  
+##                                                           Max.   :443.0  
+##                                                                          
+##     stab.glu          hdl             ratio            glyhb       
+##  Min.   : 48.0   Min.   : 12.00   Min.   : 1.500   Min.   : 2.680  
+##  1st Qu.: 81.0   1st Qu.: 38.00   1st Qu.: 3.200   1st Qu.: 4.390  
+##  Median : 90.0   Median : 46.00   Median : 4.200   Median : 4.860  
+##  Mean   :107.3   Mean   : 50.36   Mean   : 4.538   Mean   : 5.594  
+##  3rd Qu.:108.0   3rd Qu.: 59.00   3rd Qu.: 5.400   3rd Qu.: 5.622  
+##  Max.   :385.0   Max.   :120.00   Max.   :19.300   Max.   :16.110  
+##                                                    NA's   :3       
+##       age           height          weight          bp.1s      
+##  Min.   :19.0   Min.   :52.00   Min.   : 99.0   Min.   : 90.0  
+##  1st Qu.:34.0   1st Qu.:63.00   1st Qu.:151.0   1st Qu.:122.0  
+##  Median :45.0   Median :66.00   Median :174.0   Median :136.0  
+##  Mean   :46.9   Mean   :66.02   Mean   :178.1   Mean   :137.4  
+##  3rd Qu.:60.0   3rd Qu.:69.00   3rd Qu.:200.0   3rd Qu.:148.0  
+##  Max.   :92.0   Max.   :76.00   Max.   :325.0   Max.   :250.0  
+##                                                                
+##      bp.1d            waist            hip       
+##  Min.   : 48.00   Min.   :26.00   Min.   :30.00  
+##  1st Qu.: 75.00   1st Qu.:33.00   1st Qu.:39.00  
+##  Median : 82.00   Median :37.00   Median :42.00  
+##  Mean   : 83.69   Mean   :37.95   Mean   :43.08  
+##  3rd Qu.: 92.00   3rd Qu.:41.25   3rd Qu.:46.00  
+##  Max.   :124.00   Max.   :56.00   Max.   :64.00  
+##                   NA's   :1       NA's   :1
+\end{verbatim}
+
+The ordering and selection of columns looks right, however it seems that there are certain rows that have missing values still (like \texttt{glyhb} column has 3 \texttt{NA} values still).
+Lets remove all rows with any missing value using \texttt{na.omit()}.
+Remember, 1 row = 1 patient.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dat }\OtherTok{=}\NormalTok{ dat }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{na.omit}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{quote}
+How many patients were removed because they were associated with missing values?
+\end{quote}
+
+Now our cleaned data has no missing values, columns are cleanly ordered and each column is in the right format
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(dat)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    location            gender             frame                chol      
+##  Length:367         Length:367         Length:367         Min.   : 78.0  
+##  Class :character   Class :character   Class :character   1st Qu.:179.0  
+##  Mode  :character   Mode  :character   Mode  :character   Median :204.0  
+##                                                           Mean   :207.5  
+##                                                           3rd Qu.:229.0  
+##                                                           Max.   :443.0  
+##     stab.glu          hdl             ratio            glyhb       
+##  Min.   : 48.0   Min.   : 12.00   Min.   : 1.500   Min.   : 2.680  
+##  1st Qu.: 81.0   1st Qu.: 38.00   1st Qu.: 3.200   1st Qu.: 4.390  
+##  Median : 90.0   Median : 46.00   Median : 4.200   Median : 4.860  
+##  Mean   :107.3   Mean   : 50.28   Mean   : 4.536   Mean   : 5.602  
+##  3rd Qu.:108.0   3rd Qu.: 59.00   3rd Qu.: 5.400   3rd Qu.: 5.630  
+##  Max.   :385.0   Max.   :120.00   Max.   :19.300   Max.   :16.110  
+##       age            height          weight          bp.1s      
+##  Min.   :19.00   Min.   :52.00   Min.   : 99.0   Min.   : 90.0  
+##  1st Qu.:34.00   1st Qu.:63.00   1st Qu.:151.0   1st Qu.:121.5  
+##  Median :45.00   Median :66.00   Median :174.0   Median :136.0  
+##  Mean   :46.68   Mean   :66.05   Mean   :178.1   Mean   :137.1  
+##  3rd Qu.:60.00   3rd Qu.:69.00   3rd Qu.:200.0   3rd Qu.:148.0  
+##  Max.   :92.00   Max.   :76.00   Max.   :325.0   Max.   :250.0  
+##      bp.1d           waist            hip       
+##  Min.   : 48.0   Min.   :26.00   Min.   :30.00  
+##  1st Qu.: 75.0   1st Qu.:33.00   1st Qu.:39.00  
+##  Median : 82.0   Median :37.00   Median :42.00  
+##  Mean   : 83.4   Mean   :37.93   Mean   :43.04  
+##  3rd Qu.: 92.0   3rd Qu.:41.50   3rd Qu.:46.00  
+##  Max.   :124.0   Max.   :56.00   Max.   :64.00
+\end{verbatim}
+
+\begin{quote}
+Can you identify which types of data (continuous, discrete etc) each column above represents and why?
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{visualizing-data-distribution}{%
+\section{Visualizing data distribution}\label{visualizing-data-distribution}}
+
+In this section you will also learn the essential functions to plot data in an intuitive and useful way using the \texttt{ggplot2} package, just like in the introductory section to tidyverse.
+
+\hypertarget{histograms}{%
+\subsection{Histograms}\label{histograms}}
+
+We can plot the column ``stab.glu'' as a histogram using the \texttt{hist()} function:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(dat,}
+       \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ stab.glu)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Stabilized Glucose concentration in blood"}\NormalTok{,  }\CommentTok{\# add labels to the x{-}axis}
+       \AttributeTok{title =} \StringTok{"Glucose concentration"}\NormalTok{)                  }\CommentTok{\# add title}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-41-1.pdf}
+
+\begin{quote}
+Add the parameter \texttt{bins\ =\ 50} in the above lines of code (inside \texttt{geom\_histogram}) and see what happens.
+Try different values for \texttt{bins} like \texttt{10,\ 20,\ 75,\ 100}. Can you interpret the differences?
+Is this a good or bad thing about histograms?
+\end{quote}
+
+\hypertarget{density-plots}{%
+\subsection{Density plots}\label{density-plots}}
+
+For density plots, we use the \texttt{geom\_density()} function to estimate the probability density function for a given variable.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(dat,}
+       \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ stab.glu)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_density}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Stabilized Glucose concentration in blood"}\NormalTok{,  }\CommentTok{\# add labels to the x{-}axis}
+       \AttributeTok{title =} \StringTok{"Glucose concentration"}\NormalTok{)                  }\CommentTok{\# add title}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-42-1.pdf}
+
+\hypertarget{boxplots}{%
+\subsection{Boxplots}\label{boxplots}}
+
+The \texttt{boxplot()} function produces a boxplot for a given variable:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(dat,}
+       \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ stab.glu)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =}\StringTok{"Stabilized Glucose concentration in blood"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-43-1.pdf}
+
+\begin{quote}
+Can you explain all features of this graph, such as upper/lower whisker, 25\% quantile, \ldots?
+\end{quote}
+
+\hypertarget{qq-plots}{%
+\subsection{QQ-plots}\label{qq-plots}}
+
+We can use \textbf{QQ-plots} to either (1) compare two distributions, or (2) compare a distribution with a theoretical distribution (typically the normal distribution).
+
+We can for example compare the distribution of the blood pressure values to check if they are normally distributed
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Let\textquotesingle{}s first make a histogram}
+\FunctionTok{ggplot}\NormalTok{(dat,}
+       \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ bp}\FloatTok{.1}\NormalTok{s)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{bins =} \DecValTok{50}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-44-1.pdf}
+
+Now we can use the function \texttt{geom\_qq()} to generate the \textbf{QQ-plot} of this distribution against the standard normal distribution:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(dat,}
+       \FunctionTok{aes}\NormalTok{(}\AttributeTok{sample =}\NormalTok{ bp}\FloatTok{.1}\NormalTok{s)) }\SpecialCharTok{+}     \CommentTok{\# we use sample= inside aes for the QQ{-}plot}
+  \FunctionTok{geom\_qq}\NormalTok{()                       }\CommentTok{\# creates the QQ{-}plot}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-45-1.pdf}
+
+Using the additional command \texttt{geom\_qq\_line()}, we can add a straight line that goes through the first and third quartile:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(dat,}
+       \FunctionTok{aes}\NormalTok{(}\AttributeTok{sample =}\NormalTok{ bp}\FloatTok{.1}\NormalTok{s)) }\SpecialCharTok{+}     \CommentTok{\# we use sample= inside aes for the QQ{-}plot}
+  \FunctionTok{geom\_qq}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_qq\_line}\NormalTok{()                  }\CommentTok{\# adds in the QQ{-}line on top}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-46-1.pdf}
+
+\begin{quote}
+So, is the distribution normal??
+\end{quote}
+
+Now let's compare the quantiles of the cholesterol values by biological sex.
+\textbf{Notes on \texttt{ggplot()} here:} Rather than \texttt{ggplot(dataset,\ aes(...))} we use \texttt{ggplot()\ +\ geom\_xx(aes(...))} for situations where the data we wish to plot is not in a dataframe.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# We can use "filter()" to filter the cholesterol values for men and women}
+\NormalTok{dat.male }\OtherTok{=}\NormalTok{ dat }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(gender }\SpecialCharTok{==} \StringTok{\textquotesingle{}male\textquotesingle{}}\NormalTok{)}
+
+\NormalTok{dat.female }\OtherTok{=}\NormalTok{ dat }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(gender }\SpecialCharTok{==} \StringTok{\textquotesingle{}female\textquotesingle{}}\NormalTok{)}
+
+\CommentTok{\# Compute the quantiles (note the "na.rm" option to ignore missing NA values!)}
+\NormalTok{q.male }\OtherTok{=} \FunctionTok{quantile}\NormalTok{(dat.male}\SpecialCharTok{$}\NormalTok{bp}\FloatTok{.1}\NormalTok{s, }
+                  \AttributeTok{probs=}\FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\AttributeTok{by=}\FloatTok{0.05}\NormalTok{), }
+                  \AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{q.female }\OtherTok{=} \FunctionTok{quantile}\NormalTok{(dat.female}\SpecialCharTok{$}\NormalTok{bp}\FloatTok{.1}\NormalTok{s, }
+                    \AttributeTok{probs=}\FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\AttributeTok{by=}\FloatTok{0.05}\NormalTok{),}
+                    \AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{)}
+
+\CommentTok{\# Now plot against each other!}
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ q.male, }\AttributeTok{y =}\NormalTok{ q.female)) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Quantiles"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Male quantiles"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Female quantiles"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-47-1.pdf}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{correlation}{%
+\section{Correlation}\label{correlation}}
+
+\hypertarget{measuring-the-centrality-in-data}{%
+\subsection{Measuring the centrality in data}\label{measuring-the-centrality-in-data}}
+
+Before you begin, think back to the mean, median and quantiles we saw on the boxplot. Do you remember what these terms mean? How does an asymmetrical distribution influence mean and median?
+We have already seen that the \texttt{summary()} and \texttt{quantile()} functions in R can compute the mean, median and quantiles of any given data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mean}\NormalTok{(dat}\SpecialCharTok{$}\NormalTok{stab.glu) }
+\FunctionTok{median}\NormalTok{(dat}\SpecialCharTok{$}\NormalTok{stab.glu) }
+\FunctionTok{quantile}\NormalTok{(dat}\SpecialCharTok{$}\NormalTok{stab.glu) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{quote}
+Calculate the mean and median of other continuous numeric data in the diabetes dataset and measure the difference between them. (a) Why is there a difference between the mean and median? (b) Why do you think there are larger differences for some and almost no difference for others?
+\end{quote}
+
+\hypertarget{association-between-variables}{%
+\subsection{Association between variables}\label{association-between-variables}}
+
+Often a common step during any data analysis project is to find associations between variables present in the dataset. Such associations helps us to decipher the underlying structure in the data.
+
+For instance, in our diabetes dataset we would expect a high correlation between free blood glucose levels and glycosylated blood levels or between waist and hip sizes. One of the most common ways of measuring associations is \emph{correlations}.
+
+Let us start by producing a \textbf{scatter plot} between a pair of variables:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(dat,}
+       \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ stab.glu, }\AttributeTok{y =}\NormalTok{ glyhb)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x=}\StringTok{\textquotesingle{}Stabilized glucose\textquotesingle{}}\NormalTok{, }\AttributeTok{y=}\StringTok{\textquotesingle{}Glycosylated hemoglobin\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-49-1.pdf}
+
+\begin{quote}
+Do you suspect that the two variables have a relationship? Do the scatter plot for other pairs of numerical variables!
+\end{quote}
+
+We now can compute the correlation of the two variables. We can compute the \textbf{Pearson correlation} or the \textbf{Spearman correlation}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# compute the Pearson correlation}
+\FunctionTok{cor}\NormalTok{(dat}\SpecialCharTok{$}\NormalTok{stab.glu, dat}\SpecialCharTok{$}\NormalTok{glyhb, }\AttributeTok{method=}\StringTok{\textquotesingle{}pearson\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.7411355
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# compute the Spearman correlation}
+\FunctionTok{cor}\NormalTok{(dat}\SpecialCharTok{$}\NormalTok{stab.glu, dat}\SpecialCharTok{$}\NormalTok{glyhb, }\AttributeTok{method=}\StringTok{\textquotesingle{}spearman\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.5214866
+\end{verbatim}
+
+The Spearman correlation seems much lower, right? To understand why, we can do a scatter plot between the \textbf{ranks} of the two variables:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(dat,}
+       \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{rank}\NormalTok{(stab.glu), }\AttributeTok{y =} \FunctionTok{rank}\NormalTok{(glyhb))) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x=}\StringTok{\textquotesingle{}Rank {-} Stabilized glucose\textquotesingle{}}\NormalTok{, }\AttributeTok{y=}\StringTok{\textquotesingle{}Rank {-} Glycosylated hemoglobin\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-51-1.pdf}
+
+Do you understand the usage of ranks here? Run `rank()`` on a vector like \emph{c(3,5,10,1,23)} to see how the output looks like.
+
+\begin{quote}
+Associations are among the simplest forms of structure in the data! It is important to remember that \emph{Association does not imply correlation} and \emph{Correlation does not imply causation}. Take a look at this page to view few common logical fallacies. \href{https://en.wikipedia.org/wiki/Fallacy}{see here}
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{exercises}{%
+\section{EXERCISES}\label{exercises}}
+
+\hypertarget{exercise-1-data-features}{%
+\subsection{Exercise 1: Data features}\label{exercise-1-data-features}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Try to obtain the same result of the \texttt{head()} function by using slicing on the dataset ``dat'' using row indexes.
+\item
+  Print out the first three column names of ``dat'' using \texttt{colnames()}.
+\item
+  Print out the last element in the last column of ``dat'' using the \texttt{dim()} function instead of using numerals.
+\item
+  Write a code to calculate the mean of 3 numerical columns of ``dat'' (you can choose which ones) without using the \texttt{mean()} function and make a new column.
+\item
+  Add one line of code that prints out the results from exercise 1 that are greater than 10 by using the \texttt{which()} function
+\end{enumerate}
+
+\hypertarget{exercise-2-visualization}{%
+\subsection{Exercise 2: Visualization}\label{exercise-2-visualization}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Visualize the cholesterol levels of all patients with a histogram using the \texttt{geom\_histogram()} function.
+\item
+  Visualize the cholesterol levels of all \textbf{male} patients with a histogram using \texttt{geom\_histogram()}.
+  \emph{(expert):} Mark the median, first and third quartile with vertical lines using \texttt{geom\_vline()}. The values are defined using \texttt{xintercept} (as in which value of x should the vertical line intercept).
+  Then mark median, first and third quartile for \textbf{female} patients in the same graph with a different color.
+  What can you tell from the differences in these values?
+\end{enumerate}
+
+\hypertarget{exercise-3-correlation}{%
+\subsection{Exercise 3: Correlation}\label{exercise-3-correlation}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Is there an association between ``hip'' and ``waist'' on the data frame ``dat''? Use the \texttt{geom\_point()} function to do a scatter plot of the \textbf{values} and of the \textbf{ranks} (as determined by the \texttt{rank()} function). Compute both the \textbf{Pearson} and \textbf{Spearman} correlation values.
+\item
+  Select only the numerical columns (using \texttt{select(where(is.numeric))}), and apply the function \texttt{cor()} \textbf{directly}: \texttt{\%\textgreater{}\%\ cor()} . What happens? What is the output? Store the result of this command in a new variable named ``all.cor''. Plot a heatmap of these results using the \texttt{pheatmap()} function from the ``pheatmap'' package. Remember that you first have to install and then activate this package using \texttt{library("pheatmap")}.
+\item
+  Find the \textbf{highest} and \textbf{lowest} Pearson correlation value of the result from exercise 2.2. To which pair of variables do they correspond? Plot the corresponding scatter plots using \texttt{geom\_point()}! \emph{Hint}: Before finding the highest Pearson correlation value, use the \texttt{diag()} function to set all diagonal values (=1) of ``all.cor'' to NA.
+\end{enumerate}
+
+\hypertarget{week-1-dimensionality-reduction-and-unsupervised-learning}{%
+\chapter{WEEK 1: Dimensionality reduction and unsupervised learning}\label{week-1-dimensionality-reduction-and-unsupervised-learning}}
+
+\hypertarget{preparing-the-data}{%
+\section{Preparing the data}\label{preparing-the-data}}
+
+\textbf{Unsupervised clustering} is one of the most basic data analysis techniques. It allows to identify groups (or clusters) or observations (here: patients) or variables. \emph{Unsupervised} means that you are not using any prior knowledge about groups of variables or associations. \textbf{K-means clustering} is a good example of unsupervised learning because the method categorizes sample based uniquely on the data.
+
+In this part, we will use a dataset of gene expression data from the TCGA (The Cancer Genome Atlas) project. This project has sequenced several thousand samples from cancer patients of more than 30 cancer types. We will use a subset of this data, containing 200 samples (=patients, as columns) , for which the expression of 300 genes (= rows) has been measured.
+
+\hypertarget{load-data}{%
+\subsection{Load data}\label{load-data}}
+
+We will start by reading the gene expression data. The columns are the samples and the rows are the genes. This is matrix, which allows some numerical operations to be conducted directly.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{brca.exp }\OtherTok{=} \FunctionTok{readRDS}\NormalTok{(}\FunctionTok{url}\NormalTok{(}\StringTok{\textquotesingle{}https://www.dropbox.com/s/qububmfvtv443mq/brca.exp.rds?dl=1\textquotesingle{}}\NormalTok{))}
+\FunctionTok{dim}\NormalTok{(brca.exp)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 100 200
+\end{verbatim}
+
+\textbf{WARNING}: If you have problem loading the data, please download \href{https://www.dropbox.com/s/qububmfvtv443mq/brca.exp.rds?dl=1}{this file}, store it on your disk, and open it with the following command:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#brca.exp = readRDS("xxxx") \# xxxx should be replaced with the path to the downloaded file in your device}
+\end{Highlighting}
+\end{Shaded}
+
+Next we will load the clinical annotation file for this gene expression data and explore it
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{brca.anno }\OtherTok{=} \FunctionTok{readRDS}\NormalTok{(}\FunctionTok{url}\NormalTok{(}\StringTok{\textquotesingle{}https://www.dropbox.com/s/9xlivejqkj77llc/brca.anno.rds?dl=1\textquotesingle{}}\NormalTok{))}
+\FunctionTok{head}\NormalTok{(brca.anno)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                 Age ER_status HER2_status Classification
+## TCGA-BH-A1EO-01  68  Positive    Negative      Luminal A
+## TCGA-E2-A14N-01  37  Negative    Negative     Basal-like
+## TCGA-AN-A0FF-01  32  Positive    Negative      Luminal B
+## TCGA-A2-A04V-01  39  Positive    Negative      Luminal A
+## TCGA-AN-A0XP-01  69  Positive    Negative      Luminal A
+## TCGA-C8-A12U-01  46  Positive    Negative      Luminal B
+\end{verbatim}
+
+Same here: if you have issues running the previous \texttt{readRDS} command, download \href{https://www.dropbox.com/s/z6bzwzgzdhky1qz/brca.anno.rds?dl=1}{this file}, save it on your disk and load it with
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\# brca.anno = readRDS(xxx)}
+\end{Highlighting}
+\end{Shaded}
+
+You can check the number of samples for each tumor type using the \texttt{table()} function, applied to a specific column (here, there is only one column\ldots)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{table}\NormalTok{(brca.anno}\SpecialCharTok{$}\NormalTok{HER2\_status)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Equivocal  Negative  Positive 
+##         4       174        22
+\end{verbatim}
+
+\hypertarget{data-transformation}{%
+\subsection{Data transformation}\label{data-transformation}}
+
+You will see that the distribution of the data is extremely squeezed due to \textbf{outliers} with very high or low values. We will need to make the data more homogeneous, so that our downstream analysis is not affected by these very large magnitude numbers.
+
+We will carry out the following data processing steps. Some of these steps use rather arbitrary values, which come from visually inspecting the data!
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Thresholding:} cap the values to the 95th percentile
+\item
+  \textbf{Homogenization:} base-2 logarithmic transformation of the entire dataset
+\item
+  \textbf{Scaling:} standardize the data so that across genes the mean = 0 and variance = 1.
+\end{enumerate}
+
+\textbf{Before we start modifying the data, we will store the original data frame into a variable, so that in case of problems we can revert back to the initial data!!}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{brca.exp.original }\OtherTok{=}\NormalTok{ brca.exp }\CommentTok{\# keeps the original as matrix}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Thresholding}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# what is the value of the 95th percent percentile?}
+\NormalTok{q95 }\OtherTok{=} \FunctionTok{quantile}\NormalTok{(brca.exp,}\AttributeTok{probs=}\FloatTok{0.95}\NormalTok{)}
+
+\DocumentationTok{\#\# set all values above to this value}
+\NormalTok{brca.exp[brca.exp}\SpecialCharTok{\textgreater{}}\NormalTok{q95] }\OtherTok{=}\NormalTok{ q95}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Homogenization and Scaling}
+
+We will perform this step by log-transforming the data. We are able to use this operation because the data is still in a matrix.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{brca.exp }\OtherTok{=} \FunctionTok{log2}\NormalTok{(brca.exp}\SpecialCharTok{+}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{quote}
+Why do we add +1 ?
+\end{quote}
+
+Next, we will scale the data and plot its distribution. To do this efficient, we need to convert the data to tibble first, make it tidy, and then plot.
+
+Conversion to tibble can be done using \texttt{as\_tibble(brca.exp,\ rownames\ =\ NA)}, where \texttt{rownames\ =\ NA} is meant to keep the original rownames (in this case, gene names) in the new tibble, although they are invisible.
+
+Check this out:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{rownames}\NormalTok{(}\FunctionTok{as\_tibble}\NormalTok{(brca.exp, }\AttributeTok{rownames =} \ConstantTok{NA}\NormalTok{))[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "TFF1"    "C4orf7"  "AGR3"    "GABRP"   "C1orf64"
+\end{verbatim}
+
+In addition, \texttt{gather(key\ =\ "sample",\ value\ =\ "expression")} converts the tibble to a long format, where ``sample'' represents the original column names, and ``expression'' represents the values present in the initial matrix.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# scaling}
+\NormalTok{brca.exp }\OtherTok{=} \FunctionTok{scale}\NormalTok{(brca.exp)}
+
+\DocumentationTok{\#\# plotting the density}
+\FunctionTok{as\_tibble}\NormalTok{(brca.exp, }\AttributeTok{rownames =} \ConstantTok{NA}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{gather}\NormalTok{(}\AttributeTok{key =} \StringTok{"sample"}\NormalTok{, }
+         \AttributeTok{value =} \StringTok{"expression"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ expression)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Transformed data"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-61-1.pdf}
+
+Compare to the density plot before these pre-processing steps using the same strategy.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{as\_tibble}\NormalTok{(brca.exp.original, }\AttributeTok{rownames =} \ConstantTok{NA}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{gather}\NormalTok{(}\AttributeTok{key =} \StringTok{"sample"}\NormalTok{, }\AttributeTok{value =} \StringTok{"expression"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ expression)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Untransformed data"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-62-1.pdf}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{k-means-clustering}{%
+\section{k-means clustering}\label{k-means-clustering}}
+
+Another widely used method for grouping observations is the k-means clustering. Now we will cluster our dataset using k-means and explore the underlying structure of the data. In this dataset, different clusters could represent different batches, different tumour subtypes, among other features.
+
+\hypertarget{performing-k-means}{%
+\subsection{Performing k-means}\label{performing-k-means}}
+
+We use the function \texttt{kmeans()} in R on our matrix. You can check the options and usage in the help panel on the right. The parameter \texttt{centers} indicates how many clusters are requested.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{km }\OtherTok{=} \FunctionTok{kmeans}\NormalTok{(}\AttributeTok{x=}\FunctionTok{t}\NormalTok{(brca.exp), }
+            \AttributeTok{centers =} \DecValTok{2}\NormalTok{, }
+            \AttributeTok{nstart =} \DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{quote}
+Just type \texttt{km} in your console and check all results generated. Play around with the \texttt{centers} parameter. See cluster assignments by typing \texttt{table(km\$cluster)}
+\end{quote}
+
+\hypertarget{quality-of-the-clustering}{%
+\subsection{Quality of the clustering}\label{quality-of-the-clustering}}
+
+We can judge the quality of the clustering by computing the \textbf{intra}-cluster distances, i.e.~the sum (squared) of all distances between pairs of objects belonging to the same cluster. This is called the \textbf{within sum of squares (WSS)}. The better the clustering, the smaller WSS should be. However, it also automatically decreases with increasing k.
+
+\begin{quote}
+What would be WSS if we request a number of clusters equal to the number of data points? You can check what the WSS is for a particular clustering by typing
+\end{quote}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{km}\SpecialCharTok{$}\NormalTok{tot.withinss}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4123.459
+\end{verbatim}
+
+\begin{quote}
+run k-means for k=2 to k=7 clusters, and for each k check the WSS value. How does WSS evolve with increasing k?
+\end{quote}
+
+We can also run a little loop to test different k. Loops are very important structures in any programming language.
+We can test a simple scenario before. Check how the output of this simple loop looks like.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{k\_to\_test }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\SpecialCharTok{:}\DecValTok{7}\NormalTok{)}
+
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(k\_to\_test)) \{}
+  \FunctionTok{print}\NormalTok{(i) }\CommentTok{\# We can print the indexes}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+## [1] 2
+## [1] 3
+## [1] 4
+## [1] 5
+## [1] 6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(k\_to\_test)) \{}
+  \FunctionTok{print}\NormalTok{(k\_to\_test[i]) }\CommentTok{\# or the actual elements}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2
+## [1] 3
+## [1] 4
+## [1] 5
+## [1] 6
+## [1] 7
+\end{verbatim}
+
+\begin{quote}
+Do you understand the difference between the 2 previous for loops? Try to make your own for loop.
+\end{quote}
+
+Now we can make one to test k from 2 to 7:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{km\_wws }\OtherTok{=} \FunctionTok{numeric}\NormalTok{() }\CommentTok{\# we start by creating an empty vector}
+
+\CommentTok{\# To write in the position 1, we use i}
+\CommentTok{\# to find the 1st element, we use k\_to\_test[i]}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(k\_to\_test)) \{}
+\NormalTok{  km\_wws[i] }\OtherTok{=} \FunctionTok{kmeans}\NormalTok{(}\AttributeTok{x=}\FunctionTok{t}\NormalTok{(brca.exp), }
+                     \AttributeTok{centers =}\NormalTok{ k\_to\_test[i])}\SpecialCharTok{$}\NormalTok{tot.withinss}
+\NormalTok{\}}
+
+\CommentTok{\# We can plot the k against WSS using geom\_line}
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ k\_to\_test, }\AttributeTok{y =}\NormalTok{ km\_wws)) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x=}\StringTok{"Number of clusters K"}\NormalTok{,}
+       \AttributeTok{y=}\StringTok{"Total within{-}clusters sum of squares"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-66-1.pdf}
+
+\begin{quote}
+Do you see an obvious ``elbow'' or ``kink'' in the curve?? Another criteria for the quality of the clustering is the \textbf{silhouette} method.
+\end{quote}
+
+To run the silhouette method, we need to compute the pairwise distances between all objects (i.e.~patients) in the data matrix. This is done with the \texttt{dist} function, which can take different metrics (euclidean, \ldots)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# compute the patient{-}patient distance matrix (this is why we transpose using the \textasciigrave{}t()\textasciigrave{} function)}
+\NormalTok{D }\OtherTok{=} \FunctionTok{dist}\NormalTok{(}\FunctionTok{t}\NormalTok{(brca.exp))}
+\end{Highlighting}
+\end{Shaded}
+
+We now compute the silhouette for a specific k-means clustering:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(cluster)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'cluster' was built under R version 4.3.1
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'cluster'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked _by_ '.GlobalEnv':
+## 
+##     animals
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{km }\OtherTok{=} \FunctionTok{kmeans}\NormalTok{(}\AttributeTok{x=}\FunctionTok{t}\NormalTok{(brca.exp), }\AttributeTok{centers =} \DecValTok{3}\NormalTok{, }\AttributeTok{nstart =} \DecValTok{10}\NormalTok{)}
+\NormalTok{s }\OtherTok{=} \FunctionTok{silhouette}\NormalTok{(km}\SpecialCharTok{$}\NormalTok{cluster,D)}
+
+\CommentTok{\# Let us use the basic R function plot() to see the results}
+\FunctionTok{plot}\NormalTok{(s)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-68-1.pdf}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{hierarchical-clustering}{%
+\section{Hierarchical clustering}\label{hierarchical-clustering}}
+
+Clustering is a method by which we group together similar observations while separating out the dissimilar ones. We will cluster our samples from the cancer dataset to see which samples cluster together or separately. Hierarchical clustering does not generate discrete clusters of datapoints, but rather creates a dendrogram that indicates the magnitude of similitude between samples. Once again is up to the Data Scientist to decide the right amount of clusters.
+
+\hypertarget{determine-the-most-variable-genes}{%
+\subsection{Determine the most variable genes}\label{determine-the-most-variable-genes}}
+
+When performing clustering, we usually reduce the number of genes used, as some of them are not informative. For example, genes that show a mostly constant expression across all samples will not be useful to distinguish the samples, right? One simple method is to select genes that show a \textbf{high variance} across all samples.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{brca.exp.tibble }\OtherTok{=} \FunctionTok{as\_tibble}\NormalTok{(brca.exp, }\AttributeTok{rownames=}\ConstantTok{NA}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{rownames\_to\_column}\NormalTok{(}\StringTok{"gene"}\NormalTok{)}
+
+\DocumentationTok{\#\# create a new column with the variance for all genes across all samples}
+\NormalTok{brca.exp.var }\OtherTok{=}\NormalTok{ brca.exp.tibble }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{rowwise}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{variance =} \FunctionTok{var}\NormalTok{(}\FunctionTok{c\_across}\NormalTok{(}\FunctionTok{starts\_with}\NormalTok{(}\StringTok{"TCGA"}\NormalTok{)))) }
+\CommentTok{\# only includes the columns starting with TCGA}
+\end{Highlighting}
+\end{Shaded}
+
+We now want to find the top 25\% with the highest variance
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# what is the 75\% quantile of the variance?}
+\NormalTok{q75 }\OtherTok{=} \FunctionTok{quantile}\NormalTok{(brca.exp.var}\SpecialCharTok{$}\NormalTok{variance, }\AttributeTok{probs =} \FloatTok{0.75}\NormalTok{)}
+\NormalTok{q75}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       75% 
+## 0.4934196
+\end{verbatim}
+
+So let us select all rows (genes) with a variance higher than or equal to \texttt{q75}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# only select the genes with a variance in the top 25\%}
+\NormalTok{topVariantGenes }\OtherTok{\textless{}{-}}\NormalTok{ brca.exp.var }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(variance }\SpecialCharTok{\textgreater{}=}\NormalTok{ q75)}
+
+\FunctionTok{print}\NormalTok{(topVariantGenes}\SpecialCharTok{$}\NormalTok{gene)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "TFF1"      "C4orf7"    "AGR3"      "GABRP"     "C1orf64"   "TFF3"     
+##  [7] "ABCC11"    "PGR"       "FABP7"     "SERPINA11" "VGLL1"     "A2ML1"    
+## [13] "ELF5"      "PROM1"     "CYP4Z2P"   "SLC6A14"   "CAPN8"     "ABCC8"    
+## [19] "SYTL5"     "SFRP1"     "ART3"      "GABBR2"    "PPP1R14C"  "HORMAD1"  
+## [25] "LOC84740"
+\end{verbatim}
+
+\hypertarget{computing-the-correlation-between-all-patients}{%
+\subsection{Computing the correlation between all patients}\label{computing-the-correlation-between-all-patients}}
+
+Let us start by filtering for only the highly variable genes. Then we can directly calculate Spearman correlation.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{brca.exp.highvar.cor }\OtherTok{=}\NormalTok{ brca.exp.tibble }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(gene }\SpecialCharTok{\%in\%}\NormalTok{ topVariantGenes}\SpecialCharTok{$}\NormalTok{gene) }\SpecialCharTok{\%\textgreater{}\%}        \CommentTok{\# from the whole list, select only high variable}
+  \FunctionTok{select}\NormalTok{(}\FunctionTok{where}\NormalTok{(is.numeric)) }\SpecialCharTok{\%\textgreater{}\%}                     \CommentTok{\# get only numerical columns}
+  \FunctionTok{cor}\NormalTok{(}\AttributeTok{method=}\StringTok{"spearman"}\NormalTok{)                            }\CommentTok{\# create correlation{-}based distance matrix}
+\end{Highlighting}
+\end{Shaded}
+
+If we want to display the correlation matrix as a heatmap, we can use the \texttt{pheatmap} function as before:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(pheatmap)}
+\FunctionTok{pheatmap}\NormalTok{(brca.exp.highvar.cor, }
+         \AttributeTok{show\_rownames =} \ConstantTok{FALSE}\NormalTok{, }
+         \AttributeTok{show\_colnames =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-73-1.pdf}
+
+Each cell of this heatmap represents the correlation value between the sample in the row and the sample in the column. The correlation of a sample to itself is always 1 (red diagonal).
+
+The function automatically determines the clustering trees of the rows and columns (which are identical, since the correlation matrix is symmetrical!)
+
+\hypertarget{including-clinical-annotations-in-the-heatmap}{%
+\subsection{Including clinical annotations in the heatmap}\label{including-clinical-annotations-in-the-heatmap}}
+
+This is a nice representation, but in order to interpret this clustering, we need to add some additional (clinical) information to interpret the clustering structure. To do this, we use an annotation data frame containing as columns a number of clinical features.
+
+The clinical annotation is stored in the \texttt{brca.anno} data frame.
+We can now plot again the heatmap, using the annotation dataframe to add additional information
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{pheatmap}\NormalTok{(brca.exp.highvar.cor,}
+         \AttributeTok{annotation\_row =}\NormalTok{ brca.anno,}
+         \AttributeTok{show\_rownames =} \ConstantTok{FALSE}\NormalTok{, }
+         \AttributeTok{show\_colnames =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-74-1.pdf}
+
+\begin{quote}
+How would you interpret this dendrogram? Do the clusters you observe make any sense? What are the parameters by which the samples cluster together? How many meaningful clusters can you observe? Do you see any relation between the distribution of the data and your clusters ?
+\end{quote}
+
+\begin{quote}
+The function \texttt{pheatmap} accepts a parameter clustering\_method to indicate alternative linkage methods; try other linkage methods (check which are available with the pheatmap help page, which can be accessed by typing \texttt{?pheatmap} in the console!)
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{principal-component-analysis}{%
+\section{Principal component analysis}\label{principal-component-analysis}}
+
+We will now use principal component analysis to explore the same dataset, and identify directions (i.e.~principal components) with maximal variance. Principal components analysis finds n-dimensional vectors (Principal Components) in the direction of the largest variance, thereby allowing you to describe an n-dimensional dataset with just a few dimensions.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pca }\OtherTok{=}\NormalTok{ topVariantGenes }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(}\FunctionTok{where}\NormalTok{(is.numeric)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{t}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# do not forget to transpose the data!}
+  \FunctionTok{prcomp}\NormalTok{(}\AttributeTok{center =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{scale =} \ConstantTok{FALSE}\NormalTok{) }\CommentTok{\# We set these as false as we have already scaled our data}
+\FunctionTok{summary}\NormalTok{(pca)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Importance of components:
+##                          PC1    PC2     PC3     PC4     PC5     PC6     PC7
+## Standard deviation     3.719 2.1886 0.89796 0.86195 0.69326 0.62793 0.61645
+## Proportion of Variance 0.559 0.1936 0.03259 0.03003 0.01942 0.01593 0.01536
+## Cumulative Proportion  0.559 0.7526 0.78514 0.81516 0.83458 0.85052 0.86588
+##                            PC8     PC9    PC10    PC11    PC12   PC13    PC14
+## Standard deviation     0.59717 0.55556 0.53665 0.52007 0.50060 0.4900 0.45974
+## Proportion of Variance 0.01441 0.01247 0.01164 0.01093 0.01013 0.0097 0.00854
+## Cumulative Proportion  0.88029 0.89276 0.90440 0.91533 0.92546 0.9352 0.94370
+##                           PC15    PC16   PC17    PC18    PC19    PC20    PC21
+## Standard deviation     0.44696 0.43284 0.4009 0.39542 0.38101 0.35781 0.34271
+## Proportion of Variance 0.00807 0.00757 0.0065 0.00632 0.00587 0.00517 0.00475
+## Cumulative Proportion  0.95178 0.95935 0.9658 0.97216 0.97803 0.98320 0.98795
+##                           PC22    PC23    PC24    PC25
+## Standard deviation     0.30347 0.28452 0.26505 0.23424
+## Proportion of Variance 0.00372 0.00327 0.00284 0.00222
+## Cumulative Proportion  0.99167 0.99494 0.99778 1.00000
+\end{verbatim}
+
+\begin{quote}
+How many principal components do you obtain? Compare this to the dimension of the matrix using the \texttt{dim()} function!
+\end{quote}
+
+\begin{quote}
+What would happen if you would not transpose the matrix with t(\ldots) in the prcomp function?
+\end{quote}
+
+Principal components are ranked by the amount of variance that they explain. This can be visualized using a \textbf{scree plot}, indicating how much variance each PC explains: the \textbf{standard deviation} explained by each principal component is contained in the \texttt{pca\$sdev} vector:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pca}\SpecialCharTok{$}\NormalTok{sdev}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 3.7190077 2.1886234 0.8979609 0.8619466 0.6932587 0.6279258 0.6164472
+##  [8] 0.5971745 0.5555603 0.5366514 0.5200662 0.5006037 0.4899632 0.4597383
+## [15] 0.4469622 0.4328397 0.4008966 0.3954205 0.3810141 0.3578084 0.3427089
+## [22] 0.3034732 0.2845180 0.2650462 0.2342352
+\end{verbatim}
+
+We see that the standard deviation is indeed going down! Let us now plot the proportion of total variance explained by each PC
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{variance }\OtherTok{=}\NormalTok{ (pca}\SpecialCharTok{$}\NormalTok{sdev)}\SpecialCharTok{\^{}}\DecValTok{2}
+\NormalTok{prop.variance }\OtherTok{=}\NormalTok{ variance}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(variance)}
+\FunctionTok{names}\NormalTok{(prop.variance) }\OtherTok{=} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(prop.variance)}
+
+\CommentTok{\# We make a data.frame from the prop.variance and the PC it corresponds to }
+\CommentTok{\# we can obtain the PCs using names()}
+\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{proportion =}\NormalTok{ prop.variance, }
+           \AttributeTok{PCs =} \FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{names}\NormalTok{(prop.variance))) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ PCs, }\AttributeTok{y =}\NormalTok{ proportion)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_col}\NormalTok{() }\SpecialCharTok{+}                               \CommentTok{\# to make the barplot}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{y=}\StringTok{\textquotesingle{}Proportion of variance\textquotesingle{}}\NormalTok{)           }\CommentTok{\# we only plot the first 20 PCs}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-77-1.pdf}
+
+Principal component analysis represents each data point (here: patient) in a new space in which the coordinates are principal components. Check the following output:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(pca}\SpecialCharTok{$}\NormalTok{x)}
+\end{Highlighting}
+\end{Shaded}
+
+We can now display the data points (i.e.~patients) in the first two principal components. In addition, we can color the dots according to certain clinical parameters:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# We start by creating a dataframe and combining it with the annotation}
+\NormalTok{pca\_with\_annot }\OtherTok{=} \FunctionTok{as.data.frame}\NormalTok{(pca}\SpecialCharTok{$}\NormalTok{x) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{merge}\NormalTok{(brca.anno, }\AttributeTok{by =} \DecValTok{0}\NormalTok{) }\CommentTok{\# by = 0 makes use of the rownames as common information}
+
+\DocumentationTok{\#\# Now the object is in a ggplot2 friendly format}
+\FunctionTok{ggplot}\NormalTok{(pca\_with\_annot,}
+       \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ PC1, }\AttributeTok{y =}\NormalTok{ PC2, }\AttributeTok{colour =}\NormalTok{ ER\_status)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{scale\_colour\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"grey"}\NormalTok{, }\StringTok{"red"}\NormalTok{, }\StringTok{"navy"}\NormalTok{)) }\CommentTok{\# scale\_colour\_manual can be used to change colours}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-79-1.pdf}
+
+\begin{quote}
+Choose different PCs for this plot. Can you still observe the two clusters corresponding to the ER\_status of the patients?
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{exercises-1}{%
+\section{EXERCISES}\label{exercises-1}}
+
+\hypertarget{exercise-1-variance}{%
+\subsection{Exercise 1: Variance}\label{exercise-1-variance}}
+
+\emph{For this exercise set it is given that all the data cleanup steps have been taken, you don't need to put them in the results.}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Make a heatmap of the reduced matrix ``topVariantGenes'' using the \texttt{pheatmap()} function of the \texttt{pheatmap} library (do not forget to select only for numerical columns). Check for parameters that might change the style of the heatmap (column names, row names, etc..). How is this heatmap different from the heatmap in section 2?
+\item
+  Repeat the selection of top variable genes (apply the same quantile used to generate ``topVariantGenes''), but using the median absolute deviation (or MAD) using the \texttt{mad()} function instead of the \texttt{sd()} function, and store into as \texttt{brca.topMAD}
+\item
+  Extract the gene names of \texttt{topVariantGenes} and \texttt{brca.topMAD} and check how many overlap using the \texttt{intersect()} function.
+\end{enumerate}
+
+\hypertarget{exercise-2-hierarchical-clustering}{%
+\subsection{Exercise 2: Hierarchical clustering}\label{exercise-2-hierarchical-clustering}}
+
+In section 2, we have computed a correlation matrix, and used this matrix to build a clustering tree.
+
+Try different linkage methods using the \texttt{clustering\_method} parameter to see if the topology of the dendrogram changes!
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Try building a distance matrix which would lead to different topologies of the dendrogram, depending on which linkage method is used! Show the dendrograms built with different linkage methods!
+\end{enumerate}
+
+\hypertarget{exercise-3-pca}{%
+\subsection{Exercise 3: PCA}\label{exercise-3-pca}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Display the patients in the first two principal components (available in \texttt{pca\_with\_annot}) using \texttt{geom\_point()}. Color the patients in the PCA plot according to \texttt{HER2\_status}.
+\item
+  Color the patients in the PCA plot according to \texttt{Classification}; you will probably need to define some more colors\ldots{} You can check available colors \href{http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf}{here}
+\end{enumerate}
+
+\hypertarget{going-further-expert}{%
+\subsection{\texorpdfstring{Going further \emph{(expert)}}{Going further (expert)}}\label{going-further-expert}}
+
+Instead of performing the k-means on the whole gene expression matrix, we can run k-means on the space in which each patient is represented by the first k principal components.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Run k-means with different numbers of clusters (1-10) on the patients using the first 2, 4, 6,\ldots{} principal components (i.e.~the first columns of \texttt{pca\_with\_annot}). Use the elbow method to evaluate how the within sum of squares (WSS) evolves. What is the optimal number of clusters?
+\item
+  Represent the patients in the PCA plot as previously, but color them according to the cluster they belong to! Run kmeans with two clusters for this and merge the k-means results.
+\end{enumerate}
+
+\hypertarget{week-1-probability-distributions}{%
+\chapter{WEEK 1: Probability distributions}\label{week-1-probability-distributions}}
+
+\hypertarget{probability-distributions}{%
+\section{Probability distributions}\label{probability-distributions}}
+
+In the previous Exercise Sheet we have learnt more about unsupervised learning, like hierarchical clustering and especially PCA. These are among the fundamental methods of Data Analysis. Today we will learn more about another milestone of statistics: \textbf{probability distributions}.
+
+\begin{figure}
+\centering
+\includegraphics{figures/distrib.png}
+\caption{Various kinds of distributions and the relations among them.}
+\end{figure}
+
+\href{https://medium.com/@srowen/common-probability-distributions-347e6b945ce4}{Figure source}
+
+Distributions represented by sparse lines represent outcomes which will be discrete (for example the \emph{roll of dice} will always have discrete integer values from 1 to 6). Distributions represented by dense lines represent outcomes which can be continuous i.e real numbers (for example the height of people living in Heidelberg).
+
+R has in-built functions for almost all probability distributions
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Get the list of all probability distribution related functions}
+\FunctionTok{help}\NormalTok{(distributions)}
+\end{Highlighting}
+\end{Shaded}
+
+All of these functions for probability distributions follow the same common scheme, the \textbf{root name} of the function prefixed by either of \textbf{p}, \textbf{d}, \textbf{q} and \textbf{r}. For example for the Normal distribution we have the four variants of function available - \textbf{pnorm}, \textbf{dnorm}, \textbf{qnorm} and \textbf{rnorm}.
+
+Here, you can find some specific help on these functions:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{?rnorm}
+\CommentTok{\# or}
+\NormalTok{?rpois}
+\CommentTok{\# etc ...}
+\end{Highlighting}
+\end{Shaded}
+
+In the respective help documentation, you will find details on each of the functions.\\
+Probably, the most difficult to distinguish or to remember are \textbf{pnorm()} and \textbf{qnorm()} (respectively \textbf{ppois()} and \textbf{qpois()}, etc \ldots).\\
+We are going to look at them more deeply in the following.
+
+\hypertarget{getting-to-know-the-various-functions}{%
+\subsection{Getting to know the various functions}\label{getting-to-know-the-various-functions}}
+
+Let us get a grasp of what these functions actually do. You should be familiar with the cumulative distribution function, let's take a look at that and its inverse first. We will work with a Normal distribution. We calculate the \textbf{cumulative probability} for the values 1,2,3,4 in three different distributions, using one of the functions described previously.\\
+Short hint: \textbf{p} like \textbf{cumulative P-robability}. Which function are you going to use?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Distribution 1: Mean = 2, Standard Deviation = 1}
+\FunctionTok{pnorm}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{4}\NormalTok{,}\AttributeTok{mean=}\DecValTok{2}\NormalTok{,}\AttributeTok{sd=}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.1586553 0.5000000 0.8413447 0.9772499
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#}
+\CommentTok{\# Distribution 2: Mean = 2, Standard Deviation = 2}
+\FunctionTok{pnorm}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{4}\NormalTok{,}\AttributeTok{mean=}\DecValTok{2}\NormalTok{,}\AttributeTok{sd=}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.3085375 0.5000000 0.6914625 0.8413447
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#}
+\CommentTok{\# Distribution 2: Mean = 4, Standard Deviation = 1}
+\FunctionTok{pnorm}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{4}\NormalTok{,}\AttributeTok{mean=}\DecValTok{4}\NormalTok{,}\AttributeTok{sd=}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.001349898 0.022750132 0.158655254 0.500000000
+\end{verbatim}
+
+\begin{quote}
+Do you understand why the cumulative distribution functions change the way they do?
+\end{quote}
+
+Now, on the same distributions, we calculate the \textbf{inverse cdf} (inverse cumulative distribution function) for the cumulative probabilities of 25\%, 50\% and 75\%. We use the \texttt{qnorm()} function for this (\textbf{q- like quantile}):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Distribution 1: Mean = 2, Standard Deviation = 1}
+\FunctionTok{qnorm}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\FloatTok{0.25}\NormalTok{,}\FloatTok{0.5}\NormalTok{,}\FloatTok{0.75}\NormalTok{),}\AttributeTok{mean=}\DecValTok{2}\NormalTok{,}\AttributeTok{sd=}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.32551 2.00000 2.67449
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Distribution 2: Mean = 2, Standard Deviation = 2}
+\FunctionTok{qnorm}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\FloatTok{0.25}\NormalTok{,}\FloatTok{0.5}\NormalTok{,}\FloatTok{0.75}\NormalTok{),}\AttributeTok{mean=}\DecValTok{2}\NormalTok{,}\AttributeTok{sd=}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.6510205 2.0000000 3.3489795
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Distribution 3: Mean = 4, Standard Deviation = 1}
+\FunctionTok{qnorm}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\FloatTok{0.25}\NormalTok{,}\FloatTok{0.5}\NormalTok{,}\FloatTok{0.75}\NormalTok{),}\AttributeTok{mean=}\DecValTok{4}\NormalTok{,}\AttributeTok{sd=}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3.32551 4.00000 4.67449
+\end{verbatim}
+
+\begin{quote}
+Try with 100\% on any of the distributions. Can you explain this result? Do you expect the result to be different in the other ones?
+\end{quote}
+
+Now that you know the output of the p- and q- functions, let's look at \textbf{d- like density probability} functions. For any continuous distribution, the value of the function at any specific value is 0. This is why this probability function is used in discrete distribution such as the binomial distribution (function \textbf{dbinom()}). We first calculate the probability of getting 5 events out of 5 in a binomial distribution with a probability of 0.5. Then, we calculate the odds of \textbf{not} getting 5 out of 5.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# probability of 5 out of 5}
+\FunctionTok{dbinom}\NormalTok{(}\DecValTok{5}\NormalTok{, }\AttributeTok{size=}\DecValTok{5}\NormalTok{, }\AttributeTok{prob=}\FloatTok{0.5}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.03125
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# size = number of trials; prob = probability of success on each trial}
+
+\CommentTok{\# probability of NOT getting 5 out of 5}
+\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{dbinom}\NormalTok{(}\DecValTok{5}\NormalTok{, }\AttributeTok{size=}\DecValTok{5}\NormalTok{, }\AttributeTok{prob=}\FloatTok{0.5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.96875
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# or}
+\FunctionTok{pbinom}\NormalTok{(}\DecValTok{4}\NormalTok{, }\AttributeTok{size=}\DecValTok{5}\NormalTok{, }\AttributeTok{prob=}\FloatTok{0.5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.96875
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Remember, pbinom() returns the "cumulative probability" of ...}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{quote}
+What is the probability of getting 5 out of 10? And NOT getting 5 out of 10?
+\end{quote}
+
+Suppose that the distribution of body height is described by a \textbf{normal distribution} with \textbf{mean = 1.75 m} and standard deviation \textbf{sd = 0.15}. What is the probability that someone is taller than 1.9 m? We can use the parameter \textbf{lower.tail} of the function \texttt{pnorm()} for this.\\
+What is the probability that someone is smaller than 1.60m?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# taller than 1.9}
+\FunctionTok{pnorm}\NormalTok{(}\FloatTok{1.9}\NormalTok{, }\AttributeTok{mean=}\FloatTok{1.75}\NormalTok{, }\AttributeTok{sd=}\FloatTok{0.15}\NormalTok{, }\AttributeTok{lower.tail=}\ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.1586553
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# or}
+\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{pnorm}\NormalTok{(}\FloatTok{1.9}\NormalTok{, }\AttributeTok{mean=}\FloatTok{1.75}\NormalTok{, }\AttributeTok{sd=}\FloatTok{0.15}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.1586553
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# smaller than 1.6}
+\FunctionTok{pnorm}\NormalTok{(}\FloatTok{1.6}\NormalTok{, }\AttributeTok{mean=}\FloatTok{1.75}\NormalTok{, }\AttributeTok{sd=}\FloatTok{0.15}\NormalTok{, }\AttributeTok{lower.tail=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.1586553
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# equivalent to }
+\FunctionTok{pnorm}\NormalTok{(}\FloatTok{1.6}\NormalTok{, }\AttributeTok{mean=}\FloatTok{1.75}\NormalTok{, }\AttributeTok{sd=}\FloatTok{0.15}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.1586553
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# because: per defaults, lower.tail is set to TRUE (you can check the help page for further information using \textasciigrave{}?pnorm\textasciigrave{})}
+\end{Highlighting}
+\end{Shaded}
+
+Let's have a look at this distribution using the \textbf{dnorm()} function:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{=} \FunctionTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{, }\FloatTok{2.5}\NormalTok{, }\AttributeTok{by=}\FloatTok{0.01}\NormalTok{)}
+\NormalTok{y }\OtherTok{=} \FunctionTok{dnorm}\NormalTok{(x, }\AttributeTok{mean=}\FloatTok{1.75}\NormalTok{, }\AttributeTok{sd=}\FloatTok{0.15}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(x, y, }\AttributeTok{type=}\StringTok{\textquotesingle{}l\textquotesingle{}}\NormalTok{,}\AttributeTok{col=}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{,}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{);}\FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\FunctionTok{c}\NormalTok{(}\FloatTok{1.6}\NormalTok{,}\FloatTok{1.9}\NormalTok{),}\AttributeTok{lty=}\DecValTok{3}\NormalTok{,}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-86-1.pdf}
+
+Let's finally look at \textbf{r- like random} functions. These, unlike the others, don't return single probabilities or values but rather generate a random distribution of values. We can use this to generate a normal distribution with mean = 10, sd = 5.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# normal distribution}
+\NormalTok{x }\OtherTok{=} \FunctionTok{rnorm}\NormalTok{(}\AttributeTok{n=}\DecValTok{1000}\NormalTok{,}\AttributeTok{mean=}\DecValTok{10}\NormalTok{,}\AttributeTok{sd=}\DecValTok{5}\NormalTok{)}
+\FunctionTok{hist}\NormalTok{(x,}\AttributeTok{breaks=}\DecValTok{20}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-87-1.pdf}
+
+\begin{quote}
+Can you generate a Poisson distribution and a binomial distribution?
+\end{quote}
+
+\hypertarget{normalgaussian-distribution}{%
+\subsection{Normal/Gaussian distribution}\label{normalgaussian-distribution}}
+
+The normal or the Gaussian distribution is given as:
+
+\[P(x) = \frac{1}{{\sigma \sqrt {2\pi } }} \cdot e ^ \frac{-(x- \mu)^2}{{2\sigma ^2 }} \] where \(\mu\) is the mean of the distribution and \(\sigma\) is the standard deviation.
+
+The \textbf{standard normal distribution} is a special case of \textbf{normal distribution} where the values for \(\mu = 0\) and \(\sigma = 1\). Thus, the above equation for the Normal distribution simplifies to:
+
+\[P(x) = \frac{1}{{\sqrt {2\pi } }} \cdot e ^ \frac{-x^2}{2} \] Now for any \(x\) we can easily solve this equation since \(\pi\) and \(e\) are known constants.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{visualization}{%
+\subsection{Visualization}\label{visualization}}
+
+Let's generate three random normal distributions with different means and standard deviations and visualize them together
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Use the function \textasciigrave{}dnorm()\textasciigrave{} to plot the density distribution}
+\NormalTok{x }\OtherTok{=} \FunctionTok{seq}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{10}\NormalTok{, }\DecValTok{30}\NormalTok{, }\AttributeTok{by=}\NormalTok{.}\DecValTok{1}\NormalTok{)}
+\NormalTok{d1 }\OtherTok{=} \FunctionTok{dnorm}\NormalTok{(x, }\AttributeTok{mean=}\DecValTok{0}\NormalTok{, }\AttributeTok{sd=}\DecValTok{1}\NormalTok{)}
+\NormalTok{d2 }\OtherTok{=} \FunctionTok{dnorm}\NormalTok{(x, }\AttributeTok{mean=}\DecValTok{10}\NormalTok{, }\AttributeTok{sd=}\DecValTok{1}\NormalTok{)}
+\NormalTok{d3 }\OtherTok{=} \FunctionTok{dnorm}\NormalTok{(x, }\AttributeTok{mean=}\DecValTok{20}\NormalTok{, }\AttributeTok{sd=}\DecValTok{1}\NormalTok{)}
+
+\CommentTok{\# Compare with the histogram build from 1000 random number drawn from the standard normal distribution}
+\NormalTok{r1 }\OtherTok{=} \FunctionTok{rnorm}\NormalTok{(}\AttributeTok{n=}\DecValTok{1000}\NormalTok{, }\AttributeTok{mean=}\DecValTok{0}\NormalTok{, }\AttributeTok{sd =}\DecValTok{1}\NormalTok{)  }\CommentTok{\# random distributions of values}
+\NormalTok{r2 }\OtherTok{=} \FunctionTok{rnorm}\NormalTok{(}\AttributeTok{n=}\DecValTok{1000}\NormalTok{, }\AttributeTok{mean=}\DecValTok{10}\NormalTok{, }\AttributeTok{sd=}\DecValTok{1}\NormalTok{)}
+\NormalTok{r3 }\OtherTok{=} \FunctionTok{rnorm}\NormalTok{(}\AttributeTok{n=}\DecValTok{1000}\NormalTok{, }\AttributeTok{mean=}\DecValTok{20}\NormalTok{, }\AttributeTok{sd=}\DecValTok{1}\NormalTok{)}
+
+\CommentTok{\# Histogram visualization}
+\CommentTok{\# We will start by converting the rnorm outputs into one single df}
+\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{vals =} \FunctionTok{c}\NormalTok{(r1, r2, r3), }\CommentTok{\# column vals is actual numbers}
+           \AttributeTok{Specs =} \FunctionTok{c}\NormalTok{(}\FunctionTok{rep}\NormalTok{(}\StringTok{"mean=0, sd=1"}\NormalTok{, }\DecValTok{1000}\NormalTok{), }\CommentTok{\# column Specs is mean/sd }
+                     \FunctionTok{rep}\NormalTok{(}\StringTok{"mean=10, sd=1"}\NormalTok{, }\DecValTok{1000}\NormalTok{),}
+                     \FunctionTok{rep}\NormalTok{(}\StringTok{"mean=20, sd=1"}\NormalTok{, }\DecValTok{1000}\NormalTok{))}
+\NormalTok{             ) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ vals, }
+             \AttributeTok{colour =}\NormalTok{ Specs)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{bins =} \DecValTok{50}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_freqpoly}\NormalTok{(}\AttributeTok{bins =} \DecValTok{50}\NormalTok{) }\CommentTok{\# geom\_freqpoly adds in the line on top of the histogram}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-88-1.pdf}
+
+\begin{quote}
+Play with the mean and sd parameters and visualize the distributions (plain lines) as well as the corresponding histograms.
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{application-on-a-real-dataset}{%
+\subsection{Application on a real dataset}\label{application-on-a-real-dataset}}
+
+Now we will use the Normal distribution to make predictions about gene expression of TP53 in lung cancer. TP53 is the most commonly mutated gene across multiple cancer types especially in lung cancers. We will read a table (import) containing measurements of TP53 expression levels in 586 patients.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tp53.exp }\OtherTok{=} \FunctionTok{read.table}\NormalTok{(}\StringTok{"https://www.dropbox.com/s/rwopdr8ycmdg8bd/TP53\_expression\_LungAdeno.txt?dl=1"}\NormalTok{, }
+                      \AttributeTok{header=}\NormalTok{T, }\AttributeTok{sep=}\StringTok{"}\SpecialCharTok{\textbackslash{}t}\StringTok{"}\NormalTok{)[,}\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{]}
+\FunctionTok{summary}\NormalTok{(tp53.exp)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Samples          TP53_expression 
+##  Length:586         Min.   :  92.6  
+##  Class :character   1st Qu.: 911.8  
+##  Mode  :character   Median :1313.3  
+##                     Mean   :1380.8  
+##                     3rd Qu.:1778.1  
+##                     Max.   :4703.9  
+##                     NA's   :69
+\end{verbatim}
+
+\hypertarget{data-cleaning-and-central-values}{%
+\subsubsection{Data cleaning and central values}\label{data-cleaning-and-central-values}}
+
+We will remove all the missing values and calculate the mean and standard deviation for the TP53 gene expression.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tp53.exp }\OtherTok{=}\NormalTok{ tp53.exp }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{na.omit}\NormalTok{() }
+
+\NormalTok{m.tp53 }\OtherTok{=} \FunctionTok{mean}\NormalTok{(tp53.exp}\SpecialCharTok{$}\NormalTok{TP53\_expression) }\CommentTok{\# mean}
+\NormalTok{s.tp53 }\OtherTok{=} \FunctionTok{sd}\NormalTok{(tp53.exp}\SpecialCharTok{$}\NormalTok{TP53\_expression) }\CommentTok{\# standard deviation}
+
+\NormalTok{m.tp53;s.tp53}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1380.822
+\end{verbatim}
+
+\begin{verbatim}
+## [1] 719.5934
+\end{verbatim}
+
+\hypertarget{modeling-using-a-normal-distribution}{%
+\subsubsection{Modeling using a normal distribution}\label{modeling-using-a-normal-distribution}}
+
+Let's see how well a normal distribution with \(\mu = 1380.822\) (m.tp53) and \(\sigma = 719.5934\) (s.tp53) can approximate the \textbf{real} distribution of TP53 expression.\\
+We assume that the population mean and standard deviation is similar as calculated above since we cannot measure the expression of TP53 in each and every lung cancer patient in the world.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# distribution of the measured data}
+\FunctionTok{ggplot}\NormalTok{(tp53.exp,}
+       \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ TP53\_expression)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_density}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{xlim}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{1500}\NormalTok{, }\DecValTok{6000}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-91-1.pdf}
+
+Make a normal distribution with the above parameters
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{=} \FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{5000}\NormalTok{,}\AttributeTok{by=}\DecValTok{5}\NormalTok{)}
+\NormalTok{d.pred }\OtherTok{=} \FunctionTok{dnorm}\NormalTok{(x, }\AttributeTok{mean =}\NormalTok{ m.tp53, }\AttributeTok{sd =}\NormalTok{ s.tp53)}
+
+\CommentTok{\# Now plot both, predicted and measured data}
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_density}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ tp53.exp}\SpecialCharTok{$}\NormalTok{TP53\_expression)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ x, }
+                \AttributeTok{y =}\NormalTok{ d.pred,}
+                \AttributeTok{colour =} \StringTok{"red"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =} \FunctionTok{c}\NormalTok{(}\FunctionTok{quantile}\NormalTok{(tp53.exp}\SpecialCharTok{$}\NormalTok{TP53\_expression, }\AttributeTok{probs =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.1}\NormalTok{, }\FloatTok{0.9}\NormalTok{)))) }\SpecialCharTok{+}
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =} \FunctionTok{c}\NormalTok{(}\FunctionTok{qnorm}\NormalTok{(}\AttributeTok{p =} \FloatTok{0.1}\NormalTok{, }\AttributeTok{mean =}\NormalTok{ m.tp53, }\AttributeTok{sd =}\NormalTok{ s.tp53), }
+                            \FunctionTok{qnorm}\NormalTok{(}\AttributeTok{p =} \FloatTok{0.9}\NormalTok{, }\AttributeTok{mean =}\NormalTok{ m.tp53, }\AttributeTok{sd =}\NormalTok{ s.tp53)),}
+             \AttributeTok{colour =} \StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{, }\AttributeTok{linetype =} \StringTok{\textquotesingle{}dotted\textquotesingle{}}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-92-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#plot(density(tp53.exp$TP53\_expression), main ="", xlim=c({-}1500, 6000),lwd=3);lines(x,d.pred, col="red",lwd=3)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{data-prediction-using-the-normal-distribution-model}{%
+\subsubsection{Data prediction using the normal distribution model}\label{data-prediction-using-the-normal-distribution-model}}
+
+Using a normal distribution with \(\mu = 1380.822\) (m.tp53) and \(\sigma = 719.5934\) (s.tp53), we will ask the following questions -
+
+-- \textbf{(Q1)} What is the probability of observing the expression of TP53 to be \textbf{less} than 1000?
+
+-- \textbf{(Q2)} What is the probability of observing the expression of TP53 to be \textbf{greater} than 1000?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Q1}
+\FunctionTok{pnorm}\NormalTok{(}\AttributeTok{q=}\DecValTok{1000}\NormalTok{, }\AttributeTok{mean =}\NormalTok{m.tp53, }\AttributeTok{sd =}\NormalTok{ s.tp53) }\CommentTok{\# returns the cumulative probability}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.2983271
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Q2}
+\DecValTok{1} \SpecialCharTok{{-}} \FunctionTok{pnorm}\NormalTok{(}\AttributeTok{q=}\DecValTok{1000}\NormalTok{, }\AttributeTok{mean =}\NormalTok{m.tp53, }\AttributeTok{sd =}\NormalTok{ s.tp53) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.7016729
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# is same as}
+\FunctionTok{pnorm}\NormalTok{(}\AttributeTok{q=}\DecValTok{1000}\NormalTok{, }\AttributeTok{mean =}\NormalTok{m.tp53, }\AttributeTok{sd =}\NormalTok{ s.tp53, }\AttributeTok{lower.tail =} \ConstantTok{FALSE}\NormalTok{) }\CommentTok{\# or pnorm(q=1000, mean =m.tp53, sd = s.tp53, lower.tail = F)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.7016729
+\end{verbatim}
+
+\hypertarget{evaluating-the-quality-of-the-predictions}{%
+\subsubsection{Evaluating the quality of the predictions}\label{evaluating-the-quality-of-the-predictions}}
+
+Let's check how good these predictions are compared to \textbf{real} data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Q1: What is the probability of observing the expression of TP53 to be **less** than 1000?}
+\FunctionTok{sum}\NormalTok{(tp53.exp}\SpecialCharTok{$}\NormalTok{TP53\_expression }\SpecialCharTok{\textless{}} \DecValTok{1000}\NormalTok{)}\SpecialCharTok{/}\FunctionTok{nrow}\NormalTok{(tp53.exp)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.2978723
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Q2: What is the probability of observing the expression of TP53 to be **greater** than 1000?}
+\FunctionTok{sum}\NormalTok{(tp53.exp}\SpecialCharTok{$}\NormalTok{TP53\_expression }\SpecialCharTok{\textgreater{}} \DecValTok{1000}\NormalTok{)}\SpecialCharTok{/}\FunctionTok{nrow}\NormalTok{(tp53.exp)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.7021277
+\end{verbatim}
+
+\begin{quote}
+I would say those predictions are pretty good !! Now, let's try to break this model. Re-execute the code above with different \(q\) values \texttt{q=100,\ q=500,\ q=4000,\ q=4500} etc. At what values do you think the model would not perform well. HINT: Look at the tails of the distribution!
+\end{quote}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# What is the probability of observing the expression of TP53 to be less than q?}
+\NormalTok{q }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\DecValTok{100}\NormalTok{,}\DecValTok{500}\NormalTok{,}\DecValTok{1000}\NormalTok{,}\DecValTok{4000}\NormalTok{,}\DecValTok{4500}\NormalTok{)}
+
+\CommentTok{\# The function sapply() is used to calculate and store the predicted (a) and real (b) values}
+\NormalTok{pred }\OtherTok{=} \FunctionTok{numeric}\NormalTok{()}
+\NormalTok{meas }\OtherTok{=} \FunctionTok{numeric}\NormalTok{()}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(q))\{}
+\NormalTok{  pred[i] }\OtherTok{=} \FunctionTok{pnorm}\NormalTok{(}\AttributeTok{q=}\NormalTok{q[i], }\AttributeTok{mean =}\NormalTok{ m.tp53, }\AttributeTok{sd =}\NormalTok{ s.tp53) }
+\NormalTok{  meas[i] }\OtherTok{=} \FunctionTok{sum}\NormalTok{(tp53.exp}\SpecialCharTok{$}\NormalTok{TP53\_expression }\SpecialCharTok{\textless{}}\NormalTok{ q[i])}\SpecialCharTok{/}\FunctionTok{nrow}\NormalTok{(tp53.exp)}
+\NormalTok{\}}
+
+\CommentTok{\# Change into a dataframe }
+\NormalTok{model\_mat }\OtherTok{=} \FunctionTok{data.frame}\NormalTok{(pred, meas, q)}
+\NormalTok{model\_mat}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         pred        meas    q
+## 1 0.03754417 0.001934236  100
+## 2 0.11046576 0.104448743  500
+## 3 0.29832708 0.297872340 1000
+## 4 0.99986358 0.992263056 4000
+## 5 0.99999270 0.996131528 4500
+\end{verbatim}
+
+Again, using a normal distribution with \(\mu = 1380.822\) and \(\sigma = 719.5934\), what if we ask these kinds of questions:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Q1: What is the value of TP53 expression at the 10\% quantile?}
+\FunctionTok{qnorm}\NormalTok{(}\AttributeTok{p =} \FloatTok{0.1}\NormalTok{, }\AttributeTok{mean =}\NormalTok{ m.tp53, }\AttributeTok{sd =}\NormalTok{ s.tp53)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 458.6258
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Q2: What is the value of TP53 expression at the 90\% quantile?}
+\FunctionTok{qnorm}\NormalTok{(}\AttributeTok{p =} \FloatTok{0.9}\NormalTok{, }\AttributeTok{mean =}\NormalTok{ m.tp53, }\AttributeTok{sd =}\NormalTok{ s.tp53)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2303.018
+\end{verbatim}
+
+Let's check how good these predictions are compared to our real data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{quantile}\NormalTok{(tp53.exp}\SpecialCharTok{$}\NormalTok{TP53\_expression, }
+         \AttributeTok{probs =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.1}\NormalTok{, }\FloatTok{0.9}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       10%       90% 
+##  478.2844 2240.1913
+\end{verbatim}
+
+Again the predictions are pretty good!
+
+\hypertarget{visualization-1}{%
+\subsubsection{Visualization}\label{visualization-1}}
+
+We can also visualize all of this on a simple graph:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Model prediction:}
+\NormalTok{x }\OtherTok{=} \FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{5000}\NormalTok{,}\AttributeTok{by=}\DecValTok{5}\NormalTok{)}
+\NormalTok{d.pred }\OtherTok{=} \FunctionTok{dnorm}\NormalTok{(x,}\AttributeTok{mean =}\NormalTok{ m.tp53, }\AttributeTok{sd =}\NormalTok{ s.tp53)}
+
+\CommentTok{\# Model and measured data:}
+\FunctionTok{plot}\NormalTok{(}\FunctionTok{density}\NormalTok{(tp53.exp}\SpecialCharTok{$}\NormalTok{TP53\_expression), }\AttributeTok{main =}\StringTok{""}\NormalTok{, }\AttributeTok{xlim=}\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{1500}\NormalTok{, }\DecValTok{6000}\NormalTok{),}\AttributeTok{lwd=}\DecValTok{3}\NormalTok{);}\FunctionTok{lines}\NormalTok{(x,d.pred, }\AttributeTok{col=}\StringTok{"red"}\NormalTok{,}\AttributeTok{lwd=}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-98-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Model and measured data and predicted versus measured 0.1 and 0.9 quantiles:}
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ x, }
+                \AttributeTok{y =}\NormalTok{ d.pred),}
+            \AttributeTok{colour =} \StringTok{"red"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_density}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ tp53.exp}\SpecialCharTok{$}\NormalTok{TP53\_expression)) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-98-2.pdf}
+
+Compare the black and red vertical lines (real vs predicted).
+
+\begin{quote}
+Re-execute the code above with \texttt{p=0.25,\ p=0.5,\ p=0.75\ etc} and check how good the predictions are.
+\end{quote}
+
+\hypertarget{visualization-using-a-q-q-plot}{%
+\subsubsection{Visualization using a Q-Q plot}\label{visualization-using-a-q-q-plot}}
+
+Now, let's plot the sample quantiles against theoretical quantiles to check the similarity between the two. This is called a quantile - quantile plot or a Q-Q plot, which you are familiar with (see Exercises Sheet 1).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{q }\OtherTok{=} \FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\FloatTok{0.01}\NormalTok{) }\CommentTok{\# Creating a vector of quantiles}
+
+\CommentTok{\# Find values corresponding to these quantiles in the real data}
+\NormalTok{q.observed }\OtherTok{=} \FunctionTok{quantile}\NormalTok{(tp53.exp}\SpecialCharTok{$}\NormalTok{TP53\_expression, }\AttributeTok{probs =}\NormalTok{ q)}
+
+\CommentTok{\# Find values corresponding to these quantiles in the theoretical normal distribution}
+\NormalTok{q.theoretical }\OtherTok{=} \FunctionTok{qnorm}\NormalTok{(}\AttributeTok{p =}\NormalTok{ q, }\AttributeTok{mean =}\NormalTok{ m.tp53, }\AttributeTok{sd =}\NormalTok{ s.tp53)}
+
+\CommentTok{\# Correlate the above two values}
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ q.theoretical, }
+                 \AttributeTok{y =}\NormalTok{ q.observed), }\AttributeTok{size =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_abline}\NormalTok{(}\AttributeTok{intercept =} \DecValTok{0}\NormalTok{, }\AttributeTok{slope =} \DecValTok{1}\NormalTok{, }
+              \AttributeTok{size =} \DecValTok{1}\NormalTok{, }\AttributeTok{color =} \StringTok{"red"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+## i Please use `linewidth` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.
+\end{verbatim}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-99-1.pdf}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{binomial-distribution}{%
+\subsection{Binomial distribution}\label{binomial-distribution}}
+
+A binomial distribution can be defined as -
+
+\[P(x) = \frac{n!}{x!(n-x)!}\cdot p^x \cdot (1-p)^{n-x}\]
+
+Where \(x\) is the number of successes out of \(n\) experiments and \(p\) is the probability of success.
+
+\begin{itemize}
+\tightlist
+\item
+  \(mean = n \cdot p\)
+\item
+  \(variance = np \cdot (1 - p)\)
+\item
+  \(sd = \sqrt{np \cdot (1 - p)}\)
+\end{itemize}
+
+The design of the experiment is as follows -
+
+\begin{itemize}
+\tightlist
+\item
+  The experiment is repeated and are independent of one another
+\item
+  Each experiment has just two outcomes
+\item
+  The probability of success is constant and does not change with experiments
+\end{itemize}
+
+We can for example compute the probability of having 7 heads in a series of 10 throws of a coin:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# x = number of successes; size = number of trials; prob = probability of success on each trial}
+\FunctionTok{dbinom}\NormalTok{(}\AttributeTok{x=}\DecValTok{7}\NormalTok{, }\AttributeTok{size=}\DecValTok{10}\NormalTok{, }\AttributeTok{prob =} \FloatTok{0.5}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.1171875
+\end{verbatim}
+
+Or we can compute what the probability is to get 7 or more heads using the function \texttt{pbinom()}. Remember that the parameter ``lower.tail'' is used to specify whether to calculate the probability of observing x or fewer successes (if \texttt{lower.tail\ =\ TRUE}) or the probability of observing more than x successes (\texttt{lower.tail\ =\ FALSE}):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{pbinom}\NormalTok{(}\DecValTok{6}\NormalTok{, }\AttributeTok{size=}\DecValTok{10}\NormalTok{,}
+       \AttributeTok{prob=}\FloatTok{0.5}\NormalTok{,}
+       \AttributeTok{lower.tail=}\ConstantTok{FALSE}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.171875
+\end{verbatim}
+
+Beware that this syntax means \textbf{strictly more than 6}, i.e.~7 or more!!
+
+\begin{quote}
+How would you compute the probability to get less than 5? What would \texttt{qbinom(0.3,size=10,prob=0.5,lower.tail=FALSE)} represent?
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{confidence-interval}{%
+\section{Confidence interval}\label{confidence-interval}}
+
+The \textbf{confidence interval} describes the interval containing the (unknown) expectation value of a distribution with 95\% confidence. This means that out of 100 random realizations of this random variable, the true expectation value \(\mu\) will indeed be in this interval.
+
+Let us try a simulation: we consider a random variable distributed according to a Poisson distribution \[P(x) = \frac{{e^{ - \lambda } \lambda ^x }}{{x!}}\] Here, \emph{we know the true value of the expectation value}. We want to get an estimate for \(\lambda\), and check if the confidence interval contains the true expectation value.
+
+For example, a farmer expects to collect 75 eggs from his hens per hour.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lambda }\OtherTok{=} \DecValTok{75}
+\end{Highlighting}
+\end{Shaded}
+
+He now collects during 100 days the eggs \(N=8\) times a day (each time during one hour). We want to compute the mean \(m_N\) over these \(N=8\) realizations and determine the 95\% confidence interval, and check, how often the expectation value \(\mu\) is inside the confidence interval.
+
+Remember that the 95\% CI is given by \[[m_N-t_{95,N-1}\frac{\sigma}{\sqrt{N}},m_N+t_{95,N-1}\frac{\sigma}{\sqrt{N}}]\] where \(t_{95,N-1}\) is the critical value for the \(t\)-distribution with \(n-1\) degrees of freedom.
+
+Let's start by creating our samples:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# size of the sample}
+\NormalTok{N }\OtherTok{=} \DecValTok{8}
+
+\CommentTok{\# we now draw 100 times samples of size N=8}
+\DocumentationTok{\#\# rpois is the function used to generate the Poisson distribution}
+\NormalTok{X }\OtherTok{=} \FunctionTok{lapply}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{100}\NormalTok{, }\ControlFlowTok{function}\NormalTok{(i) \{}
+  \FunctionTok{rpois}\NormalTok{(N, }\AttributeTok{lambda =}\NormalTok{ lambda)}
+\NormalTok{  \})}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{lapply()} is a function in R that stands for ``list apply''. It is used to \emph{apply} a function to each element of a list or vector and produces a list with the same length as an output.
+
+In this previous example, the input is a vector (\texttt{1:100}).
+Then, we \texttt{lapply(v,\ function(i))}:
++ v: The list or vector you want to apply the function to.
++ function: The function you want to apply where \texttt{i} is each element in X. In this case, we are applying \texttt{rpois} 100 times.
+
+As an output, \texttt{lapply} returns a list where each element has had the specified function applied to it.
+
+\begin{quote}
+Run View(X) to see how this object looks like. Try using lapply to obtain the mean of all elements in each X using \texttt{lapply(X,\ function(i)\{mean(i)\})} or \texttt{lapply(X,\ mean)}.
+\end{quote}
+
+Now, we calculate the mean and the standard deviation of the respective samples:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# we compute the sample means}
+\NormalTok{Xm }\OtherTok{=} \FunctionTok{sapply}\NormalTok{(X,mean)}
+\CommentTok{\# and the sample standard deviations}
+\NormalTok{Xsd }\OtherTok{=} \FunctionTok{sapply}\NormalTok{(X,sd) }
+\end{Highlighting}
+\end{Shaded}
+
+Next, we determine the upper and lower bounds of the 95\% CI. Remember that the confidence interval is based on a \(t\)-distribution. The degrees of freedom of this distribution is the sample size -1 (\(N\)-1=7 in this case)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\OtherTok{=}\NormalTok{ N}\DecValTok{{-}1}
+\NormalTok{tc }\OtherTok{=} \FunctionTok{qt}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\FloatTok{0.975}\NormalTok{),df) }\CommentTok{\# this is the critical value for the t{-}distribution for df = N{-}1 degrees of freedom and 95\% CI}
+
+\NormalTok{Xl }\OtherTok{=}\NormalTok{ Xm}\SpecialCharTok{{-}}\NormalTok{tc}\SpecialCharTok{*}\NormalTok{Xsd}\SpecialCharTok{/}\FunctionTok{sqrt}\NormalTok{(N) }\CommentTok{\# upper bound of the 95\% CI}
+\NormalTok{Xh }\OtherTok{=}\NormalTok{ Xm}\SpecialCharTok{+}\NormalTok{tc}\SpecialCharTok{*}\NormalTok{Xsd}\SpecialCharTok{/}\FunctionTok{sqrt}\NormalTok{(N) }\CommentTok{\# lower bound of the 95\% CI}
+\end{Highlighting}
+\end{Shaded}
+
+Finally, we determine whether each sample mean is found within the 95\% CI or not:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# vector of TRUE/FALSE if the real expectation value lambda is inside the interval}
+\NormalTok{i.ok }\OtherTok{=}  \FunctionTok{as.factor}\NormalTok{(Xl }\SpecialCharTok{\textless{}}\NormalTok{ lambda }\SpecialCharTok{\&}\NormalTok{ Xh }\SpecialCharTok{\textgreater{}}\NormalTok{ lambda)}
+
+\NormalTok{plot\_data }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{n =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{100}\NormalTok{,}
+  \AttributeTok{Xm =}\NormalTok{ Xm,}
+  \AttributeTok{Xl =}\NormalTok{ Xl,}
+  \AttributeTok{Xh =}\NormalTok{ Xh,}
+  \AttributeTok{i.ok =}\NormalTok{ i.ok}
+\NormalTok{) }
+
+\CommentTok{\# Plot using ggplot2}
+\FunctionTok{ggplot}\NormalTok{(plot\_data, }
+       \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ n, }\AttributeTok{y =}\NormalTok{ Xm, }
+           \AttributeTok{color =} \StringTok{\textasciigrave{}}\AttributeTok{i.ok}\StringTok{\textasciigrave{}}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{size =} \DecValTok{3}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_errorbar}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{ymin =}\NormalTok{ Xl, }\AttributeTok{ymax =}\NormalTok{ Xh, }\AttributeTok{color =}\NormalTok{ i.ok), }\AttributeTok{width =} \FloatTok{0.2}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_hline}\NormalTok{(}\AttributeTok{yintercept =}\NormalTok{ lambda, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_color\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"grey"}\NormalTok{, }\StringTok{"orange"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{y =} \StringTok{"Mean values"}\NormalTok{,}
+       \AttributeTok{title =} \FunctionTok{paste}\NormalTok{(}\StringTok{"Mean values and confidence intervals, N="}\NormalTok{,N),}
+       \AttributeTok{color =} \StringTok{"95\% CI Status"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-106-1.pdf}
+
+Here, the orange/grey bars represent the confidence interval, the dot is the mean of the sample values, and the dotted line at \texttt{\textbackslash{}lambda} represents the true expectation value. Whenever the true expectation value is within the CI, the bar is orange, if not, the bar is grey. How often is the true expectation value outside the CI? Count the grey bars!
+
+It happens 4 times, which fits pretty well with the expected 5\%.
+
+\begin{quote}
+Repeat this simulation, but now with samples of \(N=24\) (again 100 times)\\
+What do you observe?\\
+How often is the true expectation value outside the CI? Change to 90\% CI and check if that works!
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{exercises-2}{%
+\section{EXERCISES}\label{exercises-2}}
+
+\hypertarget{exercise-1-probability-distributions}{%
+\subsection{Exercise 1: Probability distributions}\label{exercise-1-probability-distributions}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  What is the expression of TP53 observed at 10th percentile? What is the expression of TP53 observed at 90th percentile?
+\item
+  Other distribution types can become very similar to the normal distribution under certain conditions. Plot the histogram of 1000 random numbers drawn from the Poisson distribution with lambda = 1, 10, 100, 1000. What do you observe?
+\end{enumerate}
+
+\hypertarget{exercise-2-binomial-distribution}{%
+\subsection{Exercise 2: Binomial distribution}\label{exercise-2-binomial-distribution}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  How large are the chances of getting at least 50 times head out of 100?
+\item
+  How would you simulate the effect of an unfair coin say which leads head 2/3 times? How large are the chances of getting at least 50 times head out of 100 with this coin?
+\item
+  You invited a group of 20 friends to a bar. For every member, there is an 80\% chance that he/she will show up. If you want to buy a treat for all of your friends, how many should you buy to have a 70\% chance that you will have just enough for everyone?
+\end{enumerate}
+
+\hypertarget{exercise-3-confidence-intervals}{%
+\subsection{Exercise 3: Confidence intervals}\label{exercise-3-confidence-intervals}}
+
+You are buying 10 packs of gummy bears. You particularly like the red ones and the green ones. A pack contains 6 different colors and you expect them to be equally distributed. There are 84 pieces per 200g pack.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  What is the expected amount of red or green gummy bears?
+\item
+  You selected your 10 packs according to the colors you could see in the pack. At home, you counted the following bears per pack:
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  for the red ones: 12 16 17 12 16 13 11 18 13 19\\
+\item
+  for the green ones: 11 10 15 16 12 14 13 10 13 17\\
+  Was your selection procedure a success? In other words, is the expected value bellow (congrats!), within or above (bad luck!) the 95\% CI?
+\end{itemize}
+
+\hypertarget{week-1-hypothesis-testing}{%
+\chapter{WEEK 1: Hypothesis testing}\label{week-1-hypothesis-testing}}
+
+On this section, we will go through hypothesis testing. You will start to see how to \emph{formulate hypotheses} and how to \emph{test} them.
+In addition, we want to learn how to use and interpret hypothesis tests.
+
+We will work again with the diabetes dataset that we used previously.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dat }\OtherTok{=} \FunctionTok{read.delim}\NormalTok{(}\StringTok{\textquotesingle{}https://tinyurl.com/y4fark9g\textquotesingle{}}\NormalTok{)}
+
+\CommentTok{\# set the row names using the column id}
+\FunctionTok{rownames}\NormalTok{(dat) }\OtherTok{=}\NormalTok{ dat}\SpecialCharTok{$}\NormalTok{id}
+\end{Highlighting}
+\end{Shaded}
+
+Load the required packages
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dplyr)}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\end{Highlighting}
+\end{Shaded}
+
+Check out the content of the dataset using the summary function
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(dat)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        id             chol          stab.glu          hdl        
+##  Min.   : 1000   Min.   : 78.0   Min.   : 48.0   Min.   : 12.00  
+##  1st Qu.: 4792   1st Qu.:179.0   1st Qu.: 81.0   1st Qu.: 38.00  
+##  Median :15766   Median :204.0   Median : 89.0   Median : 46.00  
+##  Mean   :15978   Mean   :207.8   Mean   :106.7   Mean   : 50.45  
+##  3rd Qu.:20336   3rd Qu.:230.0   3rd Qu.:106.0   3rd Qu.: 59.00  
+##  Max.   :41756   Max.   :443.0   Max.   :385.0   Max.   :120.00  
+##                  NA's   :1                       NA's   :1       
+##      ratio            glyhb         location              age       
+##  Min.   : 1.500   Min.   : 2.68   Length:403         Min.   :19.00  
+##  1st Qu.: 3.200   1st Qu.: 4.38   Class :character   1st Qu.:34.00  
+##  Median : 4.200   Median : 4.84   Mode  :character   Median :45.00  
+##  Mean   : 4.522   Mean   : 5.59                      Mean   :46.85  
+##  3rd Qu.: 5.400   3rd Qu.: 5.60                      3rd Qu.:60.00  
+##  Max.   :19.300   Max.   :16.11                      Max.   :92.00  
+##  NA's   :1        NA's   :13                                        
+##     gender              height          weight         frame          
+##  Length:403         Min.   :52.00   Min.   : 99.0   Length:403        
+##  Class :character   1st Qu.:63.00   1st Qu.:151.0   Class :character  
+##  Mode  :character   Median :66.00   Median :172.5   Mode  :character  
+##                     Mean   :66.02   Mean   :177.6                     
+##                     3rd Qu.:69.00   3rd Qu.:200.0                     
+##                     Max.   :76.00   Max.   :325.0                     
+##                     NA's   :5       NA's   :1                         
+##      bp.1s           bp.1d            bp.2s           bp.2d       
+##  Min.   : 90.0   Min.   : 48.00   Min.   :110.0   Min.   : 60.00  
+##  1st Qu.:121.2   1st Qu.: 75.00   1st Qu.:138.0   1st Qu.: 84.00  
+##  Median :136.0   Median : 82.00   Median :149.0   Median : 92.00  
+##  Mean   :136.9   Mean   : 83.32   Mean   :152.4   Mean   : 92.52  
+##  3rd Qu.:146.8   3rd Qu.: 90.00   3rd Qu.:161.0   3rd Qu.:100.00  
+##  Max.   :250.0   Max.   :124.00   Max.   :238.0   Max.   :124.00  
+##  NA's   :5       NA's   :5        NA's   :262     NA's   :262     
+##      waist           hip           time.ppn     
+##  Min.   :26.0   Min.   :30.00   Min.   :   5.0  
+##  1st Qu.:33.0   1st Qu.:39.00   1st Qu.:  90.0  
+##  Median :37.0   Median :42.00   Median : 240.0  
+##  Mean   :37.9   Mean   :43.04   Mean   : 341.2  
+##  3rd Qu.:41.0   3rd Qu.:46.00   3rd Qu.: 517.5  
+##  Max.   :56.0   Max.   :64.00   Max.   :1560.0  
+##  NA's   :2      NA's   :2       NA's   :3
+\end{verbatim}
+
+How can we inspect the differences between the weight of men and women? We can start by ploting two histograms or density plots representing the weight by biological sex.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(dat,}
+       \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ weight, }
+           \AttributeTok{fill =}\NormalTok{ gender)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_density}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-110-1.pdf}
+
+The distributions look different in shape, right? Where do you think the mean would be located in the plot?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# We can use "filter()" to filter the cholesterol values for men and women}
+\NormalTok{dat.male }\OtherTok{=}\NormalTok{ dat }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(gender }\SpecialCharTok{==} \StringTok{\textquotesingle{}male\textquotesingle{}}\NormalTok{)}
+
+\NormalTok{dat.female }\OtherTok{=}\NormalTok{ dat }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(gender }\SpecialCharTok{==} \StringTok{\textquotesingle{}female\textquotesingle{}}\NormalTok{)}
+
+\CommentTok{\# we will calculate the mean weight by sex.}
+\NormalTok{mean.men }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(dat.male}\SpecialCharTok{$}\NormalTok{weight, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{mean.women }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(dat.female}\SpecialCharTok{$}\NormalTok{weight, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+And we can then add in the means to the plot as vertical lines.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(dat,}
+       \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ weight, }
+           \AttributeTok{fill =}\NormalTok{ gender)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_density}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.5}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =}\NormalTok{ mean.men, }\AttributeTok{colour =} \StringTok{"cyan"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =}\NormalTok{ mean.women, }\AttributeTok{colour =} \StringTok{"salmon"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-112-1.pdf}
+
+\begin{quote}
+Do you think that the mean of the male weight is lower than 180?
+Do you think that the mean of the female weight is \textbf{really} different from the mean of the male weights?
+Do you think that the mean of the male weight is higher than that of the females?
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+Now, we want to use a statistical test to check if,
+
+\begin{itemize}
+\tightlist
+\item
+  males have a mean weight that is \textbf{significantly} lower than a specific value (one-sample, one-tailed test)
+\item
+  there is a \textbf{significant} difference in the mean of the weights between the two groups (two-sample, two-sided test)
+\item
+  male have a \textbf{significantly} higher mean weight than females (two-sample, one-sided test)
+\end{itemize}
+
+Note the use of the word \textbf{significant} in the previous statements!
+
+This is exactly what \textbf{mean tests} such as the t-test (or the Wilcoxon test) are designed for!
+We will perform here a \textbf{t-test}.
+
+\hypertarget{one-sample-t-test}{%
+\subsection{One sample t-test}\label{one-sample-t-test}}
+
+Using a one-sample t-test, we can check if values differ significantly from a target value.
+For example, you could sample 10 chocolate bars, and test if they significantly differ from the expected weight of 100 g:
+
+\begin{quote}
+Should we perform a one- or two-sided test?
+\end{quote}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bars }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\DecValTok{103}\NormalTok{,}\DecValTok{103}\NormalTok{,}\DecValTok{97}\NormalTok{,}\FloatTok{102.5}\NormalTok{,}\FloatTok{100.5}\NormalTok{,}\DecValTok{103}\NormalTok{,}\FloatTok{101.3}\NormalTok{,}\FloatTok{99.5}\NormalTok{,}\DecValTok{101}\NormalTok{,}\DecValTok{104}\NormalTok{) }\CommentTok{\# weights of 10 chocolate bars}
+\NormalTok{chocbar.mean }\OtherTok{=} \DecValTok{100} \CommentTok{\# expected weight}
+\end{Highlighting}
+\end{Shaded}
+
+The function \texttt{t.test()} offers three \textbf{alternative} options: \emph{two.sided}, \emph{less} and \emph{greater}.
+Here, if we want to test whether the mean weight of the 10 chocolate bars is \textbf{different} from the expected weight of 100 g, we want to perform a \emph{two sided} test and use the alternative \emph{two.sided}.
+
+It is essential to \textbf{clearly formulate the H0 and H1 hypothesis}.
+There are two alternative but equivalent ways to do so.
+Either:
+
+\textgreater{} H0: the expectation value of the random variable ``Weight of a chocolate bar'' is \textbf{equal} to 100 g.\\
+
+\textgreater{} H1: the expectation value of the random variable ``Weight of a chocolate bar'' is \textbf{different} from 100 g.
+
+or
+
+\textgreater{} H0: the mean weight of a chocolate bar is not significantly different from 100 g.\\
+
+\textgreater{} H1: the mean weight of a chocolate bar is significantly different from 100 g.
+
+Note the difference between these two formulations, and ask for help if you have questions about this!
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{t.test}\NormalTok{(}\AttributeTok{x =}\NormalTok{ bars, }\AttributeTok{mu =}\NormalTok{ chocbar.mean, }\AttributeTok{alternative =} \StringTok{"two.sided"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  One Sample t-test
+## 
+## data:  bars
+## t = 2.233, df = 9, p-value = 0.05244
+## alternative hypothesis: true mean is not equal to 100
+## 95 percent confidence interval:
+##   99.98067 102.97933
+## sample estimates:
+## mean of x 
+##    101.48
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# equivalent to:}
+\CommentTok{\# t.test(bars,mu = chocbar.mean)}
+\CommentTok{\# "alternative" is set to "two.sided" per default.}
+
+\CommentTok{\# x is a vector containing the data values}
+\CommentTok{\# mu indicates the true value of the mean (here: 100g)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{quote}
+How would you interpret this result?
+Can you reject the H0 hypothesis?
+\end{quote}
+
+Using alpha = 0.05, the H0 hypothesis can not be rejected as the p-value is 0.05244 (p-value \textgreater= 0.05).
+With alpha = 0.05, the mean weight of the chocolate bars is not significantly different from 100 g.
+
+Using alpha = 0.1, the H0 hypothesis can be rejected (p-value \textless{} 0.1).
+With alpha = 0.1, the mean weight of the chocolate bars is significantly different from 100 g.
+
+\textbf{BUT} \ldots{} It does not mean that alpha should be chosen with respect to the results of the t.test!!!
+
+Before running a t.test, \textbf{formulate the null hypothesis H0 and the alternative hypothesis H1} and \textbf{decide about the alpha} value.
+Remember, \textbf{alpha} represent the \textbf{false positive rate}: under the H0 hypothesis (test of two identical distributions), this is the proportion of tests that will detect a difference between the two groups (p-value \textless{} alpha).
+
+\textbf{Beware not to get confused between one-/two-sample tests, and one-/two-sided tests!}
+
+Regarding the mean weight of the males, we would like to check whether males have a mean weight that is significantly \textbf{lower} than 180.
+Here as well, we will perform a \textbf{one-sample test}, with mu = 180.
+However, we will perform a \textbf{one-sided} test using the alternative option \textbf{less}.
+
+The hypotheses can be formulated as:\\
+\textgreater{} H0: the expectation value of the random variable ``Weight of male patients'' is \textbf{equal or greater} 180.\\
+
+\textgreater{} H1: the expectation value of the random variable ``Weight of male patients'' is \textbf{less} than 180.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{t.test}\NormalTok{(dat.male}\SpecialCharTok{$}\NormalTok{weight, }\AttributeTok{mu =} \DecValTok{180}\NormalTok{, }\AttributeTok{alternative =} \StringTok{"less"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  One Sample t-test
+## 
+## data:  dat.male$weight
+## t = 0.64094, df = 167, p-value = 0.7388
+## alternative hypothesis: true mean is less than 180
+## 95 percent confidence interval:
+##      -Inf 186.8629
+## sample estimates:
+## mean of x 
+##  181.9167
+\end{verbatim}
+
+\begin{quote}
+How would you interpret the result with alpha = 0.05?
+Can you reject the H0 hypothesis?
+\end{quote}
+
+\hypertarget{two-sample-t-test-2-sided}{%
+\subsection{Two-sample t-test (2-sided)}\label{two-sample-t-test-2-sided}}
+
+Now, we will compare the mean of the weights between males and females.\\
+
+According to the previous histogram, females have a different mean weight as males.
+This can be tested using a \emph{two-sample and two.tailed} t.test.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(dat,}
+       \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ weight, }
+           \AttributeTok{fill =}\NormalTok{ gender)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_density}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.5}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =}\NormalTok{ mean.men, }\AttributeTok{colour =} \StringTok{"cyan"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =}\NormalTok{ mean.women, }\AttributeTok{colour =} \StringTok{"salmon"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-116-1.pdf}
+
+The hypotheses can be formulated as:\\
+\textgreater{} H0: the expectation value of the random variable ``Weight of male patients'' is \textbf{equal} to the expectation value of the random variable ``Weight of female patients''.\\
+
+\textgreater{} H1: the expectation value of the random variable ``Weight of male patients'' is \textbf{different} from the expectation value of the random variable ``Weight of female patients''.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{t.test}\NormalTok{(dat.male}\SpecialCharTok{$}\NormalTok{weight, }
+\NormalTok{       dat.female}\SpecialCharTok{$}\NormalTok{weight)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Welch Two Sample t-test
+## 
+## data:  dat.male$weight and dat.female$weight
+## t = 1.8453, df = 372.45, p-value = 0.06579
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -0.4875828 15.3465572
+## sample estimates:
+## mean of x mean of y 
+##  181.9167  174.4872
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# remember, alternative = "two.sided" per default.}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{quote}
+How would you interpret the result with alpha = 0.05?
+Can you reject the H0 hypothesis?
+\end{quote}
+
+\hypertarget{two-sample-t-test-1-sided}{%
+\subsection{Two-sample t-test (1-sided)}\label{two-sample-t-test-1-sided}}
+
+Looking at the histogram, other observers could in principle see a difference between the mean values of the weights and formulate the following hypotheses:
+
+\textgreater{} H0: the expectation value of the random variable ``Weight of male patients'' is \textbf{equal or lower} to the expectation value of the random variable ``Weight of female patients''.\\
+
+\textgreater{} H1: the expectation value of the random variable ``Weight of male patients'' is \textbf{higher} than the expectation value of the random variable ``Weight of female patients''.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{t.test}\NormalTok{(dat.male}\SpecialCharTok{$}\NormalTok{weight, }
+\NormalTok{       dat.female}\SpecialCharTok{$}\NormalTok{weight, }\AttributeTok{alternative =} \StringTok{"greater"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Welch Two Sample t-test
+## 
+## data:  dat.male$weight and dat.female$weight
+## t = 1.8453, df = 372.45, p-value = 0.0329
+## alternative hypothesis: true difference in means is greater than 0
+## 95 percent confidence interval:
+##  0.7903498       Inf
+## sample estimates:
+## mean of x mean of y 
+##  181.9167  174.4872
+\end{verbatim}
+
+\begin{quote}
+How would you interpret the result with alpha = 0.05?
+\end{quote}
+
+\begin{quote}
+Can you explain why the p-value of the one-tailed t.test is lower than the p-value of the two-tailed t.test?
+What is the relation between these two values?
+\end{quote}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# p{-}value of the two{-}sided t{-}test versus p{-}value of the one{-}sided t{-}test: }
+\FunctionTok{t.test}\NormalTok{(dat.male}\SpecialCharTok{$}\NormalTok{weight, }
+\NormalTok{       dat.female}\SpecialCharTok{$}\NormalTok{weight, }\AttributeTok{alternative =} \StringTok{"two.sided"}\NormalTok{)}\SpecialCharTok{$}\NormalTok{p.value }\CommentTok{\# two{-}tailed}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.06579432
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{t.test}\NormalTok{(dat.male}\SpecialCharTok{$}\NormalTok{weight, }
+\NormalTok{       dat.female}\SpecialCharTok{$}\NormalTok{weight, }\AttributeTok{alternative =} \StringTok{"greater"}\NormalTok{)}\SpecialCharTok{$}\NormalTok{p.value }\CommentTok{\# one{-}tailed}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.03289716
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# divide the one by the other and see ... }
+\end{Highlighting}
+\end{Shaded}
+
+This can be visualized using the t-distribution.
+Here (see above result of the t.test), \emph{t = 1.8453} and \emph{df = 372.45}.
+
+In the \textbf{one-tailed t.test}, the p-value is the area under the curve for t \textgreater{} 1.8453 (alternative greater) \textbf{OR} for t \textless{} -1.8453 (alternative less).
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-120-1.pdf}
+
+In the \textbf{two-tailed t.test}, the p-value is the area under the curve for t \textgreater{} 1.8453 (alternative greater) \textbf{AND} for t \textless{} -1.8453 (alternative less).
+It is two times the p-value of the one-sided t.test!
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-121-1.pdf}
+
+IMPORTANTLY, a t-test can only be performed if the data is \textbf{normally distributed}!
+We haven't check that yet for our dataset \ldots{} This is the topic of the section \textbf{going further} below.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{exercises-3}{%
+\section{EXERCISES}\label{exercises-3}}
+
+\hypertarget{exercise-1-one-sided-t-test}{%
+\subsection{Exercise 1: One-sided t-test}\label{exercise-1-one-sided-t-test}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Consider the following graph, formulate the hypotheses H0 and H1 and perform a (one-sided) t-test.
+  Interpret the result using alpha = 0.05.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mean.height.f }\OtherTok{=} \FunctionTok{mean}\NormalTok{(dat.female}\SpecialCharTok{$}\NormalTok{height, }\AttributeTok{na.rm =}\NormalTok{ T)}
+\NormalTok{mean.height.m }\OtherTok{=} \FunctionTok{mean}\NormalTok{(dat.male}\SpecialCharTok{$}\NormalTok{height, }\AttributeTok{na.rm =}\NormalTok{ T)}
+
+\FunctionTok{ggplot}\NormalTok{(dat,}
+       \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ height, }
+           \AttributeTok{fill =}\NormalTok{ gender)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.5}\NormalTok{, }\AttributeTok{bins =} \DecValTok{20}\NormalTok{,}
+                 \AttributeTok{colour =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =}\NormalTok{ mean.height.m, }
+             \AttributeTok{colour =} \StringTok{"cyan"}\NormalTok{, }\AttributeTok{linetype =} \StringTok{\textquotesingle{}dashed\textquotesingle{}}\NormalTok{,}
+             \AttributeTok{linewidth =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =}\NormalTok{ mean.height.f, }
+             \AttributeTok{colour =} \StringTok{"salmon"}\NormalTok{, }\AttributeTok{linetype =} \StringTok{\textquotesingle{}dashed\textquotesingle{}}\NormalTok{,}
+             \AttributeTok{linewidth =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-122-1.pdf}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Calculate the mean age of the men.
+\item
+  Compare it to age = 50. Formulate the hypotheses H0 and H1 and perform a (one-sided) t-test. Interpret the result using alpha = 0.05.
+\end{enumerate}
+
+\hypertarget{exercice-2-two-sided-t-test}{%
+\subsection{Exercice 2: Two-sided t-test}\label{exercice-2-two-sided-t-test}}
+
+Can you find interesting differences in the mean values of parameters of the dataset \textbf{dat} for the two groups defined by the \textbf{location}?
+Follow these steps:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Select the two groups according to the location.
+  To do so, check the result of \texttt{distinct(location)} and create two tibbles corresponding to each of possible the locations.
+\item
+  Calculate the mean values of the numerical parameters for each group (ex: age, height, weight, waist, hip, \ldots).
+  \emph{Hint}: create first a dataframe with numeric columns only (use \texttt{select(which(is.numerical))}).
+  Select the rows corresponding to the two groups and use an \texttt{summarise()} and \texttt{group\_by} loop to calculate the mean values (grouped by location).
+\item
+  Select one of these, formulate the H0 and H1 hypotheses and perform a (two-sided) t-test.
+  Interpret the result (alpha = 0.05).
+\end{enumerate}
+
+\hypertarget{exercise-3.-going-further-checking-the-normality-of-the-distribution}{%
+\subsection{Exercise 3. Going further \ldots{} Checking the normality of the distribution}\label{exercise-3.-going-further-checking-the-normality-of-the-distribution}}
+
+In principle, t-tests require that the data is approximately normally distributed.
+If not, we can use \textbf{non-parametric} tests (see next lecture).
+
+In order to check whether the data is normally distributed or not, it is possible to perform a \textbf{Shapiro-Wilk} normality test (see lecture).
+This statistical test is implemented in R in the function \texttt{shapiro.test()}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{wilcoxon-test}{%
+\section{Wilcoxon test}\label{wilcoxon-test}}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{chi-squared-test}{%
+\section{Chi-squared test}\label{chi-squared-test}}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{fishers-exact-test}{%
+\section{Fisher's exact test}\label{fishers-exact-test}}
+
+\hypertarget{week-1-multiple-testing-and-regression}{%
+\chapter{WEEK 1: Multiple testing and regression}\label{week-1-multiple-testing-and-regression}}
+
+\hypertarget{multiple-testing}{%
+\section{Multiple testing}\label{multiple-testing}}
+
+\hypertarget{regression}{%
+\section{Regression}\label{regression}}
+
+\hypertarget{week-2-annotathon}{%
+\chapter{WEEK 2: Annotathon!}\label{week-2-annotathon}}
+
+\hypertarget{week-2-data-formats-and-where-to-find-them}{%
+\chapter{WEEK 2: Data formats and where to find them}\label{week-2-data-formats-and-where-to-find-them}}
+
+\hypertarget{week-2-rna-seq---from-fastq-to-count-matrix}{%
+\chapter{WEEK 2: RNA-seq - from FASTQ to count matrix}\label{week-2-rna-seq---from-fastq-to-count-matrix}}
+
+\hypertarget{instructions}{%
+\chapter{instructions}\label{instructions}}
+
+Cross-references make it easier for your readers to find and link to elements in your book.
+
+\hypertarget{chapters-and-sub-chapters}{%
+\section{Chapters and sub-chapters}\label{chapters-and-sub-chapters}}
+
+There are two steps to cross-reference any heading:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Label the heading: \texttt{\#\ Hello\ world\ \{\#nice-label\}}.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Leave the label off if you like the automated heading generated based on your heading title: for example, \texttt{\#\ Hello\ world} = \texttt{\#\ Hello\ world\ \{\#hello-world\}}.
+  \item
+    To label an un-numbered heading, use: \texttt{\#\ Hello\ world\ \{-\#nice-label\}} or \texttt{\{\#\ Hello\ world\ .unnumbered\}}.
+  \end{itemize}
+\item
+  Next, reference the labeled heading anywhere in the text using \texttt{\textbackslash{}@ref(nice-label)}; for example, please see Chapter \ref{cross}.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    If you prefer text as the link instead of a numbered reference use: \protect\hyperlink{cross}{any text you want can go here}.
+  \end{itemize}
+\end{enumerate}
+
+\hypertarget{captioned-figures-and-tables}{%
+\section{Captioned figures and tables}\label{captioned-figures-and-tables}}
+
+Figures and tables \emph{with captions} can also be cross-referenced from elsewhere in your book using \texttt{\textbackslash{}@ref(fig:chunk-label)} and \texttt{\textbackslash{}@ref(tab:chunk-label)}, respectively.
+
+Don't miss Table \ref{tab:nice-tab}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(}
+  \FunctionTok{head}\NormalTok{(pressure, }\DecValTok{10}\NormalTok{), }\AttributeTok{caption =} \StringTok{\textquotesingle{}Here is a nice table!\textquotesingle{}}\NormalTok{,}
+  \AttributeTok{booktabs =} \ConstantTok{TRUE}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}
+
+\caption{\label{tab:nice-tab}Here is a nice table!}
+\centering
+\begin{tabular}[t]{rr}
+\toprule
+temperature & pressure\\
+\midrule
+0 & 0.0002\\
+20 & 0.0012\\
+40 & 0.0060\\
+60 & 0.0300\\
+80 & 0.0900\\
+\addlinespace
+100 & 0.2700\\
+120 & 0.7500\\
+140 & 1.8500\\
+160 & 4.2000\\
+180 & 8.8000\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+You can add parts to organize one or more book chapters together. Parts can be inserted at the top of an .Rmd file, before the first-level chapter heading in that same file.
+
+Add a numbered part: \texttt{\#\ (PART)\ Act\ one\ \{-\}} (followed by \texttt{\#\ A\ chapter})
+
+Add an unnumbered part: \texttt{\#\ (PART\textbackslash{}*)\ Act\ one\ \{-\}} (followed by \texttt{\#\ A\ chapter})
+
+Add an appendix as a special kind of un-numbered part: \texttt{\#\ (APPENDIX)\ Other\ stuff\ \{-\}} (followed by \texttt{\#\ A\ chapter}). Chapters in an appendix are prepended with letters instead of numbers.
+
+\hypertarget{footnotes}{%
+\section{Footnotes}\label{footnotes}}
+
+Footnotes are put inside the square brackets after a caret \texttt{\^{}{[}{]}}. Like this one \footnote{This is a footnote.}.
+
+\hypertarget{citations}{%
+\section{Citations}\label{citations}}
+
+Reference items in your bibliography file(s) using \texttt{@key}.
+
+For example, we are using the \textbf{bookdown} package \citep{R-bookdown} (check out the last code chunk in index.Rmd to see how this citation key was added) in this sample book, which was built on top of R Markdown and \textbf{knitr} \citep{xie2015} (this citation was added manually in an external file book.bib).
+Note that the \texttt{.bib} files need to be listed in the index.Rmd with the YAML \texttt{bibliography} key.
+
+The RStudio Visual Markdown Editor can also make it easier to insert citations: \url{https://rstudio.github.io/visual-markdown-editing/\#/citations}
+
+\hypertarget{equations}{%
+\section{Equations}\label{equations}}
+
+Here is an equation.
+
+\begin{equation} 
+  f\left(k\right) = \binom{n}{k} p^k\left(1-p\right)^{n-k}
+  \label{eq:binom}
+\end{equation}
+
+You may refer to using \texttt{\textbackslash{}@ref(eq:binom)}, like see Equation \eqref{eq:binom}.
+
+\hypertarget{theorems-and-proofs}{%
+\section{Theorems and proofs}\label{theorems-and-proofs}}
+
+Labeled theorems can be referenced in text using \texttt{\textbackslash{}@ref(thm:tri)}, for example, check out this smart theorem \ref{thm:tri}.
+
+\begin{theorem}
+\protect\hypertarget{thm:tri}{}\label{thm:tri}For a right triangle, if \(c\) denotes the \emph{length} of the hypotenuse
+and \(a\) and \(b\) denote the lengths of the \textbf{other} two sides, we have
+\[a^2 + b^2 = c^2\]
+\end{theorem}
+
+Read more here \url{https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html}.
+
+\hypertarget{callout-blocks}{%
+\section{Callout blocks}\label{callout-blocks}}
+
+The R Markdown Cookbook provides more help on how to use custom blocks to design your own callouts: \url{https://bookdown.org/yihui/rmarkdown-cookbook/custom-blocks.html}
+
+  \bibliography{book.bib,packages.bib}
+
+\end{document}
