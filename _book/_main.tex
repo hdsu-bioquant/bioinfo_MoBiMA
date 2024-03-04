@@ -154,6 +154,18 @@
 \section*{Where to start}\label{where-to-start}}
 \addcontentsline{toc}{section}{Where to start}
 
+\hypertarget{installing-r-and-rstudio}{%
+\subsection*{Installing R and RStudio}\label{installing-r-and-rstudio}}
+\addcontentsline{toc}{subsection}{Installing R and RStudio}
+
+For this tutorial, you will need to install both R and RStudio. Rstudio is the most commonly used IDE (or Integrated Development Environment) for R, and it will use the R version installed on your computer. RStudio is meant to make R programming quite visual and way easier for you as a beginner.
+
+Start by installing R and RStudio.
+
+\hypertarget{courses}{%
+\subsection*{Courses}\label{courses}}
+\addcontentsline{toc}{subsection}{Courses}
+
 It is recommended that you take the introductory classes for R in \textbf{DataCamp} to get to know this language before you start coding here. In this course you will learn to use RStudio, a software that allows you to use R in a very user-friendly way.
 
 You can find more resources here:
@@ -183,7 +195,7 @@ Two notes of advice about good practice now that your journey is about to start:
 
 \begin{quote}
 \textbf{Commenting}: Comment your code as you go with \texttt{\#}! This way you avoid forgetting the meaning of a given line. This is also important if you want to share your code with others. Trust me, you will not remember what you are writing today in this class one week from now, so it will be best to have a reminder.\\
-\textbf{Clean and tidy code}: See that weird line in the middle of your script/markdown? This is meant to be a guideline about code length. If your code is so long that it crosses the line, please find a way to make it shorter. In addition, avoid making your chunks too long and make separate scripts for each class or topic, it will keep everything more organised and easy to track.
+\textbf{Clean and tidy code}: See that weird line in the middle of your script/markdown? This is meant to be a guideline about code length. If your code is so long that it crosses the line, please find a way to make it shorter. In addition, avoid making your chunks too long and make separate markdowns or scripts for each class or topic, it will keep everything more organised and easy to track.
 \end{quote}
 
 \hypertarget{rstudio}{%
@@ -668,16 +680,19 @@ In this next example, we are creating a boxplot with the sleep time (total, in h
 Try some of the other geom\_ layers available. As an example, \texttt{geom\_violin()} can be used in a similar way to \texttt{geom\_boxplot()}.
 \end{quote}
 
-\hypertarget{week-1-descriptive-statistics-and-data-types}{%
-\chapter{WEEK 1: Descriptive statistics and data types}\label{week-1-descriptive-statistics-and-data-types}}
+\hypertarget{week-one}{%
+\chapter{WEEK ONE}\label{week-one}}
+
+\hypertarget{day-1-descriptive-statistics-and-data-types}{%
+\section{Day 1: Descriptive statistics and data types}\label{day-1-descriptive-statistics-and-data-types}}
 
 Today, you will learn how to perform basic tasks on a dataframe/tibble, descriptive statistics, perform data cleaning, and plotting.
 
 \hypertarget{data-features-and-where-to-find-them}{%
-\section{Data features and where to find them}\label{data-features-and-where-to-find-them}}
+\subsection{Data features and where to find them}\label{data-features-and-where-to-find-them}}
 
 \hypertarget{load-the-data}{%
-\subsection{Load the data}\label{load-the-data}}
+\subsubsection{Load the data}\label{load-the-data}}
 
 The diabetes dataset, which we will be using in this practical class will be downloaded from an online repository.
 We will load that into R and have a sneak peek into how it looks like with the console.
@@ -709,7 +724,7 @@ In the following you will see several functions that give us information about o
 \end{verbatim}
 
 \hypertarget{dimensions-and-naming}{%
-\subsection{Dimensions and naming}\label{dimensions-and-naming}}
+\subsubsection{Dimensions and naming}\label{dimensions-and-naming}}
 
 \textbf{1.} What is the dimension of our dataset (i.e.~how many rows/columns are there in our data)
 
@@ -752,7 +767,7 @@ Probably you are confused about what these column names mean.
 For more description on these values \href{https://biostat.app.vumc.org/wiki/pub/Main/DataSets/Cdiabetes.html}{look here}
 
 \hypertarget{numerical-features}{%
-\subsection{Numerical features}\label{numerical-features}}
+\subsubsection{Numerical features}\label{numerical-features}}
 
 \textbf{3.} How do we extract the minimum and maximum age of patients in our dataset?
 
@@ -786,7 +801,7 @@ You can open a window with \texttt{View(dat)} to compare your results.
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{data-cleaning}{%
-\section{Data cleaning}\label{data-cleaning}}
+\subsection{Data cleaning}\label{data-cleaning}}
 
 Very often the first thing one needs to do before any data science project is to clean up the raw data and transform it into a format that is readily understood and easy to use for all downstream analysis.
 This process usually involves: --
@@ -837,7 +852,7 @@ To perform this cleanup, we need a couple of important functions, that we will f
 \end{itemize}
 
 \hypertarget{filter}{%
-\subsection{filter()}\label{filter}}
+\subsubsection{filter()}\label{filter}}
 
 \texttt{filter()} is used on a dataset to filter rows satisfying a condition you specify like we saw previously (Introduction).
 Let's look at an example. We are only filtering for senior individuals in our dataset.
@@ -878,7 +893,7 @@ In some cases, we can also use \texttt{which()} to filter values. The syntax is 
 We selected all animals from the ``animals'' vector that correspond to more than three individuals in the ``number'' vector.
 
 \hypertarget{is.na}{%
-\subsection{is.na()}\label{is.na}}
+\subsubsection{is.na()}\label{is.na}}
 
 \texttt{is.na()} is used to determine if NA values are present in a given object. We can try a simple example with one variable being assigned as NA.
 
@@ -913,7 +928,7 @@ We can do this with vectors obtained from \texttt{dat}. What class is the output
 \end{Shaded}
 
 \hypertarget{mutate}{%
-\subsection{mutate()}\label{mutate}}
+\subsubsection{mutate()}\label{mutate}}
 
 \texttt{mutate()} is often used to create a new column based on another column of the dataframe. Let us use this function to \emph{mutate} two new columns including the weight in kilograms and the height in centimeters. \textbf{The conversion from pounds to kilograms can be done by multiplying weight in pounds by 0.454. To covert height to centimeters we only need to multiply height (inches) by 2.54}.
 
@@ -944,7 +959,7 @@ We can do this with vectors obtained from \texttt{dat}. What class is the output
 \end{verbatim}
 
 \hypertarget{accross}{%
-\subsection{accross()}\label{accross}}
+\subsubsection{accross()}\label{accross}}
 
 \texttt{accross()} is very often used together with \texttt{mutate()} and another helper function, like \texttt{everywhere()}, \texttt{starts\_with()}, \texttt{ends\_with()}, or \texttt{contains()}.
 Later, we will use \texttt{accross()} together with the other functions we learned previously to remove NAs like this:
@@ -968,7 +983,7 @@ Try to run the previous example without \texttt{rowwise()}. What does it look li
 \end{quote}
 
 \hypertarget{in}{%
-\subsection{\%in\%}\label{in}}
+\subsubsection{\%in\%}\label{in}}
 
 This is an operator to check which elements of a first vector are inside a second vector.
 
@@ -983,7 +998,7 @@ This is an operator to check which elements of a first vector are inside a secon
 \end{verbatim}
 
 \hypertarget{ready-for-the-cleaning}{%
-\subsection{Ready for the cleaning!}\label{ready-for-the-cleaning}}
+\subsubsection{Ready for the cleaning!}\label{ready-for-the-cleaning}}
 
 The first column of the dataframe is the column with the name ``id''.
 The rows are just numbered, without names.
@@ -1160,12 +1175,12 @@ Can you identify which types of data (continuous, discrete etc) each column abov
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{visualizing-data-distribution}{%
-\section{Visualizing data distribution}\label{visualizing-data-distribution}}
+\subsection{Visualizing data distribution}\label{visualizing-data-distribution}}
 
 In this section you will also learn the essential functions to plot data in an intuitive and useful way using the \texttt{ggplot2} package, just like in the introductory section to tidyverse.
 
 \hypertarget{histograms}{%
-\subsection{Histograms}\label{histograms}}
+\subsubsection{Histograms}\label{histograms}}
 
 We can plot the column ``stab.glu'' as a histogram using the \texttt{hist()} function:
 
@@ -1188,7 +1203,7 @@ Is this a good or bad thing about histograms?
 \end{quote}
 
 \hypertarget{density-plots}{%
-\subsection{Density plots}\label{density-plots}}
+\subsubsection{Density plots}\label{density-plots}}
 
 For density plots, we use the \texttt{geom\_density()} function to estimate the probability density function for a given variable.
 
@@ -1205,7 +1220,7 @@ For density plots, we use the \texttt{geom\_density()} function to estimate the 
 \includegraphics{_main_files/figure-latex/unnamed-chunk-42-1.pdf}
 
 \hypertarget{boxplots}{%
-\subsection{Boxplots}\label{boxplots}}
+\subsubsection{Boxplots}\label{boxplots}}
 
 The \texttt{boxplot()} function produces a boxplot for a given variable:
 
@@ -1225,7 +1240,7 @@ Can you explain all features of this graph, such as upper/lower whisker, 25\% qu
 \end{quote}
 
 \hypertarget{qq-plots}{%
-\subsection{QQ-plots}\label{qq-plots}}
+\subsubsection{QQ-plots}\label{qq-plots}}
 
 We can use \textbf{QQ-plots} to either (1) compare two distributions, or (2) compare a distribution with a theoretical distribution (typically the normal distribution).
 
@@ -1261,7 +1276,7 @@ Using the additional command \texttt{geom\_qq\_line()}, we can add a straight li
 \FunctionTok{ggplot}\NormalTok{(dat,}
        \FunctionTok{aes}\NormalTok{(}\AttributeTok{sample =}\NormalTok{ bp}\FloatTok{.1}\NormalTok{s)) }\SpecialCharTok{+}     \CommentTok{\# we use sample= inside aes for the QQ{-}plot}
   \FunctionTok{geom\_qq}\NormalTok{() }\SpecialCharTok{+}
-  \FunctionTok{geom\_qq\_line}\NormalTok{()                  }\CommentTok{\# adds in the QQ{-}line on top}
+  \FunctionTok{geom\_qq\_line}\NormalTok{(}\AttributeTok{colour =} \StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{)                  }\CommentTok{\# adds in the QQ{-}line on top}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1303,10 +1318,10 @@ Now let's compare the quantiles of the cholesterol values by biological sex.
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{correlation}{%
-\section{Correlation}\label{correlation}}
+\subsection{Correlation}\label{correlation}}
 
 \hypertarget{measuring-the-centrality-in-data}{%
-\subsection{Measuring the centrality in data}\label{measuring-the-centrality-in-data}}
+\subsubsection{Measuring the centrality in data}\label{measuring-the-centrality-in-data}}
 
 Before you begin, think back to the mean, median and quantiles we saw on the boxplot. Do you remember what these terms mean? How does an asymmetrical distribution influence mean and median?
 We have already seen that the \texttt{summary()} and \texttt{quantile()} functions in R can compute the mean, median and quantiles of any given data.
@@ -1324,7 +1339,7 @@ Calculate the mean and median of other continuous numeric data in the diabetes d
 \end{quote}
 
 \hypertarget{association-between-variables}{%
-\subsection{Association between variables}\label{association-between-variables}}
+\subsubsection{Association between variables}\label{association-between-variables}}
 
 Often a common step during any data analysis project is to find associations between variables present in the dataset. Such associations helps us to decipher the underlying structure in the data.
 
@@ -1393,10 +1408,10 @@ Associations are among the simplest forms of structure in the data! It is import
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{exercises}{%
-\section{EXERCISES}\label{exercises}}
+\subsection{EXERCISES}\label{exercises}}
 
 \hypertarget{exercise-1-data-features}{%
-\subsection{Exercise 1: Data features}\label{exercise-1-data-features}}
+\subsubsection{Exercise 1: Data features}\label{exercise-1-data-features}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1413,7 +1428,7 @@ Associations are among the simplest forms of structure in the data! It is import
 \end{enumerate}
 
 \hypertarget{exercise-2-visualization}{%
-\subsection{Exercise 2: Visualization}\label{exercise-2-visualization}}
+\subsubsection{Exercise 2: Visualization}\label{exercise-2-visualization}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1427,7 +1442,7 @@ Associations are among the simplest forms of structure in the data! It is import
 \end{enumerate}
 
 \hypertarget{exercise-3-correlation}{%
-\subsection{Exercise 3: Correlation}\label{exercise-3-correlation}}
+\subsubsection{Exercise 3: Correlation}\label{exercise-3-correlation}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1439,18 +1454,18 @@ Associations are among the simplest forms of structure in the data! It is import
   Find the \textbf{highest} and \textbf{lowest} Pearson correlation value of the result from exercise 2.2. To which pair of variables do they correspond? Plot the corresponding scatter plots using \texttt{geom\_point()}! \emph{Hint}: Before finding the highest Pearson correlation value, use the \texttt{diag()} function to set all diagonal values (=1) of ``all.cor'' to NA.
 \end{enumerate}
 
-\hypertarget{week-1-dimensionality-reduction-and-unsupervised-learning}{%
-\chapter{WEEK 1: Dimensionality reduction and unsupervised learning}\label{week-1-dimensionality-reduction-and-unsupervised-learning}}
+\hypertarget{day-2-dimensionality-reduction-and-unsupervised-learning}{%
+\section{Day 2: Dimensionality reduction and unsupervised learning}\label{day-2-dimensionality-reduction-and-unsupervised-learning}}
 
 \hypertarget{preparing-the-data}{%
-\section{Preparing the data}\label{preparing-the-data}}
+\subsection{Preparing the data}\label{preparing-the-data}}
 
 \textbf{Unsupervised clustering} is one of the most basic data analysis techniques. It allows to identify groups (or clusters) or observations (here: patients) or variables. \emph{Unsupervised} means that you are not using any prior knowledge about groups of variables or associations. \textbf{K-means clustering} is a good example of unsupervised learning because the method categorizes sample based uniquely on the data.
 
 In this part, we will use a dataset of gene expression data from the TCGA (The Cancer Genome Atlas) project. This project has sequenced several thousand samples from cancer patients of more than 30 cancer types. We will use a subset of this data, containing 200 samples (=patients, as columns) , for which the expression of 300 genes (= rows) has been measured.
 
 \hypertarget{load-data}{%
-\subsection{Load data}\label{load-data}}
+\subsubsection{Load data}\label{load-data}}
 
 We will start by reading the gene expression data. The columns are the samples and the rows are the genes. This is matrix, which allows some numerical operations to be conducted directly.
 
@@ -1515,7 +1530,7 @@ You can check the number of samples for each tumor type using the \texttt{table(
 \end{verbatim}
 
 \hypertarget{data-transformation}{%
-\subsection{Data transformation}\label{data-transformation}}
+\subsubsection{Data transformation}\label{data-transformation}}
 
 You will see that the distribution of the data is extremely squeezed due to \textbf{outliers} with very high or low values. We will need to make the data more homogeneous, so that our downstream analysis is not affected by these very large magnitude numbers.
 
@@ -1617,12 +1632,12 @@ Compare to the density plot before these pre-processing steps using the same str
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{k-means-clustering}{%
-\section{k-means clustering}\label{k-means-clustering}}
+\subsection{k-means clustering}\label{k-means-clustering}}
 
 Another widely used method for grouping observations is the k-means clustering. Now we will cluster our dataset using k-means and explore the underlying structure of the data. In this dataset, different clusters could represent different batches, different tumour subtypes, among other features.
 
 \hypertarget{performing-k-means}{%
-\subsection{Performing k-means}\label{performing-k-means}}
+\subsubsection{Performing k-means}\label{performing-k-means}}
 
 We use the function \texttt{kmeans()} in R on our matrix. You can check the options and usage in the help panel on the right. The parameter \texttt{centers} indicates how many clusters are requested.
 
@@ -1639,7 +1654,7 @@ Just type \texttt{km} in your console and check all results generated. Play arou
 \end{quote}
 
 \hypertarget{quality-of-the-clustering}{%
-\subsection{Quality of the clustering}\label{quality-of-the-clustering}}
+\subsubsection{Quality of the clustering}\label{quality-of-the-clustering}}
 
 We can judge the quality of the clustering by computing the \textbf{intra}-cluster distances, i.e.~the sum (squared) of all distances between pairs of objects belonging to the same cluster. This is called the \textbf{within sum of squares (WSS)}. The better the clustering, the smaller WSS should be. However, it also automatically decreases with increasing k.
 
@@ -1778,12 +1793,12 @@ We now compute the silhouette for a specific k-means clustering:
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{hierarchical-clustering}{%
-\section{Hierarchical clustering}\label{hierarchical-clustering}}
+\subsection{Hierarchical clustering}\label{hierarchical-clustering}}
 
 Clustering is a method by which we group together similar observations while separating out the dissimilar ones. We will cluster our samples from the cancer dataset to see which samples cluster together or separately. Hierarchical clustering does not generate discrete clusters of datapoints, but rather creates a dendrogram that indicates the magnitude of similitude between samples. Once again is up to the Data Scientist to decide the right amount of clusters.
 
 \hypertarget{determine-the-most-variable-genes}{%
-\subsection{Determine the most variable genes}\label{determine-the-most-variable-genes}}
+\subsubsection{Determine the most variable genes}\label{determine-the-most-variable-genes}}
 
 When performing clustering, we usually reduce the number of genes used, as some of them are not informative. For example, genes that show a mostly constant expression across all samples will not be useful to distinguish the samples, right? One simple method is to select genes that show a \textbf{high variance} across all samples.
 
@@ -1836,7 +1851,7 @@ So let us select all rows (genes) with a variance higher than or equal to \textt
 \end{verbatim}
 
 \hypertarget{computing-the-correlation-between-all-patients}{%
-\subsection{Computing the correlation between all patients}\label{computing-the-correlation-between-all-patients}}
+\subsubsection{Computing the correlation between all patients}\label{computing-the-correlation-between-all-patients}}
 
 Let us start by filtering for only the highly variable genes. Then we can directly calculate Spearman correlation.
 
@@ -1867,7 +1882,7 @@ Each cell of this heatmap represents the correlation value between the sample in
 The function automatically determines the clustering trees of the rows and columns (which are identical, since the correlation matrix is symmetrical!)
 
 \hypertarget{including-clinical-annotations-in-the-heatmap}{%
-\subsection{Including clinical annotations in the heatmap}\label{including-clinical-annotations-in-the-heatmap}}
+\subsubsection{Including clinical annotations in the heatmap}\label{including-clinical-annotations-in-the-heatmap}}
 
 This is a nice representation, but in order to interpret this clustering, we need to add some additional (clinical) information to interpret the clustering structure. To do this, we use an annotation data frame containing as columns a number of clinical features.
 
@@ -1896,7 +1911,7 @@ The function \texttt{pheatmap} accepts a parameter clustering\_method to indicat
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{principal-component-analysis}{%
-\section{Principal component analysis}\label{principal-component-analysis}}
+\subsection{Principal component analysis}\label{principal-component-analysis}}
 
 We will now use principal component analysis to explore the same dataset, and identify directions (i.e.~principal components) with maximal variance. Principal components analysis finds n-dimensional vectors (Principal Components) in the direction of the largest variance, thereby allowing you to describe an n-dimensional dataset with just a few dimensions.
 
@@ -2006,10 +2021,10 @@ Choose different PCs for this plot. Can you still observe the two clusters corre
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{exercises-1}{%
-\section{EXERCISES}\label{exercises-1}}
+\subsection{EXERCISES}\label{exercises-1}}
 
 \hypertarget{exercise-1-variance}{%
-\subsection{Exercise 1: Variance}\label{exercise-1-variance}}
+\subsubsection{Exercise 1: Variance}\label{exercise-1-variance}}
 
 \emph{For this exercise set it is given that all the data cleanup steps have been taken, you don't need to put them in the results.}
 
@@ -2024,7 +2039,7 @@ Choose different PCs for this plot. Can you still observe the two clusters corre
 \end{enumerate}
 
 \hypertarget{exercise-2-hierarchical-clustering}{%
-\subsection{Exercise 2: Hierarchical clustering}\label{exercise-2-hierarchical-clustering}}
+\subsubsection{Exercise 2: Hierarchical clustering}\label{exercise-2-hierarchical-clustering}}
 
 In section 2, we have computed a correlation matrix, and used this matrix to build a clustering tree.
 
@@ -2039,7 +2054,7 @@ Try different linkage methods using the \texttt{clustering\_method} parameter to
 \end{enumerate}
 
 \hypertarget{exercise-3-pca}{%
-\subsection{Exercise 3: PCA}\label{exercise-3-pca}}
+\subsubsection{Exercise 3: PCA}\label{exercise-3-pca}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -2050,7 +2065,7 @@ Try different linkage methods using the \texttt{clustering\_method} parameter to
 \end{enumerate}
 
 \hypertarget{going-further-expert}{%
-\subsection{\texorpdfstring{Going further \emph{(expert)}}{Going further (expert)}}\label{going-further-expert}}
+\subsubsection{\texorpdfstring{Going further \emph{(expert)}}{Going further (expert)}}\label{going-further-expert}}
 
 Instead of performing the k-means on the whole gene expression matrix, we can run k-means on the space in which each patient is represented by the first k principal components.
 
@@ -2062,11 +2077,11 @@ Instead of performing the k-means on the whole gene expression matrix, we can ru
   Represent the patients in the PCA plot as previously, but color them according to the cluster they belong to! Run kmeans with two clusters for this and merge the k-means results.
 \end{enumerate}
 
-\hypertarget{week-1-probability-distributions}{%
-\chapter{WEEK 1: Probability distributions}\label{week-1-probability-distributions}}
+\hypertarget{day-3-probability-distributions}{%
+\section{Day 3: Probability distributions}\label{day-3-probability-distributions}}
 
 \hypertarget{probability-distributions}{%
-\section{Probability distributions}\label{probability-distributions}}
+\subsection{Probability distributions}\label{probability-distributions}}
 
 In the previous Exercise Sheet we have learnt more about unsupervised learning, like hierarchical clustering and especially PCA. These are among the fundamental methods of Data Analysis. Today we will learn more about another milestone of statistics: \textbf{probability distributions}.
 
@@ -2107,7 +2122,7 @@ Probably, the most difficult to distinguish or to remember are \textbf{pnorm()} 
 We are going to look at them more deeply in the following.
 
 \hypertarget{getting-to-know-the-various-functions}{%
-\subsection{Getting to know the various functions}\label{getting-to-know-the-various-functions}}
+\subsubsection{Getting to know the various functions}\label{getting-to-know-the-various-functions}}
 
 Let us get a grasp of what these functions actually do. You should be familiar with the cumulative distribution function, let's take a look at that and its inverse first. We will work with a Normal distribution. We calculate the \textbf{cumulative probability} for the values 1,2,3,4 in three different distributions, using one of the functions described previously.\\
 Short hint: \textbf{p} like \textbf{cumulative P-robability}. Which function are you going to use?
@@ -2296,7 +2311,12 @@ Let's have a look at this distribution using the \textbf{dnorm()} function:
 \begin{Highlighting}[]
 \NormalTok{x }\OtherTok{=} \FunctionTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{, }\FloatTok{2.5}\NormalTok{, }\AttributeTok{by=}\FloatTok{0.01}\NormalTok{)}
 \NormalTok{y }\OtherTok{=} \FunctionTok{dnorm}\NormalTok{(x, }\AttributeTok{mean=}\FloatTok{1.75}\NormalTok{, }\AttributeTok{sd=}\FloatTok{0.15}\NormalTok{)}
-\FunctionTok{plot}\NormalTok{(x, y, }\AttributeTok{type=}\StringTok{\textquotesingle{}l\textquotesingle{}}\NormalTok{,}\AttributeTok{col=}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{,}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{);}\FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\FunctionTok{c}\NormalTok{(}\FloatTok{1.6}\NormalTok{,}\FloatTok{1.9}\NormalTok{),}\AttributeTok{lty=}\DecValTok{3}\NormalTok{,}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{)}
+
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ x, }\AttributeTok{y =}\NormalTok{ y),}
+            \AttributeTok{colour =} \StringTok{"red"}\NormalTok{, }\AttributeTok{linewidth =} \FloatTok{0.8}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =} \FunctionTok{c}\NormalTok{(}\FloatTok{1.6}\NormalTok{, }\FloatTok{1.9}\NormalTok{),}
+             \AttributeTok{linetype =} \StringTok{\textquotesingle{}dashed\textquotesingle{}}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2308,7 +2328,11 @@ Let's finally look at \textbf{r- like random} functions. These, unlike the other
 \begin{Highlighting}[]
 \DocumentationTok{\#\# normal distribution}
 \NormalTok{x }\OtherTok{=} \FunctionTok{rnorm}\NormalTok{(}\AttributeTok{n=}\DecValTok{1000}\NormalTok{,}\AttributeTok{mean=}\DecValTok{10}\NormalTok{,}\AttributeTok{sd=}\DecValTok{5}\NormalTok{)}
-\FunctionTok{hist}\NormalTok{(x,}\AttributeTok{breaks=}\DecValTok{20}\NormalTok{)}
+
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{x), }\AttributeTok{bins =} \DecValTok{20}\NormalTok{,}
+                 \AttributeTok{fill =} \StringTok{"orange"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{y =} \StringTok{"Frequency"}\NormalTok{) }
 \end{Highlighting}
 \end{Shaded}
 
@@ -2319,7 +2343,7 @@ Can you generate a Poisson distribution and a binomial distribution?
 \end{quote}
 
 \hypertarget{normalgaussian-distribution}{%
-\subsection{Normal/Gaussian distribution}\label{normalgaussian-distribution}}
+\subsubsection{Normal/Gaussian distribution}\label{normalgaussian-distribution}}
 
 The normal or the Gaussian distribution is given as:
 
@@ -2332,7 +2356,7 @@ The \textbf{standard normal distribution} is a special case of \textbf{normal di
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{visualization}{%
-\subsection{Visualization}\label{visualization}}
+\subsubsection{Visualization}\label{visualization}}
 
 Let's generate three random normal distributions with different means and standard deviations and visualize them together
 
@@ -2372,7 +2396,7 @@ Play with the mean and sd parameters and visualize the distributions (plain line
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{application-on-a-real-dataset}{%
-\subsection{Application on a real dataset}\label{application-on-a-real-dataset}}
+\subsubsection{Application on a real dataset}\label{application-on-a-real-dataset}}
 
 Now we will use the Normal distribution to make predictions about gene expression of TP53 in lung cancer. TP53 is the most commonly mutated gene across multiple cancer types especially in lung cancers. We will read a table (import) containing measurements of TP53 expression levels in 586 patients.
 
@@ -2396,7 +2420,7 @@ Now we will use the Normal distribution to make predictions about gene expressio
 \end{verbatim}
 
 \hypertarget{data-cleaning-and-central-values}{%
-\subsubsection{Data cleaning and central values}\label{data-cleaning-and-central-values}}
+\paragraph{Data cleaning and central values}\label{data-cleaning-and-central-values}}
 
 We will remove all the missing values and calculate the mean and standard deviation for the TP53 gene expression.
 
@@ -2421,7 +2445,7 @@ We will remove all the missing values and calculate the mean and standard deviat
 \end{verbatim}
 
 \hypertarget{modeling-using-a-normal-distribution}{%
-\subsubsection{Modeling using a normal distribution}\label{modeling-using-a-normal-distribution}}
+\paragraph{Modeling using a normal distribution}\label{modeling-using-a-normal-distribution}}
 
 Let's see how well a normal distribution with \(\mu = 1380.822\) (m.tp53) and \(\sigma = 719.5934\) (s.tp53) can approximate the \textbf{real} distribution of TP53 expression.\\
 We assume that the population mean and standard deviation is similar as calculated above since we cannot measure the expression of TP53 in each and every lung cancer patient in the world.
@@ -2449,8 +2473,8 @@ Make a normal distribution with the above parameters
 \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
   \FunctionTok{geom\_density}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ tp53.exp}\SpecialCharTok{$}\NormalTok{TP53\_expression)) }\SpecialCharTok{+}
   \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ x, }
-                \AttributeTok{y =}\NormalTok{ d.pred,}
-                \AttributeTok{colour =} \StringTok{"red"}\NormalTok{)) }\SpecialCharTok{+}
+                \AttributeTok{y =}\NormalTok{ d.pred),}
+                \AttributeTok{colour =} \StringTok{"red"}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =} \FunctionTok{c}\NormalTok{(}\FunctionTok{quantile}\NormalTok{(tp53.exp}\SpecialCharTok{$}\NormalTok{TP53\_expression, }\AttributeTok{probs =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.1}\NormalTok{, }\FloatTok{0.9}\NormalTok{)))) }\SpecialCharTok{+}
   \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =} \FunctionTok{c}\NormalTok{(}\FunctionTok{qnorm}\NormalTok{(}\AttributeTok{p =} \FloatTok{0.1}\NormalTok{, }\AttributeTok{mean =}\NormalTok{ m.tp53, }\AttributeTok{sd =}\NormalTok{ s.tp53), }
                             \FunctionTok{qnorm}\NormalTok{(}\AttributeTok{p =} \FloatTok{0.9}\NormalTok{, }\AttributeTok{mean =}\NormalTok{ m.tp53, }\AttributeTok{sd =}\NormalTok{ s.tp53)),}
@@ -2467,7 +2491,7 @@ Make a normal distribution with the above parameters
 \end{Shaded}
 
 \hypertarget{data-prediction-using-the-normal-distribution-model}{%
-\subsubsection{Data prediction using the normal distribution model}\label{data-prediction-using-the-normal-distribution-model}}
+\paragraph{Data prediction using the normal distribution model}\label{data-prediction-using-the-normal-distribution-model}}
 
 Using a normal distribution with \(\mu = 1380.822\) (m.tp53) and \(\sigma = 719.5934\) (s.tp53), we will ask the following questions -
 
@@ -2509,7 +2533,7 @@ Using a normal distribution with \(\mu = 1380.822\) (m.tp53) and \(\sigma = 719.
 \end{verbatim}
 
 \hypertarget{evaluating-the-quality-of-the-predictions}{%
-\subsubsection{Evaluating the quality of the predictions}\label{evaluating-the-quality-of-the-predictions}}
+\paragraph{Evaluating the quality of the predictions}\label{evaluating-the-quality-of-the-predictions}}
 
 Let's check how good these predictions are compared to \textbf{real} data.
 
@@ -2608,7 +2632,7 @@ Let's check how good these predictions are compared to our real data.
 Again the predictions are pretty good!
 
 \hypertarget{visualization-1}{%
-\subsubsection{Visualization}\label{visualization-1}}
+\paragraph{Visualization}\label{visualization-1}}
 
 We can also visualize all of this on a simple graph:
 
@@ -2618,15 +2642,6 @@ We can also visualize all of this on a simple graph:
 \NormalTok{x }\OtherTok{=} \FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{5000}\NormalTok{,}\AttributeTok{by=}\DecValTok{5}\NormalTok{)}
 \NormalTok{d.pred }\OtherTok{=} \FunctionTok{dnorm}\NormalTok{(x,}\AttributeTok{mean =}\NormalTok{ m.tp53, }\AttributeTok{sd =}\NormalTok{ s.tp53)}
 
-\CommentTok{\# Model and measured data:}
-\FunctionTok{plot}\NormalTok{(}\FunctionTok{density}\NormalTok{(tp53.exp}\SpecialCharTok{$}\NormalTok{TP53\_expression), }\AttributeTok{main =}\StringTok{""}\NormalTok{, }\AttributeTok{xlim=}\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{1500}\NormalTok{, }\DecValTok{6000}\NormalTok{),}\AttributeTok{lwd=}\DecValTok{3}\NormalTok{);}\FunctionTok{lines}\NormalTok{(x,d.pred, }\AttributeTok{col=}\StringTok{"red"}\NormalTok{,}\AttributeTok{lwd=}\DecValTok{3}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{_main_files/figure-latex/unnamed-chunk-98-1.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \CommentTok{\# Model and measured data and predicted versus measured 0.1 and 0.9 quantiles:}
 \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
   \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ x, }
@@ -2636,7 +2651,7 @@ We can also visualize all of this on a simple graph:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-98-2.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-98-1.pdf}
 
 Compare the black and red vertical lines (real vs predicted).
 
@@ -2645,7 +2660,7 @@ Re-execute the code above with \texttt{p=0.25,\ p=0.5,\ p=0.75\ etc} and check h
 \end{quote}
 
 \hypertarget{visualization-using-a-q-q-plot}{%
-\subsubsection{Visualization using a Q-Q plot}\label{visualization-using-a-q-q-plot}}
+\paragraph{Visualization using a Q-Q plot}\label{visualization-using-a-q-q-plot}}
 
 Now, let's plot the sample quantiles against theoretical quantiles to check the similarity between the two. This is called a quantile - quantile plot or a Q-Q plot, which you are familiar with (see Exercises Sheet 1).
 
@@ -2659,29 +2674,30 @@ Now, let's plot the sample quantiles against theoretical quantiles to check the 
 \CommentTok{\# Find values corresponding to these quantiles in the theoretical normal distribution}
 \NormalTok{q.theoretical }\OtherTok{=} \FunctionTok{qnorm}\NormalTok{(}\AttributeTok{p =}\NormalTok{ q, }\AttributeTok{mean =}\NormalTok{ m.tp53, }\AttributeTok{sd =}\NormalTok{ s.tp53)}
 
-\CommentTok{\# Correlate the above two values}
-\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
-  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ q.theoretical, }
-                 \AttributeTok{y =}\NormalTok{ q.observed), }\AttributeTok{size =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{geom\_abline}\NormalTok{(}\AttributeTok{intercept =} \DecValTok{0}\NormalTok{, }\AttributeTok{slope =} \DecValTok{1}\NormalTok{, }
-              \AttributeTok{size =} \DecValTok{1}\NormalTok{, }\AttributeTok{color =} \StringTok{"red"}\NormalTok{) }
+\CommentTok{\# \# Correlate the above two values}
+\FunctionTok{ggplot}\NormalTok{(tp53.exp,}
+       \FunctionTok{aes}\NormalTok{(}\AttributeTok{sample =}\NormalTok{ TP53\_expression)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_qq}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_qq\_line}\NormalTok{(}\AttributeTok{colour =} \StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
-## i Please use `linewidth` instead.
-## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
-## generated.
-\end{verbatim}
-
 \includegraphics{_main_files/figure-latex/unnamed-chunk-99-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# ggplot() +}
+\CommentTok{\#   geom\_point(aes(x = q.theoretical, }
+\CommentTok{\#                  y = q.observed), size = 1) +}
+\CommentTok{\#   geom\_abline(intercept = 0, slope = 1, }
+\CommentTok{\#               size = 1, color = "red") }
+\end{Highlighting}
+\end{Shaded}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{binomial-distribution}{%
-\subsection{Binomial distribution}\label{binomial-distribution}}
+\subsubsection{Binomial distribution}\label{binomial-distribution}}
 
 A binomial distribution can be defined as -
 
@@ -2747,7 +2763,7 @@ How would you compute the probability to get less than 5? What would \texttt{qbi
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{confidence-interval}{%
-\section{Confidence interval}\label{confidence-interval}}
+\subsection{Confidence interval}\label{confidence-interval}}
 
 The \textbf{confidence interval} describes the interval containing the (unknown) expectation value of a distribution with 95\% confidence. This means that out of 100 random realizations of this random variable, the true expectation value \(\mu\) will indeed be in this interval.
 
@@ -2849,7 +2865,7 @@ Finally, we determine whether each sample mean is found within the 95\% CI or no
 
 Here, the orange/grey bars represent the confidence interval, the dot is the mean of the sample values, and the dotted line at \texttt{\textbackslash{}lambda} represents the true expectation value. Whenever the true expectation value is within the CI, the bar is orange, if not, the bar is grey. How often is the true expectation value outside the CI? Count the grey bars!
 
-It happens 4 times, which fits pretty well with the expected 5\%.
+It happens 5 times, which fits pretty well with the expected 5\%.
 
 \begin{quote}
 Repeat this simulation, but now with samples of \(N=24\) (again 100 times)\\
@@ -2860,10 +2876,10 @@ How often is the true expectation value outside the CI? Change to 90\% CI and ch
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{exercises-2}{%
-\section{EXERCISES}\label{exercises-2}}
+\subsection{EXERCISES}\label{exercises-2}}
 
 \hypertarget{exercise-1-probability-distributions}{%
-\subsection{Exercise 1: Probability distributions}\label{exercise-1-probability-distributions}}
+\subsubsection{Exercise 1: Probability distributions}\label{exercise-1-probability-distributions}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -2874,7 +2890,7 @@ How often is the true expectation value outside the CI? Change to 90\% CI and ch
 \end{enumerate}
 
 \hypertarget{exercise-2-binomial-distribution}{%
-\subsection{Exercise 2: Binomial distribution}\label{exercise-2-binomial-distribution}}
+\subsubsection{Exercise 2: Binomial distribution}\label{exercise-2-binomial-distribution}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -2887,7 +2903,7 @@ How often is the true expectation value outside the CI? Change to 90\% CI and ch
 \end{enumerate}
 
 \hypertarget{exercise-3-confidence-intervals}{%
-\subsection{Exercise 3: Confidence intervals}\label{exercise-3-confidence-intervals}}
+\subsubsection{Exercise 3: Confidence intervals}\label{exercise-3-confidence-intervals}}
 
 You are buying 10 packs of gummy bears. You particularly like the red ones and the green ones. A pack contains 6 different colors and you expect them to be equally distributed. There are 84 pieces per 200g pack.
 
@@ -2908,8 +2924,8 @@ You are buying 10 packs of gummy bears. You particularly like the red ones and t
   Was your selection procedure a success? In other words, is the expected value bellow (congrats!), within or above (bad luck!) the 95\% CI?
 \end{itemize}
 
-\hypertarget{week-1-hypothesis-testing}{%
-\chapter{WEEK 1: Hypothesis testing}\label{week-1-hypothesis-testing}}
+\hypertarget{day-4-hypothesis-testing}{%
+\section{Day 4: Hypothesis testing}\label{day-4-hypothesis-testing}}
 
 On this section, we will go through hypothesis testing. You will start to see how to \emph{formulate hypotheses} and how to \emph{test} them.
 In addition, we want to learn how to use and interpret hypothesis tests.
@@ -2931,6 +2947,7 @@ Load the required packages
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(dplyr)}
 \FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{library}\NormalTok{(tibble)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3056,7 +3073,7 @@ This is exactly what \textbf{mean tests} such as the t-test (or the Wilcoxon tes
 We will perform here a \textbf{t-test}.
 
 \hypertarget{one-sample-t-test}{%
-\subsection{One sample t-test}\label{one-sample-t-test}}
+\subsubsection{One sample t-test}\label{one-sample-t-test}}
 
 Using a one-sample t-test, we can check if values differ significantly from a target value.
 For example, you could sample 10 chocolate bars, and test if they significantly differ from the expected weight of 100 g:
@@ -3175,7 +3192,7 @@ Can you reject the H0 hypothesis?
 \end{quote}
 
 \hypertarget{two-sample-t-test-2-sided}{%
-\subsection{Two-sample t-test (2-sided)}\label{two-sample-t-test-2-sided}}
+\subsubsection{Two-sample t-test (2-sided)}\label{two-sample-t-test-2-sided}}
 
 Now, we will compare the mean of the weights between males and females.\\
 
@@ -3233,7 +3250,7 @@ Can you reject the H0 hypothesis?
 \end{quote}
 
 \hypertarget{two-sample-t-test-1-sided}{%
-\subsection{Two-sample t-test (1-sided)}\label{two-sample-t-test-1-sided}}
+\subsubsection{Two-sample t-test (1-sided)}\label{two-sample-t-test-1-sided}}
 
 Looking at the histogram, other observers could in principle see a difference between the mean values of the weights and formulate the following hypotheses:
 
@@ -3313,15 +3330,144 @@ It is two times the p-value of the one-sided t.test!
 \includegraphics{_main_files/figure-latex/unnamed-chunk-121-1.pdf}
 
 IMPORTANTLY, a t-test can only be performed if the data is \textbf{normally distributed}!
-We haven't check that yet for our dataset \ldots{} This is the topic of the section \textbf{going further} below.
+If the data is not normally distributed, you will need to use a non-parametric test, like Wilcoxon test.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{wilcoxon-test}{%
+\subsection{Wilcoxon test}\label{wilcoxon-test}}
+
+What if the data is not normally distributed?
+In that case, we are not supposed to use the t-test for testing differences between mean values!
+Let us us see an example.
+
+Let us start by loading the data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{all.aml }\OtherTok{=} \FunctionTok{read.delim}\NormalTok{(}\StringTok{\textquotesingle{}http://bioinfo.ipmb.uni{-}heidelberg.de/crg/datascience3fs/practicals/data/all.aml.cleaned.csv\textquotesingle{}}\NormalTok{,}
+                     \AttributeTok{header=}\ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{all.aml.anno }\OtherTok{=} \FunctionTok{read.delim}\NormalTok{(}\StringTok{"http://bioinfo.ipmb.uni{-}heidelberg.de/crg/datascience3fs/practicals/data/all.aml.anno.cleaned.csv"}\NormalTok{,}
+                          \AttributeTok{header=}\ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{id =} \FunctionTok{paste0}\NormalTok{(}\StringTok{"pat"}\NormalTok{, Samples))}
+\end{Highlighting}
+\end{Shaded}
+
+We check whether the distribution of the expression values for the gene ``SOX4'' corresponds to a normal distribution:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{expression }\OtherTok{=}\NormalTok{ all.aml }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{t}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{as.data.frame}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{na.omit}\NormalTok{()}
+
+\CommentTok{\# Plot histogram }
+\FunctionTok{ggplot}\NormalTok{(expression,}
+       \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ SOX4)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{bins =} \DecValTok{20}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-123-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Check if it\textquotesingle{}s normally distributed using a QQ{-}plot }
+\FunctionTok{ggplot}\NormalTok{(expression,}
+       \FunctionTok{aes}\NormalTok{(}\AttributeTok{sample =}\NormalTok{ SOX4)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_qq}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_qq\_line}\NormalTok{(}\AttributeTok{colour =} \StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-123-2.pdf}
+
+This looks everything but normal!
+In that case, we cannot apply the t.test, but need to apply a \textbf{non-parametric test} called the \emph{Wilcoxon test}.
+This test is performed not on the \emph{values} (like the t-test) but on the \emph{ranks} of these values (remember the difference between the Pearson's and the Spearman's correlations!)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# divide the gene expression data in two groups according to ALL or AML patients:}
+\CommentTok{\# obtain the AML and rest}
+\NormalTok{aml.patient.id }\OtherTok{=}\NormalTok{ all.aml.anno }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(ALL.AML }\SpecialCharTok{==} \StringTok{"AML"}\NormalTok{)}
+\NormalTok{other.id }\OtherTok{=}\NormalTok{ all.aml.anno }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(ALL.AML }\SpecialCharTok{!=} \StringTok{"AML"}\NormalTok{) }\CommentTok{\# filters for those which are not labeled AML}
+
+\NormalTok{gene.all }\OtherTok{=}\NormalTok{ expression }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{rownames\_to\_column}\NormalTok{(}\StringTok{"id"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(id }\SpecialCharTok{\%in\%}\NormalTok{ other.id}\SpecialCharTok{$}\NormalTok{id)}
+
+\NormalTok{gene.aml }\OtherTok{=}\NormalTok{ expression }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{rownames\_to\_column}\NormalTok{(}\StringTok{"id"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(id }\SpecialCharTok{\%in\%}\NormalTok{ aml.patient.id}\SpecialCharTok{$}\NormalTok{id)}
+  
+\CommentTok{\# test for a difference in the mean expression values using the Wilcoxon test:}
+\FunctionTok{wilcox.test}\NormalTok{(gene.aml}\SpecialCharTok{$}\NormalTok{SOX4, gene.all}\SpecialCharTok{$}\NormalTok{SOX4)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in wilcox.test.default(gene.aml$SOX4, gene.all$SOX4): cannot compute
+## exact p-value with ties
+\end{verbatim}
+
+\begin{verbatim}
+## 
+##  Wilcoxon rank sum test with continuity correction
+## 
+## data:  gene.aml$SOX4 and gene.all$SOX4
+## W = 260.5, p-value = 0.0001125
+## alternative hypothesis: true location shift is not equal to 0
+\end{verbatim}
+
+Compare the obtained p-value with the p-value obtained if we would have used the t-test:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{t.test}\NormalTok{(gene.aml}\SpecialCharTok{$}\NormalTok{SOX4, gene.all}\SpecialCharTok{$}\NormalTok{SOX4)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Welch Two Sample t-test
+## 
+## data:  gene.aml$SOX4 and gene.all$SOX4
+## t = -3.6216, df = 54.611, p-value = 0.000642
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -2605.3197  -748.9356
+## sample estimates:
+## mean of x mean of y 
+##  1653.000  3330.128
+\end{verbatim}
+
+The p-values are very different!!
+So is the difference of expression between ALL and AML patients for this gene significant or not taking \(\alpha=0.05\)?
+
+Here, we \textbf{cannot} trust the t-test due to the non-normality of the data!
+Hence, the correct p-value is the one from the Wilcoxon test.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{chi-squared-test}{%
+\subsection{Chi-squared test}\label{chi-squared-test}}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{fishers-exact-test}{%
+\subsection{Fisher's exact test}\label{fishers-exact-test}}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{exercises-3}{%
-\section{EXERCISES}\label{exercises-3}}
+\subsection{EXERCISES}\label{exercises-3}}
 
 \hypertarget{exercise-1-one-sided-t-test}{%
-\subsection{Exercise 1: One-sided t-test}\label{exercise-1-one-sided-t-test}}
+\subsubsection{Exercise 1: One-sided t-test}\label{exercise-1-one-sided-t-test}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -3350,7 +3496,7 @@ We haven't check that yet for our dataset \ldots{} This is the topic of the sect
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-122-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-126-1.pdf}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -3363,7 +3509,7 @@ We haven't check that yet for our dataset \ldots{} This is the topic of the sect
 \end{enumerate}
 
 \hypertarget{exercice-2-two-sided-t-test}{%
-\subsection{Exercice 2: Two-sided t-test}\label{exercice-2-two-sided-t-test}}
+\subsubsection{Exercice 2: Two-sided t-test}\label{exercice-2-two-sided-t-test}}
 
 Can you find interesting differences in the mean values of parameters of the dataset \textbf{dat} for the two groups defined by the \textbf{location}?
 Follow these steps:
@@ -3383,7 +3529,7 @@ Follow these steps:
 \end{enumerate}
 
 \hypertarget{exercise-3.-going-further-checking-the-normality-of-the-distribution}{%
-\subsection{Exercise 3. Going further \ldots{} Checking the normality of the distribution}\label{exercise-3.-going-further-checking-the-normality-of-the-distribution}}
+\subsubsection{Exercise 3. Going further \ldots{} Checking the normality of the distribution}\label{exercise-3.-going-further-checking-the-normality-of-the-distribution}}
 
 In principle, t-tests require that the data is approximately normally distributed.
 If not, we can use \textbf{non-parametric} tests (see next lecture).
@@ -3391,38 +3537,26 @@ If not, we can use \textbf{non-parametric} tests (see next lecture).
 In order to check whether the data is normally distributed or not, it is possible to perform a \textbf{Shapiro-Wilk} normality test (see lecture).
 This statistical test is implemented in R in the function \texttt{shapiro.test()}.
 
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
-\hypertarget{wilcoxon-test}{%
-\section{Wilcoxon test}\label{wilcoxon-test}}
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
-\hypertarget{chi-squared-test}{%
-\section{Chi-squared test}\label{chi-squared-test}}
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
-\hypertarget{fishers-exact-test}{%
-\section{Fisher's exact test}\label{fishers-exact-test}}
-
-\hypertarget{week-1-multiple-testing-and-regression}{%
-\chapter{WEEK 1: Multiple testing and regression}\label{week-1-multiple-testing-and-regression}}
+\hypertarget{day-5-multiple-testing-and-regression}{%
+\section{Day 5: Multiple testing and regression}\label{day-5-multiple-testing-and-regression}}
 
 \hypertarget{multiple-testing}{%
-\section{Multiple testing}\label{multiple-testing}}
+\subsection{Multiple testing}\label{multiple-testing}}
 
 \hypertarget{regression}{%
-\section{Regression}\label{regression}}
+\subsection{Regression}\label{regression}}
 
-\hypertarget{week-2-annotathon}{%
-\chapter{WEEK 2: Annotathon!}\label{week-2-annotathon}}
+\hypertarget{week-two}{%
+\chapter{WEEK TWO}\label{week-two}}
 
-\hypertarget{week-2-data-formats-and-where-to-find-them}{%
-\chapter{WEEK 2: Data formats and where to find them}\label{week-2-data-formats-and-where-to-find-them}}
+\hypertarget{days-1-to-3-annotathon}{%
+\section{Days 1 to 3: Annotathon!}\label{days-1-to-3-annotathon}}
 
-\hypertarget{week-2-rna-seq---from-fastq-to-count-matrix}{%
-\chapter{WEEK 2: RNA-seq - from FASTQ to count matrix}\label{week-2-rna-seq---from-fastq-to-count-matrix}}
+\hypertarget{day-4-data-formats-and-where-to-find-them}{%
+\section{Day 4: Data formats and where to find them}\label{day-4-data-formats-and-where-to-find-them}}
+
+\hypertarget{day-5-rna-seq---from-fastq-to-count-matrix}{%
+\section{Day 5: RNA-seq - from FASTQ to count matrix}\label{day-5-rna-seq---from-fastq-to-count-matrix}}
 
 \hypertarget{instructions}{%
 \chapter{instructions}\label{instructions}}

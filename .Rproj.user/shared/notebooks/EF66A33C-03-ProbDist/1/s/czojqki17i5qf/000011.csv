@@ -1,5 +1,0 @@
-"0","# size of the sample"
-"0","N = 8"
-"0","#"
-"0","# we now draw 100 times samples of size N=8"
-"0","X = lapply(1:100,function(i) {rpois(N,lambda = lambda)})"

@@ -1,0 +1,5 @@
+"0","ggplot(dat,"
+"0","       aes(x = stab.glu)) +"
+"0","  geom_histogram(bins = 75) +"
+"0","  labs(x = ""Stabilized Glucose concentration in blood"",  # add labels to the x-axis"
+"0","       title = ""Glucose concentration"")                  # add title"

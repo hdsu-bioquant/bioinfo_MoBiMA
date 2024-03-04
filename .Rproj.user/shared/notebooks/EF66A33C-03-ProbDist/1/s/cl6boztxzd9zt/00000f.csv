@@ -1,5 +1,0 @@
-"0","# Model prediction:"
-"0","x = seq(0,5000,by=5)"
-"0","d.pred = dnorm(x,mean = m.tp53, sd = s.tp53)"
-"2","Error: object 'm.tp53' not found
-"

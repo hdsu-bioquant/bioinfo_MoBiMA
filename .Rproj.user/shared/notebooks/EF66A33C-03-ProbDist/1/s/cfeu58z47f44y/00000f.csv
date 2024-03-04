@@ -1,4 +1,0 @@
-"0","# we compute the sample means"
-"0","Xm = sapply(X,mean)"
-"0","# and the sample standard deviations"
-"0","Xsd = sapply(X,sd) "

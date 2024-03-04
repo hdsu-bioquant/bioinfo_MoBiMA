@@ -1,0 +1,75 @@
+h1:week-one WEEK ONE
+h2:day-1-descriptive-statistics-and-data-types Day 1: Descriptive statistics and data types
+h3:data-features-and-where-to-find-them Data features and where to find them
+h4:load-the-data Load the data
+h4:dimensions-and-naming Dimensions and naming
+h4:numerical-features Numerical features
+h3:data-cleaning Data cleaning
+h4:filter filter()
+h4:is.na is.na()
+h4:mutate mutate()
+h4:accross accross()
+h4:in %in%
+h4:ready-for-the-cleaning Ready for the cleaning!
+h3:visualizing-data-distribution Visualizing data distribution
+h4:histograms Histograms
+h4:density-plots Density plots
+h4:boxplots Boxplots
+h4:qq-plots QQ-plots
+h3:correlation Correlation
+h4:measuring-the-centrality-in-data Measuring the centrality in data
+h4:association-between-variables Association between variables
+h3:exercises EXERCISES
+h4:exercise-1-data-features Exercise 1: Data features
+h4:exercise-2-visualization Exercise 2: Visualization
+h4:exercise-3-correlation Exercise 3: Correlation
+h2:day-2-dimensionality-reduction-and-unsupervised-learning Day 2: Dimensionality reduction and unsupervised learning
+h3:preparing-the-data Preparing the data
+h4:load-data Load data
+h4:data-transformation Data transformation
+h3:k-means-clustering k-means clustering
+h4:performing-k-means Performing k-means
+h4:quality-of-the-clustering Quality of the clustering
+h3:hierarchical-clustering Hierarchical clustering
+h4:determine-the-most-variable-genes Determine the most variable genes
+h4:computing-the-correlation-between-all-patients Computing the correlation between all patients
+h4:including-clinical-annotations-in-the-heatmap Including clinical annotations in the heatmap
+h3:principal-component-analysis Principal component analysis
+h3:exercises-1 EXERCISES
+h4:exercise-1-variance Exercise 1: Variance
+h4:exercise-2-hierarchical-clustering Exercise 2: Hierarchical clustering
+h4:exercise-3-pca Exercise 3: PCA
+h4:going-further-expert Going further 
+h2:day-3-probability-distributions Day 3: Probability distributions
+h3:probability-distributions Probability distributions
+h4:getting-to-know-the-various-functions Getting to know the various functions
+h4:normalgaussian-distribution Normal/Gaussian distribution
+h4:visualization Visualization
+h4:application-on-a-real-dataset Application on a real dataset
+h5:data-cleaning-and-central-values Data cleaning and central values
+h5:modeling-using-a-normal-distribution Modeling using a normal distribution
+h5:data-prediction-using-the-normal-distribution-model Data prediction using the normal distribution model
+h5:evaluating-the-quality-of-the-predictions Evaluating the quality of the predictions
+h5:visualization-1 Visualization
+h5:visualization-using-a-q-q-plot Visualization using a Q-Q plot
+h4:binomial-distribution Binomial distribution
+h3:confidence-interval Confidence interval
+h3:exercises-2 EXERCISES
+h4:exercise-1-probability-distributions Exercise 1: Probability distributions
+h4:exercise-2-binomial-distribution Exercise 2: Binomial distribution
+h4:exercise-3-confidence-intervals Exercise 3: Confidence intervals
+h2:day-4-hypothesis-testing Day 4: Hypothesis testing
+h4:one-sample-t-test One sample t-test
+h4:two-sample-t-test-2-sided Two-sample t-test (2-sided)
+h4:two-sample-t-test-1-sided Two-sample t-test (1-sided)
+h3:wilcoxon-test Wilcoxon test
+h3:chi-squared-test Chi-squared test
+h3:fishers-exact-test Fisher’s exact test
+h3:exercises-3 EXERCISES
+h4:exercise-1-one-sided-t-test Exercise 1: One-sided t-test
+h4:exercice-2-two-sided-t-test Exercice 2: Two-sided t-test
+h4:exercise-3.-going-further-checking-the-normality-of-the-distribution Exercise 3. Going further … Checking the normality of the distribution
+h2:day-5-multiple-testing-and-regression Day 5: Multiple testing and regression
+h3:multiple-testing Multiple testing
+h3:regression Regression
+

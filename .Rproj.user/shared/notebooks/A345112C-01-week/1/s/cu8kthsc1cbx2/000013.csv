@@ -1,0 +1,4 @@
+"0","ggplot(dat,"
+"0","       aes(sample = bp.1s)) +     # we use sample= inside aes for the QQ-plot"
+"0","  geom_qq() +"
+"0","  geom_qq_line()"

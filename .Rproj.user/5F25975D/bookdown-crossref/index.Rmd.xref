@@ -1,5 +1,7 @@
 h1:introduction Introduction
 h2:where-to-start Where to start
+h3:installing-r-and-rstudio Installing R and RStudio
+h3:courses Courses
 h2:r R
 h3:rstudio RStudio
 h3:variable-assignment-in-r Variable assignment in R

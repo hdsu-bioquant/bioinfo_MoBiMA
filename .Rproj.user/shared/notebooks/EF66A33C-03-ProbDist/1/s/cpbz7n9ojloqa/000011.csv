@@ -1,5 +1,0 @@
-"0","df = N-1"
-"0","tc = qt(c(0.975),df) # this is the critical value for the t-distribution for df = N-1 degrees of freedom and 95% CI"
-"0",""
-"0","Xl = Xm-tc*Xsd/sqrt(N) # upper bound of the 95% CI"
-"0","Xh = Xm+tc*Xsd/sqrt(N) # lower bound of the 95% CI"

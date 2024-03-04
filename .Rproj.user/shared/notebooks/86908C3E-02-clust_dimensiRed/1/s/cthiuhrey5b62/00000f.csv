@@ -1,3 +1,0 @@
-"0","km = kmeans(x=t(brca.exp), "
-"0","            centers = 2, "
-"0","            nstart = 10)"
