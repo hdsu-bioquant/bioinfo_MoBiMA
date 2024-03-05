@@ -3,7 +3,7 @@
     "path": "~/Documents/Tasks/dataanalysis_SS24/index.Rmd",
     "project_path": "index.Rmd",
     "type": "r_markdown",
-    "hash": "1671154609",
+    "hash": "0",
     "contents": "",
     "dirty": false,
     "created": 1709573236976.0,
@@ -12,8 +12,8 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "583,106",
-        "scrollLine": "552",
+        "cursorPosition": "15,0",
+        "scrollLine": "8",
         "docOutlineVisible": "1"
     },
     "folds": "",

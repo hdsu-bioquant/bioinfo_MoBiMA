@@ -122,23 +122,6 @@
 \author{Biomedical Genomics group, IPMB}
 \date{2024-03-05}
 
-\usepackage{amsthm}
-\newtheorem{theorem}{Theorem}[chapter]
-\newtheorem{lemma}{Lemma}[chapter]
-\newtheorem{corollary}{Corollary}[chapter]
-\newtheorem{proposition}{Proposition}[chapter]
-\newtheorem{conjecture}{Conjecture}[chapter]
-\theoremstyle{definition}
-\newtheorem{definition}{Definition}[chapter]
-\theoremstyle{definition}
-\newtheorem{example}{Example}[chapter]
-\theoremstyle{definition}
-\newtheorem{exercise}{Exercise}[chapter]
-\theoremstyle{definition}
-\newtheorem{hypothesis}{Hypothesis}[chapter]
-\theoremstyle{remark}
-\newtheorem*{remark}{Remark}
-\newtheorem*{solution}{Solution}
 \begin{document}
 \maketitle
 
@@ -488,13 +471,13 @@ Let's have a look at an example to make this more clear: We want to determine th
 \end{Shaded}
 
 \begin{verbatim}
-##             [,1]        [,2]        [,3]       [,4]       [,5]
-## [1,]  0.36430489 -2.28418445  0.79716024  0.5332948  1.2944940
-## [2,]  0.01134023  0.17019334  1.59477479  1.3907018 -0.5564549
-## [3,] -0.17744811 -0.53840855 -0.70367322 -2.1280652 -0.6178126
-## [4,]  1.70625352  0.03796624 -0.09786663  1.0110468 -0.2680064
-## [5,]  0.53315351  0.35768082 -1.96541686  0.7792090  0.3390147
-## [6,]  0.29420332 -0.22226617  0.59766058  0.3884021 -0.9683612
+##             [,1]       [,2]        [,3]        [,4]       [,5]
+## [1,] -0.35540006  1.0332554 -0.08856817  1.61572865  0.2585365
+## [2,] -0.81188025  1.4377580  2.20858978 -0.84004281  1.1225805
+## [3,]  1.56857875  0.8962906 -0.76405712 -0.12124060 -0.7569839
+## [4,]  0.05826474  1.9501928 -0.34311255  0.14951068 -0.8639842
+## [5,]  2.12254765 -1.8216548  0.71063565 -0.04350672  1.4641572
+## [6,] -2.15644214  0.5437988  1.95700765 -1.28370715 -0.9250494
 \end{verbatim}
 
 \begin{Shaded}
@@ -505,7 +488,7 @@ Let's have a look at an example to make this more clear: We want to determine th
 \end{Shaded}
 
 \begin{verbatim}
-## [1] -2.2841845 -0.5564549 -2.1280652 -0.2680064 -1.9654169 -0.9683612
+## [1] -0.3554001 -0.8400428 -0.7640571 -0.8639842 -1.8216548 -2.1564421
 \end{verbatim}
 
 \begin{quote}
@@ -557,13 +540,13 @@ Instead of using built-in functions, we can also write our own little function a
 \end{Shaded}
 
 \begin{verbatim}
-##             [,1]        [,2]        [,3]       [,4]       [,5]
-## [1,]  0.36430489 -2.28418445  0.79716024  0.5332948  1.2944940
-## [2,]  0.01134023  0.17019334  1.59477479  1.3907018 -0.5564549
-## [3,] -0.17744811 -0.53840855 -0.70367322 -2.1280652 -0.6178126
-## [4,]  1.70625352  0.03796624 -0.09786663  1.0110468 -0.2680064
-## [5,]  0.53315351  0.35768082 -1.96541686  0.7792090  0.3390147
-## [6,]  0.29420332 -0.22226617  0.59766058  0.3884021 -0.9683612
+##             [,1]       [,2]        [,3]        [,4]       [,5]
+## [1,] -0.35540006  1.0332554 -0.08856817  1.61572865  0.2585365
+## [2,] -0.81188025  1.4377580  2.20858978 -0.84004281  1.1225805
+## [3,]  1.56857875  0.8962906 -0.76405712 -0.12124060 -0.7569839
+## [4,]  0.05826474  1.9501928 -0.34311255  0.14951068 -0.8639842
+## [5,]  2.12254765 -1.8216548  0.71063565 -0.04350672  1.4641572
+## [6,] -2.15644214  0.5437988  1.95700765 -1.28370715 -0.9250494
 \end{verbatim}
 
 \begin{Shaded}
@@ -573,7 +556,7 @@ Instead of using built-in functions, we can also write our own little function a
 \end{Shaded}
 
 \begin{verbatim}
-## [1]  1.41013894  5.22111063 -8.33081526  4.77878697  0.08728232  0.17927723
+## [1]  4.927105  6.234010  1.645176  1.901743  4.864358 -3.728784
 \end{verbatim}
 
 Besides, we can use \texttt{sapply()} for a \textbf{list}, for example to calculate the length of every element using \texttt{length()}:
@@ -3361,7 +3344,7 @@ Finally, we determine whether each sample mean is found within the 95\% CI or no
 
 Here, the orange/grey bars represent the confidence interval, the dot is the mean of the sample values, and the dotted line at \texttt{\textbackslash{}lambda} represents the true expectation value. Whenever the true expectation value is within the CI, the bar is orange, if not, the bar is grey. How often is the true expectation value outside the CI? Count the grey bars!
 
-It happens 5 times, which fits pretty well with the expected 5\%.
+It happens 8 times, which fits pretty well with the expected 5\%.
 
 \begin{quote}
 Repeat this simulation, but now with samples of \(N=24\) (again 100 times)\\
@@ -4847,50 +4830,114 @@ We now repeat the train/test split 10 times with each time a different random sp
 \hypertarget{day-5-rna-seq---from-fastq-to-count-matrix}{%
 \section{Day 5: RNA-seq - from FASTQ to count matrix}\label{day-5-rna-seq---from-fastq-to-count-matrix}}
 
-\hypertarget{instructions}{%
-\chapter{instructions}\label{instructions}}
+\hypertarget{project-report-guide}{%
+\chapter{Project report guide}\label{project-report-guide}}
 
-Cross-references make it easier for your readers to find and link to elements in your book.
+At the end of this course, you will have to produce a report in RMarkdown. RMarkdown is an inherantly ready-to publish format. Meaning that if there are no mistakes on your text, it should simply produce a PDF in one go. Let's see how.
 
-\hypertarget{chapters-and-sub-chapters}{%
-\section{Chapters and sub-chapters}\label{chapters-and-sub-chapters}}
+\hypertarget{knitting}{%
+\section{Knitting}\label{knitting}}
 
-There are two steps to cross-reference any heading:
+Create a new RMarkdown document and start trying it out. You can already call this document \emph{Report} if you would like to. You can also use a layout we have made available \href{https://github.com/hdsu-bioquant/bioinfo_MoBiMA/tree/main/report_example}{here}.
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
+By clicking on the little blue yarn ball on top, you can \emph{Knit} the document into a PDF (to PDF option can be found on the right drop arrow).
+
+Tips to ensure you catch errors early on:
+
+\begin{itemize}
 \tightlist
 \item
-  Label the heading: \texttt{\#\ Hello\ world\ \{\#nice-label\}}.
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Leave the label off if you like the automated heading generated based on your heading title: for example, \texttt{\#\ Hello\ world} = \texttt{\#\ Hello\ world\ \{\#hello-world\}}.
-  \item
-    To label an un-numbered heading, use: \texttt{\#\ Hello\ world\ \{-\#nice-label\}} or \texttt{\{\#\ Hello\ world\ .unnumbered\}}.
-  \end{itemize}
+  Knit your document every so often! If you have too much code/text that you have not verified if it's running or not, this might cause issues later on.
 \item
-  Next, reference the labeled heading anywhere in the text using \texttt{\textbackslash{}@ref(nice-label)}; for example, please see Chapter \ref{cross}.
+  Read your errors when you have them: R will usually tell you where the error is located. Most times it's a character error as some characters will have meanings in RMarkdown and that is not always clear at first.
+\item
+  Check for missing dependencies like \texttt{dplyr}, \texttt{tidyr}, or \texttt{ggplot2} if you are using these packages.
+\item
+  Comment your code!
+\item
+  Keep things short, simplify, and avoid having a wall of text/code that is hardly decipherable.
+\end{itemize}
 
-  \begin{itemize}
-  \tightlist
-  \item
-    If you prefer text as the link instead of a numbered reference use: \protect\hyperlink{cross}{any text you want can go here}.
-  \end{itemize}
-\end{enumerate}
+\hypertarget{formatting}{%
+\section{Formatting}\label{formatting}}
 
-\hypertarget{captioned-figures-and-tables}{%
-\section{Captioned figures and tables}\label{captioned-figures-and-tables}}
+New chapter titles and subtitles are defined from \texttt{\#} (larger title as in 1.) to \texttt{\#\#\#\#} (smaller title as in 1.1.1.1). Further formatting can be found \href{https://bookdown.org/yihui/rmarkdown-cookbook/formatting.html}{here}.
 
-Figures and tables \emph{with captions} can also be cross-referenced from elsewhere in your book using \texttt{\textbackslash{}@ref(fig:chunk-label)} and \texttt{\textbackslash{}@ref(tab:chunk-label)}, respectively.
+Numerical equations and special characters have their own formatting. For example:
+\texttt{\$\textbackslash{}sqrt\{13\}\$} is square-root of 13
+\texttt{\$\textbackslash{}alpha=0.05\$} is alpha=0.05
 
-Don't miss Table \ref{tab:nice-tab}.
+Here is an equation:
+
+\begin{verbatim}
+\begin{equation} 
+  f\left(k\right) = \binom{n}{k} p^k\left(1-p\right)^{n-k}
+  \label{eq:binom}
+\end{equation} 
+\end{verbatim}
+
+You may refer to this equation using \texttt{\textbackslash{}@ref(eq:binom)}.
+
+\hypertarget{new-pages-and-paragraphs}{%
+\subsection{New pages and paragraphs}\label{new-pages-and-paragraphs}}
+
+You can use \texttt{\textbackslash{}newpage} to create new pages and \texttt{\textbackslash{}par} to make paragraphs.
+
+\hypertarget{chunk-options}{%
+\section{Chunk options}\label{chunk-options}}
+
+There are a multitude of options to display the R chunks and their outputs. See all of them \href{https://bookdown.org/yihui/rmarkdown-cookbook/chunk-options.html}{here}.
+The ones will will most likely use are:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{echo=FALSE}: hides the code but not the results
+\item
+  \texttt{results=\textquotesingle{}hide\textquotesingle{}}: hides the results but not the code
+\item
+  \texttt{include=FALSE}: does not include the chunk
+\item
+  \texttt{eval=FALSE}: does not run the chunk
+\end{itemize}
+
+Some of the ones below control figure placement and size:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{fig.height}
+\item
+  \texttt{fig.width}
+\item
+  \texttt{fig.align=\textquotesingle{}center\textquotesingle{}}
+\item
+  \texttt{out.width}
+  Extra: \texttt{results=\textquotesingle{}hold\textquotesingle{},\ out.width=\textquotesingle{}50\%\textquotesingle{}}: will allow you to show 2 figure/plot outputs side by side.
+\end{itemize}
+
+\hypertarget{external-images}{%
+\section{External images}\label{external-images}}
+
+When including external images, you need to indicate the location of such figure relative to your document:
+\texttt{!{[}This\ is\ a\ Figure{]}(figure\_folder/avocado\_image.jpeg)}
+
+\begin{figure}
+\centering
+\includegraphics{figures/vangogh.jpeg}
+\caption{This is a Figure. Source: \url{https://www.metmuseum.org/de/art/collection/search/436535}}
+\end{figure}
+
+For more additions like table, check the \href{https://bookdown.org/yihui/rmarkdown-cookbook/tables.html}{RMarkdown cookbook}.
+
+Figures and tables \emph{with captions} can also be cross-referenced from elsewhere using \texttt{\textbackslash{}@ref(fig:chunk-label)} and \texttt{\textbackslash{}@ref(tab:chunk-label)}, respectively.
+
+Don't miss Table \ref{tab:nice-tab}. Reference tables using \texttt{\textbackslash{}@ref(tab:nice-tab)}
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(}
-  \FunctionTok{head}\NormalTok{(pressure, }\DecValTok{10}\NormalTok{), }\AttributeTok{caption =} \StringTok{\textquotesingle{}Here is a nice table!\textquotesingle{}}\NormalTok{,}
+  \FunctionTok{head}\NormalTok{(pressure, }\DecValTok{5}\NormalTok{), }\AttributeTok{caption =} \StringTok{\textquotesingle{}Here is a nice table!\textquotesingle{}}\NormalTok{,}
   \AttributeTok{booktabs =} \ConstantTok{TRUE}
 \NormalTok{)}
 \end{Highlighting}
@@ -4909,68 +4956,37 @@ temperature & pressure\\
 40 & 0.0060\\
 60 & 0.0300\\
 80 & 0.0900\\
-\addlinespace
-100 & 0.2700\\
-120 & 0.7500\\
-140 & 1.8500\\
-160 & 4.2000\\
-180 & 8.8000\\
 \bottomrule
 \end{tabular}
 \end{table}
 
-You can add parts to organize one or more book chapters together. Parts can be inserted at the top of an .Rmd file, before the first-level chapter heading in that same file.
+\hypertarget{references}{%
+\section{References}\label{references}}
 
-Add a numbered part: \texttt{\#\ (PART)\ Act\ one\ \{-\}} (followed by \texttt{\#\ A\ chapter})
+Your report will very likely include some references. Each RMarkdown is accompanied by a \emph{.bib} extension file. Indicate the name of that file in the beginning of the report (see example). You can see the one we have included in the example \href{https://github.com/hdsu-bioquant/bioinfo_MoBiMA/tree/main/report_example}{here} too. If you open that file in a text editor, you can see that entries are structured like this:
 
-Add an unnumbered part: \texttt{\#\ (PART\textbackslash{}*)\ Act\ one\ \{-\}} (followed by \texttt{\#\ A\ chapter})
+\begin{verbatim}
+@book{ggplot2,
+    author = {Hadley Wickham},
+    isbn = {978-3-319-24277-4},
+    publisher = {Springer-Verlag New York},
+    title = {ggplot2: Elegant Graphics for Data Analysis},
+    url = {https://ggplot2.tidyverse.org},
+    year = {2016},
+    bdsk-url-1 = {https://ggplot2.tidyverse.org}}
+\end{verbatim}
 
-Add an appendix as a special kind of un-numbered part: \texttt{\#\ (APPENDIX)\ Other\ stuff\ \{-\}} (followed by \texttt{\#\ A\ chapter}). Chapters in an appendix are prepended with letters instead of numbers.
-
-\hypertarget{footnotes}{%
-\section{Footnotes}\label{footnotes}}
-
-Footnotes are put inside the square brackets after a caret \texttt{\^{}{[}{]}}. Like this one \footnote{This is a footnote.}.
+This citation format is compatible with citation managers like BibDesk (only available on macOS) or Mendeley. When you are using one of these, you are able to add in other references. Watch out for the reference key in your Markdown.
 
 \hypertarget{citations}{%
-\section{Citations}\label{citations}}
+\subsection{Citations}\label{citations}}
 
-Reference items in your bibliography file(s) using \texttt{@key}.
+Reference items present in your bibliography file(s) in the Markdown using \texttt{@key} or \texttt{{[}@key{]}}. For the previous example, key is actually \emph{ggplot2}!
 
-For example, we are using the \textbf{bookdown} package \citep{R-bookdown} (check out the last code chunk in index.Rmd to see how this citation key was added) in this sample book, which was built on top of R Markdown and \textbf{knitr} \citep{xie2015} (this citation was added manually in an external file book.bib).
-Note that the \texttt{.bib} files need to be listed in the index.Rmd with the YAML \texttt{bibliography} key.
+\hypertarget{footnotes}{%
+\subsection{Footnotes}\label{footnotes}}
 
-The RStudio Visual Markdown Editor can also make it easier to insert citations: \url{https://rstudio.github.io/visual-markdown-editing/\#/citations}
-
-\hypertarget{equations}{%
-\section{Equations}\label{equations}}
-
-Here is an equation.
-
-\begin{equation} 
-  f\left(k\right) = \binom{n}{k} p^k\left(1-p\right)^{n-k}
-  \label{eq:binom}
-\end{equation}
-
-You may refer to using \texttt{\textbackslash{}@ref(eq:binom)}, like see Equation \eqref{eq:binom}.
-
-\hypertarget{theorems-and-proofs}{%
-\section{Theorems and proofs}\label{theorems-and-proofs}}
-
-Labeled theorems can be referenced in text using \texttt{\textbackslash{}@ref(thm:tri)}, for example, check out this smart theorem \ref{thm:tri}.
-
-\begin{theorem}
-\protect\hypertarget{thm:tri}{}\label{thm:tri}For a right triangle, if \(c\) denotes the \emph{length} of the hypotenuse
-and \(a\) and \(b\) denote the lengths of the \textbf{other} two sides, we have
-\[a^2 + b^2 = c^2\]
-\end{theorem}
-
-Read more here \url{https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html}.
-
-\hypertarget{callout-blocks}{%
-\section{Callout blocks}\label{callout-blocks}}
-
-The R Markdown Cookbook provides more help on how to use custom blocks to design your own callouts: \url{https://bookdown.org/yihui/rmarkdown-cookbook/custom-blocks.html}
+Footnotes are put inside the square brackets after a caret \texttt{\^{}{[}{]}}.
 
   \bibliography{book.bib,packages.bib}
 

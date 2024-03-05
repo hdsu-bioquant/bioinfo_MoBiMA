@@ -1,26 +1,26 @@
 {
-    "id": "A05F8868",
-    "path": "~/Documents/Tasks/dataanalysis_SS24/info.Rmd",
-    "project_path": "info.Rmd",
+    "id": "3B5337FA",
+    "path": "~/Documents/Tasks/dataanalysis_SS24/03-reportInstructions.Rmd",
+    "project_path": "03-reportInstructions.Rmd",
     "type": "r_markdown",
     "hash": "0",
     "contents": "",
     "dirty": false,
-    "created": 1709651881552.0,
+    "created": 1709653850317.0,
     "source_on_save": false,
     "relative_order": 4,
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "24,13",
-        "scrollLine": "1"
+        "cursorPosition": "66,55",
+        "scrollLine": "63"
     },
     "folds": "",
-    "lastKnownWriteTime": 1709121201,
+    "lastKnownWriteTime": 1709659681,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1709121201,
+    "last_content_update": 1709659681767,
     "read_only": false,
     "read_only_alternatives": []
 }

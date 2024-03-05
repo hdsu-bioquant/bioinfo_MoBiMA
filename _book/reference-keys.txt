@@ -1,5 +1,4 @@
 tab:nice-tab
-eq:binom
 week-one
 day-1-descriptive-statistics-and-data-types
 data-features-and-where-to-find-them
@@ -81,11 +80,12 @@ week-two
 days-1-to-3-annotathon
 day-4-data-formats-and-where-to-find-them
 day-5-rna-seq---from-fastq-to-count-matrix
-instructions
-chapters-and-sub-chapters
-captioned-figures-and-tables
-footnotes
+project-report-guide
+knitting
+formatting
+new-pages-and-paragraphs
+chunk-options
+external-images
+references
 citations
-equations
-theorems-and-proofs
-callout-blocks
+footnotes
