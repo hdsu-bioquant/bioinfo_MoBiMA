@@ -1,3 +1,0 @@
-"0","ggplot(msleep,                    # start by picking the dataframe to plot"
-"0","       aes(x = sleep_total)) +    # column to use for y-axis"
-"0","  geom_histogram()                # plot layer for histogram"

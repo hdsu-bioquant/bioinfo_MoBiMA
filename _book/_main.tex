@@ -120,7 +120,7 @@
 
 \title{Bioinformatics introductory course - MSc Molekulare Biotechnologie}
 \author{Biomedical Genomics group, IPMB}
-\date{2024-03-04}
+\date{2024-03-05}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -150,6 +150,24 @@
 \chapter*{Introduction}\label{introduction}}
 \addcontentsline{toc}{chapter}{Introduction}
 
+R is a powerful programming language for the analysis of data. R is very versatile, it is free, and very easy to understand. That is because, unlike other programming languages, R is quite ``human-friendly'' and dynamic, thus it does not require compiling to be ``machine-readable''. All you have to do is type R commands in the console or script.
+
+Through this course, you will learn:
+
+\begin{quote}
+\begin{itemize}
+\tightlist
+\item
+  Basic R programming for data analysis (\emph{before we start}, go though the sections present in this Introduction)
+\item
+  How to use R to work on different datasets and apply statistics (\emph{Week One})
+\item
+  How to annotate, analyse, obtain, pre-process, and visualize genomic data (\emph{Week Two})
+\item
+  How to perform RNA-seq analysis (\emph{Week Three})
+\end{itemize}
+\end{quote}
+
 \hypertarget{where-to-start}{%
 \section*{Where to start}\label{where-to-start}}
 \addcontentsline{toc}{section}{Where to start}
@@ -158,15 +176,24 @@
 \subsection*{Installing R and RStudio}\label{installing-r-and-rstudio}}
 \addcontentsline{toc}{subsection}{Installing R and RStudio}
 
-For this tutorial, you will need to install both R and RStudio. Rstudio is the most commonly used IDE (or Integrated Development Environment) for R, and it will use the R version installed on your computer. RStudio is meant to make R programming quite visual and way easier for you as a beginner.
+First, you will need to install both R and RStudio. Rstudio is the most commonly used IDE (or Integrated Development Environment) for R, and it will \textbf{use the R version installed on your computer}. RStudio is meant to make R programming quite visual and way easier for you as a beginner.
 
-Start by installing R and RStudio.
+Start by installing \href{https://cran.r-project.org/}{R} and then \href{https://posit.co/download/rstudio-desktop/}{RStudio}.
+
+RStudio is composed of 4 main windows/panels.\\
+The \textbf{Editor}, the \textbf{Environment}, the \textbf{Console}, and the \textbf{Files} window/panel. Order can vary.
+
+\begin{figure}
+\centering
+\includegraphics{figures/RstudioLayout.png}
+\caption{In \textbf{Editor (1)}, you can find the area where you usually write most code, like a Rscript or a Rmarkdown. \textbf{Environment (2)} shows you your variables, history, among others. Here, you can see any variable you define in your session. You can use this to do a very basic inspection of objects you create or import. \textbf{Console (3)} is where all your code gets processed when you run it. The console remembers (which is why when you click arrow up or down, it shows you commands you ran before), but it does not keep! Therefore, ALWAYS write the meaningful code lines in a script/markdown (1). Lastly, \textbf{4} can be used for browsing documents (\emph{Files}), see the plots you produce (\emph{Plots}), searching/managing packages (\emph{Packages}), or find help on functions (\emph{Help}).}
+\end{figure}
 
 \hypertarget{courses}{%
 \subsection*{Courses}\label{courses}}
 \addcontentsline{toc}{subsection}{Courses}
 
-It is recommended that you take the introductory classes for R in \textbf{DataCamp} to get to know this language before you start coding here. In this course you will learn to use RStudio, a software that allows you to use R in a very user-friendly way.
+It is recommended that you take an introductory class for R to get to know this language before you start coding here. Start by going through \href{https://moderndive.netlify.app/1-getting-started}{this Chapter on Getting Started with Data in R}. We will cover other basics on the next sections.
 
 You can find more resources here:
 
@@ -186,30 +213,52 @@ You can find more resources here:
 \end{itemize}
 \end{quote}
 
-\hypertarget{r}{%
-\section*{R}\label{r}}
-\addcontentsline{toc}{section}{R}
+\hypertarget{good-practice}{%
+\section*{Good practice}\label{good-practice}}
+\addcontentsline{toc}{section}{Good practice}
 
-R is a powerful programming language for the analysis of data.\\
 Two notes of advice about good practice now that your journey is about to start:
 
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Commenting}: Comment your code as you go with \texttt{\#}! This way you avoid forgetting the meaning of a given line. This is also important if you want to share your code with others. Trust me, you will not remember what you are writing today in this class one week from now, so it will be best to have a reminder.\\
+\item
+  \textbf{Clean and tidy code}: See that weird line in the middle of your script/markdown? This is meant to be a guideline about code length. If your code is so long that it crosses the line, please find a way to make it shorter. In addition, avoid making your chunks too long and make separate markdowns or scripts for each class or topic, it will keep everything more organised and easy to track.
+\end{itemize}
+
+\hypertarget{r-markdown}{%
+\section*{R Markdown}\label{r-markdown}}
+\addcontentsline{toc}{section}{R Markdown}
+
+R Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. You will be working with R Markdown during this course. For more details on using R Markdown see \url{http://rmarkdown.rstudio.com} or \url{https://www.markdownguide.org/basic-syntax/}.
+
+R instructions in a markdown file are written in a ``chunk'', the one below.\\
+Chunks can be added using the \texttt{+C} icon at the top right corner of this panel/editor.\\
+There is also a keyboard shortcut for it.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Sentences written after "\#" are comments. Comments are ignored during the execution of the code.}
+\CommentTok{\# print "Hello world!" on the screen.}
+\FunctionTok{print}\NormalTok{(}\StringTok{"Hello world!"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Hello world!"
+\end{verbatim}
+
 \begin{quote}
-\textbf{Commenting}: Comment your code as you go with \texttt{\#}! This way you avoid forgetting the meaning of a given line. This is also important if you want to share your code with others. Trust me, you will not remember what you are writing today in this class one week from now, so it will be best to have a reminder.\\
-\textbf{Clean and tidy code}: See that weird line in the middle of your script/markdown? This is meant to be a guideline about code length. If your code is so long that it crosses the line, please find a way to make it shorter. In addition, avoid making your chunks too long and make separate markdowns or scripts for each class or topic, it will keep everything more organised and easy to track.
+What happens in the editor if you remove the second parenthesis? Do you see the red cross appearing? You can click on it and read the comment.\\
+And what happens if you press ``enter'' while the second parenthesis is missing?\\
 \end{quote}
 
-\hypertarget{rstudio}{%
-\subsection*{RStudio}\label{rstudio}}
-\addcontentsline{toc}{subsection}{RStudio}
+R is very smart and it will usually let know know when there is a simple syntax mistake like this one on your code. R will also try to guess variable and function names from your input, all you have to do is \emph{click TAB for auto-complete}.
 
-We will work with RStudio that is composed of 4 main windows/panels.\\
-The \textbf{Editor}, the \textbf{Environment}, the \textbf{Console}, and the \textbf{Files} window/panel. Order can vary.
-
-\begin{figure}
-\centering
-\includegraphics{figures/RstudioLayout.png}
-\caption{In \textbf{Editor (1)}, you can find the area where you usually write most code, like a Rscript or a Rmarkdown. \textbf{Environment (2)} shows you your variables, history, among others. Here, you can see any variable you define in your session. You can use this to do a very basic inspection of objects you create or import. \textbf{Console (3)} is where all your code gets processed when you run it. The console remembers (which is why when you click arrow up or down, it shows you commands you ran before), but it does not keep! Therefore, ALWAYS write the meaningful code lines in a script/markdown (1). Lastly, \textbf{4} can be used for browsing documents (\emph{Files}), see the plots you produce (\emph{Plots}), searching/managing packages (\emph{Packages}), or find help on functions (\emph{Help}).}
-\end{figure}
+\hypertarget{r-basics}{%
+\section*{R Basics}\label{r-basics}}
+\addcontentsline{toc}{section}{R Basics}
 
 \hypertarget{variable-assignment-in-r}{%
 \subsection*{Variable assignment in R}\label{variable-assignment-in-r}}
@@ -287,7 +336,7 @@ We can perform tests on simple variables using the \texttt{==}, \texttt{\textgre
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{name }\SpecialCharTok{==} \StringTok{"Harry Potter"}
+\NormalTok{name }\SpecialCharTok{==} \StringTok{"Harry"}
 \end{Highlighting}
 \end{Shaded}
 
@@ -418,38 +467,269 @@ We can again access specific elements in a similar manner to the matrix before. 
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{r-markdown}{%
-\section*{R Markdown}\label{r-markdown}}
-\addcontentsline{toc}{section}{R Markdown}
+\hypertarget{apply-sapply-lapply}{%
+\subsection*{Apply, sapply, lapply}\label{apply-sapply-lapply}}
+\addcontentsline{toc}{subsection}{Apply, sapply, lapply}
 
-R Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. You will be working with R Markdown during this course. For more details on using R Markdown see \url{http://rmarkdown.rstudio.com} or \url{https://www.markdownguide.org/basic-syntax/}.
+\texttt{Apply()} is used to repeat the same operation over all columns/rows of a \textbf{matrix} or \textbf{data frame}. Therefore, we need to specify three parameters:\\
+1. The matrix on which the operation should be performed\\
+2. Whether to repeat the operation over rows, which is defined by a ``1'', or columns (use a ``2'' instead)\\
+3. The operation that should be performed.\\
 
-R instructions in a markdown file are written in a ``chunk'', the one below.\\
-Chunks can be added using the \texttt{+C} icon at the top right corner of this panel/editor.\\
-There is also a keyboard shortcut for it.
+Let's have a look at an example to make this more clear: We want to determine the minimum for each row of the matrix ``Mat''. Therefore, we can use the function \texttt{min()}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# Sentences written after "\#" are comments. Comments are ignored during the execution of the code.}
-\CommentTok{\# print "Hello world!" on the screen.}
-\FunctionTok{print}\NormalTok{(}\StringTok{"Hello world!"}\NormalTok{)}
+\CommentTok{\#First, we build the matrix }
+\NormalTok{m }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{30}\NormalTok{)   }\CommentTok{\# generate 30 random numbers for the matrix}
+\NormalTok{Mat }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\AttributeTok{data =}\NormalTok{ m, }\AttributeTok{nrow =} \DecValTok{6}\NormalTok{)}
+\NormalTok{Mat}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "Hello world!"
+##             [,1]        [,2]        [,3]       [,4]       [,5]
+## [1,]  0.36430489 -2.28418445  0.79716024  0.5332948  1.2944940
+## [2,]  0.01134023  0.17019334  1.59477479  1.3907018 -0.5564549
+## [3,] -0.17744811 -0.53840855 -0.70367322 -2.1280652 -0.6178126
+## [4,]  1.70625352  0.03796624 -0.09786663  1.0110468 -0.2680064
+## [5,]  0.53315351  0.35768082 -1.96541686  0.7792090  0.3390147
+## [6,]  0.29420332 -0.22226617  0.59766058  0.3884021 -0.9683612
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Next, we want to determine the minimum value of each row: }
+\FunctionTok{apply}\NormalTok{(Mat, }\DecValTok{1}\NormalTok{, min)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -2.2841845 -0.5564549 -2.1280652 -0.2680064 -1.9654169 -0.9683612
 \end{verbatim}
 
 \begin{quote}
-What happens in the editor if you remove the second parenthesis? Do you see the red cross appearing? You can click on it and read the comment.\\
-And what happens if you press ``enter'' while the second parenthesis is missing?\\
+What happens if you change the ``1'' in the apply function to ``2''? Try it!
 \end{quote}
 
-R will usually let know know when there is a simple syntax mistake like this one on your code.
+\begin{quote}
+Remember that you can use \texttt{help(apply)} or \texttt{?apply} to get help on this function!
+\end{quote}
 
-\hypertarget{advanced-data-manipulation-with-tidyverse}{%
-\section*{Advanced data manipulation with tidyverse}\label{advanced-data-manipulation-with-tidyverse}}
-\addcontentsline{toc}{section}{Advanced data manipulation with tidyverse}
+We can perform a loop over all elements of a \textbf{vector} or \textbf{list} using the \texttt{sapply()} function.\\
+\texttt{sapply()} needs two information:\\
+1. which vector do we consider?\\
+2. which function do we want to apply to each element of this vector?\\
+\texttt{sapply()} will return a \textbf{vector} containing the results.
+
+For instance, we can calculate the square root of every element of a vector using the function \texttt{sqrt()}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{)}
+\FunctionTok{sapply}\NormalTok{(x, sqrt)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.000000 1.414214 1.732051 2.000000 2.236068
+\end{verbatim}
+
+Instead of using built-in functions, we can also write our own little function and combine it with \texttt{sapply()}, \texttt{apply()} or \texttt{lapply()} (see below):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# sapply()}
+\NormalTok{z }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{)}
+\FunctionTok{sapply}\NormalTok{(z, }\ControlFlowTok{function}\NormalTok{(x) \{x}\SpecialCharTok{*}\DecValTok{2}\NormalTok{\}) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  2  4  6  8 10
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# apply()}
+\NormalTok{Mat }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##             [,1]        [,2]        [,3]       [,4]       [,5]
+## [1,]  0.36430489 -2.28418445  0.79716024  0.5332948  1.2944940
+## [2,]  0.01134023  0.17019334  1.59477479  1.3907018 -0.5564549
+## [3,] -0.17744811 -0.53840855 -0.70367322 -2.1280652 -0.6178126
+## [4,]  1.70625352  0.03796624 -0.09786663  1.0110468 -0.2680064
+## [5,]  0.53315351  0.35768082 -1.96541686  0.7792090  0.3390147
+## [6,]  0.29420332 -0.22226617  0.59766058  0.3884021 -0.9683612
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{apply}\NormalTok{(Mat, }\DecValTok{1}\NormalTok{, }\ControlFlowTok{function}\NormalTok{(x) \{}\FunctionTok{sum}\NormalTok{(x}\SpecialCharTok{*}\DecValTok{2}\NormalTok{)\}) }\CommentTok{\#the operation is performed on every row of "Mat"; every element is multiplied by two and the sum of the row is calculated}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  1.41013894  5.22111063 -8.33081526  4.77878697  0.08728232  0.17927723
+\end{verbatim}
+
+Besides, we can use \texttt{sapply()} for a \textbf{list}, for example to calculate the length of every element using \texttt{length()}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{List1 }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}\AttributeTok{color =} \FunctionTok{c}\NormalTok{(}\StringTok{"blue"}\NormalTok{, }\StringTok{"red"}\NormalTok{), }\AttributeTok{size =} \DecValTok{5}\NormalTok{, }\AttributeTok{state =} \FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{))}
+
+\FunctionTok{sapply}\NormalTok{(List1, length)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## color  size state 
+##     2     1     4
+\end{verbatim}
+
+As you can see, this returns a vector with the length of every list element.
+
+However, sometimes it can be useful to keep the results stored in a list. Therefore, we can use \texttt{lapply()} instead. Let's have a look at the difference between \texttt{sapply()} and \texttt{lapply()} using the example from above:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{lapply}\NormalTok{(List1, length)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $color
+## [1] 2
+## 
+## $size
+## [1] 1
+## 
+## $state
+## [1] 4
+\end{verbatim}
+
+\begin{quote}
+Do you understand the difference?
+\end{quote}
+
+\hypertarget{for-loops}{%
+\subsection*{For Loops}\label{for-loops}}
+\addcontentsline{toc}{subsection}{For Loops}
+
+Besides the apply-family, we can use \textbf{for loops} for iterating over a sequence:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"c"}\NormalTok{)}
+
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in}\NormalTok{ x) \{}
+  \FunctionTok{print}\NormalTok{(i)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "a"
+## [1] "b"
+## [1] "c"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#or }
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{4}\NormalTok{) \{}
+  \FunctionTok{print}\NormalTok{(i}\SpecialCharTok{*}\DecValTok{3}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3
+## [1] 6
+## [1] 9
+## [1] 12
+\end{verbatim}
+
+\hypertarget{if-statements}{%
+\subsection*{If Statements}\label{if-statements}}
+\addcontentsline{toc}{subsection}{If Statements}
+
+You can use an \textbf{if statement} to execute a block of code only, if a condition is TRUE.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a }\OtherTok{\textless{}{-}} \DecValTok{5}
+\NormalTok{b }\OtherTok{\textless{}{-}} \DecValTok{10}
+
+\ControlFlowTok{if}\NormalTok{ (a }\SpecialCharTok{\textless{}}\NormalTok{ b) \{}
+  \FunctionTok{print}\NormalTok{(}\StringTok{"a is smaller than b"}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "a is smaller than b"
+\end{verbatim}
+
+\begin{quote}
+Modify ``a'' or ``b'' and see how the output changes!
+\end{quote}
+
+We can also add \textbf{else if} to this statement. In that case, if the \textbf{if} condition is FALSE, the \textbf{else if} condition will be tried:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a }\OtherTok{\textless{}{-}} \DecValTok{10}
+\NormalTok{b }\OtherTok{\textless{}{-}} \DecValTok{10}
+
+\ControlFlowTok{if}\NormalTok{ (a }\SpecialCharTok{\textless{}}\NormalTok{ b) \{}
+  \FunctionTok{print}\NormalTok{(}\StringTok{"a is smaller than b"}\NormalTok{)}
+\NormalTok{\} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (a }\SpecialCharTok{==}\NormalTok{ b) \{}
+  \FunctionTok{print}\NormalTok{(}\StringTok{"a is equal to b"}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "a is equal to b"
+\end{verbatim}
+
+Besides, we can add an \textbf{else} statement to be executed when all previous conditions are not TRUE.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a }\OtherTok{\textless{}{-}} \DecValTok{10}
+\NormalTok{b }\OtherTok{\textless{}{-}} \DecValTok{5}
+
+\ControlFlowTok{if}\NormalTok{ (a }\SpecialCharTok{\textless{}}\NormalTok{ b) \{}
+  \FunctionTok{print}\NormalTok{(}\StringTok{"a is smaller than b"}\NormalTok{)}
+\NormalTok{\} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (a }\SpecialCharTok{==}\NormalTok{ b) \{}
+  \FunctionTok{print}\NormalTok{(}\StringTok{"a is equal to b"}\NormalTok{)}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \FunctionTok{print}\NormalTok{(}\StringTok{"a is greater than b"}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "a is greater than b"
+\end{verbatim}
+
+\begin{quote}
+Do you understand how this works? What would happen if a = 10 and b = 10? Try it!
+\end{quote}
+
+\hypertarget{data-wrangling-with-tidyverse}{%
+\section*{Data wrangling with tidyverse}\label{data-wrangling-with-tidyverse}}
+\addcontentsline{toc}{section}{Data wrangling with tidyverse}
+
+\hypertarget{introducing-tidyverse}{%
+\subsection*{Introducing tidyverse}\label{introducing-tidyverse}}
+\addcontentsline{toc}{subsection}{Introducing tidyverse}
 
 \textbf{Tidyverse} is a set of packages often used to manipulate data. You can think of tidyverse as a variation of the original R, which is meant to be a grammar specific to data manipulation.
 
@@ -482,6 +762,8 @@ And load it using
 ## i Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 \end{verbatim}
 
+You can find R packages in CRAN. CRAN is a large repository containing almost 20 thousand packages! For this course, we will just use CRAN packages. To install them, you will use \texttt{install.packages()}.
+
 We will learn a couple of functions from this framework which will make the next tasks a lot easier. Tidyverse works with the \emph{tibble} class, which is very similar to a the dataframe class, only faster and tidier.
 
 Start by loading a default tibble including sleeping patterns from different mammals. It also includes information on the animal order, genus, diet, or body weight. To do so, run the following:
@@ -496,7 +778,7 @@ We can start by inspecting \texttt{msleep}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{str}\NormalTok{(msleep)}
+\FunctionTok{glimpse}\NormalTok{(msleep)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -525,21 +807,21 @@ We can print the first rows of a dataframe using \texttt{head()}. Try it out.
 \subsection*{Filter based on conditions}\label{filter-based-on-conditions}}
 \addcontentsline{toc}{subsection}{Filter based on conditions}
 
-Now that we know how this dataset looks like, we can start doing more with it. Let us see the information for the domestic cat.\\
+Now that we know how this dataset looks like, we can start doing more with it. Let us see the information for the domestic pig.\\
 We can do it using \texttt{filter()} on the \textbf{genus} column:
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{msleep }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{filter}\NormalTok{(genus }\SpecialCharTok{==} \StringTok{"Felis"}\NormalTok{)}
+  \FunctionTok{filter}\NormalTok{(genus }\SpecialCharTok{==} \StringTok{"Sus"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
 ## # A tibble: 1 x 11
-##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
-##   <chr>   <chr> <chr> <chr> <chr>              <dbl>     <dbl>       <dbl> <dbl>
-## 1 Domest~ Felis carni Carn~ domesticated        12.5       3.2       0.417  11.5
+##   name  genus vore  order   conservation sleep_total sleep_rem sleep_cycle awake
+##   <chr> <chr> <chr> <chr>   <chr>              <dbl>     <dbl>       <dbl> <dbl>
+## 1 Pig   Sus   omni  Artiod~ domesticated         9.1       2.4         0.5  14.9
 ## # i 2 more variables: brainwt <dbl>, bodywt <dbl>
 \end{verbatim}
 
@@ -561,14 +843,28 @@ Now, let's say you want to \emph{select} only specific columns. Use the \texttt{
 \begin{Highlighting}[]
 \NormalTok{body\_weights }\OtherTok{=}\NormalTok{ msleep }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{select}\NormalTok{(name, order, bodywt)}
+
+\FunctionTok{head}\NormalTok{(body\_weights)}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 3
+##   name                       order         bodywt
+##   <chr>                      <chr>          <dbl>
+## 1 Cheetah                    Carnivora     50    
+## 2 Owl monkey                 Primates       0.48 
+## 3 Mountain beaver            Rodentia       1.35 
+## 4 Greater short-tailed shrew Soricomorpha   0.019
+## 5 Cow                        Artiodactyla 600    
+## 6 Three-toed sloth           Pilosa         3.85
+\end{verbatim}
 
 \hypertarget{operations-on-groups}{%
 \subsection*{Operations on groups}\label{operations-on-groups}}
 \addcontentsline{toc}{subsection}{Operations on groups}
 
-We can assess the average (\texttt{mean()}) and standard deviation (\texttt{sd()}) body weight by animal order present. To do so, we will use \texttt{summarise()} and \texttt{group\_by()} functions on the \emph{body\_weights} we generated previously.
+We can assess the average (\texttt{mean()}) body weight by animal order present. To do so, we will use \texttt{summarise()} and \texttt{group\_by()} functions on the \emph{body\_weights} we generated previously.
 
 \begin{itemize}
 \tightlist
@@ -582,59 +878,124 @@ We can assess the average (\texttt{mean()}) and standard deviation (\texttt{sd()
 \begin{Highlighting}[]
 \NormalTok{body\_weights }\SpecialCharTok{\%\textgreater{}\%} 
   \FunctionTok{group\_by}\NormalTok{(order) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{mean\_bweight =} \FunctionTok{mean}\NormalTok{(bodywt, }\AttributeTok{na.rm =}\NormalTok{ T),    }\CommentTok{\# na.rm = T will exclude missing values (NA)}
-            \AttributeTok{sd\_bweight =} \FunctionTok{sd}\NormalTok{(bodywt))}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{mean\_bweight =} \FunctionTok{mean}\NormalTok{(bodywt, }\AttributeTok{na.rm =}\NormalTok{ T)) }\CommentTok{\# na.rm = T will exclude missing values (NA)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## # A tibble: 19 x 3
-##    order           mean_bweight sd_bweight
-##    <chr>                  <dbl>      <dbl>
-##  1 Afrosoricida          0.9      NA      
-##  2 Artiodactyla        282.      376.     
-##  3 Carnivora            57.7      60.6    
-##  4 Cetacea             342.      401.     
-##  5 Chiroptera            0.0165    0.00919
-##  6 Cingulata            31.8      40.0    
-##  7 Didelphimorphia       1.03      0.940  
-##  8 Diprotodontia         1.36      0.368  
-##  9 Erinaceomorpha        0.66      0.156  
-## 10 Hyracoidea            3.06      0.496  
-## 11 Lagomorpha            2.5      NA      
-## 12 Monotremata           4.5      NA      
-## 13 Perissodactyla      305.      187.     
-## 14 Pilosa                3.85     NA      
-## 15 Primates             13.9      21.5    
-## 16 Proboscidea        4600.     2904.     
-## 17 Rodentia              0.288     0.371  
-## 18 Scandentia            0.104    NA      
-## 19 Soricomorpha          0.0414    0.0289
+## # A tibble: 19 x 2
+##    order           mean_bweight
+##    <chr>                  <dbl>
+##  1 Afrosoricida          0.9   
+##  2 Artiodactyla        282.    
+##  3 Carnivora            57.7   
+##  4 Cetacea             342.    
+##  5 Chiroptera            0.0165
+##  6 Cingulata            31.8   
+##  7 Didelphimorphia       1.03  
+##  8 Diprotodontia         1.36  
+##  9 Erinaceomorpha        0.66  
+## 10 Hyracoidea            3.06  
+## 11 Lagomorpha            2.5   
+## 12 Monotremata           4.5   
+## 13 Perissodactyla      305.    
+## 14 Pilosa                3.85  
+## 15 Primates             13.9   
+## 16 Proboscidea        4600.    
+## 17 Rodentia              0.288 
+## 18 Scandentia            0.104 
+## 19 Soricomorpha          0.0414
 \end{verbatim}
 
-\hypertarget{pretty-plots-using-ggplot2}{%
-\section*{Pretty plots using ggplot2}\label{pretty-plots-using-ggplot2}}
-\addcontentsline{toc}{section}{Pretty plots using ggplot2}
+\hypertarget{reshaping-data}{%
+\subsection*{Reshaping data}\label{reshaping-data}}
+\addcontentsline{toc}{subsection}{Reshaping data}
 
-One of the many advantages of tidyverse is how compatible it is with \texttt{ggplot2}. Thanks to the wonders of the \texttt{\%\textgreater{}\%} operator, you can generate a basic plot instantly without creating intermediate objects.
+On tidyverse, he objects you are working on are sometimes not in a tidy format.
+There are three rules which make a dataset tidy:
 
-\textbf{The structure of any \texttt{ggplot()} is always based on two essential elements: the aesthetics (\texttt{aes()}) and the plot layers (named as \texttt{geom\_something()}. \texttt{aes()} is always found within the \texttt{ggplot()} function.}
+\begin{itemize}
+\tightlist
+\item
+  Each variable has its own column.
+\item
+  Each observation has its own row.
+\item
+  Each value has its own cell.
+\end{itemize}
 
-\hypertarget{histogram}{%
-\subsection*{Histogram}\label{histogram}}
-\addcontentsline{toc}{subsection}{Histogram}
+\includegraphics{figures/tidyexp.png}
+\href{https://r4ds.hadley.nz/data-tidy.html}{Image source}
 
-Let us start by making an histogram, as we will work with distributions over this course. If we want to see the global distribution of sleep time (total, in hours) for all animals in the dataset, we will use \texttt{geom\_histogram()}. Like this:
+How can we convert them then? The mammalian sleep dataset we used earlier is already in a tidy format, so we will generate an example.
+
+You are testing a new diet on 7 cats, and thus registering their weight before and after 1 month on the diet.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(msleep,                    }\CommentTok{\# start by picking the dataframe to plot}
-       \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ sleep\_total)) }\SpecialCharTok{+}    \CommentTok{\# column to use for y{-}axis}
-  \FunctionTok{geom\_histogram}\NormalTok{()                }\CommentTok{\# plot layer for histogram}
+\NormalTok{cat.weights }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{CatName=}\FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}Muffin\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Lily\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Mittens\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Oreo\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Loki\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Fluffy\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Honey\textquotesingle{}}\NormalTok{),}
+                          \AttributeTok{month0=}\FunctionTok{c}\NormalTok{(}\FloatTok{4.3}\NormalTok{, }\FloatTok{4.5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\FloatTok{4.4}\NormalTok{, }\FloatTok{3.8}\NormalTok{, }\FloatTok{5.5}\NormalTok{, }\FloatTok{4.5}\NormalTok{),}
+                          \AttributeTok{month1=}\FunctionTok{c}\NormalTok{(}\FloatTok{4.4}\NormalTok{, }\FloatTok{4.5}\NormalTok{, }\FloatTok{4.9}\NormalTok{, }\FloatTok{4.3}\NormalTok{, }\FloatTok{3.9}\NormalTok{, }\FloatTok{5.4}\NormalTok{, }\FloatTok{4.6}\NormalTok{))}
+
+\NormalTok{cat.weights}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-16-1.pdf}
+\begin{verbatim}
+##   CatName month0 month1
+## 1  Muffin    4.3    4.4
+## 2    Lily    4.5    4.5
+## 3 Mittens    5.0    4.9
+## 4    Oreo    4.4    4.3
+## 5    Loki    3.8    3.9
+## 6  Fluffy    5.5    5.4
+## 7   Honey    4.5    4.6
+\end{verbatim}
+
+In this example, you can see that we have 2 different variables for the same unit (weight), these are our \emph{gatherable} columns. We can then make this dataframe tidy using the \texttt{gather()} from the \texttt{tidyr} package:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyr)}
+
+\NormalTok{cat.weights }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{gather}\NormalTok{(}\AttributeTok{key =}\NormalTok{ Time, }\CommentTok{\# column name given to the gathered column names}
+         \AttributeTok{value =}\NormalTok{ Weight, }\CommentTok{\# column name will be given to the values}
+\NormalTok{         month0}\SpecialCharTok{:}\NormalTok{month1) }\CommentTok{\# columns to gather}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    CatName   Time Weight
+## 1   Muffin month0    4.3
+## 2     Lily month0    4.5
+## 3  Mittens month0    5.0
+## 4     Oreo month0    4.4
+## 5     Loki month0    3.8
+## 6   Fluffy month0    5.5
+## 7    Honey month0    4.5
+## 8   Muffin month1    4.4
+## 9     Lily month1    4.5
+## 10 Mittens month1    4.9
+## 11    Oreo month1    4.3
+## 12    Loki month1    3.9
+## 13  Fluffy month1    5.4
+## 14   Honey month1    4.6
+\end{verbatim}
+
+Do you understand the differences? Note that now each name shows up twice.
+
+\hypertarget{plotting-using-ggplot2}{%
+\section*{Plotting using ggplot2}\label{plotting-using-ggplot2}}
+\addcontentsline{toc}{section}{Plotting using ggplot2}
+
+One of the many advantages of tidyverse is how compatible it is with \texttt{ggplot2}. Thanks to the wonders of the \texttt{\%\textgreater{}\%} operator, you can generate a basic plot instantly from a gathered/tidy tibble without creating intermediate objects.
+
+\textbf{The structure of any \texttt{ggplot()} is always based on two essential elements: the aesthetics (\texttt{aes()}) and the plot layers (named as \texttt{geom\_something()}. \texttt{aes()} can found within the \texttt{ggplot()} function or on the \texttt{geom\_something()}.} There are multiple options for \texttt{geom\_X()} depending on the information you are plotting. You can find all possibilities \href{https://ggplot2.tidyverse.org/reference/}{here}.
+
+The \texttt{aes()} function can harbor information on axis (x, y) and other aesthetics. Let us see an example within the scatter plot next.
+
+In this course we will work with \texttt{ggplot()}, but plots can also be generated by another framework. The alternative to \texttt{ggplot()} is \texttt{plot()}. Beware when looking for solutions for your data visualization problems.
 
 \hypertarget{scatter-plot}{%
 \subsection*{Scatter plot}\label{scatter-plot}}
@@ -651,13 +1012,60 @@ For example, if we want to see the relationship between the sleep time (total, i
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-17-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-19-1.pdf}
 
 \begin{quote}
 The x-axis looks a little squished, so it will be hard to view many of the trends. We can then log-transform this scale using the \texttt{log()} function. Try it out!
 \end{quote}
 
-There are multiple options for \texttt{geom\_X()} depending on the information you are plotting. You can find all possibilities \href{https://ggplot2.tidyverse.org/reference/}{here}.
+We can try to play with the other aesthetics of the plot. For example, we can use the colour easthetic to colour the dots based on the \emph{vore}/diet.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(msleep,                    }
+       \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{log}\NormalTok{(bodywt),            }\CommentTok{\# column to use for x{-}axis}
+           \AttributeTok{y =}\NormalTok{ sleep\_total,            }\CommentTok{\# column to use for y{-}axis}
+           \AttributeTok{colour =}\NormalTok{ vore)) }\SpecialCharTok{+}           \CommentTok{\# column used for colouring dots}
+  \FunctionTok{geom\_point}\NormalTok{() }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-20-1.pdf}
+
+\hypertarget{histogram}{%
+\subsection*{Histogram}\label{histogram}}
+\addcontentsline{toc}{subsection}{Histogram}
+
+Let us start by making an histogram, as we will work with distributions over this course. If we want to see the global distribution of sleep time (total, in hours) for all animals in the dataset, we will use \texttt{geom\_histogram()}. Like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(msleep,                    }\CommentTok{\# start by picking the dataframe to plot}
+       \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ sleep\_total)) }\SpecialCharTok{+}    \CommentTok{\# column to use for y{-}axis}
+  \FunctionTok{geom\_histogram}\NormalTok{()                }\CommentTok{\# plot layer for histogram}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-21-1.pdf}
+
+In some cases, you will not have the data on a tidy tibble and rather on a vector for example. For such cases, the structure would be slightly different.
+Check how you can plot the distribution of a random set of numbers.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{rand.numbers }\OtherTok{=} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{) }\CommentTok{\# we will learn this function later on}
+
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}   
+  \FunctionTok{geom\_histogram}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ rand.numbers),  }\CommentTok{\# aes goes in the plot layer for histogram}
+                 \AttributeTok{bins =} \DecValTok{50}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-22-1.pdf}
+
+\begin{quote}
+Try changing the option \texttt{bins}. What do you see?
+\end{quote}
 
 \hypertarget{boxplot}{%
 \subsection*{Boxplot}\label{boxplot}}
@@ -667,18 +1075,123 @@ In this next example, we are creating a boxplot with the sleep time (total, in h
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(msleep,}
+\FunctionTok{ggplot}\NormalTok{(msleep, }\CommentTok{\# we use na.omit here to hide NAs from the plot}
        \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ vore,}
            \AttributeTok{y =}\NormalTok{ sleep\_total)) }\SpecialCharTok{+}
   \FunctionTok{geom\_boxplot}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-18-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-23-1.pdf}
+
+See the NA on the x-axis? In the course (week one) we will learn how to clean the data to avoid missing values like these ones.
 
 \begin{quote}
 Try some of the other geom\_ layers available. As an example, \texttt{geom\_violin()} can be used in a similar way to \texttt{geom\_boxplot()}.
 \end{quote}
+
+\hypertarget{common-errors}{%
+\section*{Common errors}\label{common-errors}}
+\addcontentsline{toc}{section}{Common errors}
+
+\texttt{Error\ in\ library(viridis)\ :\ there\ is\ no\ package\ called\ ‘viridis’}:\\
+\textbf{Solution:} install the required package using \texttt{install.packages("package")} and load it using \texttt{library(package)}.
+
+\texttt{Error\ in\ gather\ :\ could\ not\ find\ function\ "gather"}:\\
+\textbf{Solution:} load the package the function belongs to. You can see it by running \texttt{??gather}
+
+\texttt{Error\ in\ fortify():\ !\ data\ must\ be\ a\ \textless{}data.frame\textgreater{},\ or\ an\ object\ coercible\ by\ fortify(),\ not\ a\ \textless{}uneval\textgreater{}\ object.}:\\
+\textbf{Solution:} \texttt{aes()} is within \texttt{ggplot()} when it should be on \texttt{geom\_...()}.
+
+\hypertarget{introductory-exercises}{%
+\section*{Introductory exercises}\label{introductory-exercises}}
+\addcontentsline{toc}{section}{Introductory exercises}
+
+\hypertarget{exercise-1-vectors}{%
+\subsection*{Exercise 1: Vectors}\label{exercise-1-vectors}}
+\addcontentsline{toc}{subsection}{Exercise 1: Vectors}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Create a vector named ``test\_scores'' containing the test scores 75, 90, 65, 68 and 83 of students.
+\item
+  Create a vector ``passing'' that contains TRUE for test scores above 70 and FALSE for scores equal or below 70. \emph{Hint}: Remember that you can perform tests on vector elements. Use \texttt{sum()} to check how many students passed the test.
+\item
+  \emph{(expert)} Can you create a vector ``high\_scores'' that contains only scores above 70, using the results obtained in 1. and 2.?
+\end{enumerate}
+
+\hypertarget{exercise-2-matrices}{%
+\subsection*{Exercise 2: Matrices}\label{exercise-2-matrices}}
+\addcontentsline{toc}{subsection}{Exercise 2: Matrices}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Create a matrix that looks like this:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#      [,1] [,2] [,3]}
+\CommentTok{\# [1,]    2    4    6}
+\CommentTok{\# [2,]    8    10   12}
+\CommentTok{\# [3,]    3    5    7}
+\CommentTok{\# [4,]    2    9    11}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\item
+  Select different parts of the matrix, for example:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    the element of the second row and first column
+  \item
+    the second and third element of the second column
+  \item
+    all elements of the last column
+  \item
+    Try something else!
+  \end{itemize}
+\item
+  Add a new column to the matrix using \texttt{cbind()}.
+\item
+  Can you name the columns of the matrix as ``A'', ``B'', ``C'' and ``D'' using \texttt{colnames()}?
+\end{enumerate}
+
+\hypertarget{exercise-3-data-frames}{%
+\subsection*{Exercise 3: Data Frames}\label{exercise-3-data-frames}}
+\addcontentsline{toc}{subsection}{Exercise 3: Data Frames}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Create a data frame from these vectors, with three columns and five rows:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Product\_name }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"orange"}\NormalTok{, }\StringTok{"strawberry"}\NormalTok{, }\StringTok{"broccoli"}\NormalTok{, }\StringTok{"blueberry"}\NormalTok{, }\StringTok{"cucumber"}\NormalTok{)}
+\NormalTok{Fruit }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{)}
+\NormalTok{Color }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"orange"}\NormalTok{, }\StringTok{"red"}\NormalTok{, }\StringTok{"green"}\NormalTok{, }\StringTok{"blue"}\NormalTok{, }\StringTok{"green"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\item
+  Select the column ``Fruit''. How many Fruits are there? \emph{Hint}: Remember the function \texttt{sum()}.
+\item
+  Add a column named ``Berry'' containing TRUE (for products that are berries) or FALSE to the data frame.
+\end{enumerate}
 
 \hypertarget{week-one}{%
 \chapter{WEEK ONE}\label{week-one}}
@@ -973,10 +1486,18 @@ Later, we will use \texttt{accross()} together with the other functions we learn
 \end{Shaded}
 
 There is much to unpack here:
-+ \texttt{rowwise()} ensures that the next operations are applied by row.
-+ \texttt{mutate()} adds a new column called na\_count to the dataframe.
-+ \texttt{across(everything())} selects all columns in the current row.
-+ \texttt{sum(is.na(...))} calculates the sum of missing values for each row.
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{rowwise()} ensures that the next operations are applied by row.\\
+\item
+  \texttt{mutate()} adds a new column called na\_count to the dataframe.\\
+\item
+  \texttt{across(everything())} selects all columns in the current row.\\
+\item
+  \texttt{sum(is.na(...))} calculates the sum of missing values for each row.
+\end{itemize}
 
 \begin{quote}
 Try to run the previous example without \texttt{rowwise()}. What does it look like?
@@ -1114,7 +1635,7 @@ Now lets look at our cleaned data:
 ##                   NA's   :1       NA's   :1
 \end{verbatim}
 
-The ordering and selection of columns looks right, however it seems that there are certain rows that have missing values still (like \texttt{glyhb} column has 3 \texttt{NA} values still).
+Hold up, the ordering and selection of columns looks right, but it seems that there are certain rows that have missing values still (like \texttt{glyhb} column has 3 \texttt{NA} values still).
 Lets remove all rows with any missing value using \texttt{na.omit()}.
 Remember, 1 row = 1 patient.
 
@@ -1194,7 +1715,7 @@ We can plot the column ``stab.glu'' as a histogram using the \texttt{hist()} fun
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-41-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-47-1.pdf}
 
 \begin{quote}
 Add the parameter \texttt{bins\ =\ 50} in the above lines of code (inside \texttt{geom\_histogram}) and see what happens.
@@ -1217,7 +1738,7 @@ For density plots, we use the \texttt{geom\_density()} function to estimate the 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-42-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-48-1.pdf}
 
 \hypertarget{boxplots}{%
 \subsubsection{Boxplots}\label{boxplots}}
@@ -1233,7 +1754,7 @@ The \texttt{boxplot()} function produces a boxplot for a given variable:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-43-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-49-1.pdf}
 
 \begin{quote}
 Can you explain all features of this graph, such as upper/lower whisker, 25\% quantile, \ldots?
@@ -1255,7 +1776,7 @@ We can for example compare the distribution of the blood pressure values to chec
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-44-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-50-1.pdf}
 
 Now we can use the function \texttt{geom\_qq()} to generate the \textbf{QQ-plot} of this distribution against the standard normal distribution:
 
@@ -1267,7 +1788,7 @@ Now we can use the function \texttt{geom\_qq()} to generate the \textbf{QQ-plot}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-45-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-51-1.pdf}
 
 Using the additional command \texttt{geom\_qq\_line()}, we can add a straight line that goes through the first and third quartile:
 
@@ -1280,7 +1801,7 @@ Using the additional command \texttt{geom\_qq\_line()}, we can add a straight li
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-46-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-52-1.pdf}
 
 \begin{quote}
 So, is the distribution normal??
@@ -1313,7 +1834,7 @@ Now let's compare the quantiles of the cholesterol values by biological sex.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-47-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-53-1.pdf}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -1356,7 +1877,7 @@ Let us start by producing a \textbf{scatter plot} between a pair of variables:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-49-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-55-1.pdf}
 
 \begin{quote}
 Do you suspect that the two variables have a relationship? Do the scatter plot for other pairs of numerical variables!
@@ -1397,7 +1918,7 @@ The Spearman correlation seems much lower, right? To understand why, we can do a
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-51-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-57-1.pdf}
 
 Do you understand the usage of ranks here? Run `rank()`` on a vector like \emph{c(3,5,10,1,23)} to see how the output looks like.
 
@@ -1418,17 +1939,11 @@ Associations are among the simplest forms of structure in the data! It is import
 \item
   Try to obtain the same result of the \texttt{head()} function by using slicing on the dataset ``dat'' using row indexes.
 \item
-  Print out the first three column names of ``dat'' using \texttt{colnames()}.
-\item
   Print out the last element in the last column of ``dat'' using the \texttt{dim()} function instead of using numerals.
-\item
-  Write a code to calculate the mean of 3 numerical columns of ``dat'' (you can choose which ones) without using the \texttt{mean()} function and make a new column.
-\item
-  Add one line of code that prints out the results from exercise 1 that are greater than 10 by using the \texttt{which()} function
 \end{enumerate}
 
-\hypertarget{exercise-2-visualization}{%
-\subsubsection{Exercise 2: Visualization}\label{exercise-2-visualization}}
+\hypertarget{exercise-2-visualization-and-correlation}{%
+\subsubsection{Exercise 2: Visualization and correlation}\label{exercise-2-visualization-and-correlation}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1437,17 +1952,17 @@ Associations are among the simplest forms of structure in the data! It is import
 \item
   Visualize the cholesterol levels of all \textbf{male} patients with a histogram using \texttt{geom\_histogram()}.
   \emph{(expert):} Mark the median, first and third quartile with vertical lines using \texttt{geom\_vline()}. The values are defined using \texttt{xintercept} (as in which value of x should the vertical line intercept).
-  Then mark median, first and third quartile for \textbf{female} patients in the same graph with a different color.
+  Then mark median, first and third quantile for \textbf{female} patients in the same graph with a different color.
   What can you tell from the differences in these values?
+\item
+  Is there an association between ``hip'' and ``waist'' on the data frame ``dat''? Use the \texttt{geom\_point()} function to do a scatter plot of the \textbf{values} and of the \textbf{ranks} (as determined by the \texttt{rank()} function). Compute both the \textbf{Pearson} and \textbf{Spearman} correlation values.
 \end{enumerate}
 
-\hypertarget{exercise-3-correlation}{%
-\subsubsection{Exercise 3: Correlation}\label{exercise-3-correlation}}
+\hypertarget{going-further-expert}{%
+\subsubsection{\texorpdfstring{Going further \emph{(expert)}}{Going further (expert)}}\label{going-further-expert}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\item
-  Is there an association between ``hip'' and ``waist'' on the data frame ``dat''? Use the \texttt{geom\_point()} function to do a scatter plot of the \textbf{values} and of the \textbf{ranks} (as determined by the \texttt{rank()} function). Compute both the \textbf{Pearson} and \textbf{Spearman} correlation values.
 \item
   Select only the numerical columns (using \texttt{select(where(is.numeric))}), and apply the function \texttt{cor()} \textbf{directly}: \texttt{\%\textgreater{}\%\ cor()} . What happens? What is the output? Store the result of this command in a new variable named ``all.cor''. Plot a heatmap of these results using the \texttt{pheatmap()} function from the ``pheatmap'' package. Remember that you first have to install and then activate this package using \texttt{library("pheatmap")}.
 \item
@@ -1613,7 +2128,7 @@ In addition, \texttt{gather(key\ =\ "sample",\ value\ =\ "expression")} converts
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-61-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-67-1.pdf}
 
 Compare to the density plot before these pre-processing steps using the same strategy.
 
@@ -1627,7 +2142,7 @@ Compare to the density plot before these pre-processing steps using the same str
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-62-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-68-1.pdf}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -1740,7 +2255,7 @@ Now we can make one to test k from 2 to 7:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-66-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-72-1.pdf}
 
 \begin{quote}
 Do you see an obvious ``elbow'' or ``kink'' in the curve?? Another criteria for the quality of the clustering is the \textbf{silhouette} method.
@@ -1764,10 +2279,6 @@ We now compute the silhouette for a specific k-means clustering:
 \end{Shaded}
 
 \begin{verbatim}
-## Warning: package 'cluster' was built under R version 4.3.1
-\end{verbatim}
-
-\begin{verbatim}
 ## 
 ## Attaching package: 'cluster'
 \end{verbatim}
@@ -1788,7 +2299,7 @@ We now compute the silhouette for a specific k-means clustering:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-68-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-74-1.pdf}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -1875,7 +2386,7 @@ If we want to display the correlation matrix as a heatmap, we can use the \textt
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-73-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-79-1.pdf}
 
 Each cell of this heatmap represents the correlation value between the sample in the row and the sample in the column. The correlation of a sample to itself is always 1 (red diagonal).
 
@@ -1898,7 +2409,7 @@ We can now plot again the heatmap, using the annotation dataframe to add additio
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-74-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-80-1.pdf}
 
 \begin{quote}
 How would you interpret this dendrogram? Do the clusters you observe make any sense? What are the parameters by which the samples cluster together? How many meaningful clusters can you observe? Do you see any relation between the distribution of the data and your clusters ?
@@ -1986,7 +2497,7 @@ We see that the standard deviation is indeed going down! Let us now plot the pro
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-77-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-83-1.pdf}
 
 Principal component analysis represents each data point (here: patient) in a new space in which the coordinates are principal components. Check the following output:
 
@@ -2012,7 +2523,7 @@ We can now display the data points (i.e.~patients) in the first two principal co
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-79-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-85-1.pdf}
 
 \begin{quote}
 Choose different PCs for this plot. Can you still observe the two clusters corresponding to the ER\_status of the patients?
@@ -2061,11 +2572,11 @@ Try different linkage methods using the \texttt{clustering\_method} parameter to
 \item
   Display the patients in the first two principal components (available in \texttt{pca\_with\_annot}) using \texttt{geom\_point()}. Color the patients in the PCA plot according to \texttt{HER2\_status}.
 \item
-  Color the patients in the PCA plot according to \texttt{Classification}; you will probably need to define some more colors\ldots{} You can check available colors \href{http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf}{here}
+  (optional) Color the patients in the PCA plot according to \texttt{Classification}; you will probably need to define some more colors\ldots{} You can check available colors \href{http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf}{here}
 \end{enumerate}
 
-\hypertarget{going-further-expert}{%
-\subsubsection{\texorpdfstring{Going further \emph{(expert)}}{Going further (expert)}}\label{going-further-expert}}
+\hypertarget{going-further-expert-1}{%
+\subsubsection{\texorpdfstring{Going further \emph{(expert)}}{Going further (expert)}}\label{going-further-expert-1}}
 
 Instead of performing the k-means on the whole gene expression matrix, we can run k-means on the space in which each patient is represented by the first k principal components.
 
@@ -2121,6 +2632,8 @@ In the respective help documentation, you will find details on each of the funct
 Probably, the most difficult to distinguish or to remember are \textbf{pnorm()} and \textbf{qnorm()} (respectively \textbf{ppois()} and \textbf{qpois()}, etc \ldots).\\
 We are going to look at them more deeply in the following.
 
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
 \hypertarget{getting-to-know-the-various-functions}{%
 \subsubsection{Getting to know the various functions}\label{getting-to-know-the-various-functions}}
 
@@ -2140,7 +2653,6 @@ Short hint: \textbf{p} like \textbf{cumulative P-robability}. Which function are
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\#}
 \CommentTok{\# Distribution 2: Mean = 2, Standard Deviation = 2}
 \FunctionTok{pnorm}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{4}\NormalTok{,}\AttributeTok{mean=}\DecValTok{2}\NormalTok{,}\AttributeTok{sd=}\DecValTok{2}\NormalTok{)}
 \end{Highlighting}
@@ -2152,7 +2664,6 @@ Short hint: \textbf{p} like \textbf{cumulative P-robability}. Which function are
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\#}
 \CommentTok{\# Distribution 2: Mean = 4, Standard Deviation = 1}
 \FunctionTok{pnorm}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{4}\NormalTok{,}\AttributeTok{mean=}\DecValTok{4}\NormalTok{,}\AttributeTok{sd=}\DecValTok{1}\NormalTok{)}
 \end{Highlighting}
@@ -2210,7 +2721,7 @@ Now that you know the output of the p- and q- functions, let's look at \textbf{d
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# probability of 5 out of 5}
-\FunctionTok{dbinom}\NormalTok{(}\DecValTok{5}\NormalTok{, }\AttributeTok{size=}\DecValTok{5}\NormalTok{, }\AttributeTok{prob=}\FloatTok{0.5}\NormalTok{) }
+\FunctionTok{dbinom}\NormalTok{(}\DecValTok{5}\NormalTok{, }\AttributeTok{size=}\DecValTok{5}\NormalTok{, }\AttributeTok{prob=}\FloatTok{0.5}\NormalTok{) }\CommentTok{\# size = number of trials; prob = probability of success on each trial}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2220,10 +2731,8 @@ Now that you know the output of the p- and q- functions, let's look at \textbf{d
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# size = number of trials; prob = probability of success on each trial}
-
 \CommentTok{\# probability of NOT getting 5 out of 5}
-\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{dbinom}\NormalTok{(}\DecValTok{5}\NormalTok{, }\AttributeTok{size=}\DecValTok{5}\NormalTok{, }\AttributeTok{prob=}\FloatTok{0.5}\NormalTok{)}
+\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{dbinom}\NormalTok{(}\DecValTok{5}\NormalTok{, }\AttributeTok{size=}\DecValTok{5}\NormalTok{, }\AttributeTok{prob=}\FloatTok{0.5}\NormalTok{) }
 \end{Highlighting}
 \end{Shaded}
 
@@ -2234,19 +2743,13 @@ Now that you know the output of the p- and q- functions, let's look at \textbf{d
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# or}
-\FunctionTok{pbinom}\NormalTok{(}\DecValTok{4}\NormalTok{, }\AttributeTok{size=}\DecValTok{5}\NormalTok{, }\AttributeTok{prob=}\FloatTok{0.5}\NormalTok{)}
+\FunctionTok{pbinom}\NormalTok{(}\DecValTok{4}\NormalTok{, }\AttributeTok{size=}\DecValTok{5}\NormalTok{, }\AttributeTok{prob=}\FloatTok{0.5}\NormalTok{) }\CommentTok{\# Remember, pbinom() returns the "cumulative probability" of ...}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
 ## [1] 0.96875
 \end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Remember, pbinom() returns the "cumulative probability" of ...}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{quote}
 What is the probability of getting 5 out of 10? And NOT getting 5 out of 10?
@@ -2291,19 +2794,13 @@ What is the probability that someone is smaller than 1.60m?
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# equivalent to }
-\FunctionTok{pnorm}\NormalTok{(}\FloatTok{1.6}\NormalTok{, }\AttributeTok{mean=}\FloatTok{1.75}\NormalTok{, }\AttributeTok{sd=}\FloatTok{0.15}\NormalTok{)}
+\FunctionTok{pnorm}\NormalTok{(}\FloatTok{1.6}\NormalTok{, }\AttributeTok{mean=}\FloatTok{1.75}\NormalTok{, }\AttributeTok{sd=}\FloatTok{0.15}\NormalTok{) }\CommentTok{\# lower.tail is set to TRUE by default (check the help page using \textasciigrave{}?pnorm\textasciigrave{})}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
 ## [1] 0.1586553
 \end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# because: per defaults, lower.tail is set to TRUE (you can check the help page for further information using \textasciigrave{}?pnorm\textasciigrave{})}
-\end{Highlighting}
-\end{Shaded}
 
 Let's have a look at this distribution using the \textbf{dnorm()} function:
 
@@ -2320,7 +2817,7 @@ Let's have a look at this distribution using the \textbf{dnorm()} function:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-86-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-92-1.pdf}
 
 Let's finally look at \textbf{r- like random} functions. These, unlike the others, don't return single probabilities or values but rather generate a random distribution of values. We can use this to generate a normal distribution with mean = 10, sd = 5.
 
@@ -2336,11 +2833,13 @@ Let's finally look at \textbf{r- like random} functions. These, unlike the other
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-87-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-93-1.pdf}
 
 \begin{quote}
 Can you generate a Poisson distribution and a binomial distribution?
 \end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{normalgaussian-distribution}{%
 \subsubsection{Normal/Gaussian distribution}\label{normalgaussian-distribution}}
@@ -2387,7 +2886,7 @@ Let's generate three random normal distributions with different means and standa
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-88-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-94-1.pdf}
 
 \begin{quote}
 Play with the mean and sd parameters and visualize the distributions (plain lines) as well as the corresponding histograms.
@@ -2430,15 +2929,20 @@ We will remove all the missing values and calculate the mean and standard deviat
   \FunctionTok{na.omit}\NormalTok{() }
 
 \NormalTok{m.tp53 }\OtherTok{=} \FunctionTok{mean}\NormalTok{(tp53.exp}\SpecialCharTok{$}\NormalTok{TP53\_expression) }\CommentTok{\# mean}
-\NormalTok{s.tp53 }\OtherTok{=} \FunctionTok{sd}\NormalTok{(tp53.exp}\SpecialCharTok{$}\NormalTok{TP53\_expression) }\CommentTok{\# standard deviation}
-
-\NormalTok{m.tp53;s.tp53}
+\NormalTok{m.tp53}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
 ## [1] 1380.822
 \end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s.tp53 }\OtherTok{=} \FunctionTok{sd}\NormalTok{(tp53.exp}\SpecialCharTok{$}\NormalTok{TP53\_expression) }\CommentTok{\# standard deviation}
+\NormalTok{s.tp53}
+\end{Highlighting}
+\end{Shaded}
 
 \begin{verbatim}
 ## [1] 719.5934
@@ -2460,7 +2964,7 @@ We assume that the population mean and standard deviation is similar as calculat
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-91-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-97-1.pdf}
 
 Make a normal distribution with the above parameters
 
@@ -2482,13 +2986,7 @@ Make a normal distribution with the above parameters
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-92-1.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#plot(density(tp53.exp$TP53\_expression), main ="", xlim=c({-}1500, 6000),lwd=3);lines(x,d.pred, col="red",lwd=3)}
-\end{Highlighting}
-\end{Shaded}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-98-1.pdf}
 
 \hypertarget{data-prediction-using-the-normal-distribution-model}{%
 \paragraph{Data prediction using the normal distribution model}\label{data-prediction-using-the-normal-distribution-model}}
@@ -2497,11 +2995,8 @@ Using a normal distribution with \(\mu = 1380.822\) (m.tp53) and \(\sigma = 719.
 
 -- \textbf{(Q1)} What is the probability of observing the expression of TP53 to be \textbf{less} than 1000?
 
--- \textbf{(Q2)} What is the probability of observing the expression of TP53 to be \textbf{greater} than 1000?
-
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# Q1}
 \FunctionTok{pnorm}\NormalTok{(}\AttributeTok{q=}\DecValTok{1000}\NormalTok{, }\AttributeTok{mean =}\NormalTok{m.tp53, }\AttributeTok{sd =}\NormalTok{ s.tp53) }\CommentTok{\# returns the cumulative probability}
 \end{Highlighting}
 \end{Shaded}
@@ -2510,9 +3005,10 @@ Using a normal distribution with \(\mu = 1380.822\) (m.tp53) and \(\sigma = 719.
 ## [1] 0.2983271
 \end{verbatim}
 
+-- \textbf{(Q2)} What is the probability of observing the expression of TP53 to be \textbf{greater} than 1000?
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# Q2}
 \DecValTok{1} \SpecialCharTok{{-}} \FunctionTok{pnorm}\NormalTok{(}\AttributeTok{q=}\DecValTok{1000}\NormalTok{, }\AttributeTok{mean =}\NormalTok{m.tp53, }\AttributeTok{sd =}\NormalTok{ s.tp53) }
 \end{Highlighting}
 \end{Shaded}
@@ -2536,10 +3032,10 @@ Using a normal distribution with \(\mu = 1380.822\) (m.tp53) and \(\sigma = 719.
 \paragraph{Evaluating the quality of the predictions}\label{evaluating-the-quality-of-the-predictions}}
 
 Let's check how good these predictions are compared to \textbf{real} data.
+-- \textbf{(Q1)} What is the probability of observing the expression of TP53 to be \textbf{less} than 1000?
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# Q1: What is the probability of observing the expression of TP53 to be **less** than 1000?}
 \FunctionTok{sum}\NormalTok{(tp53.exp}\SpecialCharTok{$}\NormalTok{TP53\_expression }\SpecialCharTok{\textless{}} \DecValTok{1000}\NormalTok{)}\SpecialCharTok{/}\FunctionTok{nrow}\NormalTok{(tp53.exp)}
 \end{Highlighting}
 \end{Shaded}
@@ -2548,9 +3044,10 @@ Let's check how good these predictions are compared to \textbf{real} data.
 ## [1] 0.2978723
 \end{verbatim}
 
+-- \textbf{(Q2)} What is the probability of observing the expression of TP53 to be \textbf{greater} than 1000?
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# Q2: What is the probability of observing the expression of TP53 to be **greater** than 1000?}
 \FunctionTok{sum}\NormalTok{(tp53.exp}\SpecialCharTok{$}\NormalTok{TP53\_expression }\SpecialCharTok{\textgreater{}} \DecValTok{1000}\NormalTok{)}\SpecialCharTok{/}\FunctionTok{nrow}\NormalTok{(tp53.exp)}
 \end{Highlighting}
 \end{Shaded}
@@ -2568,7 +3065,7 @@ I would say those predictions are pretty good !! Now, let's try to break this mo
 \CommentTok{\# What is the probability of observing the expression of TP53 to be less than q?}
 \NormalTok{q }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\DecValTok{100}\NormalTok{,}\DecValTok{500}\NormalTok{,}\DecValTok{1000}\NormalTok{,}\DecValTok{4000}\NormalTok{,}\DecValTok{4500}\NormalTok{)}
 
-\CommentTok{\# The function sapply() is used to calculate and store the predicted (a) and real (b) values}
+\CommentTok{\# for loop used to calculate and store the predicted (a) and real (b) values}
 \NormalTok{pred }\OtherTok{=} \FunctionTok{numeric}\NormalTok{()}
 \NormalTok{meas }\OtherTok{=} \FunctionTok{numeric}\NormalTok{()}
 \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(q))\{}
@@ -2591,11 +3088,10 @@ I would say those predictions are pretty good !! Now, let's try to break this mo
 ## 5 0.99999270 0.996131528 4500
 \end{verbatim}
 
-Again, using a normal distribution with \(\mu = 1380.822\) and \(\sigma = 719.5934\), what if we ask these kinds of questions:
+Again, using a normal distribution with \(\mu = 1380.822\) and \(\sigma = 719.5934\), what if we ask what is the value of TP53 expression at the 10\% and 90\% quantiles:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# Q1: What is the value of TP53 expression at the 10\% quantile?}
 \FunctionTok{qnorm}\NormalTok{(}\AttributeTok{p =} \FloatTok{0.1}\NormalTok{, }\AttributeTok{mean =}\NormalTok{ m.tp53, }\AttributeTok{sd =}\NormalTok{ s.tp53)}
 \end{Highlighting}
 \end{Shaded}
@@ -2606,7 +3102,6 @@ Again, using a normal distribution with \(\mu = 1380.822\) and \(\sigma = 719.59
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# Q2: What is the value of TP53 expression at the 90\% quantile?}
 \FunctionTok{qnorm}\NormalTok{(}\AttributeTok{p =} \FloatTok{0.9}\NormalTok{, }\AttributeTok{mean =}\NormalTok{ m.tp53, }\AttributeTok{sd =}\NormalTok{ s.tp53)}
 \end{Highlighting}
 \end{Shaded}
@@ -2651,7 +3146,7 @@ We can also visualize all of this on a simple graph:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-98-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-106-1.pdf}
 
 Compare the black and red vertical lines (real vs predicted).
 
@@ -2682,10 +3177,11 @@ Now, let's plot the sample quantiles against theoretical quantiles to check the 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-99-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-107-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\DocumentationTok{\#\# Would be the same as:}
 \CommentTok{\# ggplot() +}
 \CommentTok{\#   geom\_point(aes(x = q.theoretical, }
 \CommentTok{\#                  y = q.observed), size = 1) +}
@@ -2861,7 +3357,7 @@ Finally, we determine whether each sample mean is found within the 95\% CI or no
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-106-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-114-1.pdf}
 
 Here, the orange/grey bars represent the confidence interval, the dot is the mean of the sample values, and the dotted line at \texttt{\textbackslash{}lambda} represents the true expectation value. Whenever the true expectation value is within the CI, the bar is orange, if not, the bar is grey. How often is the true expectation value outside the CI? Count the grey bars!
 
@@ -2886,24 +3382,11 @@ How often is the true expectation value outside the CI? Change to 90\% CI and ch
 \item
   What is the expression of TP53 observed at 10th percentile? What is the expression of TP53 observed at 90th percentile?
 \item
-  Other distribution types can become very similar to the normal distribution under certain conditions. Plot the histogram of 1000 random numbers drawn from the Poisson distribution with lambda = 1, 10, 100, 1000. What do you observe?
+  (optional) Other distribution types can become very similar to the normal distribution under certain conditions. Plot the histogram of 1000 random numbers drawn from the Poisson distribution with lambda = 1, 10, 100, 1000. What do you observe?
 \end{enumerate}
 
-\hypertarget{exercise-2-binomial-distribution}{%
-\subsubsection{Exercise 2: Binomial distribution}\label{exercise-2-binomial-distribution}}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item
-  How large are the chances of getting at least 50 times head out of 100?
-\item
-  How would you simulate the effect of an unfair coin say which leads head 2/3 times? How large are the chances of getting at least 50 times head out of 100 with this coin?
-\item
-  You invited a group of 20 friends to a bar. For every member, there is an 80\% chance that he/she will show up. If you want to buy a treat for all of your friends, how many should you buy to have a 70\% chance that you will have just enough for everyone?
-\end{enumerate}
-
-\hypertarget{exercise-3-confidence-intervals}{%
-\subsubsection{Exercise 3: Confidence intervals}\label{exercise-3-confidence-intervals}}
+\hypertarget{exercise-2-confidence-intervals}{%
+\subsubsection{Exercise 2: Confidence intervals}\label{exercise-2-confidence-intervals}}
 
 You are buying 10 packs of gummy bears. You particularly like the red ones and the green ones. A pack contains 6 different colors and you expect them to be equally distributed. There are 84 pieces per 200g pack.
 
@@ -3013,7 +3496,7 @@ How can we inspect the differences between the weight of men and women? We can s
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-110-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-118-1.pdf}
 
 The distributions look different in shape, right? Where do you think the mean would be located in the plot?
 
@@ -3045,7 +3528,7 @@ And we can then add in the means to the plot as vertical lines.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-112-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-120-1.pdf}
 
 \begin{quote}
 Do you think that the mean of the male weight is lower than 180?
@@ -3054,6 +3537,9 @@ Do you think that the mean of the male weight is higher than that of the females
 \end{quote}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{tests-of-mean}{%
+\subsection{Tests of mean}\label{tests-of-mean}}
 
 Now, we want to use a statistical test to check if,
 
@@ -3071,6 +3557,8 @@ Note the use of the word \textbf{significant} in the previous statements!
 
 This is exactly what \textbf{mean tests} such as the t-test (or the Wilcoxon test) are designed for!
 We will perform here a \textbf{t-test}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{one-sample-t-test}{%
 \subsubsection{One sample t-test}\label{one-sample-t-test}}
@@ -3096,15 +3584,23 @@ It is essential to \textbf{clearly formulate the H0 and H1 hypothesis}.
 There are two alternative but equivalent ways to do so.
 Either:
 
-\textgreater{} H0: the expectation value of the random variable ``Weight of a chocolate bar'' is \textbf{equal} to 100 g.\\
-
-\textgreater{} H1: the expectation value of the random variable ``Weight of a chocolate bar'' is \textbf{different} from 100 g.
+\begin{itemize}
+\tightlist
+\item
+  H0: the expectation value of the random variable ``Weight of a chocolate bar'' is \textbf{equal} to 100 g.\\
+\item
+  H1: the expectation value of the random variable ``Weight of a chocolate bar'' is \textbf{different} from 100 g.
+\end{itemize}
 
 or
 
-\textgreater{} H0: the mean weight of a chocolate bar is not significantly different from 100 g.\\
-
-\textgreater{} H1: the mean weight of a chocolate bar is significantly different from 100 g.
+\begin{itemize}
+\tightlist
+\item
+  H0: the mean weight of a chocolate bar is not significantly different from 100 g.\\
+\item
+  H1: the mean weight of a chocolate bar is significantly different from 100 g.
+\end{itemize}
 
 Note the difference between these two formulations, and ask for help if you have questions about this!
 
@@ -3128,32 +3624,21 @@ Note the difference between these two formulations, and ask for help if you have
 ##    101.48
 \end{verbatim}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# equivalent to:}
-\CommentTok{\# t.test(bars,mu = chocbar.mean)}
-\CommentTok{\# "alternative" is set to "two.sided" per default.}
-
-\CommentTok{\# x is a vector containing the data values}
-\CommentTok{\# mu indicates the true value of the mean (here: 100g)}
-\end{Highlighting}
-\end{Shaded}
-
 \begin{quote}
 How would you interpret this result?
 Can you reject the H0 hypothesis?
 \end{quote}
 
-Using alpha = 0.05, the H0 hypothesis can not be rejected as the p-value is 0.05244 (p-value \textgreater= 0.05).
-With alpha = 0.05, the mean weight of the chocolate bars is not significantly different from 100 g.
+Using \(\alpha=0.05\), the H0 hypothesis can not be rejected as the p-value is 0.05244 (p-value \textgreater= 0.05).
+With \(\alpha=0.05\), the mean weight of the chocolate bars is not significantly different from 100 g.
 
-Using alpha = 0.1, the H0 hypothesis can be rejected (p-value \textless{} 0.1).
-With alpha = 0.1, the mean weight of the chocolate bars is significantly different from 100 g.
+Using \(\alpha=0.1\), the H0 hypothesis can be rejected (p-value \textless{} 0.1).
+With \(\alpha=0.1\), the mean weight of the chocolate bars is significantly different from 100 g.
 
-\textbf{BUT} \ldots{} It does not mean that alpha should be chosen with respect to the results of the t.test!!!
+\textbf{BUT} \ldots{} It does not mean that \(\alpha\) should be chosen with respect to the results of the t.test!!!
 
 Before running a t.test, \textbf{formulate the null hypothesis H0 and the alternative hypothesis H1} and \textbf{decide about the alpha} value.
-Remember, \textbf{alpha} represent the \textbf{false positive rate}: under the H0 hypothesis (test of two identical distributions), this is the proportion of tests that will detect a difference between the two groups (p-value \textless{} alpha).
+Remember, \textbf{alpha} represent the \textbf{false positive rate}: under the H0 hypothesis (test of two identical distributions), this is the proportion of tests that will detect a difference between the two groups (p-value \textless{} \(\alpha\)).
 
 \textbf{Beware not to get confused between one-/two-sample tests, and one-/two-sided tests!}
 
@@ -3161,10 +3646,14 @@ Regarding the mean weight of the males, we would like to check whether males hav
 Here as well, we will perform a \textbf{one-sample test}, with mu = 180.
 However, we will perform a \textbf{one-sided} test using the alternative option \textbf{less}.
 
-The hypotheses can be formulated as:\\
-\textgreater{} H0: the expectation value of the random variable ``Weight of male patients'' is \textbf{equal or greater} 180.\\
+The hypotheses can be formulated as:
 
-\textgreater{} H1: the expectation value of the random variable ``Weight of male patients'' is \textbf{less} than 180.
+\begin{itemize}
+\item
+  H0: the expectation value of the random variable ``Weight of male patients'' is \textbf{equal or greater} 180.\\
+\item
+  H1: the expectation value of the random variable ``Weight of male patients'' is \textbf{less} than 180.
+\end{itemize}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3187,9 +3676,11 @@ The hypotheses can be formulated as:\\
 \end{verbatim}
 
 \begin{quote}
-How would you interpret the result with alpha = 0.05?
+How would you interpret the result with \(\alpha=0.05\)?
 Can you reject the H0 hypothesis?
 \end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{two-sample-t-test-2-sided}{%
 \subsubsection{Two-sample t-test (2-sided)}\label{two-sample-t-test-2-sided}}
@@ -3210,17 +3701,21 @@ This can be tested using a \emph{two-sample and two.tailed} t.test.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-116-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-124-1.pdf}
 
-The hypotheses can be formulated as:\\
-\textgreater{} H0: the expectation value of the random variable ``Weight of male patients'' is \textbf{equal} to the expectation value of the random variable ``Weight of female patients''.\\
+The hypotheses can be formulated as:
 
-\textgreater{} H1: the expectation value of the random variable ``Weight of male patients'' is \textbf{different} from the expectation value of the random variable ``Weight of female patients''.
+\begin{itemize}
+\item
+  H0: the expectation value of the random variable ``Weight of male patients'' is \textbf{equal} to the expectation value of the random variable ``Weight of female patients''.\\
+\item
+  H1: the expectation value of the random variable ``Weight of male patients'' is \textbf{different} from the expectation value of the random variable ``Weight of female patients''.
+\end{itemize}
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{t.test}\NormalTok{(dat.male}\SpecialCharTok{$}\NormalTok{weight, }
-\NormalTok{       dat.female}\SpecialCharTok{$}\NormalTok{weight)}
+\NormalTok{       dat.female}\SpecialCharTok{$}\NormalTok{weight) }\CommentTok{\# remember, alternative = "two.sided" per default.}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3238,25 +3733,24 @@ The hypotheses can be formulated as:\\
 ##  181.9167  174.4872
 \end{verbatim}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# remember, alternative = "two.sided" per default.}
-\end{Highlighting}
-\end{Shaded}
-
 \begin{quote}
-How would you interpret the result with alpha = 0.05?
+How would you interpret the result with \(\alpha=0.05\)?
 Can you reject the H0 hypothesis?
 \end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{two-sample-t-test-1-sided}{%
 \subsubsection{Two-sample t-test (1-sided)}\label{two-sample-t-test-1-sided}}
 
 Looking at the histogram, other observers could in principle see a difference between the mean values of the weights and formulate the following hypotheses:
 
-\textgreater{} H0: the expectation value of the random variable ``Weight of male patients'' is \textbf{equal or lower} to the expectation value of the random variable ``Weight of female patients''.\\
-
-\textgreater{} H1: the expectation value of the random variable ``Weight of male patients'' is \textbf{higher} than the expectation value of the random variable ``Weight of female patients''.
+\begin{itemize}
+\item
+  H0: the expectation value of the random variable ``Weight of male patients'' is \textbf{equal or lower} to the expectation value of the random variable ``Weight of female patients''.\\
+\item
+  H1: the expectation value of the random variable ``Weight of male patients'' is \textbf{higher} than the expectation value of the random variable ``Weight of female patients''.
+\end{itemize}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3280,7 +3774,7 @@ Looking at the histogram, other observers could in principle see a difference be
 \end{verbatim}
 
 \begin{quote}
-How would you interpret the result with alpha = 0.05?
+How would you interpret the result with \(\alpha=0.05\)?
 \end{quote}
 
 \begin{quote}
@@ -3311,23 +3805,17 @@ What is the relation between these two values?
 ## [1] 0.03289716
 \end{verbatim}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# divide the one by the other and see ... }
-\end{Highlighting}
-\end{Shaded}
-
 This can be visualized using the t-distribution.
 Here (see above result of the t.test), \emph{t = 1.8453} and \emph{df = 372.45}.
 
 In the \textbf{one-tailed t.test}, the p-value is the area under the curve for t \textgreater{} 1.8453 (alternative greater) \textbf{OR} for t \textless{} -1.8453 (alternative less).
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-120-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-128-1.pdf}
 
 In the \textbf{two-tailed t.test}, the p-value is the area under the curve for t \textgreater{} 1.8453 (alternative greater) \textbf{AND} for t \textless{} -1.8453 (alternative less).
 It is two times the p-value of the one-sided t.test!
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-121-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-129-1.pdf}
 
 IMPORTANTLY, a t-test can only be performed if the data is \textbf{normally distributed}!
 If the data is not normally distributed, you will need to use a non-parametric test, like Wilcoxon test.
@@ -3335,7 +3823,7 @@ If the data is not normally distributed, you will need to use a non-parametric t
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{wilcoxon-test}{%
-\subsection{Wilcoxon test}\label{wilcoxon-test}}
+\subsubsection{Wilcoxon test}\label{wilcoxon-test}}
 
 What if the data is not normally distributed?
 In that case, we are not supposed to use the t-test for testing differences between mean values!
@@ -3353,7 +3841,7 @@ Let us start by loading the data.
 \end{Highlighting}
 \end{Shaded}
 
-We check whether the distribution of the expression values for the gene ``SOX4'' corresponds to a normal distribution:
+We check whether the distribution of the expression values for the gene \emph{SOX4} corresponds to a normal distribution:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3369,7 +3857,7 @@ We check whether the distribution of the expression values for the gene ``SOX4''
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-123-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-131-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3381,7 +3869,7 @@ We check whether the distribution of the expression values for the gene ``SOX4''
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-123-2.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-131-2.pdf}
 
 This looks everything but normal!
 In that case, we cannot apply the t.test, but need to apply a \textbf{non-parametric test} called the \emph{Wilcoxon test}.
@@ -3408,11 +3896,6 @@ This test is performed not on the \emph{values} (like the t-test) but on the \em
 \FunctionTok{wilcox.test}\NormalTok{(gene.aml}\SpecialCharTok{$}\NormalTok{SOX4, gene.all}\SpecialCharTok{$}\NormalTok{SOX4)}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{verbatim}
-## Warning in wilcox.test.default(gene.aml$SOX4, gene.all$SOX4): cannot compute
-## exact p-value with ties
-\end{verbatim}
 
 \begin{verbatim}
 ## 
@@ -3453,13 +3936,254 @@ Hence, the correct p-value is the one from the Wilcoxon test.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\hypertarget{chi-squared-test}{%
-\subsection{Chi-squared test}\label{chi-squared-test}}
+\hypertarget{proportion-tests}{%
+\subsection{Proportion tests}\label{proportion-tests}}
 
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+The t-test and Wilcoxon tests are \textbf{tests of the mean}, meaning that we are \textbf{comparing the means of two samples and looking for significant differences}.
 
-\hypertarget{fishers-exact-test}{%
-\subsection{Fisher's exact test}\label{fishers-exact-test}}
+But there are other hypothesis that one might want to test, related to the relationship between two \textbf{categorical} variables:
+
+\begin{itemize}
+\tightlist
+\item
+  is the proportion of men \textbf{significantly} higher in the patients from Louisa compared to the ones from Buckingham?
+\item
+  is the proportion of smokers under 18 in Germany \textbf{significantly} higher than in other European countries?
+\end{itemize}
+
+The proportion test (\textbf{Fisher Exact Test} or \textbf{chi-squared test}) are used to investigate the relationship between 2 categorical variables, starting from a \textbf{contingency table}.
+We will use a dataset with clinical information about breast cancer patients.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dat.brca }\OtherTok{=} \FunctionTok{read.delim}\NormalTok{(}\StringTok{\textquotesingle{}http://bioinfo.ipmb.uni{-}heidelberg.de/crg/datascience3fs/practicals/data/gbsg\_ba\_ca.dat\textquotesingle{}}\NormalTok{, }
+                      \AttributeTok{stringsAsFactors =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{quote}
+Check which variables in this dataset are categorical/ordinal/numerical.
+\end{quote}
+
+We can now check if there is a significant relationship between some variables.
+For example, we can verify if the choice of treatment with tamoxifen (variable \texttt{hormon}) is related to the pre-/post-menopausal status (variable \texttt{meno})
+
+First, we can build the contingency table for these 2 variables:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# build contingency table}
+\FunctionTok{table}\NormalTok{(dat.brca}\SpecialCharTok{$}\NormalTok{meno, dat.brca}\SpecialCharTok{$}\NormalTok{hormon)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                 
+##                  had tamoxifen no tamoxifen
+##   Postmenopausal           187          209
+##   premenopausal             59          231
+\end{verbatim}
+
+We can compute the \textbf{odds-ratio (OR)} for these two variables.
+This metric measures the strength of the association between two events, which in this case would be treatment with tamoxifen and menopausal status.
+
+Here's how to interpret the odds ratio (OR) value:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{OR = 1}: events are independent\\
+\item
+  \textbf{OR \textgreater{} 1}: events are positively correlated\\
+\item
+  \textbf{OR \textless{} 1}: events are negatively correlated
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{CT }\OtherTok{=} \FunctionTok{table}\NormalTok{(dat.brca}\SpecialCharTok{$}\NormalTok{meno,dat.brca}\SpecialCharTok{$}\NormalTok{hormon)}
+
+\NormalTok{OR }\OtherTok{=}\NormalTok{ (CT[}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{]}\SpecialCharTok{/}\NormalTok{CT[}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{])}\SpecialCharTok{/}\NormalTok{(CT[}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{]}\SpecialCharTok{/}\NormalTok{CT[}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{])}
+\NormalTok{OR}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3.503122
+\end{verbatim}
+
+\begin{quote}
+How would the odds-ratio look like if you would transpose the matrix?
+\end{quote}
+
+Now we can run the one-sided \textbf{Fisher Exact Test} (FET).
+The H0/H1 hypothesis are:
+
+\begin{itemize}
+\tightlist
+\item
+  H0: the odds-ratio is not significantly larger than one
+\item
+  H1: the odds-ratio is significantly larger than one
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# build contingency table}
+\NormalTok{tab }\OtherTok{=} \FunctionTok{table}\NormalTok{(dat.brca}\SpecialCharTok{$}\NormalTok{meno,dat.brca}\SpecialCharTok{$}\NormalTok{hormon)}
+\CommentTok{\#}
+\DocumentationTok{\#\# run the FET}
+\FunctionTok{fisher.test}\NormalTok{(tab, }\AttributeTok{alternative =} \StringTok{\textquotesingle{}greater\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Fisher's Exact Test for Count Data
+## 
+## data:  tab
+## p-value = 1.388e-13
+## alternative hypothesis: true odds ratio is greater than 1
+## 95 percent confidence interval:
+##  2.580638      Inf
+## sample estimates:
+## odds ratio 
+##   3.496639
+\end{verbatim}
+
+Check if your computation of the odds-ratio is right!
+Compute also the \textbf{two-sided} test:
+
+\begin{quote}
+Formulate the H0/H1 hypothesis!
+\end{quote}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{fisher.test}\NormalTok{(tab)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Fisher's Exact Test for Count Data
+## 
+## data:  tab
+## p-value = 2.475e-13
+## alternative hypothesis: true odds ratio is not equal to 1
+## 95 percent confidence interval:
+##  2.444410 5.049548
+## sample estimates:
+## odds ratio 
+##   3.496639
+\end{verbatim}
+
+We can also use the \textbf{chi-square test} to answer the same question.
+The Chi-square test compares the \textbf{observed} number of occurrences in the contingency table to the \textbf{expected} number of occurrences if there was no relationship between the variables.
+
+\begin{itemize}
+\tightlist
+\item
+  H0: the observed and expected occurrences are not significantly different
+\item
+  H1: the observed and expected occurrences are significantly different
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{chisq.test}\NormalTok{(tab)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Pearson's Chi-squared test with Yates' continuity correction
+## 
+## data:  tab
+## X-squared = 51.416, df = 1, p-value = 7.473e-13
+\end{verbatim}
+
+Now we want to verify the impact of age on the grade of the tumor.
+We categorize the patients in under and over 40 year groups, and perform a chi-squared test:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# contingency table}
+\NormalTok{tab }\OtherTok{=} \FunctionTok{table}\NormalTok{(dat.brca}\SpecialCharTok{$}\NormalTok{age}\SpecialCharTok{\textgreater{}}\DecValTok{40}\NormalTok{,}
+\NormalTok{            dat.brca}\SpecialCharTok{$}\NormalTok{grade)}
+\NormalTok{tab }\CommentTok{\# tumor grades 1,2,3; age under 40 (FALSE) and over 40 (TRUE)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        
+##           1   2   3
+##   FALSE   6  41  26
+##   TRUE   75 403 135
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#}
+\FunctionTok{chisq.test}\NormalTok{(tab)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Pearson's Chi-squared test
+## 
+## data:  tab
+## X-squared = 6.9515, df = 2, p-value = 0.03094
+\end{verbatim}
+
+We can determine the table of expected counts using the \texttt{apply()} function.
+This works similarly to the \texttt{lapply}, but it can be used to \emph{apply} a function by rows (if 1), columns (if 2), or both:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tot }\OtherTok{=} \FunctionTok{apply}\NormalTok{(tab,}\DecValTok{2}\NormalTok{,sum) }\CommentTok{\# this is the total number of occurrences in the 3 categories of "grade", independently of "age"}
+\NormalTok{tot}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   1   2   3 
+##  81 444 161
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{age }\OtherTok{=} \FunctionTok{apply}\NormalTok{(tab,}\DecValTok{1}\NormalTok{,sum) }\CommentTok{\# this is the total number of persons above/below 40, independently of "grade"}
+\NormalTok{age}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## FALSE  TRUE 
+##    73   613
+\end{verbatim}
+
+On the other hand, \texttt{sapply} is commonly used for dataframe or other tabular formats:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tot.proportions }\OtherTok{=}\NormalTok{ tot}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(tot) }\CommentTok{\# HO proportions (the proportions of occurrences in the three categories of grade, independently of age)}
+
+\NormalTok{tab.exp }\OtherTok{=} \FunctionTok{sapply}\NormalTok{(tot.proportions,}\ControlFlowTok{function}\NormalTok{(x) \{x}\SpecialCharTok{*}\NormalTok{age\}) }\CommentTok{\# expected counts under H0}
+\NormalTok{tab.exp}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##               1         2         3
+## FALSE  8.619534  47.24781  17.13265
+## TRUE  72.380466 396.75219 143.86735
+\end{verbatim}
+
+\begin{quote}
+How would you compute the chi-square test statistic using the \texttt{tab} and \texttt{tab.exp} tables?
+\end{quote}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -3474,29 +4198,10 @@ Hence, the correct p-value is the one from the Wilcoxon test.
 \tightlist
 \item
   Consider the following graph, formulate the hypotheses H0 and H1 and perform a (one-sided) t-test.
-  Interpret the result using alpha = 0.05.
+  Interpret the result using \(\alpha=0.05\).
 \end{enumerate}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{mean.height.f }\OtherTok{=} \FunctionTok{mean}\NormalTok{(dat.female}\SpecialCharTok{$}\NormalTok{height, }\AttributeTok{na.rm =}\NormalTok{ T)}
-\NormalTok{mean.height.m }\OtherTok{=} \FunctionTok{mean}\NormalTok{(dat.male}\SpecialCharTok{$}\NormalTok{height, }\AttributeTok{na.rm =}\NormalTok{ T)}
-
-\FunctionTok{ggplot}\NormalTok{(dat,}
-       \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ height, }
-           \AttributeTok{fill =}\NormalTok{ gender)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.5}\NormalTok{, }\AttributeTok{bins =} \DecValTok{20}\NormalTok{,}
-                 \AttributeTok{colour =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =}\NormalTok{ mean.height.m, }
-             \AttributeTok{colour =} \StringTok{"cyan"}\NormalTok{, }\AttributeTok{linetype =} \StringTok{\textquotesingle{}dashed\textquotesingle{}}\NormalTok{,}
-             \AttributeTok{linewidth =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =}\NormalTok{ mean.height.f, }
-             \AttributeTok{colour =} \StringTok{"salmon"}\NormalTok{, }\AttributeTok{linetype =} \StringTok{\textquotesingle{}dashed\textquotesingle{}}\NormalTok{,}
-             \AttributeTok{linewidth =} \DecValTok{1}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{_main_files/figure-latex/unnamed-chunk-126-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-143-1.pdf}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -3505,7 +4210,7 @@ Hence, the correct p-value is the one from the Wilcoxon test.
 \item
   Calculate the mean age of the men.
 \item
-  Compare it to age = 50. Formulate the hypotheses H0 and H1 and perform a (one-sided) t-test. Interpret the result using alpha = 0.05.
+  Compare it to age = 50. Formulate the hypotheses H0 and H1 and perform a (one-sided) t-test. Interpret the result using \(\alpha=0.05\).
 \end{enumerate}
 
 \hypertarget{exercice-2-two-sided-t-test}{%
@@ -3525,17 +4230,34 @@ Follow these steps:
   Select the rows corresponding to the two groups and use an \texttt{summarise()} and \texttt{group\_by} loop to calculate the mean values (grouped by location).
 \item
   Select one of these, formulate the H0 and H1 hypotheses and perform a (two-sided) t-test.
-  Interpret the result (alpha = 0.05).
+  Interpret the result (\(\alpha=0.05\)).
 \end{enumerate}
 
-\hypertarget{exercise-3.-going-further-checking-the-normality-of-the-distribution}{%
-\subsubsection{Exercise 3. Going further \ldots{} Checking the normality of the distribution}\label{exercise-3.-going-further-checking-the-normality-of-the-distribution}}
+\hypertarget{exercise-3-mean-and-proportion-testing}{%
+\subsubsection{Exercise 3: Mean and proportion testing}\label{exercise-3-mean-and-proportion-testing}}
+
+What test would you use for the following questions?
+
+\begin{itemize}
+\tightlist
+\item
+  A lotion company has to figure out whether their last product is more likely to give acne to men rather than women.
+\item
+  The department of education wants to find out whether social science students have higher grades than science students.
+\item
+  A biologist needs to find out whether a specific gene is more likely to be silenced in lactose intolerant people.
+\end{itemize}
+
+\hypertarget{going-further-checking-the-normality-of-the-distribution}{%
+\subsubsection{Going further: Checking the normality of the distribution}\label{going-further-checking-the-normality-of-the-distribution}}
 
 In principle, t-tests require that the data is approximately normally distributed.
 If not, we can use \textbf{non-parametric} tests (see next lecture).
 
 In order to check whether the data is normally distributed or not, it is possible to perform a \textbf{Shapiro-Wilk} normality test (see lecture).
-This statistical test is implemented in R in the function \texttt{shapiro.test()}.
+This statistical test is implemented in R in the function \texttt{shapiro.test()}. Try it out with any of the datasets we used before.
+
+A p-value inferior to the chosen \(\alpha\) level here (we will use 0.05), means that the null hypothesis can be rejected. Therefore, the data distribution tested is not normal and you need to use a non-parametric test.
 
 \hypertarget{day-5-multiple-testing-and-regression}{%
 \section{Day 5: Multiple testing and regression}\label{day-5-multiple-testing-and-regression}}
@@ -3543,8 +4265,575 @@ This statistical test is implemented in R in the function \texttt{shapiro.test()
 \hypertarget{multiple-testing}{%
 \subsection{Multiple testing}\label{multiple-testing}}
 
+In the previous examples we were only testing for one single hypothesis. However, it is common in biology that we have more than one hypothesis being tested.\\
+The table below is a reminder of which errors can be made when testing hypotheses:
+
+\begin{tabular}{l|l|l}
+\hline
+ & H0 is true & H0 is false\\
+\hline
+Decision: Reject H0 & Type I Error & Correct Decision\\
+\hline
+Decision: Do not reject H0 & Correct Decision & Type II Error\\
+\hline
+\end{tabular}
+
+Decision is associated with \(\alpha\), so if the p-value is under 0.05, we reject the null hypothesis. However, when testing multiple hypothesis, we are prone to erroneously rejecting the 1st, 2nd\ldots{} or Nth null hypothesis. I.e., if we test 1000 hypotheses simultaneously, we expect to erroneously reject 50 (5\%) just by chance!
+
+The \textbf{family wise error rate (FWER)} is the probability of making at least one Type I error and we can control this probability using a p-value correction.
+
+\hypertarget{example}{%
+\subsubsection{Example}\label{example}}
+
+Imagine that you are trying to test the effect of a treatment A on a cell line in the lab. You run a gene expression experiment to compare treatment with control (untreated) for a panel of 20 genes you pre-selected.
+
+The comparison between treatment and control for the panel gives you a set p-values of the 20 genes
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p.vals }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\FloatTok{0.1}\NormalTok{, }\FloatTok{0.0001}\NormalTok{, }\FloatTok{0.04}\NormalTok{, }\FloatTok{1.2e{-}20}\NormalTok{, }\FloatTok{0.002}\NormalTok{, }\FloatTok{0.01}\NormalTok{, }\FloatTok{0.5}\NormalTok{, }\DecValTok{1}\NormalTok{, }\FloatTok{0.02}\NormalTok{, }\FloatTok{1.9e{-}5}\NormalTok{,}
+           \FloatTok{1.1e{-}6}\NormalTok{, }\FloatTok{0.03}\NormalTok{, }\FloatTok{0.7}\NormalTok{, }\FloatTok{0.06}\NormalTok{, }\FloatTok{0.01}\NormalTok{, }\FloatTok{0.3}\NormalTok{, }\FloatTok{0.05}\NormalTok{, }\FloatTok{1e{-}13}\NormalTok{, }\FloatTok{0.032}\NormalTok{, }\FloatTok{0.004}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+But since you ran 20 different tests to generate these, there is a need to correct the p-values. You can do this on the p-values directly using the \texttt{p.adjust()} function. Run \texttt{?p.adjust()} to see which methods can be used.
+
+We will use the false discovery rate (FDR) correction on this example.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p.vals\_FDR }\OtherTok{=} \FunctionTok{p.adjust}\NormalTok{(p.vals, }\AttributeTok{method=}\StringTok{"fdr"}\NormalTok{)}
+\NormalTok{p.vals\_FDR}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 1.250000e-01 4.000000e-04 6.153846e-02 2.400000e-19 6.666667e-03
+##  [6] 2.222222e-02 5.555556e-01 1.000000e+00 4.000000e-02 9.500000e-05
+## [11] 7.333333e-06 5.333333e-02 7.368421e-01 8.000000e-02 2.222222e-02
+## [16] 3.529412e-01 7.142857e-02 1.000000e-12 5.333333e-02 1.142857e-02
+\end{verbatim}
+
+Check how the p-values change!
+
+\includegraphics[width=0.5\linewidth]{_main_files/figure-latex/unnamed-chunk-147-1}
+\includegraphics[width=0.5\linewidth]{_main_files/figure-latex/unnamed-chunk-147-2}
+
+\begin{quote}
+How many genes change from being significant to non-significant? How does this impact your experiment?
+\end{quote}
+
 \hypertarget{regression}{%
 \subsection{Regression}\label{regression}}
+
+In this last part, we want to learn how to build a \textbf{regression model} in order to make predictions on certain quantitative variables using other quantitative variables. The important steps here are:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{learning} the model
+\item
+  \textbf{testing} the model to evaluate its performances, and also check that the assumptions of the linearity are given
+\item
+  \textbf{predict} values based on new data points
+\end{itemize}
+
+We will use again the diabetes data set, and build a simple linear regression models with a single explanatory variable.
+We will focus on predicting the \textbf{cholesterol level}.
+
+Load the data and perform some basic inspection on the data:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tmp }\OtherTok{=} \FunctionTok{read.table}\NormalTok{(}\StringTok{\textquotesingle{}https://www.dropbox.com/s/zviurze7c85quyw/diabetes\_full.csv?dl=1\textquotesingle{}}\NormalTok{,}\AttributeTok{header=}\ConstantTok{TRUE}\NormalTok{,}\AttributeTok{sep=}\StringTok{"}\SpecialCharTok{\textbackslash{}t}\StringTok{"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+We will limit the dataset to the numerical variables
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dat }\OtherTok{=}\NormalTok{ tmp }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(}
+    \FunctionTok{where}\NormalTok{(is.numeric)}
+\NormalTok{  )}
+\FunctionTok{head}\NormalTok{(dat)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     id chol stab.glu hdl ratio glyhb age height weight bp.1s bp.1d bp.2s bp.2d
+## 1 1000  203       82  56   3.6  4.31  46     62    121   118    59    NA    NA
+## 2 1001  165       97  24   6.9  4.44  29     64    218   112    68    NA    NA
+## 3 1002  228       92  37   6.2  4.64  58     61    256   190    92   185    92
+## 4 1003   78       93  12   6.5  4.63  67     67    119   110    50    NA    NA
+## 5 1005  249       90  28   8.9  7.72  64     68    183   138    80    NA    NA
+## 6 1008  248       94  69   3.6  4.81  34     71    190   132    86    NA    NA
+##   waist hip time.ppn
+## 1    29  38      720
+## 2    46  48      360
+## 3    49  57      180
+## 4    33  38      480
+## 5    44  41      300
+## 6    36  42      195
+\end{verbatim}
+
+First, we have to do some data cleaning and remove all patients with at least 1 ``NA''. Use \texttt{na.omit()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Select the patients without NAs}
+\NormalTok{dat }\OtherTok{=}\NormalTok{ dat }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{na.omit}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+Then, we can make a heatmap and visualize the correlation values between each of the variables in the dataset.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(pheatmap)}
+\NormalTok{cor.vals }\OtherTok{=} \FunctionTok{cor}\NormalTok{(dat, }\AttributeTok{method =} \StringTok{"spearman"}\NormalTok{)}
+
+\FunctionTok{pheatmap}\NormalTok{(cor.vals,}
+         \AttributeTok{cluster\_cols =} \ConstantTok{FALSE}\NormalTok{,}
+         \AttributeTok{cluster\_rows =} \ConstantTok{FALSE}\NormalTok{,}
+         \AttributeTok{display\_numbers =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-151-1.pdf}
+
+\begin{quote}
+What are the strongest correlations? Do they make sense?
+\end{quote}
+
+Apart from displaying the raw correlation values, we can test if any of those are \textbf{statistically significant}, i.e.~if they are significantly positive (one-sided test), negative (one-sided test), or non zero (two-sided test). To do so, we will use \texttt{cor.test} function.
+
+For example, there seems to be a positive correlation between \emph{stabilized glucose} (stab.glu) and \emph{hip circumference} (hip).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# compute correlation}
+\FunctionTok{cor}\NormalTok{(dat}\SpecialCharTok{$}\NormalTok{stab.glu,dat}\SpecialCharTok{$}\NormalTok{hip)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.03528725
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#}
+\DocumentationTok{\#\# test for significance}
+\FunctionTok{cor.test}\NormalTok{(dat}\SpecialCharTok{$}\NormalTok{stab.glu, dat}\SpecialCharTok{$}\NormalTok{hip)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Pearson's product-moment correlation
+## 
+## data:  dat$stab.glu and dat$hip
+## t = 0.40873, df = 134, p-value = 0.6834
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  -0.1338406  0.2024178
+## sample estimates:
+##        cor 
+## 0.03528725
+\end{verbatim}
+
+\begin{quote}
+Read carefully this output, and make sure you understand it. Check other pairs!
+\end{quote}
+
+\hypertarget{univariate-linear-regression}{%
+\subsubsection{Univariate linear regression}\label{univariate-linear-regression}}
+
+Next, we will assess what is the most promising variable to predict cholesterol level. Go back to the correlation heatmap to see if there are variables highly correlated with it.
+
+We will use glycosilated hemoglobin (\texttt{glyhb}) as a predictor of the cholesterol level and the function \texttt{lm()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{l.g }\OtherTok{=} \FunctionTok{lm}\NormalTok{(chol }\SpecialCharTok{\textasciitilde{}}\NormalTok{ glyhb, }\AttributeTok{data=}\NormalTok{dat)}
+\FunctionTok{summary}\NormalTok{(l.g)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = chol ~ glyhb, data = dat)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -84.458 -32.011  -7.436  20.584 156.407 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)  169.514      9.774  17.343  < 2e-16 ***
+## glyhb          8.182      1.517   5.393 3.04e-07 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 44.02 on 134 degrees of freedom
+## Multiple R-squared:  0.1783, Adjusted R-squared:  0.1722 
+## F-statistic: 29.08 on 1 and 134 DF,  p-value: 3.045e-07
+\end{verbatim}
+
+For a simple linear regression (with only one explanatory variable), the p-value of the t-test for the slope is identical with the p-value of the F-test for the global model. \emph{This will no longer be the case when including several explanatory variables!}
+
+By the way, have we checked that a linear regression makes sense in this case? Remember that we have to check that:
+
+\begin{itemize}
+\tightlist
+\item
+  the residuals are \textbf{normally distributed}
+\item
+  there is \textbf{no correlation} between the residuals and the explanatory variable
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# normal distribution of residuals?}
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ l.g}\SpecialCharTok{$}\NormalTok{residuals)) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-154-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_qq}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{sample =}\NormalTok{ l.g}\SpecialCharTok{$}\NormalTok{residuals)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_qq\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{sample =}\NormalTok{ l.g}\SpecialCharTok{$}\NormalTok{residuals),}
+               \AttributeTok{colour =} \StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-154-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# correlation residuals x{-}values?}
+\NormalTok{corr.gly\_resi }\OtherTok{=} \FunctionTok{cor}\NormalTok{(dat}\SpecialCharTok{$}\NormalTok{glyhb,l.g}\SpecialCharTok{$}\NormalTok{residuals)}
+
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ dat}\SpecialCharTok{$}\NormalTok{glyhb, }\AttributeTok{y =}\NormalTok{ l.g}\SpecialCharTok{$}\NormalTok{residuals))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-154-3.pdf}
+
+\begin{quote}
+What is your overall opinion about the validity of the regression model here?
+\end{quote}
+
+We can now use the model to predict the cholesterol values, and compare them to the real cholesterol values, since we have the information in this dataset.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ dat}\SpecialCharTok{$}\NormalTok{chol, }
+                 \AttributeTok{y =}\NormalTok{ l.g}\SpecialCharTok{$}\NormalTok{fitted.values),}
+             \AttributeTok{colour =} \StringTok{"navy"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{\textquotesingle{}Real values\textquotesingle{}}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{\textquotesingle{}Predicted values\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_abline}\NormalTok{(}\AttributeTok{intercept =} \DecValTok{0}\NormalTok{, }\AttributeTok{slope =} \DecValTok{1}\NormalTok{, }
+              \AttributeTok{color =} \StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-155-1.pdf}
+
+Not really super convincing, right? Let's put more information into the model!
+
+\hypertarget{multiple-regression-model}{%
+\subsubsection{Multiple regression model}\label{multiple-regression-model}}
+
+Let us include all the information to try to predict cholesterol level:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{l.all }\OtherTok{=} \FunctionTok{lm}\NormalTok{(chol }\SpecialCharTok{\textasciitilde{}}\NormalTok{ .,}\AttributeTok{data=}\NormalTok{dat)}
+\FunctionTok{summary}\NormalTok{(l.all)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = chol ~ ., data = dat)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -77.81 -10.15  -0.88  10.96  55.28 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)  2.662e+01  5.724e+01   0.465   0.6428    
+## id          -2.722e-05  1.410e-04  -0.193   0.8472    
+## stab.glu     6.908e-02  5.848e-02   1.181   0.2398    
+## hdl          2.249e+00  1.500e-01  14.988   <2e-16 ***
+## ratio        2.520e+01  1.354e+00  18.611   <2e-16 ***
+## glyhb        4.451e-01  1.491e+00   0.299   0.7658    
+## age          1.566e-01  1.654e-01   0.947   0.3457    
+## height      -1.294e+00  6.645e-01  -1.947   0.0539 .  
+## weight      -6.610e-02  1.284e-01  -0.515   0.6077    
+## bp.1s        9.021e-02  2.053e-01   0.440   0.6611    
+## bp.1d       -1.778e-01  2.945e-01  -0.604   0.5472    
+## bp.2s       -1.940e-01  2.004e-01  -0.968   0.3350    
+## bp.2d        5.934e-01  2.983e-01   1.989   0.0490 *  
+## waist        1.013e+00  7.203e-01   1.406   0.1623    
+## hip         -5.150e-01  8.398e-01  -0.613   0.5409    
+## time.ppn    -9.561e-03  7.239e-03  -1.321   0.1891    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 21.78 on 120 degrees of freedom
+## Multiple R-squared:  0.8199, Adjusted R-squared:  0.7974 
+## F-statistic: 36.42 on 15 and 120 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+\begin{quote}
+Do you note something unexpected in this report?
+\end{quote}
+
+We can see that the inclusion of several explanatory variables improves the regression. Check the \(R^2\) values for example!
+
+We can see that the variables \texttt{weight}, \texttt{waist} and \texttt{hip} do not reach the significance level. Two explanations are possible
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  either these variables are indeed non-informative regarding the prediction of the cholesterol level
+\item
+  or the mutual correlation between these 3 variables interferes with the model.
+\end{enumerate}
+
+We can remove waist and hip for example, and redo the regression
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{l.less }\OtherTok{=} \FunctionTok{lm}\NormalTok{(chol }\SpecialCharTok{\textasciitilde{}}\NormalTok{ stab.glu }\SpecialCharTok{+}\NormalTok{ hdl }\SpecialCharTok{+}\NormalTok{ glyhb }\SpecialCharTok{+}\NormalTok{ age }\SpecialCharTok{+}\NormalTok{ height }\SpecialCharTok{+}\NormalTok{ weight  }\SpecialCharTok{+}\NormalTok{ bp}\FloatTok{.1}\NormalTok{s }\SpecialCharTok{+}\NormalTok{ bp}\FloatTok{.1}\NormalTok{d,}\AttributeTok{data=}\NormalTok{dat)}
+\FunctionTok{summary}\NormalTok{(l.less)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = chol ~ stab.glu + hdl + glyhb + age + height + weight + 
+##     bp.1s + bp.1d, data = dat)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -71.763 -29.004  -7.782  26.894 166.868 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) 137.126166  75.534099   1.815 0.071819 .  
+## stab.glu     -0.055663   0.109905  -0.506 0.613406    
+## hdl           0.607084   0.227293   2.671 0.008555 ** 
+## glyhb         9.914922   2.634210   3.764 0.000254 ***
+## age           0.242536   0.312447   0.776 0.439046    
+## height       -0.632074   0.985494  -0.641 0.522433    
+## weight       -0.058539   0.100419  -0.583 0.560962    
+## bp.1s         0.007349   0.215115   0.034 0.972801    
+## bp.1d         0.387031   0.373868   1.035 0.302539    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 42.44 on 127 degrees of freedom
+## Multiple R-squared:  0.2759, Adjusted R-squared:  0.2303 
+## F-statistic: 6.049 on 8 and 127 DF,  p-value: 1.39e-06
+\end{verbatim}
+
+We can see how the \texttt{weight} variable seems indeed to contribute to the prediction of the cholesterol. The removal of the strongly correlated variables has increased its significance. It now almost reaches significance at the 5\% level!
+
+\begin{quote}
+Check the result of the F-test to compare both models!
+\end{quote}
+
+We can now check if the prediction are better that with the univariate model
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ dat}\SpecialCharTok{$}\NormalTok{chol, }
+                 \AttributeTok{y =}\NormalTok{ l.less}\SpecialCharTok{$}\NormalTok{fitted.values),}
+             \AttributeTok{colour =} \StringTok{"navy"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{\textquotesingle{}Real values\textquotesingle{}}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{\textquotesingle{}Predicted values\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_abline}\NormalTok{(}\AttributeTok{intercept =} \DecValTok{0}\NormalTok{, }\AttributeTok{slope =} \DecValTok{1}\NormalTok{, }
+              \AttributeTok{color =} \StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-158-1.pdf}
+
+Better? I would say so\ldots{} To determine the accuracy, we can compute the so called \textbf{root mean squared error (RMSE)}:
+
+\[
+RMSE = \sqrt{\frac{1}{n}\sum_{i=1}^n (x_i-\hat{x_i})^2}
+\]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{n }\OtherTok{=} \FunctionTok{nrow}\NormalTok{(dat)}
+\NormalTok{rmse }\OtherTok{=} \FunctionTok{sqrt}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\NormalTok{n}\SpecialCharTok{*}\FunctionTok{sum}\NormalTok{(l.less}\SpecialCharTok{$}\NormalTok{residuals}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{))}
+\NormalTok{rmse}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 41.01479
+\end{verbatim}
+
+Of course, this is cheating, right? We are predicting the values on \textbf{exactly} the same data we used to learn the model. In real machine learning, we need to perform \textbf{cross-validation}, i.e.~learn the model on one part of the data (\emph{training set}) and validate it on another set (\emph{test set}).
+
+Let us split the dataset in a test and training set randomly:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{1234}\NormalTok{)}
+\DocumentationTok{\#\# take 200 random patients to form the training set}
+\NormalTok{i.train }\OtherTok{=} \FunctionTok{sample}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\FunctionTok{nrow}\NormalTok{(dat),}\DecValTok{100}\NormalTok{)}
+\DocumentationTok{\#\#}
+\NormalTok{dat.train }\OtherTok{=}\NormalTok{ dat[i.train,]}
+\NormalTok{dat.test }\OtherTok{=}\NormalTok{ dat[}\SpecialCharTok{{-}}\NormalTok{i.train,]}
+\end{Highlighting}
+\end{Shaded}
+
+We now learn a new model on the train dataset:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{l.train }\OtherTok{=} \FunctionTok{lm}\NormalTok{(chol }\SpecialCharTok{\textasciitilde{}}\NormalTok{ stab.glu }\SpecialCharTok{+}\NormalTok{ hdl }\SpecialCharTok{+}\NormalTok{ glyhb }\SpecialCharTok{+}\NormalTok{ age }\SpecialCharTok{+}\NormalTok{ height }\SpecialCharTok{+}\NormalTok{ weight  }\SpecialCharTok{+}\NormalTok{ bp}\FloatTok{.1}\NormalTok{s }\SpecialCharTok{+}\NormalTok{ bp}\FloatTok{.1}\NormalTok{d,}\AttributeTok{data=}\NormalTok{dat.train)}
+\FunctionTok{summary}\NormalTok{(l.train)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = chol ~ stab.glu + hdl + glyhb + age + height + weight + 
+##     bp.1s + bp.1d, data = dat.train)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -76.806 -28.259  -6.705  22.934 158.094 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)   
+## (Intercept) 214.29240   95.18482   2.251  0.02677 * 
+## stab.glu     -0.04772    0.13938  -0.342  0.73288   
+## hdl           0.24900    0.31841   0.782  0.43624   
+## glyhb        10.14338    3.22686   3.143  0.00225 **
+## age           0.41957    0.39691   1.057  0.29327   
+## height       -1.11670    1.26775  -0.881  0.38072   
+## weight       -0.11006    0.12823  -0.858  0.39298   
+## bp.1s        -0.12595    0.28635  -0.440  0.66110   
+## bp.1d         0.31732    0.50740   0.625  0.53328   
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 46 on 91 degrees of freedom
+## Multiple R-squared:  0.2749, Adjusted R-squared:  0.2111 
+## F-statistic: 4.312 on 8 and 91 DF,  p-value: 0.0001965
+\end{verbatim}
+
+We can compute the RMSE for the training dataset
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{n.train }\OtherTok{=} \FunctionTok{nrow}\NormalTok{(dat.train)}
+\NormalTok{rmse.train }\OtherTok{=} \FunctionTok{sqrt}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\NormalTok{n.train}\SpecialCharTok{*}\FunctionTok{sum}\NormalTok{(l.train}\SpecialCharTok{$}\NormalTok{residuals}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{))}
+\NormalTok{rmse.train}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 43.88137
+\end{verbatim}
+
+Let use use that model to predict cholesterol values for the left out test set
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pred }\OtherTok{=} \FunctionTok{predict}\NormalTok{(l.train, }\AttributeTok{newdata =}\NormalTok{ dat.test)}
+\end{Highlighting}
+\end{Shaded}
+
+and compute the rmse:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{n.test }\OtherTok{=} \FunctionTok{nrow}\NormalTok{(dat.test)}
+\NormalTok{residuals }\OtherTok{=}\NormalTok{ dat.test}\SpecialCharTok{$}\NormalTok{chol }\SpecialCharTok{{-}}\NormalTok{ pred}
+\NormalTok{rmse.test }\OtherTok{=} \FunctionTok{sqrt}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\NormalTok{n.test}\SpecialCharTok{*}\FunctionTok{sum}\NormalTok{(residuals}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{))}
+\NormalTok{rmse.test}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 34.75285
+\end{verbatim}
+
+Of course, the RMSE is higher on the test dataset, since this does not include the data used for the establishment of the regression model; however, this is a more realistic estimation of the validity of the model, as it indicates how well the model could be extended to novel, independent data!
+
+An important topic here is \textbf{feature selection}, i.e.~finding the optimal and minimal set of explanatory variables that allow to predict well the output variable.
+
+We now repeat the train/test split 10 times with each time a different random split; plot the 10 \texttt{rmse.train} and \texttt{rmse.test} values!
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{345}\NormalTok{)}
+\NormalTok{RMSE }\OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{, }\ControlFlowTok{function}\NormalTok{(x) \{}
+\NormalTok{  i.train }\OtherTok{=} \FunctionTok{sample}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{:}\FunctionTok{nrow}\NormalTok{(dat),}\DecValTok{100}\NormalTok{)}
+  \DocumentationTok{\#\#}
+\NormalTok{  dat.train }\OtherTok{=}\NormalTok{ dat[i.train,]}
+\NormalTok{  dat.test }\OtherTok{=}\NormalTok{ dat[}\SpecialCharTok{{-}}\NormalTok{i.train,]}
+  \DocumentationTok{\#\#}
+\NormalTok{  l.train }\OtherTok{=} \FunctionTok{lm}\NormalTok{(chol }\SpecialCharTok{\textasciitilde{}}\NormalTok{ stab.glu }\SpecialCharTok{+}\NormalTok{ hdl }\SpecialCharTok{+}\NormalTok{ glyhb }\SpecialCharTok{+}\NormalTok{ age }\SpecialCharTok{+}\NormalTok{ height }\SpecialCharTok{+}\NormalTok{ weight  }\SpecialCharTok{+}\NormalTok{ bp}\FloatTok{.1}\NormalTok{s }\SpecialCharTok{+}\NormalTok{ bp}\FloatTok{.1}\NormalTok{d,}\AttributeTok{data=}\NormalTok{dat.train)}
+  \DocumentationTok{\#\#}
+\NormalTok{  n.train }\OtherTok{=} \FunctionTok{nrow}\NormalTok{(dat.train)}
+\NormalTok{  rmse.train }\OtherTok{=} \FunctionTok{sqrt}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\NormalTok{n.train}\SpecialCharTok{*}\FunctionTok{sum}\NormalTok{(l.train}\SpecialCharTok{$}\NormalTok{residuals}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{))}
+  \DocumentationTok{\#\#}
+\NormalTok{  pred }\OtherTok{=} \FunctionTok{predict}\NormalTok{(l.train,}\AttributeTok{newdata =}\NormalTok{ dat.test)}
+  \DocumentationTok{\#\#}
+\NormalTok{  n.test }\OtherTok{=} \FunctionTok{nrow}\NormalTok{(dat.test)}
+\NormalTok{  residuals }\OtherTok{=}\NormalTok{ dat.test}\SpecialCharTok{$}\NormalTok{chol }\SpecialCharTok{{-}}\NormalTok{ pred}
+\NormalTok{  rmse.test }\OtherTok{=} \FunctionTok{sqrt}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\NormalTok{n.test}\SpecialCharTok{*}\FunctionTok{sum}\NormalTok{(residuals}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{))}
+\NormalTok{  RMSE }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(rmse.train,rmse.test)}
+\NormalTok{  RMSE}
+\NormalTok{\})}
+\CommentTok{\#}
+
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ RMSE[}\DecValTok{1}\NormalTok{,],}
+                 \AttributeTok{x =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{, }\AttributeTok{colour =} \StringTok{"gold"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ RMSE[}\DecValTok{2}\NormalTok{,],}
+                 \AttributeTok{x =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{, }\AttributeTok{colour =} \StringTok{"steelblue"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_x\_continuous}\NormalTok{(}\AttributeTok{breaks=}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{10}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_hline}\NormalTok{(}\AttributeTok{yintercept =} \FunctionTok{mean}\NormalTok{(RMSE[}\DecValTok{1}\NormalTok{,]),}
+             \AttributeTok{colour =} \StringTok{"gold"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ylim}\NormalTok{(}\FunctionTok{min}\NormalTok{(RMSE), }\FunctionTok{max}\NormalTok{(RMSE }\SpecialCharTok{+}\DecValTok{2}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_hline}\NormalTok{(}\AttributeTok{yintercept =} \FunctionTok{mean}\NormalTok{(RMSE[}\DecValTok{2}\NormalTok{,]),}
+             \AttributeTok{colour =} \StringTok{"steelblue"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_colour\_manual}\NormalTok{(}\AttributeTok{name =} \StringTok{"RMSE"}\NormalTok{, }\AttributeTok{guide =} \StringTok{\textquotesingle{}legend\textquotesingle{}}\NormalTok{,}
+                      \AttributeTok{values =}\FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}gold\textquotesingle{}}\OtherTok{=}\StringTok{\textquotesingle{}gold\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}steelblue\textquotesingle{}}\OtherTok{=}\StringTok{\textquotesingle{}steelblue\textquotesingle{}}\NormalTok{), }
+                      \AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}train\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}test\textquotesingle{}}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Iteration"}\NormalTok{, }\AttributeTok{y =} \StringTok{"RMSE values"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-165-1.pdf}
 
 \hypertarget{week-two}{%
 \chapter{WEEK TWO}\label{week-two}}

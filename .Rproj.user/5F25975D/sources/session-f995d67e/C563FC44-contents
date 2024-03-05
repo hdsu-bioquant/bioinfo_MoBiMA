@@ -1,0 +1,252 @@
+---
+title: "Advanced_Data_Manipulation_in_R"
+author: "Dr. Maïwen Caudron-Herger, Prof. Dr. Carl Herrmann"
+output: html_document
+date: "2023-09-28"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Data Manipulation in R
+
+In the exercise sheet **00_Basic_Data_Structure_in_R.Rmd**, we introduced the basics of data organization in R, including vectors, matrices, lists and data frames. Here, you will learn about advanced concepts of data manipulation and iteration techniques, including **loops** (such as apply, sapply,...) and advanced **index selection** (such as which, %in%, ...). Again, you will find exercises at the end of this markdown, to practice these concepts by yourself.
+
+### 1 - Loops
+
+Sometimes, we need to repeat the same operation for all elements of a vector, or all rows/columns of a matrix or data.frame. This is a **loop**.
+
+#### Apply, sapply, lapply
+
+`Apply()` is used to repeat the same operation over all columns/rows of a **matrix** or **data frame**. Therefore, we need to specify three parameters:\
+1. The matrix on which the operation should be performed\
+2. Whether to repeat the operation over rows, which is defined by a "1", or columns (use a "2" instead)\
+3. The operation that should be performed.\
+
+Let's have a look at an example to make this more clear: We want to determine the minimum for each row of the matrix "Mat". Therefore, we can use the function `min()`.
+
+```{r apply for matrices}
+#First, we build the matrix 
+m <- rnorm(30)   # generate 30 random numbers for the matrix
+Mat <- matrix(data = m, nrow = 6)
+Mat
+
+#Next, we want to determine the minimum value of each row: 
+apply(Mat, 1, min)
+```
+
+> What happens if you change the "1" in the apply function to "2"? Try it!
+
+> Remember that you can use `help(apply)` or `?apply` to get help on this function!
+
+We can perform a loop over all elements of a **vector** or **list** using the `sapply()` function.\
+`sapply()` needs two information:\
+1. which vector do we consider?\
+2. which function do we want to apply to each element of this vector?\
+`sapply()` will return a **vector** containing the results.
+
+For instance, we can calculate the square root of every element of a vector using the function `sqrt()`:
+
+```{r sapply for vectors}
+x <- c(1:5)
+sapply(x, sqrt)
+```
+
+Instead of using built-in functions, we can also write our own little function and combine it with `sapply()`, `apply()` or `lapply()` (see below):
+
+```{r}
+# sapply()
+z <- c(1:5)
+sapply(z, function(x) {x*2}) 
+
+# apply()
+Mat 
+apply(Mat, 1, function(x) {sum(x*2)}) #the operation is performed on every row of "Mat"; every element is multiplied by two and the sum of the row is calculated
+```
+
+Besides, we can use `sapply()` for a **list**, for example to calculate the length of every element using `length()`:
+
+```{r lapply for lists}
+List1 <- list(color = c("blue", "red"), size = 5, state = c(TRUE, FALSE, TRUE, TRUE))
+
+sapply(List1, length)
+```
+
+As you can see, this returns a vector with the length of every list element.
+
+However, sometimes it can be useful to keep the results stored in a list. Therefore, we can use `lapply()` instead. Let's have a look at the difference between `sapply()` and `lapply()` using the example from above:
+
+```{r lapply}
+lapply(List1, length)
+```
+
+> Do you understand the difference?
+
+#### For Loops
+
+Besides the apply-family, we can use **for loops** for iterating over a sequence:
+
+```{r For loops}
+x <- c("a", "b", "c")
+
+for (i in x) {
+  print(i)
+}
+
+#or 
+for (i in 1:4) {
+  print(i*3)
+}
+```
+
+### 2 - If Statements
+
+You can use an **if statement** to execute a block of code only, if a condition is TRUE.
+
+```{r If statements}
+a <- 5
+b <- 10
+
+if (a < b) {
+  print("a is smaller than b")
+}
+```
+
+> Modify "a" or "b" and see how the output changes!
+
+We can also add **else if** to this statement. In that case, if the **if** condition is FALSE, the **else if** condition will be tried:
+
+```{r else if}
+a <- 10
+b <- 10
+
+if (a < b) {
+  print("a is smaller than b")
+} else if (a == b) {
+  print("a is equal to b")
+}
+```
+
+Besides, we can add an **else** statement to be executed when all previous conditions are not TRUE.
+
+```{r else}
+a <- 10
+b <- 5
+
+if (a < b) {
+  print("a is smaller than b")
+} else if (a == b) {
+  print("a is equal to b")
+} else {
+  print("a is greater than b")
+}
+
+```
+
+> Do you understand how this works? What would happen if a = 10 and b = 10? Try it!
+
+There is also a more compact way if you want to test only one condition: the `ifelse()` function.\
+The syntax of this function is:\
+`ifelse(test, return values when the test is TRUE, return values when FALSE)`.
+
+```{r Ifelse}
+a <- 5
+b <- 10
+
+ifelse(a < b, "a is smaller than b", "a is greater or equal to b")
+```
+
+### 3 - Subset selection
+
+#### which
+
+The `which()` function can be very useful if you want to select elements by a specific condition. `which()` returns the **positions** of all elements that satisfy this condition.
+
+```{r Which}
+a <- c(3, 5, 10, 4, 2, 6, 7, 2)
+
+which(a < 5) # returns the positions of the elements smaller than 5
+
+# To get the values of these elements instead of their position, we can do the following:
+a[which(a < 5)]
+```
+
+> Do you understand the difference between `which(a < 5)` and `a[which(a < 5)]`?
+
+#### %in%
+
+We can use `%in%` to check which elements of a first vector are inside a second vector:
+
+```{r in}
+x <- c("a", "h", "f", "b", "d") 
+y <- c("a", "b", "c", "d")
+
+x %in% y
+```
+
+> What would happen if you swap "x" and "y"? Try it!
+
+We can also combine `which` and `%in%`:
+
+```{r which and in}
+which(x %in% y) #to get the position of elements of x that are in y
+
+x[which(x %in% y)] #to get the values of x that are in y 
+```
+
+### Exercises
+
+#### Exercise 1
+
+1.  Use `apply()` to calculate the mean values of each **row** of the matrix "M" with the `mean()` function.
+
+2.  How would you calculate the mean for every **column**?
+
+3.  Use `which()` to determine the positions of all elements that are positive (\>0). Can you determine the values of these elements instead of their position?
+
+```{r Exercise 1}
+M <- matrix(rnorm(20), nrow = 5) #built a matrix containing 20 random numbers 
+```
+
+```{r Exercise 1 Solution}
+# SOLUTION
+
+```
+
+#### Exercise 2
+
+1.  Can you complete this **if statement**, so that if "a" is greater than zero, "a is positive" is printed, and otherwise "a is negative" is printed?
+
+2.  Can you add an **else if** statement to print "a is zero" if "a" equals zero?
+
+3.  Try different values for "a" to check if your code works.
+
+```{r Exercise 2, eval = FALSE}
+a <- 3
+
+if () {
+  
+} else {
+  
+}
+```
+
+```{r Exercise 2 Solution}
+# SOLUTION
+
+```
+
+#### Exercise 3 *(expert)*
+
+1.  *(expert)* Can you combine `sapply()` and `ifelse()` to return the square root of the vector elements of "y", if their value is greater than zero, and to return zero otherwise?\
+    *Hint*: Write your own function within the `sapply()` loop. Use `sqrt()` to calculate the square root.
+
+```{r Exercise 3}
+y <- c(1, 3, -5, 4, -10)
+```
+
+```{r Exercise 3 Solution}
+#SOLUTION
+
+```

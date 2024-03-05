@@ -1,0 +1,5 @@
+"0","ggplot(msleep,                    "
+"0","       aes(x = log(bodywt),            # column to use for x-axis"
+"0","           y = sleep_total,            # column to use for y-axis"
+"0","           colour = vore)) +           # column used for colour"
+"0","  geom_point() "

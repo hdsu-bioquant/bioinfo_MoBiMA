@@ -1,0 +1,480 @@
+---
+title: 'Exercise Sheet 06: hypothesis testing'
+author: "Carl Herrmann, Maïwen Caudron-Herger"
+date: "`r Sys.Date()`"
+output:
+  pdf_document: default
+  html_document: default
+editor_options:
+  markdown:
+    wrap: sentence
+---
+
+```{r knitr_init, echo=FALSE, cache=FALSE}
+library(knitr)
+library(rmdformats)
+## Global options
+options(max.print="120")
+opts_chunk$set(echo=TRUE,
+	             cache=TRUE,
+               prompt=FALSE,
+               tidy=TRUE,
+               comment=NA,
+               message=FALSE,
+               warning=FALSE)
+opts_knit$set(width=120)
+opts_knit$set(root.dir  = "~/")
+```
+
+# 0. Recap of the previous sheet
+
+In the last two exercises sheets you learnt about different major types of probability distributions like Normal, Binomial, Negative binomial, Student t etc.
+You have also gained practical experience with the central limit theorem and the confidence intervals.
+
+------------------------------------------------------------------------
+
+# 1. Introduction and objectives
+
+In this exercises sheet you will start to see how to *formulate hypotheses* and how to *test* them.
+We want to learn how to use and interpret hypothesis tests.
+We will mainly focus on tests on **mean values**.
+
+------------------------------------------------------------------------
+
+# 2. First statistical test
+
+We will work again with the diabetes dataset that we used previously.
+
+```{r}
+dat = read.delim('https://tinyurl.com/y4fark9g')
+
+# set the row names using the column id
+rownames(dat) = dat$id
+```
+
+Check out the content of the dataset using the summary function
+
+```{r}
+summary(dat)
+```
+
+We could at first check how the weight values are distributed between males vs. females
+
+```{r}
+# Identify the rows corresponding to males and females
+rows.men = which(dat$gender=='male')
+rows.women = which(dat$gender=='female')
+
+# Select the weight values accordingly
+weight.men = dat$weight[rows.men]
+weight.women = dat$weight[rows.women]
+
+# Visualize the distributions as histograms
+hist(weight.men, col = rgb(red = 0,green = 0.5,blue = 1,alpha = 0.9), breaks = 15, main = "Histogram of weight", xlab = "Weight", probability = TRUE);hist(weight.women, col = rgb(red = 1,green = 0.5,blue = 0.1,alpha = 0.6), breaks = 15, add = TRUE, probability = TRUE);legend("topright", legend = c("men","women"), lty=c(1,1), lwd = 2, col=c("blue","orange"))
+```
+
+Now we could add the position of the means on the histogram
+
+```{r}
+mean.men <- mean(weight.men, na.rm = TRUE)
+mean.women <- mean(weight.women, na.rm = TRUE)
+#
+hist(weight.men, col = rgb(red = 0,green = 0.5,blue = 1,alpha = 0.9), breaks = 15, main = "Histogram of weight", xlab = "Weight", probability = TRUE);hist(weight.women, col = rgb(red = 1,green = 0.5,blue = 0.1,alpha = 0.6), breaks = 15, add = TRUE, probability = TRUE);abline(v=c(mean.men,mean.women),lty=c(3,3),col=c("blue","orange"),lwd = 3);legend("topright", legend = c("men","women"), lty=c(1,1), lwd = 2, col=c("blue","orange"))
+```
+
+> Do you think that the mean of the male weight is lower than 180?
+> Do you think that the mean of the female weight is different from the mean of the male weights?
+> Do you think that the mean of the male weight is higher than that of the females?
+
+------------------------------------------------------------------------
+
+Now, we want to use a statistical test to check if,
+
+-   males have a mean weight that is **significantly** lower than a specific value (one-sample, one-tailed test)
+-   there is a **significant** difference in the mean of the weights between the two groups (two-sample, two-sided test)
+-   male have a **significantly** higher mean weight than females (two-sample, one-sided test)
+
+Note the use of the word **significant** in the previous statements!
+
+This is exactly what **mean tests** such as the t-test (or the Wilcoxon test) are designed for!
+We will perform here a **t-test**.
+
+### One sample t-test
+
+Using a one-sample t-test, we can check if values differ significantly from a target value.
+For example, you could sample 10 chocolate bars, and test if they significantly differ from the expected weight of 100 g:
+
+> Should we perform a one- or two-sided test?
+
+```{r}
+bars = c(103,103,97,102.5,100.5,103,101.3,99.5,101,104) # weights of 10 chocolate bars
+chocbar.mean = 100 # expected weight
+```
+
+The function `t.test()` offers three **alternative** options: *two.sided*, *less* and *greater*.
+Here, if we want to test whether the mean weight of the 10 chocolate bars is **different** from the expected weight of 100 g, we want to perform a *two sided* test and use the alternative *two.sided*.
+
+It is essential to **clearly formulate the H0 and H1 hypothesis**.
+There are two alternative but equivalent ways to do so.
+Either:
+
+\> H0: the expectation value of the random variable "Weight of a chocolate bar" is **equal** to 100 g.\
+
+\> H1: the expectation value of the random variable "Weight of a chocolate bar" is **different** from 100 g.
+
+or
+
+\> H0: the mean weight of a chocolate bar is not significantly different from 100 g.\
+
+\> H1: the mean weight of a chocolate bar is significantly different from 100 g.
+
+Note the difference between these two formulations, and ask for help if you have questions about this!
+
+```{r}
+t.test(x = bars, mu = chocbar.mean, alternative = "two.sided")
+
+# equivalent to:
+# t.test(bars,mu = chocbar.mean)
+# "alternative" is set to "two.sided" per default.
+
+# x is a vector containing the data values
+# mu indicates the true value of the mean (here: 100g)
+```
+
+> How would you interpret this result?
+> Can you reject the H0 hypothesis?
+
+Using alpha = 0.05, the H0 hypothesis can not be rejected as the p-value is 0.05244 (p-value \>= 0.05).
+With alpha = 0.05, the mean weight of the chocolate bars is not significantly different from 100 g.
+
+Using alpha = 0.1, the H0 hypothesis can be rejected (p-value \< 0.1).
+With alpha = 0.1, the mean weight of the chocolate bars is significantly different from 100 g.
+
+**BUT** ... It does not mean that alpha should be chosen with respect to the results of the t.test!!!
+
+Before running a t.test, **formulate the null hypothesis H0 and the alternative hypothesis H1** and **decide about the alpha** value.
+Remember, **alpha** represent the **false positive rate**: under the H0 hypothesis (test of two identical distributions), this is the proportion of tests that will detect a difference between the two groups (p-value \< alpha).
+
+**Beware not to get confused between one-/two-sample tests, and one-/two-sided tests!**
+
+Regarding the mean weight of the males, we would like to check whether males have a mean weight that is significantly **lower** than 180.
+Here as well, we will perform a **one-sample test**, with mu = 180.
+However, we will perform a **one-sided** test using the alternative option **less**.
+
+The hypotheses can be formulated as:\
+\> H0: the expectation value of the random variable "Weight of male patients" is **equal or greater** 180.\
+
+\> H1: the expectation value of the random variable "Weight of male patients" is **less** than 180.
+
+```{r}
+t.test(weight.men, mu = 180, alternative = "less")
+```
+
+> How would you interpret the result with alpha = 0.05?
+> Can you reject the H0 hypothesis?
+
+### Two-sample t-test (2-sided)
+
+Now, we will compare the mean of the weights between males and females.\
+
+According to the previous histogram, females have a different mean weight as males.
+This can be tested using a *two-sample and two.tailed* t.test.
+
+```{r}
+hist(weight.men, col = rgb(red = 0,green = 0.5,blue = 1,alpha = 0.9), breaks = 15, main = "Histogram of weight", xlab = "Weight", probability = TRUE);hist(weight.women, col = rgb(red = 1,green = 0.5,blue = 0.1,alpha = 0.6), breaks = 15, add = TRUE, probability = TRUE);abline(v=c(mean.men,mean.women),lty=c(3,3),col=c("blue","darkorange"),lwd = 3);legend("topright", legend = c("men","women"), lty=c(1,1), lwd = 2, col=c("blue","orange"))
+```
+
+The hypotheses can be formulated as:\
+\> H0: the expectation value of the random variable "Weight of male patients" is **equal** to the expectation value of the random variable "Weight of female patients".\
+
+\> H1: the expectation value of the random variable "Weight of male patients" is **different** from the expectation value of the random variable "Weight of female patients".
+
+```{r}
+t.test(weight.men, weight.women)
+# remember, alternative = "two.sided" per default.
+```
+
+> How would you interpret the result with alpha = 0.05?
+> Can you reject the H0 hypothesis?
+
+### Two-sample t-test (1-sided)
+
+Looking at the histogram, other observers could in principle see a difference between the mean values of the weights and formulate the following hypotheses:
+
+\> H0: the expectation value of the random variable "Weight of male patients" is **equal or lower** to the expectation value of the random variable "Weight of female patients".\
+
+\> H1: the expectation value of the random variable "Weight of male patients" is **higher** than the expectation value of the random variable "Weight of female patients".
+
+```{r}
+t.test(weight.men,weight.women, alternative = "greater")
+```
+
+> How would you interpret the result with alpha = 0.05?
+
+> Can you explain why the p-value of the one-tailed t.test is lower than the p-value of the two-tailed t.test?
+> What is the relation between these two values?
+
+```{r}
+# p-value of the two-sided t-test versus p-value of the one-sided t-test: 
+t.test(weight.men,weight.women, alternative = "two.sided")$p.value # two-tailed
+t.test(weight.men,weight.women, alternative = "greater")$p.value # one-tailed
+# divide the one by the other and see ... 
+```
+
+This can be visualized using the t-distribution.
+Here (see above result of the t.test), *t = 1.8453* and *df = 372.45*.
+
+In the **one-tailed t.test**, the p-value is the area under the curve for t \> 1.8453 (alternative greater) **OR** for t \< -1.8453 (alternative less).
+
+```{r}
+# No need to understand this code - just look at the graph and shaded areas.
+x = seq(-5,5,by=0.01)
+y = dt(x,df=372.45)
+z = dt(seq(1.84,5,0.01),df=372.45)
+plot(x,y,type='l',lwd=3);abline(v = 1.8453, lwd=2,col='blue',lty=3);polygon(c(x[x>=1.84], max(x), 1.84), c(y[x>=1.84], 0, 0), col = rgb(0.78, 0.3, 1, alpha = 0.8))
+```
+
+In the **two-tailed t.test**, the p-value is the area under the curve for t \> 1.8453 (alternative greater) **AND** for t \< -1.8453 (alternative less).
+It is two times the p-value of the one-sided t.test!
+
+```{r}
+# No need to understand this code - just look at the graph and shaded areas.
+x = seq(-5,5,by=0.01)
+y = dt(x,df=372.45)
+plot(x,y,type='l',lwd=3);abline(v = c(-1.8453,1.8453), lwd=2,col='blue',lty=3);polygon(c(x[x>=1.84], max(x), 1.84), c(y[x>=1.84], 0, 0), col = rgb(0.78, 0.3, 1, alpha = 0.8));polygon(c(min(x),x[x<=-1.84], min(x)), c(y[x<=-1.84], 0, 0), col = rgb(0.78, 0.3, 1, alpha = 0.8))
+```
+
+IMPORTANTLY, a t-test can only be performed if the data is **normally distributed**!
+We haven't check that yet for our dataset ... This is the topic of the section **going further** below.
+
+------------------------------------------------------------------------
+
+### Exercise 1
+
+Consider the following graph, formulate the hypotheses H0 and H1 and perform a (one-sided) t-test.
+Interpret the result using alpha = 0.05.
+
+```{r}
+hist(dat$height[rows.men], col = rgb(red = 0,green = 0.5,blue = 1,alpha = 0.9), breaks = 20, main = "Histogram of height", xlab = "Height", probability = TRUE);
+hist(dat$height[rows.women], col = rgb(red = 1,green = 0.5,blue = 0.1,alpha = 0.6), breaks = 20, add = TRUE, probability = TRUE);
+abline(v=c(mean(dat$height[rows.men], na.rm =TRUE),mean(dat$height[rows.women],na.rm = TRUE)),
+       lty=c(3,3),col=c("blue","darkorange"),lwd = 3);
+legend("topright", legend = c("men","women"), lty=c(1,1), lwd = 2, col=c("blue","orange"))
+```
+
+------------------------------------------------------------------------
+
+### Exercise 2
+
+1.  Calculate the mean age of the men.
+2.  Compare it to age = 50. Formulate the hypotheses H0 and H1 and perform a (one-sided) t-test. Interpret the result using alpha = 0.05.
+
+------------------------------------------------------------------------
+
+### Exercice 3
+
+Can you find interesting differences in the mean values of parameters of the dataset **dat** for the two groups defined by the **location**?
+Follow these steps:
+
+1.  Select the two groups according to the location.
+To do so, check the result of `unique(dat$location)` and create two vectors that  contain the corresponding row indexes of "dat".
+
+2.  Calculate the mean values of the numerical parameters for each group (ex: age, height, weight, waist, hip, ...).
+*Hint*: create first a dataframe with numeric columns only (subset the current data frame "dat" using c(2,3,4,5,6,8,10,11,13,14,17,18)).
+Select the rows corresponding to the two groups and use an `sapply()` loop to calculate the mean values for each.
+
+3.  Select one of these, formulate the H0 and H1 hypotheses and perform a (two-sided) t-test.
+Interpret the result (alpha = 0.05).
+
+## ------------------------------------------------------------------------
+
+# 3. Going further ... Checking the normality of the distribution
+
+In principle, t-tests require that the data is approximately normally distributed.
+If not, we can use **non-parametric** tests (see next lecture).
+
+In order to check whether the data is normally distributed or not, it is possible to perform a **Shapiro-Wilk** normality test (see lecture).
+This statistical test is implemented in R in the function `shapiro.test()`.
+
+Let's have a look at the normality of the parameters in our diabetes dataset.
+
+First, we perform a Shapiro-Wilk test on the *weight* after using a QQ-plot.
+
+```{r}
+# Check the normality of the distribution using a QQ-plot (Reminder)
+qqnorm(dat$weight,main="weight"); qqline(dat$weight)
+#
+# Perform a Shapiro-Wilk test
+shapiro.test(dat$weight)
+# extract the p-value
+shapiro.test(dat$weight)$p.value
+# Reminder: for p-value >= 0.05, the data is normally distributed. For p-value < 0.05, the data is not normally distributed.
+```
+
+With a p-value \< 0.05, the data is NOT normally distributed!
+
+We want to determine whether one of our numerical parameters is normally distributed:
+
+```{r}
+num.dat <- dat[,c(2,3,4,5,6,8,10,11,13,14,17,18)] #create a dataframe containing only numeric columns
+sapply(num.dat,shapiro.test) # apply the Shapiro-Wilk test on every column of "num.dat"
+```
+
+Apparently, none of the parameters is normally distributed.
+For the purpose of the training, we will continue with "bp.1d" that does not look too bad ...
+
+Here, with a QQ-plot:
+
+```{r}
+qqnorm(dat$bp.1d,main="Blood pressure"); qqline(dat$bp.1d)
+```
+
+Now, we can perform a test on this parameters, using the male and female groups.
+Considering the boxplots as seen below, we formulate the following hypotheses:
+
+\> H0: the bp.1d mean value of the men group is not significantly different from the pb.1d mean value of the women group.\
+
+\> H1: the bp.1d mean value of the men group is significantly different from the pb.1d mean value of the women group.
+
+```{r}
+boxplot(list(dat$bp.1d[rows.men],dat$bp.1d[rows.women]),main="bp.1d values", names = c("men","women"))
+```
+
+Accordingly, we perform a two-sample t.test (two-sided).
+The result will be interpreted using alpha = 0.05.
+
+```{r}
+t.test(dat$bp.1d[rows.men],dat$bp.1d[rows.women], alternative = "two.sided")
+
+# The observed t-statistics is:
+t.obs = t.test(dat$bp.1d[rows.men],dat$bp.1d[rows.women], alternative = "two.sided")$statistic
+```
+
+With alpha = 0.05, the H0 hypothesis cannot be rejected!
+
+------------------------------------------------------------------------
+
+## 4. Extra insight: building the H0 distribution
+
+The `t-test` is based on a theoretical distribution under the H0 hypothesis.
+We can however try to build this H0 distribution empirically, using a sampling approach.
+
+Let's compute the t-value for *bp.1d* for 2 **randomly chosen** groups within the cohort.
+The rationale here: there is not reason why between 2 random groups, there should be a significant difference, right?
+
+We create 2 **random** groups of patients, each one having the size of the *men* / *women* group
+
+```{r}
+# Sample random rows (according to the size of the male group)
+i.randomMen = sample(1:nrow(dat),length(rows.men))
+#
+# Compute the t-test between the 2 random groups and get the t-value
+t.h0=t.test(dat$bp.1d[i.randomMen],
+            dat$bp.1d[-i.randomMen])$statistic
+t.h0
+```
+
+> Repeat this several times to get various t-values over various random groups.
+
+We can repeat this 10000 times over 10000 random splits of the cohorts:
+
+```{r}
+t.values = sapply(1:10000,function(i) {
+  # random columns 
+  i.randomMen = sample(1:nrow(dat),length(rows.men))
+  #
+  # get t-value between the 2 random groups
+  t.test(dat$bp.1d[i.randomMen],
+            dat$bp.1d[-i.randomMen])$statistic
+})
+#
+# Plot the histogram
+hist(t.values)
+```
+
+This distribution approximates the $H_0$ distribution of the test statistics.
+
+> What does the distribution look like??
+
+We can compute the mean and standard deviation of the t.values and plot a qq-plot: 
+
+```{r}
+mean(t.values)
+sd(t.values)
+qqnorm(t.values);qqline(t.values)
+```
+
+This is a **standard normal distribution** (actually, a t-distribution with degrees of freedom (df) equal to the number of patients -2)!\
+
+> Do you remember why -2?
+
+We can overlay the **empirical** $H_0$ distribution that we have just determined with the **theoretical** $H_0$ distribution, which is a t-distribution with `nrow(dat)-2` degrees of freedom.
+
+```{r}
+x = seq(-5,5,by=0.1)
+y = dt(x,df=nrow(dat)-2)
+hist(t.values,freq=FALSE);lines(x,y,type='l',col= 'red',lwd=3)
+```
+
+> Pretty close, no?
+
+## Computing the p-value
+
+We can place the value of the observed t-statistics ("t.obs", see above) between the **real** men and women subgroups on this histogram:
+
+```{r}
+hist(t.values,xlim=c(-5,5));abline(v=t.obs,lty=3,lwd=4,col='red');abline(v=-t.obs,lty=3,lwd=1,col='red3')
+```
+
+Since we are performing a **2-sided** t-test here (remember the $H_0$ hypothesis formulation!), we have to check what the probability is to get **more extreme** t-values under $H_0$.
+
+We can check in how many of these 10000 random splits we get a t-value that is more extreme than the observed, hence : lower than -abs(t.obs) or larger than abs(t.obs).
+We then normalize this number to the 10000 random splits to obtain the p-value: 
+
+```{r}
+p.value = sum(t.values < -abs(t.obs) | t.values > abs(t.obs))/length(t.values)
+p.value
+```
+
+Instead of using the *empirical* $H_0$ distribution, we can use the *theoretical* distribution (t-distribution):
+
+```{r}
+## Degrees of freedom df
+df = nrow(dat)-2
+##
+## this would be the one-sided p-value for the upper tail test (the probability of observing a t-value > t.obs)
+pt(t.obs, df = df, lower.tail=FALSE)
+##
+## this is the two-sided p-value
+2*pt(t.obs, df = df, lower.tail=FALSE)
+```
+
+Finally, we can compare these computed p-value with the p-value returned by the function `t.test`:
+
+```{r}
+t.test(dat$bp.1d[rows.men],dat$bp.1d[rows.women])
+# You can extract the p-value using $p.value
+t.test(dat$bp.1d[rows.men],dat$bp.1d[rows.women])$p.value
+```
+
+> It is pretty close, right?
+
+One additional consideration: for large values of df (degree of freedom), the t-distribution is equivalent to the standard normal distribution N(0,1).
+
+```{r}
+x = seq(-4,4,by=0.1)
+y = dt(x,df=nrow(dat)-2)  # built the t-distribution 
+z = dnorm(x)  # built the standard normal distribution
+
+#compare both distributions: 
+plot(x,y,type="l",col= 'blue',lwd=3, main = "t vs. norm for large df");lines(x,z,lty=4,col= 'red',lwd=2);legend("topright",legend=c("t","norm"),lty=c(1,4), lwd = 2, col=c("blue","red"))
+```
+
+Appreciate the comparison below:
+
+```{r}
+# p-value based on the t-distribution
+2*pt(t.obs, df = df, lower.tail=FALSE)
+# p-value based on the standard normal distribution
+2*pnorm(t.obs, lower.tail=FALSE)
+```

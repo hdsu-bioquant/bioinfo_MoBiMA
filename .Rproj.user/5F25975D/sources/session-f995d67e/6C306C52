@@ -3,7 +3,7 @@
     "path": "~/Documents/Tasks/dataanalysis_SS24/index.Rmd",
     "project_path": "index.Rmd",
     "type": "r_markdown",
-    "hash": "0",
+    "hash": "1671154609",
     "contents": "",
     "dirty": false,
     "created": 1709573236976.0,
@@ -12,15 +12,16 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "16,0",
-        "scrollLine": "2"
+        "cursorPosition": "583,106",
+        "scrollLine": "552",
+        "docOutlineVisible": "1"
     },
     "folds": "",
-    "lastKnownWriteTime": 1709577517,
+    "lastKnownWriteTime": 1709650287,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1709577517034,
+    "last_content_update": 1709650287289,
     "read_only": false,
     "read_only_alternatives": []
 }

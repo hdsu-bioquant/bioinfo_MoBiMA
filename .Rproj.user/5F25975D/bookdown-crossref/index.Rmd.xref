@@ -2,21 +2,31 @@ h1:introduction Introduction
 h2:where-to-start Where to start
 h3:installing-r-and-rstudio Installing R and RStudio
 h3:courses Courses
-h2:r R
-h3:rstudio RStudio
+h2:good-practice Good practice
+h2:r-markdown R Markdown
+h2:r-basics R Basics
 h3:variable-assignment-in-r Variable assignment in R
 h3:classes Classes
 h3:logical-operations Logical operations
 h3:vectors Vectors
 h3:matrixes Matrixes
 h3:dataframes Dataframes
-h2:r-markdown R Markdown
-h2:advanced-data-manipulation-with-tidyverse Advanced data manipulation with tidyverse
+h3:apply-sapply-lapply Apply, sapply, lapply
+h3:for-loops For Loops
+h3:if-statements If Statements
+h2:data-wrangling-with-tidyverse Data wrangling with tidyverse
+h3:introducing-tidyverse Introducing tidyverse
 h3:filter-based-on-conditions Filter based on conditions
 h3:select-specific-columns Select specific columns
 h3:operations-on-groups Operations on groups
-h2:pretty-plots-using-ggplot2 Pretty plots using ggplot2
-h3:histogram Histogram
+h3:reshaping-data Reshaping data
+h2:plotting-using-ggplot2 Plotting using ggplot2
 h3:scatter-plot Scatter plot
+h3:histogram Histogram
 h3:boxplot Boxplot
+h2:common-errors Common errors
+h2:introductory-exercises Introductory exercises
+h3:exercise-1-vectors Exercise 1: Vectors
+h3:exercise-2-matrices Exercise 2: Matrices
+h3:exercise-3-data-frames Exercise 3: Data Frames
 

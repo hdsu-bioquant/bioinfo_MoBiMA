@@ -1,0 +1,7 @@
+"0","decision = c(""Decision: Reject H0"", ""Decision: Do not reject H0"")"
+"0","h0_true = c(""Type I Error"", ""Correct Decision"")"
+"0","h0_false = c(""Correct Decision"", ""Type II Error"")"
+"0",""
+"0","knitr::kable(data.frame(decision,"
+"0","                        h0_true,"
+"0","                        h0_false), col.names = c("""", ""H0 is true"", ""H0 is false"") )"

@@ -1,0 +1,559 @@
+---
+title: "Basic_Data_Structure_in_R"
+author: "Dr. Maïwen Caudron-Herger, Prof. Dr. Carl Herrmann"
+output: html_document
+date: "2023-09-27"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R and R Markdown
+
+R is a powerful programming language for the analysis of data. It is recommended that you take the introductory classes for R in **DataCamp** to get to know this language before you start coding here. In this course you will learn to use RStudio, a software that allows you to use R in a very user-friendly way.
+
+This is a R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com> or <https://www.markdownguide.org/basic-syntax/>.
+
+When you click the **Knit** button, a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.\
+Try it out now!
+
+### 1 - Where to get help?
+
+> -   R Tutorial for Beginners at [guru99](https://www.guru99.com/r-tutorial.html)
+> -   R courses at [Babraham Bioinformatics](https://www.bioinformatics.babraham.ac.uk/training.html#advancedrtidy)
+> -   R for [Data Science](https://r4ds.had.co.nz)
+> -   R markdown at [RStudio](https://rmarkdown.rstudio.com/lesson-1.html) and in this [cheatsheet](https://www.markdownguide.org/cheat-sheet/)
+
+### 2 - First steps in programming
+
+We will work with RStudio that is composed of 4 main windows/panels.\
+The **Editor**, the **Console**, the **Environment** and the **Files** window/panel.
+
+#### 2.1 The Console
+
+The **Console** is where you type commands that you want to execute immediately and don't need to save. For example, if you want to import a data set or visualize a matrix you can type the respective commands in. To execute those commands press enter.
+
+> Type 3 + 4 in the Console and press enter. Can you see that this code was executed immediately? Try something else!
+
+#### 2.2 The Source
+
+The **Source** is the panel for long codes that you are working on and that you want to save. To create a new file, go to the left top corner and click on the `New File` icon with a plus on a green circle and select for example `R Markdown`.\
+
+In markdown,\
+Two \*\* are used for **bold**\
+One \* is used for *Italic*
+
+#### 2.3 First instructions:
+
+R instructions in a markdown file are written in a "chunk", as seen here below.\
+Chunks can be added using the `+C` icon at the top right corner of this panel/editor.\
+There is also a keyboard shortcut for it.
+
+```{r Print Hello World!}
+# Sentences written after "#" are comments. Comments are ignored during the execution of the code.
+# print "Hello world!" on the screen.
+print("Hello world!")
+```
+
+In the Markdown file, you can see the results of the command directly below the "r chunk". Importantly, you can name your chunks.\
+It is useful to provide different names for the chunks to keep your markdown organized.
+
+So, what has been done here?\
+We used the function `print()` with the instruction of printing a "string", which is a sequence of "characters".
+
+> What happens in the editor if you remove the second parenthesis? Do you see the red cross appearing? You can click on it and read the comment.\
+> And what happens if you press "enter" while the second parenthesis is missing?\
+
+Usually, `""` and `()` appear both at the same time if you are creating your script in the RStudio editor.\
+This is very useful and avoid errors due to missing brackets etc ...
+
+Instruction are saved the history of the RStudio session (see "History").\
+Using the **up** and **down** arrows, you can navigate through this history directly in the RStudio Console and recall a previous instruction.
+
+We can load the string "Hello World!" into a so-called variable using an instruction called **assignment**. An assignment does not return anything in the console. It is just done.
+
+```{r Assigments}
+a <- "Hello world!"
+# or
+hello <- "Hello world!"
+print(a)	             
+print(hello)	         
+```
+
+Note that the two variables (a and hello) are listed in the "Environment" window of RStudio.
+
+Note: variable assignments in R can be done using either the `<-` symbol, or the `=` symbol:
+
+```{r Assignments-2}
+# these 2 commands are equivalent
+a <- 2
+a = 2
+```
+
+**Important!!!**\
+R is case sensitive. `hello` is a known variable, but `Hello` not!\
+Typing `Hello` will result in an error message:
+
+```{r Case sensitivity, eval= FALSE}
+Hello	                # Error: object 'Hello' not found
+```
+
+We can also use R as a calculator to perform mathematical operations, e.g. basic addition and multiplication:
+
+```{r Mathematical operations}
+x <- 5
+y <- 3
+Sum <- x+y
+Sum*5
+```
+
+It is possible to delete a variable by using the function `rm()`. This function needs to be used with a lot of care!!!
+
+```{r Removing variables}
+rm(a)
+```
+
+"a" disappeared from the environment also called workspace. hello is still listed.
+
+The function `ls()` can also give you the list of variables or objects in your workspace/environment.
+
+```{r Listing variables}
+ls()	                 
+```
+
+It can be helpful to save all the variables from the environment so that they can be re-used in ulterior sessions.\
+For that, check first what is your working directory:\
+Files -\> More -\> Go To Working Directory\
+If it is not the correct one, navigate to the directory of your choice and set it as working directory:\
+Files -\> More -\> Set As Working Directory\
+
+You can now save the environment using the save icon under the Environment panel.\
+This is saved as a .RData file.\
+You can give it a specific name if you wish, e.g. MyEnvironment.RData\
+After RStudio was closed, it is possible to load this environment by using the function `load()`.
+
+```{r Loading data, eval = FALSE}
+load("MyEnvironment.RData")
+```
+
+## Basic Data Structures in R
+
+Let's explore how data is organized and displayed in R!\
+First, we will introduce the basic concepts and at the end, you will find exercises related to each topic for you to practice on your own.
+
+### 1 - Simple variables
+
+As you have already seen, values can be assigned to variables. For the assignment, `<-` and `=` are equivalent:
+
+```{r Assignment}
+a <- 2
+b <- TRUE
+#or 
+b = TRUE
+name = 'Rosalinde'
+```
+
+The function `str()` gives you the structure of the variable.
+
+```{r Variable structures}
+str(name)
+```
+
+where chr stands for character and not for chromosomes!\
+
+We can perform tests on simple variables using the `==`, `>`,`<` operators:
+
+```{r Tests}
+name == 'rosalinde'
+name == 'Rosalinde'
+a > 5
+```
+
+### 2 - Vectors
+
+The function `c()` combines vectors of length 1 into longer vectors. The number of elements in a vector can be determined with `length()`.
+
+```{r Assigning vectors}
+x <- 9
+length(x)	            # [1] 1   -> x is a vector of length 1
+
+y <- c(x, 3, 7, 2)
+length(y)	            # [1] 4   -> y is a vector of length 4
+```
+
+Vectors can be made of numbers, strings and characters or logicals (TRUE, FALSE, NA = not available). Remember that `str()` can be used to display its structure.
+
+```{r Vector structures}
+u <- c("a", "b", "abc")
+str(u)	                          # chr [1:3] "a" "b" "abc"   -> u is a vector made of characters/strings
+
+v <- c(TRUE, FALSE, TRUE, TRUE)
+str(v)	                          # logi [1:4] TRUE FALSE TRUE TRUE   -> v is a vector made of logicals
+```
+
+Note the difference between logical and string:
+
+```{r}
+w <- c("TRUE", "FALSE", "TRUE", "TRUE")
+str(w)	                          # chr [1:4] "TRUE" "FALSE" "TRUE" "TRUE"
+```
+
+When the data types are mixed, all elements of the vector are converted into the **lowest** type:
+
+```{r Vectors of mixed data types }
+str(TRUE)	                        # logi TRUE
+str("FALSE")	                    # chr "FALSE"
+str(3)	                          # num 3
+str(1+0i)	                        # cplx 1+0i
+
+w <- c(TRUE, "FALSE", 3, 1+0i)
+str(w)  	                        # chr [1:4] "TRUE" "FALSE" "3" "1+0i"   
+                                  # all elements are converted to characters/strings
+```
+
+You can select elements of a vector. Therefore, the name of the vector is followed by brackets `[]` including the index of the element:
+
+```{r Selecting vector elements}
+y <- c(9, 3, 7, 2)
+
+y[3]	                    # [1] 7   -> select the third element of the vector y 
+y[2:4]	                  # [1] 3 7 2   -> select elements 2 to 4 
+#or 
+y[c(2,3,4)]               # [1] 3 7 2   -> select elements 2,3 and 4
+y[4:2]	                  # [1] 2 7 3   -> select element 4 to 2
+y[-2]                     # [1] 9 7 2   -> select all elements except the second
+y[y < 5]                  # [1] 3 2   -> select all elements of y with value < 5
+```
+
+We can also perform **tests** on elements of a vector.\
+These tests will be applied for each element:
+
+```{r Tests on vector elements}
+x <- c(1,4,3,7)
+x < 4
+values <- c('high','high','low','high')
+values == 'high'
+
+eval <- (values == 'high')
+sum(eval)
+```
+
+> Can you explain/understand why `sum(eval)` returns 3?
+
+You can modify elements in a vector:
+
+```{r Modifying elements in vectors}
+y <- c(9, 3, 7, 2) 	      # [1] 9  3  7  2
+
+y[1] <- 10                # modify the first element
+y	                        # [1] 10  3  7  2
+                          
+y[] <- 8                  # modify all elements
+y	                        # [1] 8 8 8 8
+
+y <- 8                    # assign the value 8 to the variable y
+y	                        # [1] 8
+```
+
+> Can you explain the difference between `y[1]` and `y <- y[1]`?
+
+### 3 - Matrices
+
+A matrix is a two-dimensional **array** of numbers. They are defined using the `matrix()` function as follows:
+
+```{r Defining matrices}
+x <- c(1, 2, 3, 4, 5, 6)
+
+X <- matrix(data = x, nrow = 2, ncol = 3, byrow = TRUE)
+X
+
+X <- matrix(data = x, nrow = 2, ncol = 3, byrow = FALSE)
+X
+```
+
+> Do you understand all parameters ("nrow", "ncol", "byrow") of the `matrix()` function? What happens if you do not specify "byrow" as TRUE or FALSE?
+
+> If you need further information on a specific function, you can type `help(xxx)` or `?xxx` in the Console, e.g. help(matrix) or ?matrix.
+
+You can ask for the **dimension** of a matrix (and see later also for data frames) using the function `dim()`.
+
+```{r Dimension of a matrix}
+dim(X)     # [1] 2 3 -> two rows, 3 columns
+```
+
+To access the elements of a matrix, it is similar to the vector but with 2 indexes:
+
+```{r Accessing Matrices}
+X[1, 2]	                    # [1] 3  -> element in the first row and second column
+                            
+X[1:2, 1]	                  # [1] 1 2	
+
+X[2, ]	                    # [1] 2 4 6	 -> all elements of the second row
+                            
+length(X[1:2, 1])	          # [1] 2  -> X[1:2, 1] is a vector of length 2
+```
+
+It is possible to remain in 2 dimensions, when setting the parameter **drop = FALSE**.
+
+```{r }
+X[1:2, 1, drop = FALSE]
+
+dim(X[1:2, 1, drop = FALSE])    # [1] 2 1 -> 2 rows, 1 column
+```
+
+We can also build a matrix by joining multiple column-vectors using `cbind()`:
+
+```{r building matrices using cbind}
+# create 3 vectors of 5 numbers each
+x = c(1:5)
+y = c(6:10)
+z = c(11:15)
+
+# now join these 3 columns into a matrix
+A = cbind(x,y,z)
+A
+```
+
+> What happens if you use `rbind()` instead of `cbind()`? Try it!
+
+We can give column/row names to the matrix A:
+
+```{r Row/Colum names of a matrix}
+A
+rownames(A) = letters[1:5]
+colnames(A) = c('patient1','patient2', 'patient3')
+A
+```
+
+To open a new bar in the window above displaying the matrix, you can use the function `View()`:
+
+```{r View, eval = FALSE}
+View(A)
+```
+
+### 4 - Lists
+
+**Lists** are very flexible structures and can contain **various types of elements**.\
+Elements of a list can be named, which can be helpful. We can build a list using the `list()` function:
+
+```{r Building lists}
+List1 <- list(color = c("blue", "red"), size = 5, state = TRUE) 
+# -> create a list with three elements: color, size and state
+
+List1
+```
+
+We can access the elements of this list using the `$` sign or brackets `[[]]` and their name:
+
+```{r Accessing named lists}
+
+List1$color                  
+List1[["color"]]             
+length(List1[["color"]])      # This is of length = 2
+
+# but 
+List1["color"]              
+length(List1["color"])        # This is of length = 1
+```
+
+> Can you explain the difference between `List1["color"]` and `List1[["color"]]`?
+
+> What would happen if you type `List1["color"][2]`? Try it!
+
+How does it look for a list without named elements?
+
+```{r Accessing unnamed lists}
+List2 <- list(c("blue", "red"), 5, TRUE)
+List2
+
+List2[1]	                  # First element of List2
+
+List2[[1]]	                # Content of the first element of List2
+
+List2[[1]][2]	              # Second position of the first element of List2
+```
+
+How to remove an element from a list?
+
+```{r}
+List2[[3]] <- NULL
+```
+
+### 5 - Dataframes
+
+Data frames are like matrices, but they can contain **multiple types** of values mixed.\
+We can create a data frame using the `data.frame()` function. We can also convert a matrix into a data frame with `as.data.frame()`.
+
+We can prepare three vectors of the same length (for example 4 elements) and create a data frame:
+
+```{r}
+Name <- c("Ben", "Alice", "Daniel", "Charlie")
+Year <- c(1990, 1992, 1995, 1993)
+Option <- c("Biology","Physics", "Chemistry", "Mathematics")
+
+Students <- data.frame(First_Name = Name, Year = Year, Options = Option)
+Students
+```
+
+Data frames can be indexed similar to lists and matrices:
+
+```{r Acessing elements of a data frame}
+
+Students$Year           # [1] 1990 1992 1995 1993  -> select the column "Year"
+#or
+Students[["Year"]]
+#or 
+Students[, 2]
+
+Students$Options[3]     # [1] Chemistry   -> access element 3 of the column "Options"
+
+Students[2:3, 3]        # [1] Physics   Chemistry  -> select elements 2 and 3 of column 3 
+```
+
+There are important differences between data frames and matrices!\
+We can create a matrix "Mat" and convert it to a data frame "Df":
+
+```{r Differences data frames and matrices}
+m <- c(1:20)
+Mat = matrix(data = m, nrow = 4, ncol = 5)
+Df = as.data.frame(Mat)
+
+# Now, execute the following:
+Mat[2,3]
+Df[2,3]
+
+Mat[4]
+Df[4]
+```
+
+> Do you see and understand the difference?
+
+Data frames can be **merged**.\
+For example, create a second data frame ("Full_Names"), with partial information from the "Students" data frame, and merge these two data frames:
+
+```{r}
+Full_Names <- data.frame(First_Name = c("Alice","Ben","Daniel"),
+                         Last_Name = c("Parker","James","Brown"))
+
+merge(Students, Full_Names)
+```
+
+By defaults, "all" is set to FALSE and only elements with entries in both data frames are merged. Can you see the difference when setting "all" to TRUE?
+
+```{r}
+merge(Students, Full_Names, all=TRUE)
+Students <- merge(Students, Full_Names, all=TRUE)
+```
+
+Remember that help on the function `merge()` can be obtained with `?merge` or `help(merge)`.
+
+## Exercises
+
+### Exercise 1
+
+#### Vectors
+
+1.  Create a vector named "test_scores" containing the test scores 75, 90, 65, 68 and 83 of students.
+
+2.  Create a vector "passing" that contains TRUE for test scores above 70 and FALSE for scores equal or below 70. *Hint*: Remember that you can perform tests on vector elements.\
+    Use `sum()` to check how many students passed the test.
+
+3.  *(expert)* Can you create a vector "high_scores" that contains only scores above 70, using the results obtained in 1. and 2.?
+
+```{r Exercise 1 Solution}
+# SOLUTION
+
+```
+
+### Exercise 2
+
+#### Matrices
+
+1.  Create a matrix that looks like this:
+
+```{r}
+#      [,1] [,2] [,3]
+# [1,]    2    4    6
+# [2,]    8    10   12
+# [3,]    3    5    7
+# [4,]    2    9    11
+```
+
+2.  Select different parts of the matrix, for example:
+
+    -   the element of the second row and first column
+    -   the second and third element of the second column
+    -   all elements of the last column
+    -   Try something else!
+
+3.  Add a new column to the matrix using `cbind()`.
+
+4.  Can you name the columns of the matrix as "A", "B", "C" and "D" using `colnames()`?
+
+```{r Exercise 2 Solution}
+# SOLUTION
+
+```
+
+### Exercise 3
+
+#### Lists
+
+1.  Create a list with a first element of length 1, a second element of length 3 and a third element of length 5.
+
+2.  Name the elements of the list using `names()`.
+
+3.  How would you access the content of the third element of the list?
+
+4.  How would you access the 4th position of the third element of your list?
+
+5.  Add a second position to the first element of your list.
+
+6.  *(expert)* How would you remove the second position from the last element of the list? *Hint:* Replace the element by itself (knowing it is a vector) without the position you want to remove.
+
+```{r Exercise 3 Solution}
+# SOLUTION
+
+```
+
+### Exercise 4
+
+#### Data Frames
+
+1.  Create a data frame from these vectors, with three columns and five rows:
+
+```{r Exercise 4 Data frames}
+Product_name <- c("orange", "strawberry", "broccoli", "blueberry", "cucumber")
+Fruit <- c(TRUE, TRUE, FALSE, TRUE, FALSE)
+Color <- c("orange", "red", "green", "blue", "green")
+```
+
+2.  Select the column "Fruit". How many Fruits are there? *Hint*: Remember the function `sum()`.
+
+3.  Add a column named "Berry" containing TRUE (for products that are berries) or FALSE to the data frame.
+
+```{r Exercise 4 Solution}
+# SOLUTION
+
+```
+
+## Summary Section
+
+### What have we learned today?
+
+> -   Introduction to R Markdown
+> -   Where can I get help?
+> -   Introduction to RStudio and R
+> -   Assignment instruction
+> -   Delete a variable
+> -   Load RData file
+> -   Data structure in R
+> -   Vectors
+> -   Matrices
+> -   Lists
+> -   Data frames
+
+## Going Further
+
+So far, you have leaned about R markdowns and basic data structures in R. To learn more about data manipulation, you can now open the file **"00_Advanced_Data_Manipulation_in_R.Rmd"**, in which more complex concepts are discussed.

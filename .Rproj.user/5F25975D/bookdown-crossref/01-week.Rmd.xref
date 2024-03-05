@@ -21,8 +21,8 @@ h4:measuring-the-centrality-in-data Measuring the centrality in data
 h4:association-between-variables Association between variables
 h3:exercises EXERCISES
 h4:exercise-1-data-features Exercise 1: Data features
-h4:exercise-2-visualization Exercise 2: Visualization
-h4:exercise-3-correlation Exercise 3: Correlation
+h4:exercise-2-visualization-and-correlation Exercise 2: Visualization and correlation
+h4:going-further-expert Going further 
 h2:day-2-dimensionality-reduction-and-unsupervised-learning Day 2: Dimensionality reduction and unsupervised learning
 h3:preparing-the-data Preparing the data
 h4:load-data Load data
@@ -39,7 +39,7 @@ h3:exercises-1 EXERCISES
 h4:exercise-1-variance Exercise 1: Variance
 h4:exercise-2-hierarchical-clustering Exercise 2: Hierarchical clustering
 h4:exercise-3-pca Exercise 3: PCA
-h4:going-further-expert Going further 
+h4:going-further-expert-1 Going further 
 h2:day-3-probability-distributions Day 3: Probability distributions
 h3:probability-distributions Probability distributions
 h4:getting-to-know-the-various-functions Getting to know the various functions
@@ -56,20 +56,23 @@ h4:binomial-distribution Binomial distribution
 h3:confidence-interval Confidence interval
 h3:exercises-2 EXERCISES
 h4:exercise-1-probability-distributions Exercise 1: Probability distributions
-h4:exercise-2-binomial-distribution Exercise 2: Binomial distribution
-h4:exercise-3-confidence-intervals Exercise 3: Confidence intervals
+h4:exercise-2-confidence-intervals Exercise 2: Confidence intervals
 h2:day-4-hypothesis-testing Day 4: Hypothesis testing
+h3:tests-of-mean Tests of mean
 h4:one-sample-t-test One sample t-test
 h4:two-sample-t-test-2-sided Two-sample t-test (2-sided)
 h4:two-sample-t-test-1-sided Two-sample t-test (1-sided)
-h3:wilcoxon-test Wilcoxon test
-h3:chi-squared-test Chi-squared test
-h3:fishers-exact-test Fisher’s exact test
+h4:wilcoxon-test Wilcoxon test
+h3:proportion-tests Proportion tests
 h3:exercises-3 EXERCISES
 h4:exercise-1-one-sided-t-test Exercise 1: One-sided t-test
 h4:exercice-2-two-sided-t-test Exercice 2: Two-sided t-test
-h4:exercise-3.-going-further-checking-the-normality-of-the-distribution Exercise 3. Going further … Checking the normality of the distribution
+h4:exercise-3-mean-and-proportion-testing Exercise 3: Mean and proportion testing
+h4:going-further-checking-the-normality-of-the-distribution Going further: Checking the normality of the distribution
 h2:day-5-multiple-testing-and-regression Day 5: Multiple testing and regression
 h3:multiple-testing Multiple testing
+h4:example Example
 h3:regression Regression
+h4:univariate-linear-regression Univariate linear regression
+h4:multiple-regression-model Multiple regression model
 

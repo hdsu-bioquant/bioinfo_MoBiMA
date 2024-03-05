@@ -1,0 +1,6 @@
+"0","library(tidyr)"
+"0",""
+"0","cat.weights %>% "
+"0","  gather(key = Time, # column name given to the gathered column names"
+"0","         value = Weight, # column name will be given to the values"
+"0","         month0:month1) # columns to gather"
