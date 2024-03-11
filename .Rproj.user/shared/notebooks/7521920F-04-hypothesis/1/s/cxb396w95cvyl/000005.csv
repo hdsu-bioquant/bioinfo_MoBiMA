@@ -1,4 +1,0 @@
-"0","ggplot(dat,"
-"0","       aes(x = weight, "
-"0","           fill = gender)) +"
-"0","  geom_density(alpha = 0.5)"

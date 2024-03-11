@@ -1,3 +1,0 @@
-"0","dat %>%"
-"0","  mutate(weight.kg = weight * 0.454,     # you can generate both columns using the same mutate!"
-"0","         height.cm = height * 2.54)      # we do not need to save this output"

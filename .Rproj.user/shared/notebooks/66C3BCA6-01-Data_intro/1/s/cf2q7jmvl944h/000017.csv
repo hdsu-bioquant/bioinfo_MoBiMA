@@ -1,2 +1,0 @@
-"0","dat = as_tibble(read.delim('https://tinyurl.com/y4fark9g')) # Load the dataset"
-"0","head(dat, 10) # Look at the first 10 lines of the table"

@@ -1,4 +1,0 @@
-"0","all.aml = read.delim('http://bioinfo.ipmb.uni-heidelberg.de/crg/datascience3fs/practicals/data/all.aml.cleaned.csv',"
-"0","                     header=TRUE)"
-"0","all.aml.anno = read.delim(""http://bioinfo.ipmb.uni-heidelberg.de/crg/datascience3fs/practicals/data/all.aml.anno.cleaned.csv"","
-"0","                          header=TRUE)"

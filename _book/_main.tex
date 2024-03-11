@@ -120,7 +120,7 @@
 
 \title{Bioinformatics introductory course - MSc Molekulare Biotechnologie}
 \author{Biomedical Genomics group, IPMB}
-\date{2024-03-05}
+\date{2024-03-08}
 
 \begin{document}
 \maketitle
@@ -471,13 +471,13 @@ Let's have a look at an example to make this more clear: We want to determine th
 \end{Shaded}
 
 \begin{verbatim}
-##             [,1]       [,2]        [,3]        [,4]       [,5]
-## [1,] -0.35540006  1.0332554 -0.08856817  1.61572865  0.2585365
-## [2,] -0.81188025  1.4377580  2.20858978 -0.84004281  1.1225805
-## [3,]  1.56857875  0.8962906 -0.76405712 -0.12124060 -0.7569839
-## [4,]  0.05826474  1.9501928 -0.34311255  0.14951068 -0.8639842
-## [5,]  2.12254765 -1.8216548  0.71063565 -0.04350672  1.4641572
-## [6,] -2.15644214  0.5437988  1.95700765 -1.28370715 -0.9250494
+##             [,1]       [,2]       [,3]       [,4]       [,5]
+## [1,] -0.01717019  0.7904048 -1.0540196 -0.1155468 -0.3635641
+## [2,] -0.79584321 -0.0564459 -1.3910610  0.3885920 -0.7193797
+## [3,] -1.20239735  0.3533934  0.5076568  0.4778238  1.1226064
+## [4,] -1.89539617 -2.0225933 -2.1087770  0.6968434 -1.1808026
+## [5,] -0.66961373 -0.5858592 -0.4415526 -0.1048805 -0.2336867
+## [6,]  2.59661088 -0.9515506 -2.7056620  0.1290163  0.9302387
 \end{verbatim}
 
 \begin{Shaded}
@@ -488,7 +488,7 @@ Let's have a look at an example to make this more clear: We want to determine th
 \end{Shaded}
 
 \begin{verbatim}
-## [1] -0.3554001 -0.8400428 -0.7640571 -0.8639842 -1.8216548 -2.1564421
+## [1] -1.0540196 -1.3910610 -1.2023974 -2.1087770 -0.6696137 -2.7056620
 \end{verbatim}
 
 \begin{quote}
@@ -540,13 +540,13 @@ Instead of using built-in functions, we can also write our own little function a
 \end{Shaded}
 
 \begin{verbatim}
-##             [,1]       [,2]        [,3]        [,4]       [,5]
-## [1,] -0.35540006  1.0332554 -0.08856817  1.61572865  0.2585365
-## [2,] -0.81188025  1.4377580  2.20858978 -0.84004281  1.1225805
-## [3,]  1.56857875  0.8962906 -0.76405712 -0.12124060 -0.7569839
-## [4,]  0.05826474  1.9501928 -0.34311255  0.14951068 -0.8639842
-## [5,]  2.12254765 -1.8216548  0.71063565 -0.04350672  1.4641572
-## [6,] -2.15644214  0.5437988  1.95700765 -1.28370715 -0.9250494
+##             [,1]       [,2]       [,3]       [,4]       [,5]
+## [1,] -0.01717019  0.7904048 -1.0540196 -0.1155468 -0.3635641
+## [2,] -0.79584321 -0.0564459 -1.3910610  0.3885920 -0.7193797
+## [3,] -1.20239735  0.3533934  0.5076568  0.4778238  1.1226064
+## [4,] -1.89539617 -2.0225933 -2.1087770  0.6968434 -1.1808026
+## [5,] -0.66961373 -0.5858592 -0.4415526 -0.1048805 -0.2336867
+## [6,]  2.59661088 -0.9515506 -2.7056620  0.1290163  0.9302387
 \end{verbatim}
 
 \begin{Shaded}
@@ -556,7 +556,8 @@ Instead of using built-in functions, we can also write our own little function a
 \end{Shaded}
 
 \begin{verbatim}
-## [1]  4.927105  6.234010  1.645176  1.901743  4.864358 -3.728784
+## [1]  -1.519791901  -5.148275755   2.518166149 -13.021451251  -4.071185661
+## [6]  -0.002693558
 \end{verbatim}
 
 Besides, we can use \texttt{sapply()} for a \textbf{list}, for example to calculate the length of every element using \texttt{length()}:
@@ -3344,7 +3345,7 @@ Finally, we determine whether each sample mean is found within the 95\% CI or no
 
 Here, the orange/grey bars represent the confidence interval, the dot is the mean of the sample values, and the dotted line at \texttt{\textbackslash{}lambda} represents the true expectation value. Whenever the true expectation value is within the CI, the bar is orange, if not, the bar is grey. How often is the true expectation value outside the CI? Count the grey bars!
 
-It happens 8 times, which fits pretty well with the expected 5\%.
+It happens 10 times, which fits pretty well with the expected 5\%.
 
 \begin{quote}
 Repeat this simulation, but now with samples of \(N=24\) (again 100 times)\\
@@ -4863,9 +4864,7 @@ Tips to ensure you catch errors early on:
 
 New chapter titles and subtitles are defined from \texttt{\#} (larger title as in 1.) to \texttt{\#\#\#\#} (smaller title as in 1.1.1.1). Further formatting can be found \href{https://bookdown.org/yihui/rmarkdown-cookbook/formatting.html}{here}.
 
-Numerical equations and special characters have their own formatting. For example:
-\texttt{\$\textbackslash{}sqrt\{13\}\$} is square-root of 13
-\texttt{\$\textbackslash{}alpha=0.05\$} is alpha=0.05
+Numerical equations and special characters have their own formatting. For example: \texttt{\$\textbackslash{}sqrt\{13\}\$} is square-root of 13 \texttt{\$\textbackslash{}alpha=0.05\$} is alpha=0.05
 
 Here is an equation:
 
@@ -4873,8 +4872,13 @@ Here is an equation:
 \begin{equation} 
   f\left(k\right) = \binom{n}{k} p^k\left(1-p\right)^{n-k}
   \label{eq:binom}
-\end{equation} 
+\end{equation}
 \end{verbatim}
+
+\begin{equation} 
+  f\left(k\right) = \binom{n}{k} p^k\left(1-p\right)^{n-k}
+  \label{eq:binom}
+\end{equation}
 
 You may refer to this equation using \texttt{\textbackslash{}@ref(eq:binom)}.
 
@@ -4886,8 +4890,7 @@ You can use \texttt{\textbackslash{}newpage} to create new pages and \texttt{\te
 \hypertarget{chunk-options}{%
 \section{Chunk options}\label{chunk-options}}
 
-There are a multitude of options to display the R chunks and their outputs. See all of them \href{https://bookdown.org/yihui/rmarkdown-cookbook/chunk-options.html}{here}.
-The ones will will most likely use are:
+There are a multitude of options to display the R chunks and their outputs. See all of them \href{https://bookdown.org/yihui/rmarkdown-cookbook/chunk-options.html}{here}. The ones will will most likely use are:
 
 \begin{itemize}
 \tightlist
@@ -4912,15 +4915,13 @@ Some of the ones below control figure placement and size:
 \item
   \texttt{fig.align=\textquotesingle{}center\textquotesingle{}}
 \item
-  \texttt{out.width}
-  Extra: \texttt{results=\textquotesingle{}hold\textquotesingle{},\ out.width=\textquotesingle{}50\%\textquotesingle{}}: will allow you to show 2 figure/plot outputs side by side.
+  \texttt{out.width} Extra: \texttt{results=\textquotesingle{}hold\textquotesingle{},\ out.width=\textquotesingle{}50\%\textquotesingle{}}: will allow you to show 2 figure/plot outputs side by side.
 \end{itemize}
 
 \hypertarget{external-images}{%
 \section{External images}\label{external-images}}
 
-When including external images, you need to indicate the location of such figure relative to your document:
-\texttt{!{[}This\ is\ a\ Figure{]}(figure\_folder/avocado\_image.jpeg)}
+When including external images, you need to indicate the location of such figure relative to your document: \texttt{!{[}This\ is\ a\ Figure{]}(figure\_folder/avocado\_image.jpeg)}
 
 \begin{figure}
 \centering

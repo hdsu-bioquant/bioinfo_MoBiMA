@@ -1,13 +1,20 @@
 Welcome! 
 
-This is a minimal example of a book based on R Markdown and **bookdown** (https://github.com/rstudio/bookdown). 
+This is a book based on R Markdown and **bookdown** (https://github.com/rstudio/bookdown) for the Bioinformatics introductory course of the MSc Molekulare Biotechnologie (Universität Heidelberg). 
 
-This template provides a skeleton file structure that you can edit to create your book. 
-
-The contents inside the .Rmd files provide some pointers to help you get started, but feel free to also delete the content in each file and start fresh.
-
-Additional resources:
+Additional resources/cookbooks for bookdown:
 
 The **bookdown** book: https://bookdown.org/yihui/bookdown/
 
 The **bookdown** package reference site: https://pkgs.rstudio.com/bookdown
+
+
+## How to build book here
+
+1. After cloning, open the Rproject `dataanalysis_SS24.Rproj` and edit the file or files. 
+
+2. Push without building *if you did not finish your whole section*!
+
+3. When finished with your section, go to the Build window and click directly in **Build book**. This will produce all outputs in one go. 
+
+4. Push the built book with a commit message indicative that the book was built. Avoid conflicts by making sure that you are building the most updated version of the book. It's unclear if GitHub is able to handle conflicts post-build given some of the files we will be producing. 

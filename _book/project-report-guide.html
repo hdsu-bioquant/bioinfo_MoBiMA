@@ -23,7 +23,7 @@
 <meta name="author" content="Biomedical Genomics group, IPMB" />
 
 
-<meta name="date" content="2024-03-05" />
+<meta name="date" content="2024-03-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -279,14 +279,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="formatting" class="section level2 hasAnchor" number="3.2">
 <h2><span class="header-section-number">3.2</span> Formatting<a href="project-report-guide.html#formatting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>New chapter titles and subtitles are defined from <code>#</code> (larger title as in 1.) to <code>####</code> (smaller title as in 1.1.1.1). Further formatting can be found <a href="https://bookdown.org/yihui/rmarkdown-cookbook/formatting.html">here</a>.</p>
-<p>Numerical equations and special characters have their own formatting. For example:
-<code>$\sqrt{13}$</code> is square-root of 13
-<code>$\alpha=0.05$</code> is alpha=0.05</p>
+<p>Numerical equations and special characters have their own formatting. For example: <code>$\sqrt{13}$</code> is square-root of 13 <code>$\alpha=0.05$</code> is alpha=0.05</p>
 <p>Here is an equation:</p>
 <pre><code>\begin{equation} 
   f\left(k\right) = \binom{n}{k} p^k\left(1-p\right)^{n-k}
   (\#eq:binom)
-\end{equation} </code></pre>
+\end{equation}</code></pre>
+<p><span class="math display" id="eq:binom">\[\begin{equation}
+  f\left(k\right) = \binom{n}{k} p^k\left(1-p\right)^{n-k}
+  \tag{3.1}
+\end{equation}\]</span></p>
 <p>You may refer to this equation using <code>\@ref(eq:binom)</code>.</p>
 <div id="new-pages-and-paragraphs" class="section level3 hasAnchor" number="3.2.1">
 <h3><span class="header-section-number">3.2.1</span> New pages and paragraphs<a href="project-report-guide.html#new-pages-and-paragraphs" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -295,8 +297,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="chunk-options" class="section level2 hasAnchor" number="3.3">
 <h2><span class="header-section-number">3.3</span> Chunk options<a href="project-report-guide.html#chunk-options" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>There are a multitude of options to display the R chunks and their outputs. See all of them <a href="https://bookdown.org/yihui/rmarkdown-cookbook/chunk-options.html">here</a>.
-The ones will will most likely use are:</p>
+<p>There are a multitude of options to display the R chunks and their outputs. See all of them <a href="https://bookdown.org/yihui/rmarkdown-cookbook/chunk-options.html">here</a>. The ones will will most likely use are:</p>
 <ul>
 <li><code>echo=FALSE</code>: hides the code but not the results</li>
 <li><code>results='hide'</code>: hides the results but not the code</li>
@@ -308,14 +309,12 @@ The ones will will most likely use are:</p>
 <li><code>fig.height</code></li>
 <li><code>fig.width</code></li>
 <li><code>fig.align='center'</code></li>
-<li><code>out.width</code>
-Extra: <code>results='hold', out.width='50%'</code>: will allow you to show 2 figure/plot outputs side by side.</li>
+<li><code>out.width</code> Extra: <code>results='hold', out.width='50%'</code>: will allow you to show 2 figure/plot outputs side by side.</li>
 </ul>
 </div>
 <div id="external-images" class="section level2 hasAnchor" number="3.4">
 <h2><span class="header-section-number">3.4</span> External images<a href="project-report-guide.html#external-images" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>When including external images, you need to indicate the location of such figure relative to your document:
-<code>![This is a Figure](figure_folder/avocado_image.jpeg)</code></p>
+<p>When including external images, you need to indicate the location of such figure relative to your document: <code>![This is a Figure](figure_folder/avocado_image.jpeg)</code></p>
 <div class="float">
 <img src="figures/vangogh.jpeg" alt="This is a Figure. Source: https://www.metmuseum.org/de/art/collection/search/436535" />
 <div class="figcaption">This is a Figure. Source: <a href="https://www.metmuseum.org/de/art/collection/search/436535" class="uri">https://www.metmuseum.org/de/art/collection/search/436535</a></div>

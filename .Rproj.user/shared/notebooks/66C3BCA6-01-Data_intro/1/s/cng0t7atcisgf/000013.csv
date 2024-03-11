@@ -1,3 +1,0 @@
-"0","dat = dat %>%"
-"0","  rowwise() %>%"
-"0","  mutate(na_count = sum(is.na(across(everything()))))"

@@ -1,3 +1,4 @@
+eq:binom
 tab:nice-tab
 week-one
 day-1-descriptive-statistics-and-data-types

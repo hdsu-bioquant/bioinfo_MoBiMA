@@ -4,6 +4,7 @@
 
 ## Day 4: Data formats and where to find them
 
+ 
 ## Day 5: RNA-seq - from FASTQ to count matrix
 
 
