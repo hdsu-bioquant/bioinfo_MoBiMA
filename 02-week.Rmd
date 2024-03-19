@@ -4,7 +4,180 @@
 
 ## Day 4: Data formats and where to find them
 
- 
+Today we will go through commonly used tools and databases applied in genomic research. You will learn how to:
+
+-   Identify common data formats and know how they are produced;\
+-   Search and obtain genomic data from commonly used databases - GEO;\
+-   Handle different data formats used for transcriptomics and epigenomics;\
+-   Visualize genomic data in IGV.
+
+### Meet IGV
+
+Alongside the next sections, you will find some examples of files in IGV Viewer and you will use it in the exercises. Access it [here](https://igv.org/app/). We will work only with the Web app, but IGV provides a local software that is quite versatile too. 
+
+![Menu overview in IGV Viewer (web app). Along this course, you will load local files and ENCODE tracks into IGV Viewer. This can be done in the *Tracks* menu (pink arrow). Genome assembly needs to be adjusted according to the local file you are importing (orange arrow). We will mostly work with hg38 and mm10, the most commonly applied assemblies for human and mouse respectively. In addition, we will import a session from a local file too (green arrow).](figures/IGVintro.png)
+
+Below this menu, you can select genome locations (in the format *chrN:start-end*) and search for genes. 
+
+#### Example 1
+
+Try IGV out using [this session](IGV_sessions/heart_Histones.json). 
+Do you recognize the differences between the different histone modifications? Blue represents active histone modifications (linked to active transcription). H3K27ac is a classical marker of active gene promoters and other open chromatin regions. H3K36me3 is linked with gene bodies.  
+
+Conversely, red represents repressive histone modifications. H3K27me3 and H3K9me3 are both associated with repression/heterochromatin. However, H3K9me3 is meant to be much more permanent, while H3K27me3 is often associated with regions that can be activated in development.
+
+
+> What genome assembly is being used?
+
+> Inspect the HOXD gene cluster (Find it in *chr2:175,992,177-176,263,537*). Based on these signal tracks, do you think this cluster of genes is being expressed in heart?
+
+> Check different genes (eg. BDP1, NPLOC4, PIK3C3) and observed the shape of the H3K27ac (activation) signal at their promoters. 
+
+
+### Identifying formats
+
+Genomic data will generally fit into one of four classes:
+
+-   Nucleotide sequences (like FASTQ);
+-   Read alignments (like BAM files);
+-   Annotations (as in GTF/GFF files);
+-   Quantitative outputs (like count tables, peaks, among others).
+
+Different formats and/or classes will be processed and visualised in different ways because they have distinct features.
+
+Let us start with an example of a **FASTQ file**:
+
+FASTQ files are text-based (as many other sequence classes) and are the **most common format for storage of sequences and quality scores from high-throughput sequencing technologies**. These are large files, so they are generally compressed (extension `.fastq.gz`). When opening a FASTQ file (using `zless` or `less` in the terminal), this what an entry will generally look like:
+
+```         
+@@A00665:126:HTNC2DRXX:1:2101:1136:1047 1:N:0:AGGCAGAA+NTAAGGAG
+GNCCTTACTAGACCAATGGGACTTAAACCCACAAACACTTAGTTAACAGCT
++
+F#:FFFFFFFFF:FFFFFFFFFFFFFFFFFFFFF:FFFFFFFFFFFFF:FF
+```
+
+One FASTQ file contains millions of these entries. Each entry (starting with `@`) is composed of a sequence identifier (in this case, `@A00665:126:HTNC2DRXX ...`), the sequence itself, a separator (in this case, `+`), and the quality scores (Phred +33 encoded) for each base called. Sequence identifiers include information which allows us to know the name of the instrument which produced it, run identifiers, flowcell identifiers, pair number, index sequence, among others.
+
+This example is from paired-end sequencing, meaning that there are two FASTQ files per sample and entries match between them. I.e., `@A00665:126:HTNC2DRXX` will also exist in FASTQ file 2. When the sequencing is single-end, only one FASTQ file is produced per sample.
+
+Upon alignment to the reference genome, the FASTQ generates a BAM file. BAM files are compressed formats of SAM files (stands for **S**equence **A**lignment/**M**ap format), and they represent read alignments to a genomic location. SAM files are tabular-based and include header (which start with `@`) and alignment lines.
+
+![SAM format and the meaning of elements in the alignment lines. Source: <https://www.samformat.info/sam-format-flag>](https://www.samformat.info/images/sam_format_annotated_example.5108a0cd.jpg)
+
+Alignment lines, corresponding to reads, will include different elements as shown above. One of the most important is the **flag**, which includes information on the alignment of a given read. The flag (in red) is just a number but it represents different combinations of read properties as you can see here [here](https://broadinstitute.github.io/picard/explain-flags.html). Flags can be used to remove unmapped read pairs or failing reads from further downstream processing.
+
+> Check in the link above what would the flag 99, 512, and 13 mean in a SAM file.
+
+Because these are large files, it is much more common to see read alignments in BAM format. However, BAM files are not human-readable as FASTQ is. You will visualize a BAM file later on in IGV. This is what it looks like:
+
+![Example of BAM file for a genomic region within the NPLOC4 gene as present in IGV example session. Grey rectangules represent reads.](figures/bamexample.png)
+
+While FASTQ and read alignment formats are generally common between different kinds of assays, the output after alignments depends on the assay. Let us explore different formats and to which assay they are associated to.
+
+#### Where do different formats come from?
+
+![File outputs after alignment for common experiments.](figures/fileformatorigin.png)
+
+Assays meant to assess chromatin accessibility, transcription factors, or histone modifications are typically based in peaks, which are saved in a BED-like format. A BED file is structured as:
+
+```
+chr1	9922	10469	
+chr1	564407	565441	
+chr1	565595	567010	
+chr1	2583259	2588018	
+chr1	2627935	2629661	
+```
+
+In this example, each line is a detected peak at a given location in the genome (indicated as chromosome  start  end). Additional fields (like p-value, log fold change, length, among others) are often included but depend on the software that generated them. 
+
+
+Chromatin accessibility, transcription factors, or histone modifications can also be represented in BigWig/bedGraph format. This formats, which look like summits, represent *signal*. Some assays require a control to distinguish this signal from noise (in ChIP-seq, this is usually refered to as Input). 
+
+Let us see an example of BigWigs and peaks.
+
+#### Example 2
+
+Load the session [here](IGV_sessions/ExampleATAC_ChIP_CTCF_hg38.json) to see an example of how ChIP-seq and ATAC-seq correlate with each other. 
+
+Observe how peaks (rectangles below the coverage tracks) are not always identified for all the "bumps" in the BigWig.
+
+### A practical guide to GEO
+
+[GEO](https://www.ncbi.nlm.nih.gov/gds/), standing for Gene Expression Omnibus is one of the most used repositories for microarray, next-generation sequencing, and other genomic datasets. When publishing a manuscript, authors must upload the sequencing data they produced into a public database to make it accessible to others, and GEO is often the chosen one. For this reason, GEO includes thousands of original submitter-supplied records that can be accessed from any place by anyone. 
+
+We will learn how to search in GEO and how to read a GEO record to obtain specific information. 
+Datasets in GEO can be found directly through a valid GEO accession number. 
+
+#### Using filters and querying
+
+Searching for datasets is not always easy because although some aspects of GEO are common, others are not. Submitters have freedom to adapt descriptions fitting to their specific submission and experiment, but that can make things harder when filtering for datasets.
+
+You can see the global aspect of GEO search here:
+
+![GEO search: On the top, you can write your own query. Left menus indicate filters that are then added to your query. Try it out with different organisms and study types. Attribute types can also be applied. You can see suggested organisms on the right (yellow). Additional filters can also be seen (eg. *Supplementary file* to see only records including BED, WIG, ...).](figures/GEOfilters.png)
+
+The study section is one of the most important, as it indicates what kind of assay was performed and for which goal. For example, you would apply *Expression profiling ...* when looking for transcription data and *Genome binding/occupancy profiling ... * when looking for chromatin accessibility, histone modifications, or transcription factor data. In addition, you can also select the type of assay (*high throughput sequencing*, *array*, *Mass Spec*, ...). 
+
+After this, you are ready to dive into a GEO record. Feel free to open one to see information inside. 
+
+#### GEO records
+
+![This is a GEO record. Appearance and amount of information can widely vary, particularly in summary and overall design (red). Inside each record, you will find multiple samples (green). These include information on any experimental or phenotypic differences (knock-out, wild type, treatments, among others). You will also find information on the processing of the dataset here (features like assembly, software, and other parameters). ](figures/GEOrecord.png)
+
+Oftentimes it can be challenging to find the data you want in the format you need. While uploading data to GEO is a somewhat standardized procedure, looking for processed formats can be tricky. 
+
+At the bottom of each GEO record, you can find the **Supplementary files**. This typically includes a collection (zipped) of all supplementary files (which you can access individually by selecting a single sample). 
+
+
+##### Example 3
+
+In this example, we will explore a GEO record and obtain information about data processing from it. 
+Search for the dataset identified as **GSE205807**. 
+
+> What cell line was this dataset generated from?
+
+> What species and genome assembly is used for alignment?
+
+> What kind of processed files are present in each sample?  
+
+
+### EXERCISES
+
+#### Exercise 1. Finding transcription factor targets using ChIP-seq
+
+ChIP-seq can be used to identify genes regulated by targeted transcription factors. In the example, we will explore a dataset obtained in the human liver cell line HepG2.
+
+1.  Download the set of peaks for the FOS transcription factor from the GEO dataset GSE104247.
+
+1.1. What genome assembly is this dataset aligned to? Apply the necessary changes to see it in IGV. 
+
+1.2. Load the dataset in the IGV web app. Give a couple of examples of genes that are likely regulated by FOS in this cell line.
+
+1.3. Pick a set of peaks obtained in your favorite transcription factor from the same GEO dataset! How is the set of peaks you observed before comparable? 
+
+
+##### Exercise 2. ATAC-seq and DNase-seq comparison
+
+2.1. Load a track in BED and BigWig format from ATAC-seq and DNase-seq obtained in the same cell line using the *Tracks* section from *ENCODE Other* (BED) and *ENCODE Signals - Other* (Tip: There is typically plenty of material included for the A549 cell line). Compare the called peaks and other features from each experiment (peak size, noise, coverage) and discuss the advantages one has over the other.  
+
+2.2 (Optional) Load a *4DN* track on insulation score for your cell line. This is from the 4D Nucleome Data Portal and it is a way to quantify the number of regions interacting within a window. At chromosomal scale, do you see how this correlates (or not) with the ATAC-seq track? What are the regions that present a high insulation score?
+
+##### Exercise 3. Using GEO to look for DNA methylation datasets
+
+3.1. What filters would you apply to look for a dataset of DNA methylation array which includes rhesus macaque (*Macaca mulatta*) and gorilla (*Gorilla gorilla*)? 
+
+3.2. (optional) You want to find multiple transcriptomics datasets from *human tissues* infected with malaria parasites. What filters would you apply? 
+
+
+##### Exercise 4. Going further
+
+Let us see a different type of data - interaction data from ChIA-PET. Re-open the session [here](IGV_sessions/ExampleATAC_ChIP_CTCF_hg38.json) we used for example 2. Then, load a ChIA-PET *loop* track from A549 (genome-wide chromatin interactions mediated by *CTCF*) using **Tracks > ENCODE Other**. 
+
+CTCF is an important element in genome organisation and ChIA-PET is an assay used to measure chromatin interactions mediated by specific factors.
+
+Observe interactions at chromosomal and gene level. What can you conclude from the comparison between ATAC-seq, CTCF ChIP-seq, and ChIA-PET? 
+
+> Is an interaction mediated by CTCF always associated with a CTCF peak? Why? 
+
+
 ## Day 5: RNA-seq - from FASTQ to count matrix
-
-
