@@ -1,6 +1,146 @@
 # WEEK TWO
 
-## Days 1 to 3: Annotathon!
+## Day 1: Annotathon! Identifying ORFs
+
+The Annotathon project aims to give the students the opportunity to learn how to annotate unidentified sequences while helping the scientific community. In this course, the results you will produce will help progress on the discovery of new species or advance knowledge on known ones.
+
+Each group will be affected an unknown sequence of DNA. Your mission, if you accept it, is to analyse this sequence and to gather the maximum of information you can on it.
+
+Which means that there is no already known answer for the questions you will have. Each of you will follow the same bioinformatic process but the results will be uniq to the sequence.
+
+### Getting ready
+
+#### Creating an account
+
+To create you account on https://annotathon.org/, clic on the "*New account*" tab
+![](figures/Annotathon/Annot_create_account.png)
+Follow the instructions to open a new account; make sure you select the appropriate Team
+
+![](figures/Annotathon/Annot_select_affiliation.png)
+And the correct "**Team code**"
+
+**GKBIOINFO2024**
+
+You are required to enter at least one firstname/lastname pair, and one email address in order to receive Annotathon specific notifications. Your email address is secure and will under no circumstance be made public or passed on to any third party. Only low traffic messages specific to your course duration will be mailed to this address; no further messages will be sent after the course is completed.
+
+Finally a clic on "**Open account**" should be followed by the message "**Account 'XYZ' has been created**". Use your 'username' and 'password' and clic "**Connect**" in the form at top of page to open an Annotathon session. You will be reminded that your email address is not validated until you have followed the special link included in an email automatically sent to you at account creation.
+
+#### Reading the doc
+
+To guide you for the Annotathon, you have the document you are reading right now that contains the main informations and guidelines. To go further in details, you can access a complete "**Rule Book**" directly on the website.
+
+![](figures/Annotathon/Annot_access_rulebook.png)
+
+### Getting started
+
+#### Getting the sequence
+
+The first step is to get your sequence. To do that, go to "**Cart**", select the sample and clic "**Add a new sequence to your cart**".
+
+![](figures/Annotathon/Annot_add_sequence_to_cart.png)
+
+You now have your sequence and should be on a page with a lot of informations about your sequence. (This is the new look of your "**Cart**" page)
+
+![](figures/Annotathon/Annot_your_sequence.png)
+
+
+- In this example, GOS_11742010.1 is the name of the sequence i am analysing.
+- In the "**Actions**" section, the eye is to view the state of your annotation, the notebook is to change the annotation
+- the "**version**" is to go back to a previous save of your annotation
+- the "**Message**" section is to send messages to me in case you have questions
+- "**Genomic Sequence**" is to get your actual sequence in a FASTA format
+- ...
+
+#### And now what ??
+
+Well, now it is time to dive into the world of sequence annotation. You will follow a protocol described in the next chapter. For each step you will have to fill a report directly on the website. To start editing the report, clic on the notebook.
+
+![](figures/Annotathon/Annot_edit_report.png)
+
+Every step of the analysis will be written following the same pattern :
+
+Protocol :
+Describe what tool is used, how it is used ...
+
+-----------------------------------------
+Results Analysis:
+your observations
+
+-----------------------------------------
+Raw results:
+output of the tool used
+
+### Finding ORFs
+
+Steps to find the Open Reading Frame (ORF)
+
+#### copy your fasta sequence
+
+![](figures/Annotathon/Annot_copy_sequence.png)
+go to : https://www.ncbi.nlm.nih.gov/orffinder/ 
+
+Paste your sequence and choose the parameters (do not forget to note the selected parameters to your report).
+
+For this study, you will only consider ORFs that verify the following criteria:
+
+1. do not contain any **STOP codons** (basic ORF definition...)
+2. contains at least **60 codons**
+3. can be on either direct or reverse **strands**
+4. can be in **frames 1, 2 or 3** on each strand
+5. can be **complete or incomplete** at the 5' or 3' ends, or both!
+
+![](figures/Annotathon/Annot_ORF_input.png)
+Then clic on submit and you will have your first output for your sequence, congratulations !!
+
+![](figures/Annotathon/Annot_ORF_output.png)
+Now you can gather all of your ORFs sequences into your report (FASTA format) on the Annotathon website (only the ones that are more than 60 aa).
+
+
+This should be your first entry to the annotathon report page, so it is time to talk about one really important thing here to avoid frustration : **REMEMBER TO SAVE YOUR WORK !!!!!!**
+To do that, you clic on the "**save your annotations**" button on the top of the page.
+
+
+Gather informations about all the ORFs in a table like this one :
+
+![](figures/Annotathon/Annot_table1_ORF.png)
+
+then, make a representation of the ORFs on a schematic figure :
+
+![](figures/Annotathon/Annot_figure1_ORF.png)
+
+If you do have multiple ORFs, just arbitrary select the biggest one. If you want more details on this part, you can refer to the rule book, but here we will skip the classification of each ORF part.
+
+You now have one ORF that you will annotate deeply, do remember to keep the sequence of the ORF on your report and to **save your work**.
+
+### Conserved protein domains
+
+Your new mission is now to find if your ORF contains any known domains (comparison to databases)
+go to https://www.ebi.ac.uk/jdispatcher/pfa/iprscan5
+
+![](figures/Annotathon/Annot_protein_domain.png)
+Copy paste your sequence, keep all the databases selected, put a name for the run and clic on submit. After 2 - 5 minutes you will obtain your results. (you need to use the protein sequence here)
+
+Then copy the raw output to your report and make a table with the informations as described here:
+
+![](figures/Annotathon/Annot_table2_prot_domain.png)
+
+then analyse your results following the next guidelines :
+
+**1. Selected domains** (if present)
+    -> Which domains predictions do you select to annotate the ORF? Specifiy their sizes, E-value! Justify your selection!
+    -> Refer clearly to Table 2 for your detailled analysis.
+
+**2. Rejected domains** (if present)
+    -> Why are some functional domains rejected? (high E-value?  No IPR domains?)
+
+Here you have to make choices based on the output of interproscan and other ressources you could find on the internet. Do remember to cite any exterior tool and also to **save your work**.
+
+## Day 2: Annotathon! Alignments
+
+
+
+## Day 3: Annotathon! Phylogenetic trees and conclusion
+
 
 ## Day 4: Data formats and where to find them
 
