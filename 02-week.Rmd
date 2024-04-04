@@ -127,19 +127,188 @@ Then copy the raw output to your report and make a table with the informations a
 then analyse your results following the next guidelines :
 
 **1. Selected domains** (if present)
-    -> Which domains predictions do you select to annotate the ORF? Specifiy their sizes, E-value! Justify your selection!
-    -> Refer clearly to Table 2 for your detailled analysis.
+
+    - Which domains predictions do you select to annotate the ORF? Specifiy their sizes, E-value! Justify your selection!
+    - Refer clearly to Table 2 for your detailled analysis.
 
 **2. Rejected domains** (if present)
-    -> Why are some functional domains rejected? (high E-value?  No IPR domains?)
+
+    - Why are some functional domains rejected? (high E-value?  No IPR domains?)
 
 Here you have to make choices based on the output of interproscan and other ressources you could find on the internet. Do remember to cite any exterior tool and also to **save your work**.
 
 ## Day 2: Annotathon! Alignments
 
+### BLAST homolog search
+
+BLAST is a well known tool to identify homologs of sequences. To use it, first go here :
+https://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastp&PAGE_TYPE=BlastSearch&LINK_LOC=blasthome
+Here, since we already have the protein sequence we will use the BLASTp (protein BLAST).
+
+The BLAST will be done twice, once against the NR database
+
+![](figures/Annotathon/Annot_BLASTp_NR.png)
+and once against the swissprot database (just change the database in the yellow part). Remember to copy the raw results for both and to note the informations to create this table :
+
+![](figures/Annotathon/Annot_table3_BLASTp.png)
+Then, using the raw results and this tool : https://annotathon.org/outils/blast_definition_list.php
+create a definition list.
+
+![](figures/Annotathon/Annot_BLAST_hit_list.png)
+look at your list and merge the similar categories into a table in your results with this format :
+
+![](figures/Annotathon/Annot_table4_BLAST.png)
+Then, take time to discuss your analysis following those guidelines:
+
+**RESULTS ANALYSIS**
+Do not continue the analysis of the fragment if:
+
+- No homologs (or very small number of homologs in NR database, ie <100)
+- Your gene is already present in the NR biological database (nucleotide BLASTn with **ID > 95%**)
+
+_**Proposed structure of your analysis section:**_
+
+**1. Overview of the alignments**
+
+- Synthetic description of your alignment results (number, known functions, quality of the alignments, ...)
+- Give details on E-value range, % identity/similarity range, what about indels, alignment coverage, ....)
+
+**2. Identification of protein homologs**
+
+   - Justify E-value thresholds (NR & SP) (Evalue cutoffs, changes in putative homolog functions), refer to tables 3 & 4.
+
+**3. Function of homologs from SWISSPROT analysis**
+
+   - From SP entries, give details on closest homolog functions, specific role of important amino acids involved in catalytic function, cross your analysis with protein domain analysis. In all cases, cite your sources with web links.
+   
+### BLAST Taxonomic report
+
+Using the output of your BLAST analysis you will now be able to construct a taxonomic report. To do that, go to this website https://annotathon.org/outils/blast_tax_report2.php , and copy your BLAST hits.
+
+![](figures/Annotathon/Annot_Taxonomy_from_BLAST.png)
+Hit the **Taxonomy Report** button. Copy the output to your report. Then, use this second tool : https://annotathon.org/outils/blast_taxonomy_list.php to produce a summary table.
+
+![](figures/Annotathon/Annot_taxonomy_summary_tool.png)
+hit the **Taxa table** button and you will get a summary table like this :
+
+![](figures/Annotathon/Annot_taxonomy_summary.png)
+
+you can change the classification level parameter to have a more precise prediction
+
+### Selecting sequences for multiple alignment
+
+Now, using the previous results, you will create two groups of sequences :
+
+- The study group (20 - 30 sequences) is composed with sequences of the same taxonomic group than your ORF and with a good E-value (the lowest possible).
+
+- The external group (10 - 15 sequences) with the closest homologs outside of the taxonomic group of your ORF (Lowest e-value here too)
+
+keep the amino acide sequences in a FASTA format.
 
 
 ## Day 3: Annotathon! Phylogenetic trees and conclusion
+
+### Multiple alignments
+
+Now that you have your list of sequences you can go to this website to do a multiple sequence alignment : http://www.phylogeny.fr/simple_phylogeny.cgi?workflow_id=b02e40313c3ca8c0e3d4dbc97db10078&tab_index=2
+
+Copy paste your sequences here :
+![](figures/Annotathon/Anno_Multiple_sequence_alignment.png)
+and clic submit.
+
+The limitation in the number of sequences to align is simply due to computation time of multiple alignment programs, as well as subsequent phylogenetic tree reconstruction. Computation time is reasonable up to around thirty or fifty sequences of a few hundred residues.
+
+Copy & paste the **"ClustalW" formated** multiple alignment in the '**Multiple Alignement**' Annotathon field.
+
+![](figures/Annotathon/Annot_Clustal_format.png)
+**RESULTS ANALYSIS:**
+**1. Quality of the multiple alignment**
+
+   - Can you confirm that that sequences are really homologs? Similar lengths? How many identical positions? How many conservative substitutions positions? Number of indels? can you find that the conservation of sequences within alignment reflects the subgroups (In and out groups)? 
+  - After curation with GBLOCKS, what is the number of conserved homolog positions (informative sites) for phylogenetic reconstruction? It is enough? 
+
+**2. Identification of conserved blocks**
+
+  - You can annotate well conserved blocks in your alignment with codes (such as A, B, C etc.) and refer to them in your analysis. 
+  - Are there any conserved amino acids that are known as actives sites for this protein family? If yes, position in alignment, function, activity? 
+
+**3. N and C-termini of the studied ORF**
+
+   - Analysis of the N-ter/C-term of the alignment (complete? start codon? potentially missing number of amino acids in N and C-termini?)
+   
+### Phylogeny
+
+To construct the phylogenic tree :
+Use the previous multiple alignment to infer a phylogenetic tree using two distinct tree reconstruction approaches:
+
+- 'distance' method (e.g. '**neighbor-joining (NJ)**', '**BioNJ**' or '**Phylip protdist/neighbor**')
+- 'maximun likelyhood' method (e.g. '**PhyML)**')
+
+Go to this place : http://www.phylogeny.fr/alacarte.cgi
+
+![](figures/Annotathon/Annot_phylogeny_alacarte.png)
+Once you have the two versions for the report, you can play with the different parameters to see how the results are impacted.
+
+Then use this tool : https://annotathon.org/outils/nw_utils.php
+to create a tree to the format expected for your report. (copy the NEWICK format of your tree and paste it in the box)
+
+![](figures/Annotathon/Annot_newick_to_annot_tree.png)
+
+Your result should look like this :
+![](figures/Annotathon/Annot_newick_example.png)
+
+Copy & paste the **textual** tree representation in the '**Tree**' Annotathon field. Remember to include a protocol line in the '**Tree**' field that includes the program name and run parameters (ex 'Phylip / Protdist+neighbor / Randomized input - Random number seed = 11 / rooted on: Coccidioides immitis (ascomycetes)').
+
+**Suggested plan for the analysis section:
+
+**1. Tree topologies**
+
+    - Describe the topology of each tree. What are the monophyletic groups?
+    - Do the two independant trees describe the same evolutionary history? the same topology? Similar or different clades? 
+    - Identify the commonalities as well as the potential incoherencies.
+
+**2. Coherence with reference trees**
+
+	- Are the in- and out-groups correctly separated?
+	- Are your gene trees coherent with the reference species trees ("tree of life")? 
+	- Identify each discrepancy with the reference species tree, and suggest some explanations (HGTs, gene duplications...).
+
+**3. Predict the most likely taxonomic origin of the metagenomic ORF**
+
+    - In which monophyletic clade does the the metagenomic sequence seem to emerge?
+    - Propose a hypothetical taxonomic classification for the metagenomic ORF!
+    - Provide detailed justification of your hypothesis, do not under/over interpret the infered phylogenetic trees!
+
+
+After you have analysed the phylogenetic tree produced, specify the most likely taxonomic group (e.g. "Alphaproteobacteria") to which belongs the organism carrying your DNA fragment. To specify this group in the '**Taxonomy**' Annotathon field you have two options:
+
+- specify in the '**NCBI numerical identifier**' box the taxonomic group code (for instance 204455 for _Rhodobacterales_, these codes are found in GENBANK records in the feature table, such as /db_xref="taxon:204455" or can be found by querying the NCBI taxonomy database using the link in the Help tab)
+- specify the exact scientific name for this group in the '**Scientific name**' box (e.g. _Rhodobacterales_)
+
+
+### Conclusion
+
+Write up your interpretations and hypotheses based on the observations you have made in the preceeding "RESULTS ANALYSES". Imagine you are trying to convince a very sceptical colleague: use rigorous argumentation, cite precise evidence and numerical values when ever possible, highlight important findings, cross information from independent sources. Remember that in silico analyses generally do not constitute final proof, only suggestions. Terms such as "putative", "suggests" or "probably" can show understanding of the limitations of computational biology results.
+Make sure you have at least covered:
+
+-   arguments supporting your coding versus non-coding hypothesis; make sure you discuss the start position of your ORF (refer to the FAQ for all the subtlities and pitfalls)!
+-   functionnal predictions for the protein, both at the biochemical level (e.g. "ubiquitin conjugation enzyme"), and the biological role at the organism level (e.g. "implicated in the control of the cell cycle"). Make careful use of annotations available for sequence homologs or conserved domains
+-   your taxonomic classification hypothesis for the organism carrying this DNA fragment.
+
+Some common pitfalls to avoid at all cost:
+
+-   explain the theoretical aims and methodology of the tools used (please consider the readers knowledgable in these matters)
+-   describe on which button you clicked (please consider that readers are highly familiar with running BLASTs)
+-   write in telegraphic style
+-   dilute, inflate, digress in the hope that evaluation is proportional to word volume
+-   copy raw results in extenso in the discussion when the reader has direct access to them in the appropriate fields
+-   write linearly without any structure, or purely chronologically
+-   insulate the analyses from each other (you can, and certainly should, make reference to the multiple alignment while discussing the ORF boundaries)
+-   conclude without references to the results and observations
+-   propose hypotheses without providing the supporting evidence
+-   make approximate statements, such as citing BLAST homologs or conserved domains without citing their respective E-values
+
+Concentrate on producing a scientific, structured, synthetic and rigorous argumentation that will hold up to peer scrutiny!
 
 
 ## Day 4: Data formats and where to find them
