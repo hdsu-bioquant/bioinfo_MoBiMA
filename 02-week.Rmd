@@ -491,14 +491,15 @@ Observe interactions at chromosomal and gene level. What can you conclude from t
 
 ## Day 5: RNA-seq - from FASTQ to count matrix
 
-Today we will analyze the RNA sequencing data. We will start with the sequence files in the fastq format, align them to the reference genome and quantify the gene expression. You can find the workflow below
+Today we will analyze the RNA sequencing data. We will start with the sequence files in the fastq format, align them to the reference genome and quantify the gene expression. You can find the workflow below.
 
-![Workflow for the RNA-seq analysis. ](figures/workflow.png)
+![Workflow for the RNA-seq analysis](figures/workflow.png)
+
 
 
 ### Quality control
 
-We first retrieve the raw data and employ a software tool named fastqc to examine the quality of the sequence files.
+We first retrieve the raw data and employ a software tool named `fastqc` to examine the quality of the sequence files.
 
 ```{command data download}
 # Download the SARS-CoV2 Reference genome & genomic annotation 
@@ -512,29 +513,41 @@ curl -L ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR125/077/ERR12537377/ERR12537377_1.
 curl -L ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR125/077/ERR12537377/ERR12537377_2.fastq.gz -o V2_R2.fastq.gz
 ```
 
-We next examine the quality of the samples with fastqc. In particular, we will look at the (1) per base quality, and (2) per sequence quality
+We next examine the quality of the samples with `fastqc`. In particular, we will look at the (1) per base quality, and (2) per sequence quality.
+
 ![Per base quality from the fastqc report. (Top) The result from the forward strand of sample V1. (Bottom) The result from the reverse strand of sample V1](figures/per_base_quality.png)
+
 ![Per sequence quality from the fastqc report. (Top) The result from the forward strand of sample V1. (Bottom) The result from the reverse strand of sample V1](figures/per_sequence_quality.png)
 
 ### Alignment
 
 Alignment involves the process of mapping sequences to a reference genome. 
 
-For now we use RSubRead to implement seuqence alignment. Common alginement tools  include Bowtie, TOPHAT, and STAR. They differ in their accuracy, speed, and memory usage due to different computational algorithms. 
+For now we use `RSubRead` to implement seuqence alignment. Common alginement tools include `Bowtie`, `TOPHAT`, and `STAR`. They differ in their accuracy, speed, and memory usage due to different computational algorithms. 
 
 ```{RSubread}
 # Build a reference index file 
 buildindex(basename="my_index",reference="wuhCor1.fa.gz")
 
-# # Alignment
+# Alignment
 align(index="my_index",readfile1="V1_R1.fastq.gz", readfile2 = "V1_R2.fastq.gz", output_file="V1.bam")
 align(index="my_index",readfile1="V2_R1.fastq.gz", readfile2 = "V2_R2.fastq.gz", output_file="V2.bam")
 
 ```
 
+We then use `samtools` to evaluate the quality of the aligned bam file.
+
+```{flagstat}
+samtools flagstat V1.bam > V1_flagstat.txt
+
+```
+
+
+![Quality of the aligned bam file (V1.bam).](figures/V1_flagstat.png)
+
 ### Quantification
 
-Now, we utilise the aligned BAM files to quantify the gene expression within our samples. We implement with a tool named “htseq-count”. There are various methods exist for quantifying gene expression In htseq-count. Here, we opt for the default setting (union). For further elucidation, please refer to the tutorial (https://htseq.readthedocs.io/en/release_0.11.1/count.html).
+Now, we utilise the aligned BAM files to quantify the gene expression within our samples. We implement with a tool named `htseq-count`. There are various methods exist for quantifying gene expression in `htseq-count`. Here, we opt for the default setting (union). For further elucidation, please refer to the tutorial (https://htseq.readthedocs.io/en/release_0.11.1/count.html).
 
 ```{RSubread}
 # Build a reference index file 
@@ -542,3 +555,5 @@ htseq-count --format bam V1.bam ncbiGenes.gtf > V1_count.txt
 htseq-count --format bam V2.bam ncbiGenes.gtf > V2_count.txt
 
 ```
+
+![Gene expression profile in the sample V1. The first column shows the gene name. The second column shows the count.](figures/count_matrix.png)
