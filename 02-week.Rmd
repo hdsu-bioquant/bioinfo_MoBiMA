@@ -515,6 +515,11 @@ curl -L ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR125/077/ERR12537377/ERR12537377_2.
 
 We next examine the quality of the samples with `fastqc`. In particular, we will look at the (1) per base quality, and (2) per sequence quality.
 
+```{fastqc}
+fastqc V1_R1.fastq.gz
+fastqc V1_R2.fastq.gz
+```
+
 ![Per base quality from the fastqc report. (Top) The result from the forward strand of sample V1. (Bottom) The result from the reverse strand of sample V1](figures/per_base_quality.png)
 
 ![Per sequence quality from the fastqc report. (Top) The result from the forward strand of sample V1. (Bottom) The result from the reverse strand of sample V1](figures/per_sequence_quality.png)
