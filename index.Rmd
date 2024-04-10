@@ -1,4 +1,4 @@
---- 
+---
 title: "Bioinformatics introductory course - MSc Molekulare Biotechnologie"
 author: "Biomedical Genomics group, IPMB"
 date: "`r Sys.Date()`"
@@ -11,11 +11,17 @@ description: |
   RMarkdowns for the Data Analysis introduction course (SoSe2024), MoBi MA 
 link-citations: yes
 github-repo: rstudio/bookdown-demo
+editor_options: 
+  markdown: 
+    wrap: sentence
 ---
 
-# Introduction {-}
+# Introduction {.unnumbered}
 
-R is a powerful programming language for the analysis of data. R is very versatile, it is free, and very easy to understand. That is because, unlike other programming languages, R is quite “human-friendly” and dynamic, thus it does not require compiling to be “machine-readable”. All you have to do is type R commands in the console or script.  
+R is a powerful programming language for the analysis of data.
+R is very versatile, it is free, and very easy to understand.
+That is because, unlike other programming languages, R is quite “human-friendly” and dynamic, thus it does not require compiling to be “machine-readable”.
+All you have to do is type R commands in the console or script.
 
 Through this course, you will learn:
 
@@ -24,24 +30,63 @@ Through this course, you will learn:
 > -   How to annotate, analyse, obtain, pre-process, and visualize genomic data (*Week Two*)
 > -   How to perform RNA-seq analysis (*Week Three*)
 
+## Where to start {.unnumbered}
 
+### Log into the server
 
-## Where to start {-}
+We will use an RStudio Server running on a virtual machine.
+Here are the instructions to connect:
 
-### Installing R and RStudio {-}
+You can find the list of students [here](https://docs.google.com/spreadsheets/d/1eMCr4b6UcOPIG8tJkfoEkMoZzJycWJPMYN5nMZWiU48/edit?usp=sharing).
+Check your name, your user name and the name of the server on which you will connect.
 
-First, you will need to install both R and RStudio. Rstudio is the most commonly used IDE (or Integrated Development Environment) for R, and it will **use the R version installed on your computer**. RStudio is meant to make R programming quite visual and way easier for you as a beginner.
+#### if you are running machine with Linux or MacOS
+
+-   open a terminal and type the following commant: `ssh <USER>@194.94.113.18 -p <PORT> -L 8787:127.0.0.1:8787`; replace `<USER>` with your user name, and `<PORT>` with the server port from the Google Sheet
+-   in a browser, go to [this url](http://127.0.0.1:8787)
+-   log in with your user name and the password that will be provided to you.
+
+You can now start working in RStudio!
+
+#### if you are running machine with Windows
+
+Here, the user should install [Putty](https://www.putty.org/).
+In the GUI, the following settings are needed:
+
+-   In the main panel:
+    -   Host name (or IP address): <USER>@194.94.113.18
+    -   Port: <PORT> (check the right port in the Google Sheet)
+    -   Connection type: SSH
+-   In the panel "Connection / SSH / Tunnel":
+    -   Source port: 8787
+    -   Destination port: 127.0.0.1:8787
+    -   Check options "Local" and "Auto"
+-   Then click "Add"
+-   Now click "Open"
+-   in a browser, go to [this url](http://127.0.0.1:8787)
+-   log in with your user name and the password that will be provided to you.
+
+You can now start working in RStudio!
+
+### Installing R and RStudio {.unnumbered}
+
+You can also choose to install both R and RStudio.
+Rstudio is the most commonly used IDE (or Integrated Development Environment) for R, and it will **use the R version installed on your computer**.
+RStudio is meant to make R programming quite visual and way easier for you as a beginner.
 
 Start by installing [R](https://cran.r-project.org/) and then [RStudio](https://posit.co/download/rstudio-desktop/).
 
 RStudio is composed of 4 main windows/panels.\
-The **Editor**, the **Environment**, the **Console**, and the **Files** window/panel. Order can vary.
+The **Editor**, the **Environment**, the **Console**, and the **Files** window/panel.
+Order can vary.
 
 ![In **Editor (1)**, you can find the area where you usually write most code, like a Rscript or a Rmarkdown. **Environment (2)** shows you your variables, history, among others. Here, you can see any variable you define in your session. You can use this to do a very basic inspection of objects you create or import. **Console (3)** is where all your code gets processed when you run it. The console remembers (which is why when you click arrow up or down, it shows you commands you ran before), but it does not keep! Therefore, ALWAYS write the meaningful code lines in a script/markdown (1). Lastly, **4** can be used for browsing documents (*Files*), see the plots you produce (*Plots*), searching/managing packages (*Packages*), or find help on functions (*Help*).](figures/RstudioLayout.png)
 
-### Courses {-}
+### Courses {.unnumbered}
 
-It is recommended that you take an introductory class for R to get to know this language before you start coding here. Start by going through [this Chapter on Getting Started with Data in R](https://moderndive.netlify.app/1-getting-started). We will cover other basics on the next sections.
+It is recommended that you take an introductory class for R to get to know this language before you start coding here.
+Start by going through [this Chapter on Getting Started with Data in R](https://moderndive.netlify.app/1-getting-started).
+We will cover other basics on the next sections.
 
 You can find more resources here:
 
@@ -51,17 +96,18 @@ You can find more resources here:
 > -   R markdown at [RStudio](https://rmarkdown.rstudio.com/lesson-1.html) and in this [cheatsheet](https://www.markdownguide.org/cheat-sheet/)
 > -   [Youtube tutorial](https://www.youtube.com/watch?v=h29g21z0a68) on ggplot2 with one of its developers
 
-
-## Good practice {-}
+## Good practice {.unnumbered}
 
 Two notes of advice about good practice now that your journey is about to start:
 
--  **Commenting**: Comment your code as you go with `#`! This way you avoid forgetting the meaning of a given line. This is also important if you want to share your code with others. Trust me, you will not remember what you are writing today in this class one week from now, so it will be best to have a reminder.  
--  **Clean and tidy code**: See that weird line in the middle of your script/markdown? This is meant to be a guideline about code length. If your code is so long that it crosses the line, please find a way to make it shorter. In addition, avoid making your chunks too long and make separate markdowns or scripts for each class or topic, it will keep everything more organised and easy to track. 
+-   **Commenting**: Comment your code as you go with `#`! This way you avoid forgetting the meaning of a given line. This is also important if you want to share your code with others. Trust me, you will not remember what you are writing today in this class one week from now, so it will be best to have a reminder.\
+-   **Clean and tidy code**: See that weird line in the middle of your script/markdown? This is meant to be a guideline about code length. If your code is so long that it crosses the line, please find a way to make it shorter. In addition, avoid making your chunks too long and make separate markdowns or scripts for each class or topic, it will keep everything more organised and easy to track.
 
-## R Markdown {-}
+## R Markdown {.unnumbered}
 
-R Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. You will be working with R Markdown during this course. For more details on using R Markdown see <http://rmarkdown.rstudio.com> or <https://www.markdownguide.org/basic-syntax/>.
+R Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents.
+You will be working with R Markdown during this course.
+For more details on using R Markdown see <http://rmarkdown.rstudio.com> or <https://www.markdownguide.org/basic-syntax/>.
 
 R instructions in a markdown file are written in a "chunk", the one below.\
 Chunks can be added using the `+C` icon at the top right corner of this panel/editor.\
@@ -73,16 +119,20 @@ There is also a keyboard shortcut for it.
 print("Hello world!")
 ```
 
-> What happens in the editor if you remove the second parenthesis? Do you see the red cross appearing? You can click on it and read the comment.\
+> What happens in the editor if you remove the second parenthesis?
+> Do you see the red cross appearing?
+> You can click on it and read the comment.\
 > And what happens if you press "enter" while the second parenthesis is missing?\
 
-R is very smart and it will usually let know know when there is a simple syntax mistake like this one on your code. R will also try to guess variable and function names from your input, all you have to do is *click TAB for auto-complete*.
+R is very smart and it will usually let know know when there is a simple syntax mistake like this one on your code.
+R will also try to guess variable and function names from your input, all you have to do is *click TAB for auto-complete*.
 
-## R Basics {-}
+## R Basics {.unnumbered}
 
-### Variable assignment in R {-}
+### Variable assignment in R {.unnumbered}
 
-You can start by testing one of the most basic tasks - variable assignment. Variable assignments in R can be done using either the `<-` symbol, or the `=` symbol. 
+You can start by testing one of the most basic tasks - variable assignment.
+Variable assignments in R can be done using either the `<-` symbol, or the `=` symbol.
 
 ```{r Assigments, results='hide'}
 a <- "Hello world!"
@@ -91,64 +141,78 @@ hello = "Hello world!"
 ```
 
 You can now run `print(a)` and `print(hello)`.
-Note that after assignment both variables (a and hello) are listed in the "Environment" window of RStudio.   
+Note that after assignment both variables (a and hello) are listed in the "Environment" window of RStudio.
 
-> R is case sensitive. `hello` is a known variable, but `Hello` is not!
+> R is case sensitive.
+> `hello` is a known variable, but `Hello` is not!
 
-You can remove variables too... 
+You can remove variables too...
+
 ```{r rmvar, results='hide'}
 rm(a)
 ```
 
-### Classes {-}  
+### Classes {.unnumbered}
 
-In the same way that a orange is a fruit or Malta is a country, any R variable corresponds to a class and holds a given structure. Classes 
-Let us say you generate a new variable (`name`). How can you know more about it?
+In the same way that a orange is a fruit or Malta is a country, any R variable corresponds to a class and holds a given structure.
+Classes Let us say you generate a new variable (`name`).
+How can you know more about it?
+
 ```{r}
 name = "Marie"
 ```
 
 The function `str()` gives you the **structure** of the variable.
+
 ```{r}
 str(name)
 ```
-where *chr* stands for character, the class of this variable. 
+
+where *chr* stands for character, the class of this variable.
 
 The function `class()` gives you the **class** of the variable.
+
 ```{r}
 class(name)
 ```
 
-### Logical operations {-}
+### Logical operations {.unnumbered}
 
 We can perform tests on simple variables using the `==`, `>`,`<` operators:
+
 ```{r}
 name == "Harry"
 ```
 
-The output of this test will be either FALSE/TRUE. You can test these using numbers too:
+The output of this test will be either FALSE/TRUE.
+You can test these using numbers too:
+
 ```{r}
 33 > 23
 ```
 
-### Vectors {-}
+### Vectors {.unnumbered}
 
-We can make any vector using `c()`. Try it with some numbers. 
+We can make any vector using `c()`.
+Try it with some numbers.
+
 ```{r}
 var1 = c(3,7,12,2)
 ```
 
-If you want to identify the specific number of this vector by position, you can use square brackets. Like this:
+If you want to identify the specific number of this vector by position, you can use square brackets.
+Like this:
+
 ```{r, results='hide'}
 var1[1]     # outputs the first element
 var1[2:3]   # outputs the 2nd to 3rd elements
 var1[-3]    # outputs all except the 3rd element
 ```
 
-### Matrixes {-}
+### Matrixes {.unnumbered}
 
-A matrix is a two-dimensional **array** of numbers. They are defined using the `matrix()` function as follows:
-Take note of the difference between `byrow=FALSE` and `byrow=TRUE`.
+A matrix is a two-dimensional **array** of numbers.
+They are defined using the `matrix()` function as follows: Take note of the difference between `byrow=FALSE` and `byrow=TRUE`.
 
 ```{r Defining matrices , results='hide'}
 x <- c(1, 2, 3, 4, 5, 6)
@@ -157,9 +221,11 @@ X <- matrix(data = x, nrow = 2, ncol = 3, byrow = TRUE)
 X <- matrix(data = x, nrow = 2, ncol = 3, byrow = FALSE)
 ```
 
-> Do you understand all parameters ("nrow", "ncol", "byrow") of the `matrix()` function? What happens if you do not specify "byrow" as TRUE or FALSE?
+> Do you understand all parameters ("nrow", "ncol", "byrow") of the `matrix()` function?
+> What happens if you do not specify "byrow" as TRUE or FALSE?
 
-You can ask for the **dimensions** of a matrix (and see later also for data frames) using the function `dim()`. Do it for X.
+You can ask for the **dimensions** of a matrix (and see later also for data frames) using the function `dim()`.
+Do it for X.
 
 ```{r dim_matrix, results='hide'}
 dim(X)
@@ -174,11 +240,11 @@ X[2, ]	                    # [1] 2 4 6	 -> all elements of the second row
 length(X[1:2, 1])	          # [1] 2  -> X[1:2, 1] is a vector of length 2
 ```
 
-
-### Dataframes {-}
+### Dataframes {.unnumbered}
 
 Data frames are like matrices, but they can contain **multiple types** of values mixed.\
-We can create a data frame using the `data.frame()` function. We can also convert a matrix into a data frame with the `as.data.frame()` function.
+We can create a data frame using the `data.frame()` function.
+We can also convert a matrix into a data frame with the `as.data.frame()` function.
 
 We can prepare three vectors of the same length (for example 4 elements) and create a data frame:
 
@@ -195,7 +261,9 @@ Students <- data.frame(First_Name = Name,
 Students
 ```
 
-We can again access specific elements in a similar manner to the matrix before. Try some of these examples:
+We can again access specific elements in a similar manner to the matrix before.
+Try some of these examples:
+
 ```{r get_elements_df, results='hide'}
 # Columns
 Students$Age 
@@ -210,14 +278,19 @@ Students$Course[3]    # access element 3 of the column "Course"
 Students[2:3, 3]      # select elements 2 and 3 of column 3 
 ```
 
-### Apply, sapply, lapply {-}
+### Apply, sapply, lapply {.unnumbered}
 
-`Apply()` is used to repeat the same operation over all columns/rows of a **matrix** or **data frame**. Therefore, we need to specify three parameters:\
-1. The matrix on which the operation should be performed\
-2. Whether to repeat the operation over rows, which is defined by a "1", or columns (use a "2" instead)\
-3. The operation that should be performed.\
+`Apply()` is used to repeat the same operation over all columns/rows of a **matrix** or **data frame**.
+Therefore, we need to specify three parameters:\
+1.
+The matrix on which the operation should be performed\
+2.
+Whether to repeat the operation over rows, which is defined by a "1", or columns (use a "2" instead)\
+3.
+The operation that should be performed.\
 
-Let's have a look at an example to make this more clear: We want to determine the minimum for each row of the matrix "Mat". Therefore, we can use the function `min()`.
+Let's have a look at an example to make this more clear: We want to determine the minimum for each row of the matrix "Mat".
+Therefore, we can use the function `min()`.
 
 ```{r apply for matrices}
 #First, we build the matrix 
@@ -229,14 +302,17 @@ Mat
 apply(Mat, 1, min)
 ```
 
-> What happens if you change the "1" in the apply function to "2"? Try it!
+> What happens if you change the "1" in the apply function to "2"?
+> Try it!
 
 > Remember that you can use `help(apply)` or `?apply` to get help on this function!
 
 We can perform a loop over all elements of a **vector** or **list** using the `sapply()` function.\
 `sapply()` needs two information:\
-1. which vector do we consider?\
-2. which function do we want to apply to each element of this vector?\
+1.
+which vector do we consider?\
+2.
+which function do we want to apply to each element of this vector?\
 `sapply()` will return a **vector** containing the results.
 
 For instance, we can calculate the square root of every element of a vector using the function `sqrt()`:
@@ -268,7 +344,9 @@ sapply(List1, length)
 
 As you can see, this returns a vector with the length of every list element.
 
-However, sometimes it can be useful to keep the results stored in a list. Therefore, we can use `lapply()` instead. Let's have a look at the difference between `sapply()` and `lapply()` using the example from above:
+However, sometimes it can be useful to keep the results stored in a list.
+Therefore, we can use `lapply()` instead.
+Let's have a look at the difference between `sapply()` and `lapply()` using the example from above:
 
 ```{r lapply}
 lapply(List1, length)
@@ -276,7 +354,7 @@ lapply(List1, length)
 
 > Do you understand the difference?
 
-### For Loops {-}
+### For Loops {.unnumbered}
 
 Besides the apply-family, we can use **for loops** for iterating over a sequence:
 
@@ -293,7 +371,7 @@ for (i in 1:4) {
 }
 ```
 
-### If Statements {-}
+### If Statements {.unnumbered}
 
 You can use an **if statement** to execute a block of code only, if a condition is TRUE.
 
@@ -308,7 +386,8 @@ if (a < b) {
 
 > Modify "a" or "b" and see how the output changes!
 
-We can also add **else if** to this statement. In that case, if the **if** condition is FALSE, the **else if** condition will be tried:
+We can also add **else if** to this statement.
+In that case, if the **if** condition is FALSE, the **else if** condition will be tried:
 
 ```{r else if}
 a <- 10
@@ -337,48 +416,62 @@ if (a < b) {
 
 ```
 
-> Do you understand how this works? What would happen if a = 10 and b = 10? Try it!
+> Do you understand how this works?
+> What would happen if a = 10 and b = 10?
+> Try it!
 
+## Data wrangling with tidyverse {.unnumbered}
 
+### Introducing tidyverse {.unnumbered}
 
-## Data wrangling with tidyverse {-}
-
-### Introducing tidyverse {-}
-
-**Tidyverse** is a set of packages often used to manipulate data. You can think of tidyverse as a variation of the original R, which is meant to be a grammar specific to data manipulation.  
+**Tidyverse** is a set of packages often used to manipulate data.
+You can think of tidyverse as a variation of the original R, which is meant to be a grammar specific to data manipulation.
 
 You can install these through:
+
 ```{r, results='hide', eval=F}
 install.packages("tidyverse")
 ```
 
 And load it using
+
 ```{r, results='hide', warning=FALSE}
 library(tidyverse)
 ```
 
-You can find R packages in CRAN. CRAN is a large repository containing almost 20 thousand packages! For this course, we will just use CRAN packages. To install them, you will use `install.packages()`.
+You can find R packages in CRAN.
+CRAN is a large repository containing almost 20 thousand packages!
+For this course, we will just use CRAN packages.
+To install them, you will use `install.packages()`.
 
-We will learn a couple of functions from this framework which will make the next tasks a lot easier. Tidyverse works with the *tibble* class, which is very similar to a the dataframe class, only faster and tidier.    
+We will learn a couple of functions from this framework which will make the next tasks a lot easier.
+Tidyverse works with the *tibble* class, which is very similar to a the dataframe class, only faster and tidier.
 
-Start by loading a default tibble including sleeping patterns from different mammals. It also includes information on the animal order, genus, diet, or body weight. To do so, run the following:
+Start by loading a default tibble including sleeping patterns from different mammals.
+It also includes information on the animal order, genus, diet, or body weight.
+To do so, run the following:
 
 ```{r}
 data(msleep)
 ```
 
-We can start by inspecting `msleep`. 
+We can start by inspecting `msleep`.
+
 ```{r, results='hide'}
 glimpse(msleep)
 ```
-We can print the first rows of a dataframe using `head()`. Try it out.
+
+We can print the first rows of a dataframe using `head()`.
+Try it out.
+
 ```{r}
 head(msleep)
 ```
 
-### Filter based on conditions {-}
+### Filter based on conditions {.unnumbered}
 
-Now that we know how this dataset looks like, we can start doing more with it. Let us see the information for the domestic pig.  
+Now that we know how this dataset looks like, we can start doing more with it.
+Let us see the information for the domestic pig.\
 We can do it using `filter()` on the **genus** column:
 
 ```{r}
@@ -386,16 +479,21 @@ msleep %>%
   filter(genus == "Sus")
 ```
 
-We also use the `%>%` operator here. This is a **pipe operator** and you will use it very often.  
+We also use the `%>%` operator here.
+This is a **pipe operator** and you will use it very often.
 
-To understand piping, let's imagine you are making a three layer cake in a factory. Instead of manually carrying the cake from one station to another to add layers and frosting, you have a conveyor belt transporting the cake through the stations automatically to make the process much more efficient. Piping avoids that you have to create multiple intermediate objects to achieve your final result when performing multiple functions.  
+To understand piping, let's imagine you are making a three layer cake in a factory.
+Instead of manually carrying the cake from one station to another to add layers and frosting, you have a conveyor belt transporting the cake through the stations automatically to make the process much more efficient.
+Piping avoids that you have to create multiple intermediate objects to achieve your final result when performing multiple functions.
 
-> Try filtering other columns based on numeric conditions. Use `filter()` to see which 7 animals in the datasets have a body weight superior to 200 (kg).  
+> Try filtering other columns based on numeric conditions.
+> Use `filter()` to see which 7 animals in the datasets have a body weight superior to 200 (kg).
 
+### Select specific columns {.unnumbered}
 
-### Select specific columns {-}
+Now, let's say you want to *select* only specific columns.
+Use the `select()` function to select the columns `name`, `order`, and `bodywt` (body weight).
 
-Now, let's say you want to *select* only specific columns. Use the `select()` function to select the columns `name`, `order`, and `bodywt` (body weight). 
 ```{r}
 body_weights = msleep %>%
   select(name, order, bodywt)
@@ -403,12 +501,13 @@ body_weights = msleep %>%
 head(body_weights)
 ```
 
-### Operations on groups {-}
+### Operations on groups {.unnumbered}
 
-We can assess the average (`mean()`) body weight by animal order present. To do so, we will use `summarise()` and `group_by()` functions on the *body_weights* we generated previously. 
+We can assess the average (`mean()`) body weight by animal order present.
+To do so, we will use `summarise()` and `group_by()` functions on the *body_weights* we generated previously.
 
-+  `group_by()`: Assigns a group to a given set of rows (observations).  
-+  `summarise()`: Makes calculations for a given group based on the row values assigned to it.
+-   `group_by()`: Assigns a group to a given set of rows (observations).\
+-   `summarise()`: Makes calculations for a given group based on the row values assigned to it.
 
 ```{r}
 body_weights %>% 
@@ -416,21 +515,22 @@ body_weights %>%
   summarise(mean_bweight = mean(bodywt, na.rm = T)) # na.rm = T will exclude missing values (NA)
 ```
 
-### Reshaping data {-}
+### Reshaping data {.unnumbered}
 
-On tidyverse, he objects you are working on are sometimes not in a tidy format. 
+On tidyverse, he objects you are working on are sometimes not in a tidy format.
 There are three rules which make a dataset tidy:
 
--  Each variable has its own column.
--  Each observation has its own row.
--  Each value has its own cell.
+-   Each variable has its own column.
+-   Each observation has its own row.
+-   Each value has its own cell.
 
-![Here is the comparison between object types. Tidy objects (right) require an extra step of processing.](figures/tidyexp.png)
-[Image source](https://r4ds.hadley.nz/data-tidy.html)
+![Here is the comparison between object types. Tidy objects (right) require an extra step of processing.](figures/tidyexp.png) [Image source](https://r4ds.hadley.nz/data-tidy.html)
 
-How can we convert them then? The mammalian sleep dataset we used earlier is already in a tidy format, so we will generate an example.  
+How can we convert them then?
+The mammalian sleep dataset we used earlier is already in a tidy format, so we will generate an example.
 
-You are testing a new diet on 7 cats, and thus registering their weight before and after 1 month on the diet. 
+You are testing a new diet on 7 cats, and thus registering their weight before and after 1 month on the diet.
+
 ```{r}
 cat.weights <- data.frame(CatName=c('Muffin', 'Lily', 'Mittens', 'Oreo', 'Loki', 'Fluffy', 'Honey'),
                           month0=c(4.3, 4.5, 5, 4.4, 3.8, 5.5, 4.5),
@@ -439,7 +539,9 @@ cat.weights <- data.frame(CatName=c('Muffin', 'Lily', 'Mittens', 'Oreo', 'Loki',
 cat.weights
 ```
 
-In this example, you can see that we have 2 different variables for the same unit (weight), these are our *gatherable* columns. We can then make this dataframe tidy using the `gather()` from the `tidyr` package:
+In this example, you can see that we have 2 different variables for the same unit (weight), these are our *gatherable* columns.
+We can then make this dataframe tidy using the `gather()` from the `tidyr` package:
+
 ```{r, warning=FALSE}
 library(tidyr)
 
@@ -449,21 +551,28 @@ cat.weights %>%
          month0:month1) # columns to gather
 ```
 
-Do you understand the differences? Note that now each name shows up twice. 
+Do you understand the differences?
+Note that now each name shows up twice.
 
-## Plotting using ggplot2 {-}
+## Plotting using ggplot2 {.unnumbered}
 
-One of the many advantages of tidyverse is how compatible it is with `ggplot2`. Thanks to the wonders of the `%>%` operator, you can generate a basic plot instantly from a gathered/tidy tibble without creating intermediate objects. 
+One of the many advantages of tidyverse is how compatible it is with `ggplot2`.
+Thanks to the wonders of the `%>%` operator, you can generate a basic plot instantly from a gathered/tidy tibble without creating intermediate objects.
 
-**The structure of any `ggplot()` is always based on two essential elements: the aesthetics (`aes()`) and the plot layers (named as `geom_something()`. `aes()` can found within the `ggplot()` function or on the `geom_something()`.** There are multiple options for `geom_X()` depending on the information you are plotting. You can find all possibilities [here](https://ggplot2.tidyverse.org/reference/). 
+**The structure of any `ggplot()` is always based on two essential elements: the aesthetics (`aes()`) and the plot layers (named as `geom_something()`. `aes()` can found within the `ggplot()` function or on the `geom_something()`.** There are multiple options for `geom_X()` depending on the information you are plotting.
+You can find all possibilities [here](https://ggplot2.tidyverse.org/reference/).
 
-The `aes()` function can harbor information on axis (x, y) and other aesthetics. Let us see an example within the scatter plot next.
+The `aes()` function can harbor information on axis (x, y) and other aesthetics.
+Let us see an example within the scatter plot next.
 
-In this course we will work with `ggplot()`, but plots can also be generated by another framework. The alternative to `ggplot()` is `plot()`. Beware when looking for solutions for your data visualization problems.
+In this course we will work with `ggplot()`, but plots can also be generated by another framework.
+The alternative to `ggplot()` is `plot()`.
+Beware when looking for solutions for your data visualization problems.
 
-### Scatter plot {-}
+### Scatter plot {.unnumbered}
 
 For example, if we want to see the relationship between the sleep time (total, in hours) and the body weights, we use this formula:
+
 ```{r, fig.height=4, fig.width=4}
 ggplot(msleep,                    # start by picking the dataframe to plot
        aes(x = bodywt,            # column to use for x-axis
@@ -471,9 +580,12 @@ ggplot(msleep,                    # start by picking the dataframe to plot
   geom_point()                    # plot layer for points
 ```
 
-> The x-axis looks a little squished, so it will be hard to view many of the trends. We can then log-transform this scale using the `log()` function. Try it out!
+> The x-axis looks a little squished, so it will be hard to view many of the trends.
+> We can then log-transform this scale using the `log()` function.
+> Try it out!
 
-We can try to play with the other aesthetics of the plot. For example, we can use the colour easthetic to colour the dots based on the *vore*/diet. 
+We can try to play with the other aesthetics of the plot.
+For example, we can use the colour easthetic to colour the dots based on the *vore*/diet.
 
 ```{r, fig.height=4, fig.width=5}
 ggplot(msleep,                    
@@ -483,10 +595,11 @@ ggplot(msleep,
   geom_point() 
 ```
 
+### Histogram {.unnumbered}
 
-### Histogram {-}
-
-Let us start by making an histogram, as we will work with distributions over this course. If we want to see the global distribution of sleep time (total, in hours) for all animals in the dataset, we will use `geom_histogram()`. Like this:
+Let us start by making an histogram, as we will work with distributions over this course.
+If we want to see the global distribution of sleep time (total, in hours) for all animals in the dataset, we will use `geom_histogram()`.
+Like this:
 
 ```{r, message=FALSE, fig.height=4, fig.width=5}
 ggplot(msleep,                    # start by picking the dataframe to plot
@@ -494,8 +607,9 @@ ggplot(msleep,                    # start by picking the dataframe to plot
   geom_histogram()                # plot layer for histogram
 ```
 
-In some cases, you will not have the data on a tidy tibble and rather on a vector for example. For such cases, the structure would be slightly different. 
-Check how you can plot the distribution of a random set of numbers. 
+In some cases, you will not have the data on a tidy tibble and rather on a vector for example.
+For such cases, the structure would be slightly different.
+Check how you can plot the distribution of a random set of numbers.
 
 ```{r}
 rand.numbers = rnorm(100) # we will learn this function later on
@@ -505,11 +619,12 @@ ggplot() +
                  bins = 50)
 ```
 
-> Try changing the option `bins`. What do you see?
+> Try changing the option `bins`.
+> What do you see?
 
-### Boxplot {-}
+### Boxplot {.unnumbered}
 
-In this next example, we are creating a boxplot with the sleep time (total, in hours) for each dietary group (`vore`). 
+In this next example, we are creating a boxplot with the sleep time (total, in hours) for each dietary group (`vore`).
 
 ```{r, fig.height=3, fig.width=4}
 ggplot(msleep, # we use na.omit here to hide NAs from the plot
@@ -518,34 +633,38 @@ ggplot(msleep, # we use na.omit here to hide NAs from the plot
   geom_boxplot()
 ```
 
-See the NA on the x-axis? In the course (week one) we will learn how to clean the data to avoid missing values like these ones. 
+See the NA on the x-axis?
+In the course (week one) we will learn how to clean the data to avoid missing values like these ones.
 
-> Try some of the other geom_ layers available. As an example, `geom_violin()` can be used in a similar way to `geom_boxplot()`. 
+> Try some of the other geom\_ layers available.
+> As an example, `geom_violin()` can be used in a similar way to `geom_boxplot()`.
 
+## Common errors {.unnumbered}
 
-## Common errors {-}
+`Error in library(viridis) : there is no package called ‘viridis’`:\
+**Solution:** install the required package using `install.packages("package")` and load it using `library(package)`.
 
-`Error in library(viridis) : there is no package called ‘viridis’`:  
-**Solution:** install the required package using `install.packages("package")` and load it using `library(package)`. 
+`Error in gather : could not find function "gather"`:\
+**Solution:** load the package the function belongs to.
+You can see it by running `??gather`
 
-`Error in gather : could not find function "gather"`:  
-**Solution:** load the package the function belongs to. You can see it by running `??gather`
+`Error in fortify(): ! data must be a <data.frame>, or an object coercible by fortify(), not a <uneval> object.`:\
+**Solution:** `aes()` is within `ggplot()` when it should be on `geom_...()`.
 
-`Error in fortify(): ! data must be a <data.frame>, or an object coercible by fortify(), not a <uneval> object.`:  
-**Solution:** `aes()` is within `ggplot()` when it should be on `geom_...()`. 
+## Introductory exercises {.unnumbered}
 
-
-## Introductory exercises {-}
-
-### Exercise 1: Vectors {-}
+### Exercise 1: Vectors {.unnumbered}
 
 1.  Create a vector named "test_scores" containing the test scores 75, 90, 65, 68 and 83 of students.
 
-2.  Create a vector "passing" that contains TRUE for test scores above 70 and FALSE for scores equal or below 70. *Hint*: Remember that you can perform tests on vector elements. Use `sum()` to check how many students passed the test.
+2.  Create a vector "passing" that contains TRUE for test scores above 70 and FALSE for scores equal or below 70.
+    *Hint*: Remember that you can perform tests on vector elements.
+    Use `sum()` to check how many students passed the test.
 
-3.  *(expert)* Can you create a vector "high_scores" that contains only scores above 70, using the results obtained in 1. and 2.?
+3.  *(expert)* Can you create a vector "high_scores" that contains only scores above 70, using the results obtained in 1.
+    and 2.?
 
-### Exercise 2: Matrices {-}
+### Exercise 2: Matrices {.unnumbered}
 
 1.  Create a matrix that looks like this:
 
@@ -562,14 +681,13 @@ See the NA on the x-axis? In the course (week one) we will learn how to clean th
     -   the element of the second row and first column
     -   the second and third element of the second column
     -   all elements of the last column
-    -   Try something else!  
+    -   Try something else!
 
 3.  Add a new column to the matrix using `cbind()`.
 
 4.  Can you name the columns of the matrix as "A", "B", "C" and "D" using `colnames()`?
 
-
-### Exercise 3: Data Frames {-}
+### Exercise 3: Data Frames {.unnumbered}
 
 1.  Create a data frame from these vectors, with three columns and five rows:
 
@@ -579,9 +697,8 @@ Fruit <- c(TRUE, TRUE, FALSE, TRUE, FALSE)
 Color <- c("orange", "red", "green", "blue", "green")
 ```
 
-2.  Select the column "Fruit". How many Fruits are there? *Hint*: Remember the function `sum()`.
+2.  Select the column "Fruit".
+    How many Fruits are there?
+    *Hint*: Remember the function `sum()`.
 
 3.  Add a column named "Berry" containing TRUE (for products that are berries) or FALSE to the data frame.
-
-
-
