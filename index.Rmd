@@ -34,7 +34,7 @@ Through this course, you will learn:
 
 ### Log into the server
 
-We will use an RStudio Server running on a virtual machine.
+We will use an **RStudio Server** running on a virtual machine.
 Here are the instructions to connect:
 
 You can find the list of students [here](https://docs.google.com/spreadsheets/d/1eMCr4b6UcOPIG8tJkfoEkMoZzJycWJPMYN5nMZWiU48/edit?usp=sharing).
@@ -42,7 +42,7 @@ Check your name, your user name and the name of the server on which you will con
 
 #### if you are running machine with Linux or MacOS
 
--   open a terminal and type the following commant: `ssh <USER>@194.94.113.18 -p <PORT> -L 8787:127.0.0.1:8787`; replace `<USER>` with your user name, and `<PORT>` with the server port from the Google Sheet
+-   open a terminal and type the following commant: `ssh <USER>@194.94.113.18 -p 30210 -L 8787:127.0.0.1:8787`; replace `<USER>` with your user name from the Google Sheet
 -   in a browser, go to [this url](http://127.0.0.1:8787)
 -   log in with your user name and the password that will be provided to you.
 
@@ -55,7 +55,7 @@ In the GUI, the following settings are needed:
 
 -   In the main panel:
     -   Host name (or IP address): <USER>@194.94.113.18
-    -   Port: <PORT> (check the right port in the Google Sheet)
+    -   Port: 30210 (check the right port in the Google Sheet)
     -   Connection type: SSH
 -   In the panel "Connection / SSH / Tunnel":
     -   Source port: 8787
@@ -70,7 +70,7 @@ You can now start working in RStudio!
 
 ### Installing R and RStudio {.unnumbered}
 
-You can also choose to install both R and RStudio.
+Alternatively, you can also choose to install both R and RStudio.
 Rstudio is the most commonly used IDE (or Integrated Development Environment) for R, and it will **use the R version installed on your computer**.
 RStudio is meant to make R programming quite visual and way easier for you as a beginner.
 
