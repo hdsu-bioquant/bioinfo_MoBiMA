@@ -531,6 +531,7 @@ The start of the FastQC quality report provides basic statistics and an evaluati
 
 ![](figures/fastqc_statistics.png)
 
+
 > Question: What information do you get from the QC report?
 
 
@@ -542,7 +543,9 @@ In particular, we will look at the (1) per base quality, and (2) per sequence qu
 ![Per sequence quality from the fastqc report. (Top)The result from the 2WPC mouse brain. (Bottom) The result from the 4WPC mouse brain](figures/per_sequence_quality.png)
 
 
+
 > Question: How does FastQC quantify the sequence quality?
+
 
 
 > Question: What do you find when you compare the two sequences?
@@ -581,7 +584,7 @@ samtools flagstat path/to/your_bam_folder/mouse_brain_2wpb_chr6.bam  > path/to/y
 ```
 
 
-![Quality of the aligned bam file (V1.bam).](figures/flagstat.png)
+![Quality of the aligned bam file.](figures/flagstat.png)
 
 
 ### Quantification
