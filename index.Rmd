@@ -1,7 +1,8 @@
 ---
-title: "Bioinformatics introductory course - MSc Molekulare Biotechnologie"
+title: |
+  ![](./logos_IPMB_final_202309.jpg)  
+  Bioinformatics Introductory Course - Master Molecular Biotechnology
 author: "Biomedical Genomics group, IPMB"
-date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
@@ -15,6 +16,9 @@ editor_options:
   markdown: 
     wrap: sentence
 ---
+
+
+
 
 # Introduction {.unnumbered}
 
@@ -32,29 +36,29 @@ Through this course, you will learn:
 
 ## Where to start {.unnumbered}
 
-### Log into the server
+### Log into the server {.unnumbered}
 
 We will use an **RStudio Server** running on a virtual machine.
 Here are the instructions to connect:
 
 You can find the list of students [here](https://docs.google.com/spreadsheets/d/1eMCr4b6UcOPIG8tJkfoEkMoZzJycWJPMYN5nMZWiU48/edit?usp=sharing).
-Check your name, your user name and the name of the server on which you will connect.
+Check your name, your user name on which you will connect.
 
-#### if you are running machine with Linux or MacOS
+#### if you are running machine with Linux or MacOS {.unnumbered}
 
--   open a terminal and type the following commant: `ssh <USER>@194.94.113.18 -p 30210 -L 8787:127.0.0.1:8787`; replace `<USER>` with your user name from the Google Sheet
+-   open a terminal and type the following commant: `ssh <USER>\@194.94.113.18 -p 30210 -L 8787:127.0.0.1:8787`; replace `<USER>` with your user name from the Google Sheet
 -   in a browser, go to [this url](http://127.0.0.1:8787)
 -   log in with your user name and the password that will be provided to you.
 
 You can now start working in RStudio!
 
-#### if you are running machine with Windows
+#### if you are running machine with Windows {.unnumbered}
 
 Here, the user should install [Putty](https://www.putty.org/).
 In the GUI, the following settings are needed:
 
 -   In the main panel:
-    -   Host name (or IP address): <USER>@194.94.113.18
+    -   Host name (or IP address): <USER>\@194.94.113.18
     -   Port: 30210 (check the right port in the Google Sheet)
     -   Connection type: SSH
 -   In the panel "Connection / SSH / Tunnel":
