@@ -106,9 +106,9 @@ You can find more resources here:
 
 In order to access remote files (for example opening a pdf file), you will need to install an additional tool, called cyberduck (https://cyberduck.io/).
 
--   1. Install Cyberduck according to your operating system
--   2. Once installed, open Cyberduck
--   3. On the top left, click on Neue Verbindung(or new connection)
+-   Install Cyberduck according to your operating system
+-   Once installed, open Cyberduck
+-   On the top left, click on Neue Verbindung(or new connection)
 
 In the new window, make the following changes:
 
@@ -117,6 +117,8 @@ In the new window, make the following changes:
 -   in the port box, type 30210
 -   in Benutzername (or Username), type your username (like user1)
 -   password box: gkBio%!
+
+Click on Verbinden (or Connect)
 
 ## Good practice {.unnumbered}
 
