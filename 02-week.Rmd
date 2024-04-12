@@ -491,7 +491,21 @@ Observe interactions at chromosomal and gene level. What can you conclude from t
 
 ## Day 5: RNA-seq - from FASTQ to count matrix
 
-Today we will analyze the RNA sequencing data. We will start with the sequence files in the fastq format, align them to the reference genome and quantify the gene expression. You can find the workflow below.
+Today we will analyze the RNA sequencing data. 
+
+We will use the RNA-seq data from this paper: Nature volume 571, pages505–509 (2019). The raw sequence data is stored at: https://www.ebi.ac.uk/biostudies/arrayexpress/studies/E-MTAB-6798/sdrf
+
+We will take two samples from there. One from the 2 week post-conception (2WPC) mouse brain and the other from 4WPC brain.
+
+You can find the raw data here: 
+```{Raw data}
+/vol/data/raw/mouse_brain_2wpb.fastq.gz
+
+
+/vol/data/raw/mouse_brain_4wpb.fastq.gz
+```
+
+We will start with these `fastq` files, align them to the reference genome and quantify the gene expression. You can find the workflow below.
 
 ![Workflow for the RNA-seq analysis](figures/workflow.png)
 
@@ -499,25 +513,18 @@ Today we will analyze the RNA sequencing data. We will start with the sequence f
 
 ### Quality control
 
-We first retrieve the raw data and employ a software tool named `fastqc` to examine the quality of the sequence files.
+We retrieve the raw data and employ a software tool named `fastqc` to examine the quality of the sequence files.
 
-```{command data download}
-# Download the SARS-CoV2 Reference genome & genomic annotation 
-wget https://hgdownload2.soe.ucsc.edu/goldenPath/wuhCor1/bigZips/wuhCor1.fa.gz
-wget https://hgdownload2.soe.ucsc.edu/goldenPath/wuhCor1/bigZips/genes/ncbiGenes.gtf.gz
-
-# Download the raw sequences of SARS-CoV2 samples
-curl -L ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR125/067/ERR12537467/ERR12537467_1.fastq.gz -o V1_R1.fastq.gz
-curl -L ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR125/067/ERR12537467/ERR12537467_2.fastq.gz -o V1_R2.fastq.gz
-curl -L ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR125/077/ERR12537377/ERR12537377_1.fastq.gz -o V2_R1.fastq.gz
-curl -L ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR125/077/ERR12537377/ERR12537377_2.fastq.gz -o V2_R2.fastq.gz
-```
 
 We next examine the quality of the samples with `fastqc`. 
 
 ```{fastqc}
-fastqc V1_R1.fastq.gz
-fastqc V1_R2.fastq.gz
+mkdir path/to/your_fastqc_folder
+
+fastqc /vol/data/raw/mouse_brain_4wpb.fastq.gz -o path/to/your_fastqc_folder/
+
+fastqc /vol/data/raw/mouse_brain_2wpb.fastq.gz -o path/to/your_fastqc_folder/
+
 ```
 
 The start of the FastQC quality report provides basic statistics and an evaluation of various quality parameters.
@@ -525,48 +532,102 @@ The start of the FastQC quality report provides basic statistics and an evaluati
 ![](figures/fastqc_statistics.png)
 
 
+> Question: What information do you get from the QC report?
+
 
 In particular, we will look at the (1) per base quality, and (2) per sequence quality.
 
-![Per base quality from the fastqc report. (Top) The result from the forward strand of sample V1. (Bottom) The result from the reverse strand of sample V1](figures/per_base_quality.png)
 
-![Per sequence quality from the fastqc report. (Top) The result from the forward strand of sample V1. (Bottom) The result from the reverse strand of sample V1](figures/per_sequence_quality.png)
+![Per base quality from the fastqc report. (Top) The result from the 2 week post-conception (2WPC) mouse brain. (Bottom) The result from the 4WPC mouse brain](figures/per_base_quality.png)
+
+![Per sequence quality from the fastqc report. (Top)The result from the 2WPC mouse brain. (Bottom) The result from the 4WPC mouse brain](figures/per_sequence_quality.png)
+
+
+
+> Question: How does FastQC quantify the sequence quality?
+
+
+
+> Question: What do you find when you compare the two sequences?
+
 
 ### Alignment
 
 Alignment involves the process of mapping sequences to a reference genome. 
 
-For now we use `RSubRead` to implement seuqence alignment. Common alginement tools include `Bowtie`, `TOPHAT`, and `STAR`. They differ in their accuracy, speed, and memory usage due to different computational algorithms. 
+We use `Bowtie2` to implement seuqence alignment. Common aligners include `BWA`, `TOPHAT`, and `STAR`. They differ in their accuracy, speed, and memory usage due to different computational algorithms. 
 
-```{RSubread}
-# Build a reference index file 
-buildindex(basename="my_index",reference="wuhCor1.fa.gz")
 
-# Alignment
-align(index="my_index",readfile1="V1_R1.fastq.gz", readfile2 = "V1_R2.fastq.gz", output_file="V1.bam")
-align(index="my_index",readfile1="V2_R1.fastq.gz", readfile2 = "V2_R2.fastq.gz", output_file="V2.bam")
+```{}
+
+# Create a new directory
+
+mkdir path/to/your_bam_folder
+
+
+# Alignment (It will take for a while)
+bowtie2 -p 2 --no-unal -x /vol/data/raw/chr6 -U /vol/data/raw/mouse_brain_2wpb.fastq.gz | samtools view -bS - > path/to/your_bam_folder/mouse_brain_2wpb_chr6.bam 
+
 
 ```
+> Question: How to view the BAM files? What do you find in your BAM files?
+Ref: https://bookdown.org/content/24942ad6-9ed7-44e9-b214-1ea8ba9f0224/learning-the-bam-format.html
+Hint: Use `samtools view` to view your BAM files.
 
-We then use `samtools` to evaluate the quality of the aligned bam file.
+
+
+We then use `samtools flagstat` to evaluate the quality of the aligned bam file.
 
 ```{flagstat}
-samtools flagstat V1.bam > V1_flagstat.txt
+samtools flagstat path/to/your_bam_folder/mouse_brain_2wpb_chr6.bam  > path/to/your_bam_folder/mouse_brain_flagstat_2wpb_chr6.txt
 
 ```
 
 
-![Quality of the aligned bam file (V1.bam).](figures/V1_flagstat.png)
+![Quality of the aligned bam file.](figures/flagstat.png)
+
 
 ### Quantification
 
-Now, we utilise the aligned BAM files to quantify the gene expression within our samples. We implement with a tool named `htseq-count`. There are various methods exist for quantifying gene expression in `htseq-count`. Here, we opt for the default setting (union). For further elucidation, please refer to the tutorial (https://htseq.readthedocs.io/en/release_0.11.1/count.html).
+Now, we utilise the aligned BAM files to quantify the gene expression in our samples. We implement this with a tool named `htseq-count`. There are various methods exist for quantifying gene expression in `htseq-count`. For further illustration, please refer to the tutorial (https://htseq.readthedocs.io/en/release_0.11.1/count.html).
 
-```{RSubread}
-# Quantifying the gene expression
-htseq-count --format bam V1.bam ncbiGenes.gtf > V1_count.txt
-htseq-count --format bam V2.bam ncbiGenes.gtf > V2_count.txt
+```{}
+
+# Create a new directory
+mkdir path/to/your_count_folder
+# Keep the high quality reads
+
+samtools view -bq 40 path/to/your_bam_folder/mouse_brain_2wpb_chr6.bam > path/to/your_bam_folder/mouse_brain_2wpb_chr6_Q40.bam
+
+htseq-count -s no -m intersection-nonempty --nonunique all --format bam path/to/your_bam_folder/mouse_brain_2wpb_chr6_Q40.bam /vol/data/raw/mm39.ncbiRefSeq.chr6.gtf > path/to/your_count_folder/mouse_brain_2wpb_chr6.txt
 
 ```
 
-![Gene expression profile in the sample V1. The first column shows the gene name. The second column shows the count.](figures/count_matrix.png)
+
+![Gene expression profile in 2WPC mouse brain. The first column shows the gene name. The second column shows the count. Speical counts are highlighted in red](figures/count_matrix.png)
+
+### Visualization
+
+
+```{Visualization}
+
+library(tidyverse)
+setwd("path/to/your_count_folder")
+
+
+tb_2wpb <- read_tsv("mouse_brain_2wpb_chr6.txt", col_names = FALSE) %>% 
+  rename(Gene = X1, Count = X2) %>% 
+  mutate(Sample = "2wpb")
+
+tb_4wpb <- read_tsv("mouse_brain_4wpb_chr6.txt", col_names = FALSE) %>% 
+  rename(Gene = X1, Count = X2) %>%
+  mutate(Sample = "4wpb")
+
+tb_merge <- bind_rows(tb_2wpb, tb_4wpb)
+
+tb_merge %>% ggplot(mapping = aes(x = log10(Count + 1), fill = Sample)) +
+  geom_density(alpha = 0.2)
+
+
+```
+![](figures/count_distribution.png)
