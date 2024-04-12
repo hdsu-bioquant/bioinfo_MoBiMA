@@ -37,6 +37,7 @@ Through this course, you will learn:
 
 ## Where to start {.unnumbered}
 
+
 ### Log into the server {.unnumbered}
 
 We will use an **RStudio Server** running on a virtual machine.
@@ -100,6 +101,22 @@ You can find more resources here:
 > -   R for [Data Science](https://r4ds.had.co.nz)
 > -   R markdown at [RStudio](https://rmarkdown.rstudio.com/lesson-1.html) and in this [cheatsheet](https://www.markdownguide.org/cheat-sheet/)
 > -   [Youtube tutorial](https://www.youtube.com/watch?v=h29g21z0a68) on ggplot2 with one of its developers
+
+### Installing and configuring Cyberduck {.unnumbered}
+
+In order to access remote files (for example opening a pdf file), you will need to install an additional tool, called cyberduck (https://cyberduck.io/).
+
+-   1. Install Cyberduck according to your operating system
+-   2. Once installed, open Cyberduck
+-   3. On the top left, click on Neue Verbindung(or new connection)
+
+In the new window, make the following changes:
+
+-   select sftp in the dropdown menu
+-   in the server box, type 194.94.113.18
+-   in the port box, type 30210
+-   in Benutzername (or Username), type your username (like user1)
+-   password box: gkBio%!
 
 ## Good practice {.unnumbered}
 
