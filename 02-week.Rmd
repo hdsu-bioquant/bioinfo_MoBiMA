@@ -631,3 +631,13 @@ tb_merge %>% ggplot(mapping = aes(x = log10(Count + 1), fill = Sample)) +
 
 ```
 ![](figures/count_distribution.png)
+
+
+
+### Excercises
+
+> 1. Please explore your bam files with IGV. What do you find?
+
+> 2. Please try to run the whole workflow that you learnt today on mouse chromosome 8. The reference genome sequence can be found at /vol/data/raw. However, you are encouraged to retrieve the reference genome from the databases by yourself.  
+
+> 3. Please explore your count matrix of these two samples. Do you find any genes that express differentially between the samples? Also, think about that, if you are a project leader, how would you design your experiment and what hypothesis testing strategy would you opt for? (Note: Formal analysis will be revealed next week)
