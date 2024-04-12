@@ -1,4 +1,4 @@
-# WEEK TWO
+# Week 2 : sequence analysis {.unnumbered}
 
 ## Day 1: Annotathon! Identifying ORFs
 

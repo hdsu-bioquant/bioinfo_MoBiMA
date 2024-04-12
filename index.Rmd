@@ -1,9 +1,9 @@
 ---
-title: |
-  ![](./logos_IPMB_final_202309.jpg)  
-  Bioinformatics Introductory Course - Master Molecular Biotechnology
+title: Bioinformatics Introductory Course - Master Molecular Biotechnology
 author: "Biomedical Genomics group, IPMB"
 site: bookdown::bookdown_site
+output: bookdown::bs4_book
+
 documentclass: book
 bibliography: [book.bib, packages.bib]
 # url: your book url like https://bookdown.org/yihui/bookdown
@@ -18,6 +18,7 @@ editor_options:
 ---
 
 
+![](./logos_IPMB_final_202309.jpg)  
 
 
 # Introduction {.unnumbered}

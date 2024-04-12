@@ -1,13 +1,16 @@
 bookdown::gitbook:
+  number_sections: false
   css: style.css
   config:
     toc:
+      collapse: section
       before: |
-        <li><a href="./">Bioinformatics Introduction course (MoBi MA)</a></li>
-      after: |
+        <img src="./logos_IPMB_final_202309.jpg" width="250" >  
+        Introductory Course Bioinformatics |  
+        MSc MoBi
+      after: | 
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
     edit: https://github.com/USERNAME/REPO/edit/BRANCH/%s
-    download: ["pdf", "epub"]
 bookdown::pdf_book:
   includes:
     in_header: preamble.tex

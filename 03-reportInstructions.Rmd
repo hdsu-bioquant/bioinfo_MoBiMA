@@ -1,4 +1,4 @@
-# Project report guide
+# Project report guide {.unnumbered}
 
 At the end of this course, you will have to produce a report in RMarkdown. RMarkdown is an inherantly ready-to publish format. Meaning that if there are no mistakes on your text, it should simply produce a PDF in one go. Let's see how.
 

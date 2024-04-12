@@ -1,6 +1,6 @@
-# WEEK ONE
+# Week 1 : data analysis {.unnumbered}
 
-## Day 1: Descriptive statistics and data types
+## Day 1: Descriptive statistics and data types {.unnumbered}
 
 Today, you will learn how to perform basic tasks on a dataframe/tibble, descriptive statistics, perform data cleaning, and plotting.
 
