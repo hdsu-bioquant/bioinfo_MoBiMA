@@ -1,0 +1,122 @@
+{
+	"version": "2.15.11",
+	"showSampleNames": false,
+	"reference": {
+		"id": "hg38",
+		"name": "Human (GRCh38/hg38)",
+		"fastaURL": "https://igv-genepattern-org.s3.amazonaws.com/genomes/seq/hg38/hg38.fa",
+		"indexURL": "https://igv-genepattern-org.s3.amazonaws.com/genomes/seq/hg38/hg38.fa.fai",
+		"cytobandURL": "https://igv-genepattern-org.s3.amazonaws.com/genomes/hg38/cytoBandIdeo.txt.gz",
+		"aliasURL": "https://igv-genepattern-org.s3.amazonaws.com/genomes/hg38/hg38_alias.tab",
+		"chromSizesURL": "https://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.chrom.sizes",
+		"twoBitURL": "https://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.2bit",
+		"chromosomeOrder": "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY"
+	},
+	"locus": "chr7:55,018,017-55,212,628",
+	"gtexSelections": {
+		"chr7:55,018,017-55,212,628": {
+			"gene": "EGFR",
+			"snp": null
+		}
+	},
+	"roi": [],
+	"tracks": [
+		{
+			"type": "sequence",
+			"order": -9007199254740991
+		},
+		{
+			"name": "Homo sapiens A549 CTCF ",
+			"url": "https://www.encodeproject.org/files/ENCFF344MYT/@@download/ENCFF344MYT.bigWig",
+			"metadata": {
+				"Biosample": "Homo sapiens A549",
+				"AssayType": "ChIP-seq",
+				"Target": "CTCF ",
+				"BioRep": "1,2",
+				"TechRep": "1_1,2_1",
+				"OutputType": "fold change over control",
+				"Format": "bigWig",
+				"Lab": "Vishwanath Iyer, UTA",
+				"Accession": "ENCFF344MYT",
+				"Experiment": "ENCSR000DNA"
+			},
+			"format": "bigwig",
+			"type": "wig",
+			"color": "#004a88",
+			"order": 4
+		},
+		{
+			"name": "Homo sapiens A549 CTCF ",
+			"url": "https://www.encodeproject.org/files/ENCFF288RFC/@@download/ENCFF288RFC.bigBed",
+			"metadata": {
+				"Biosample": "Homo sapiens A549",
+				"AssayType": "ChIP-seq",
+				"Target": "CTCF ",
+				"BioRep": "1,2",
+				"TechRep": "1_1,2_1",
+				"OutputType": "optimal IDR thresholded peaks",
+				"Format": "bigBed",
+				"Lab": "Vishwanath Iyer, UTA",
+				"Accession": "ENCFF288RFC",
+				"Experiment": "ENCSR000DNA"
+			},
+			"format": "bigbed",
+			"type": "annotation",
+			"height": 70,
+			"color": "#008688",
+			"order": 6
+		},
+		{
+			"name": "Homo sapiens A549 ATAC-seq",
+			"url": "https://www.encodeproject.org/files/ENCFF872SDF/@@download/ENCFF872SDF.bigWig",
+			"metadata": {
+				"Biosample": "Homo sapiens A549",
+				"AssayType": "ATAC-seq",
+				"Target": "",
+				"BioRep": "1,2,3",
+				"TechRep": "1_1,2_1,3_1",
+				"OutputType": "fold change over control",
+				"Format": "bigWig",
+				"Lab": "Michael Snyder, Stanford",
+				"Accession": "ENCFF872SDF",
+				"Experiment": "ENCSR032RGS"
+			},
+			"format": "bigwig",
+			"type": "wig",
+			"color": "#ff2101",
+			"order": 7
+		},
+		{
+			"name": "Homo sapiens A549 ATAC-seq",
+			"url": "https://www.encodeproject.org/files/ENCFF479CBZ/@@download/ENCFF479CBZ.bigBed",
+			"metadata": {
+				"Biosample": "Homo sapiens A549",
+				"AssayType": "ATAC-seq",
+				"Target": "",
+				"BioRep": "1,2,3",
+				"TechRep": "1_1,2_1,3_1",
+				"OutputType": "IDR thresholded peaks",
+				"Format": "bigBed",
+				"Lab": "Michael Snyder, Stanford",
+				"Accession": "ENCFF479CBZ",
+				"Experiment": "ENCSR032RGS"
+			},
+			"format": "bigbed",
+			"type": "annotation",
+			"height": 70,
+			"color": "#ff726e",
+			"order": 9
+		},
+		{
+			"name": "Refseq Genes",
+			"format": "refgene",
+			"url": "https://hgdownload.soe.ucsc.edu/goldenPath/hg38/database/ncbiRefSeq.txt.gz",
+			"indexed": false,
+			"removable": false,
+			"order": 1000001,
+			"infoURL": "https://www.ncbi.nlm.nih.gov/gene/?term=$$",
+			"type": "annotation",
+			"height": 70
+		}
+	]
+}

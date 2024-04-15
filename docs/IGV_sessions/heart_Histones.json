@@ -1,0 +1,120 @@
+{
+	"version": "2.15.11",
+	"showSampleNames": false,
+	"reference": {
+		"id": "hg38",
+		"name": "Human (GRCh38/hg38)",
+		"fastaURL": "https://igv-genepattern-org.s3.amazonaws.com/genomes/seq/hg38/hg38.fa",
+		"indexURL": "https://igv-genepattern-org.s3.amazonaws.com/genomes/seq/hg38/hg38.fa.fai",
+		"cytobandURL": "https://igv-genepattern-org.s3.amazonaws.com/genomes/hg38/cytoBandIdeo.txt.gz",
+		"aliasURL": "https://igv-genepattern-org.s3.amazonaws.com/genomes/hg38/hg38_alias.tab",
+		"chromSizesURL": "https://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.chrom.sizes",
+		"twoBitURL": "https://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.2bit",
+		"chromosomeOrder": "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY"
+	},
+	"locus": "chr2:175,108,244-175,238,047",
+	"gtexSelections": {
+		"chr2:175,108,244-175,238,047": {
+			"gene": "HOXD1",
+			"snp": null
+		}
+	},
+	"roi": [],
+	"tracks": [
+		{
+			"type": "sequence",
+			"order": -9007199254740991
+		},
+		{
+			"name": "Homo sapiens heart left ventricle tissue female adult (56 years) H3K27ac ",
+			"url": "https://www.encodeproject.org/files/ENCFF707MHB/@@download/ENCFF707MHB.bigWig",
+			"color": "#6e76ff",
+			"metadata": {
+				"Biosample": "Homo sapiens heart left ventricle tissue female adult (56 years)",
+				"AssayType": "ChIP-seq",
+				"Target": "H3K27ac ",
+				"BioRep": "1",
+				"TechRep": "1_1,1_2",
+				"OutputType": "fold change over control",
+				"Format": "bigWig",
+				"Lab": "Bradley Bernstein, Broad",
+				"Accession": "ENCFF707MHB",
+				"Experiment": "ENCSR561VNL"
+			},
+			"format": "bigwig",
+			"type": "wig",
+			"order": 5
+		},
+		{
+			"name": "Homo sapiens heart left ventricle tissue female adult (56 years) H3K36me3 ",
+			"url": "https://www.encodeproject.org/files/ENCFF483WSH/@@download/ENCFF483WSH.bigWig",
+			"color": "rgb(0,0,150)",
+			"metadata": {
+				"Biosample": "Homo sapiens heart left ventricle tissue female adult (56 years)",
+				"AssayType": "ChIP-seq",
+				"Target": "H3K36me3 ",
+				"BioRep": "1",
+				"TechRep": "1_1,1_2",
+				"OutputType": "fold change over control",
+				"Format": "bigWig",
+				"Lab": "Bradley Bernstein, Broad",
+				"Accession": "ENCFF483WSH",
+				"Experiment": "ENCSR017LLJ"
+			},
+			"format": "bigwig",
+			"type": "wig",
+			"order": 6
+		},
+		{
+			"name": "Homo sapiens heart left ventricle tissue female adult (56 years) H3K27me3 ",
+			"url": "https://www.encodeproject.org/files/ENCFF407WVG/@@download/ENCFF407WVG.bigWig",
+			"color": "#c80000",
+			"metadata": {
+				"Biosample": "Homo sapiens heart left ventricle tissue female adult (56 years)",
+				"AssayType": "ChIP-seq",
+				"Target": "H3K27me3 ",
+				"BioRep": "1",
+				"TechRep": "1_1,1_2",
+				"OutputType": "fold change over control",
+				"Format": "bigWig",
+				"Lab": "Bradley Bernstein, Broad",
+				"Accession": "ENCFF407WVG",
+				"Experiment": "ENCSR703TUW"
+			},
+			"format": "bigwig",
+			"type": "wig",
+			"order": 7
+		},
+		{
+			"name": "Homo sapiens heart left ventricle tissue female adult (56 years) H3K9me3 ",
+			"url": "https://www.encodeproject.org/files/ENCFF030YXX/@@download/ENCFF030YXX.bigWig",
+			"color": "rgb(100,0,0)",
+			"metadata": {
+				"Biosample": "Homo sapiens heart left ventricle tissue female adult (56 years)",
+				"AssayType": "ChIP-seq",
+				"Target": "H3K9me3 ",
+				"BioRep": "1",
+				"TechRep": "1_1,1_2",
+				"OutputType": "fold change over control",
+				"Format": "bigWig",
+				"Lab": "Bradley Bernstein, Broad",
+				"Accession": "ENCFF030YXX",
+				"Experiment": "ENCSR807QBW"
+			},
+			"format": "bigwig",
+			"type": "wig",
+			"order": 9
+		},
+		{
+			"name": "Refseq Genes",
+			"format": "refgene",
+			"url": "https://hgdownload.soe.ucsc.edu/goldenPath/hg38/database/ncbiRefSeq.txt.gz",
+			"indexed": false,
+			"removable": false,
+			"order": 1000001,
+			"infoURL": "https://www.ncbi.nlm.nih.gov/gene/?term=$$",
+			"type": "annotation",
+			"height": 70
+		}
+	]
+}
