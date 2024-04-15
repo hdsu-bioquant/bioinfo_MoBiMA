@@ -92,7 +92,7 @@ To perform this cleanup, we need a couple of important functions, that we will f
 -   `filter`
 -   `is.na`
 -   `mutate`
--   `accross`
+-   `across`
 -   `%in%`
 
 #### filter()
@@ -153,10 +153,10 @@ dat %>%
   select(id, weight.kg, height.cm)
 ```
 
-#### accross()
+#### across()
 
-`accross()` is very often used together with `mutate()` and another helper function, like `everywhere()`, `starts_with()`, `ends_with()`, or `contains()`.
-Later, we will use `accross()` together with the other functions we learned previously to remove NAs like this:
+`across()` is very often used together with `mutate()` and another helper function, like `everywhere()`, `starts_with()`, `ends_with()`, or `contains()`.
+Later, we will use `across()` together with the other functions we learned previously to remove NAs like this:
 
 ```{r, results='hide', eval=FALSE}
 dat %>%
