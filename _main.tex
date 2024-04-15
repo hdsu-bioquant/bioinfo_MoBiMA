@@ -606,13 +606,13 @@ Therefore, we can use the function \texttt{min()}.
 \end{Shaded}
 
 \begin{verbatim}
-##            [,1]       [,2]       [,3]       [,4]         [,5]
-## [1,] -0.2905284  0.2774751  0.6870597  1.3486371  1.434149751
-## [2,]  0.1014876 -1.1587095 -1.0466754  0.4145634  0.009362153
-## [3,] -0.1478676  0.5034537  1.2373337  1.3545402 -0.183198692
-## [4,]  0.4898842 -2.6371623  0.7175312 -1.2570112 -1.216555801
-## [5,]  1.0016645 -0.1557196 -1.5318870 -0.8937891 -0.152471812
-## [6,]  0.1888956  0.4705401 -0.9572223  1.1382619  1.456820144
+##            [,1]        [,2]        [,3]        [,4]       [,5]
+## [1,]  0.7190288 -0.47043989 -1.82562245 -0.58815667  1.8476676
+## [2,] -0.2157417 -0.26778581  1.53475711 -0.74927964 -0.7542569
+## [3,] -2.5225050  0.03361452  0.15741733 -1.65395515 -0.5921112
+## [4,] -0.2624053 -0.74058785 -0.03418108 -2.03853474 -0.2437229
+## [5,]  0.9938333  1.53664036 -0.19393765 -0.01226644  0.1590075
+## [6,]  0.6761342  0.53860500  0.24999756  1.14268115  0.4116064
 \end{verbatim}
 
 \begin{Shaded}
@@ -623,7 +623,7 @@ Therefore, we can use the function \texttt{min()}.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] -0.2905284 -1.1587095 -0.1831987 -2.6371623 -1.5318870 -0.9572223
+## [1] -1.8256224 -0.7542569 -2.5225050 -2.0385347 -0.1939376  0.2499976
 \end{verbatim}
 
 \begin{quote}
@@ -678,13 +678,13 @@ Instead of using built-in functions, we can also write our own little function a
 \end{Shaded}
 
 \begin{verbatim}
-##            [,1]       [,2]       [,3]       [,4]         [,5]
-## [1,] -0.2905284  0.2774751  0.6870597  1.3486371  1.434149751
-## [2,]  0.1014876 -1.1587095 -1.0466754  0.4145634  0.009362153
-## [3,] -0.1478676  0.5034537  1.2373337  1.3545402 -0.183198692
-## [4,]  0.4898842 -2.6371623  0.7175312 -1.2570112 -1.216555801
-## [5,]  1.0016645 -0.1557196 -1.5318870 -0.8937891 -0.152471812
-## [6,]  0.1888956  0.4705401 -0.9572223  1.1382619  1.456820144
+##            [,1]        [,2]        [,3]        [,4]       [,5]
+## [1,]  0.7190288 -0.47043989 -1.82562245 -0.58815667  1.8476676
+## [2,] -0.2157417 -0.26778581  1.53475711 -0.74927964 -0.7542569
+## [3,] -2.5225050  0.03361452  0.15741733 -1.65395515 -0.5921112
+## [4,] -0.2624053 -0.74058785 -0.03418108 -2.03853474 -0.2437229
+## [5,]  0.9938333  1.53664036 -0.19393765 -0.01226644  0.1590075
+## [6,]  0.6761342  0.53860500  0.24999756  1.14268115  0.4116064
 \end{verbatim}
 
 \begin{Shaded}
@@ -694,7 +694,7 @@ Instead of using built-in functions, we can also write our own little function a
 \end{Shaded}
 
 \begin{verbatim}
-## [1]  6.913586 -3.359944  5.528523 -7.806628 -3.464406  4.594591
+## [1] -0.6350452 -0.9046139 -9.1550789 -6.6388637  4.9665541  6.0380484
 \end{verbatim}
 
 Besides, we can use \texttt{sapply()} for a \textbf{list}, for example to calculate the length of every element using \texttt{length()}:
@@ -1355,6 +1355,15 @@ You can see it by running \texttt{??gather}
 \item
   Add a column named ``Berry'' containing TRUE (for products that are berries) or FALSE to the data frame.
 \end{enumerate}
+
+\hypertarget{lecture-files}{%
+\chapter{Lecture files}\label{lecture-files}}
+
+\begin{itemize}
+\tightlist
+\item
+  Day 1 - data types/graphs/correlation \href{./slides/GKBioinfo_week1_day1.pdf}{slides}
+\end{itemize}
 
 \hypertarget{week-1-data-analysis}{%
 \chapter*{Week 1 : data analysis}\label{week-1-data-analysis}}
@@ -3526,7 +3535,7 @@ Finally, we determine whether each sample mean is found within the 95\% CI or no
 
 Here, the orange/grey bars represent the confidence interval, the dot is the mean of the sample values, and the dotted line at \texttt{\textbackslash{}lambda} represents the true expectation value. Whenever the true expectation value is within the CI, the bar is orange, if not, the bar is grey. How often is the true expectation value outside the CI? Count the grey bars!
 
-It happens 7 times, which fits pretty well with the expected 5\%.
+It happens 6 times, which fits pretty well with the expected 5\%.
 
 \begin{quote}
 Repeat this simulation, but now with samples of \(N=24\) (again 100 times)\\

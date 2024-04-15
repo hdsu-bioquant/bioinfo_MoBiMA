@@ -729,6 +729,13 @@ Color <- c("orange", "red", "green", "blue", "green")
 
 <!--chapter:end:index.Rmd-->
 
+# Lecture files
+
+* Day 1 - data types/graphs/correlation [slides](./slides/GKBioinfo_week1_day1.pdf)
+
+
+<!--chapter:end:00-slides.Rmd-->
+
 # Week 1 : data analysis {.unnumbered}
 
 ## Day 1: Descriptive statistics and data types {.unnumbered}

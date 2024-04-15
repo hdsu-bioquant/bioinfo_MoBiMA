@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.11.24)  15 APR 2024 14:11
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.11.24)  15 APR 2024 21:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1108,14 +1108,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 587--595
 
 
 Overfull \hbox (33.0pt too wide) in paragraph at lines 627--627
-[]\TU/lmtt/m/n/10 ## [1] -0.2905284 -1.1587095 -0.1831987 -2.6371623 -1.5318870
- -0.9572223[] 
+[]\TU/lmtt/m/n/10 ## [1] -1.8256224 -0.7542569 -2.5225050 -2.0385347 -0.1939376
+  0.2499976[] 
  []
 
 [12]
-Overfull \hbox (1.5pt too wide) in paragraph at lines 698--698
-[]\TU/lmtt/m/n/10 ## [1]  6.913586 -3.359944  5.528523 -7.806628 -3.464406  4.5
-94591[] 
+Overfull \hbox (33.0pt too wide) in paragraph at lines 698--698
+[]\TU/lmtt/m/n/10 ## [1] -0.6350452 -0.9046139 -9.1550789 -6.6388637  4.9665541
+  6.0380484[] 
  []
 
 [13] [14]
@@ -1252,79 +1252,85 @@ ct
  []
 
 [25] [26]
-Overfull \hbox (85.5pt too wide) in paragraph at lines 1402--1402
+Chapter 1.
+[27
+
+] [28
+
+]
+Overfull \hbox (85.5pt too wide) in paragraph at lines 1411--1411
 []\TU/lmtt/m/n/10 ##       id  chol stab.glu   hdl ratio glyhb location     age
  gender height weight[] 
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 1402--1402
+Overfull \hbox (85.5pt too wide) in paragraph at lines 1411--1411
 []\TU/lmtt/m/n/10 ##    <int> <int>    <int> <int> <dbl> <dbl> <chr>      <int>
  <chr>   <int>  <int>[] 
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 1402--1402
+Overfull \hbox (85.5pt too wide) in paragraph at lines 1411--1411
 []\TU/lmtt/m/n/10 ##  1  1000   203       82    56  3.60  4.31 Buckingham    46
  female     62    121[] 
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 1402--1402
+Overfull \hbox (85.5pt too wide) in paragraph at lines 1411--1411
 []\TU/lmtt/m/n/10 ##  2  1001   165       97    24  6.90  4.44 Buckingham    29
  female     64    218[] 
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 1402--1402
+Overfull \hbox (85.5pt too wide) in paragraph at lines 1411--1411
 []\TU/lmtt/m/n/10 ##  3  1002   228       92    37  6.20  4.64 Buckingham    58
  female     61    256[] 
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 1402--1402
+Overfull \hbox (85.5pt too wide) in paragraph at lines 1411--1411
 []\TU/lmtt/m/n/10 ##  4  1003    78       93    12  6.5   4.63 Buckingham    67
  male       67    119[] 
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 1402--1402
+Overfull \hbox (85.5pt too wide) in paragraph at lines 1411--1411
 []\TU/lmtt/m/n/10 ##  5  1005   249       90    28  8.90  7.72 Buckingham    64
  male       68    183[] 
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 1402--1402
+Overfull \hbox (85.5pt too wide) in paragraph at lines 1411--1411
 []\TU/lmtt/m/n/10 ##  6  1008   248       94    69  3.60  4.81 Buckingham    34
  male       71    190[] 
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 1402--1402
+Overfull \hbox (85.5pt too wide) in paragraph at lines 1411--1411
 []\TU/lmtt/m/n/10 ##  7  1011   195       92    41  4.80  4.84 Buckingham    30
  male       69    191[] 
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 1402--1402
+Overfull \hbox (85.5pt too wide) in paragraph at lines 1411--1411
 []\TU/lmtt/m/n/10 ##  8  1015   227       75    44  5.20  3.94 Buckingham    37
  male       59    170[] 
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 1402--1402
+Overfull \hbox (85.5pt too wide) in paragraph at lines 1411--1411
 []\TU/lmtt/m/n/10 ##  9  1016   177       87    49  3.60  4.84 Buckingham    45
  male       69    166[] 
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 1402--1402
+Overfull \hbox (85.5pt too wide) in paragraph at lines 1411--1411
 []\TU/lmtt/m/n/10 ## 10  1022   263       89    40  6.60  5.78 Buckingham    55
  female     63    202[] 
  []
 
 
-Overfull \hbox (54.0pt too wide) in paragraph at lines 1402--1402
+Overfull \hbox (54.0pt too wide) in paragraph at lines 1411--1411
 []\TU/lmtt/m/n/10 ## # i 8 more variables: frame <chr>, bp.1s <int>, bp.1d <int
 >, bp.2s <int>,[] 
  []
@@ -1332,198 +1338,196 @@ Overfull \hbox (54.0pt too wide) in paragraph at lines 1402--1402
 
 Underfull \vbox (badness 1783) has occurred while \output is active []
 
-[27
-
-]
-Overfull \hbox (22.5pt too wide) in paragraph at lines 1442--1442
+[29]
+Overfull \hbox (22.5pt too wide) in paragraph at lines 1451--1451
 []\TU/lmtt/m/n/10 ##  [1] "id"       "chol"     "stab.glu" "hdl"      "ratio"  
   "glyhb"[] 
  []
 
 
-Overfull \hbox (22.5pt too wide) in paragraph at lines 1442--1442
+Overfull \hbox (22.5pt too wide) in paragraph at lines 1451--1451
 []\TU/lmtt/m/n/10 ##  [7] "location" "age"      "gender"   "height"   "weight" 
   "frame"[] 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 1442--1442
+Overfull \hbox (12.0pt too wide) in paragraph at lines 1451--1451
 []\TU/lmtt/m/n/10 ## [13] "bp.1s"    "bp.1d"    "bp.2s"    "bp.2d"    "waist"  
   "hip"[] 
  []
 
-[28] [29] [30]
-Underfull \hbox (badness 10000) in paragraph at lines 1658--1660
+[30] [31] [32]
+Underfull \hbox (badness 10000) in paragraph at lines 1667--1669
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1660--1662
+Underfull \hbox (badness 10000) in paragraph at lines 1669--1671
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1662--1664
+Underfull \hbox (badness 10000) in paragraph at lines 1671--1673
 
  []
 
-[31] [32]
-Overfull \hbox (22.5pt too wide) in paragraph at lines 1801--1801
+[33] [34]
+Overfull \hbox (22.5pt too wide) in paragraph at lines 1810--1810
 []\TU/lmtt/m/n/10 ##    location            gender             frame           
      chol[] 
  []
 
 
-Overfull \hbox (43.5pt too wide) in paragraph at lines 1801--1801
+Overfull \hbox (43.5pt too wide) in paragraph at lines 1810--1810
 []\TU/lmtt/m/n/10 ##  Length:377         Length:377         Length:377         
 Min.   : 78.0[] 
  []
 
 
-Overfull \hbox (43.5pt too wide) in paragraph at lines 1801--1801
+Overfull \hbox (43.5pt too wide) in paragraph at lines 1810--1810
 []\TU/lmtt/m/n/10 ##  Class :character   Class :character   Class :character   
 1st Qu.:179.0[] 
  []
 
 
-Overfull \hbox (43.5pt too wide) in paragraph at lines 1801--1801
+Overfull \hbox (43.5pt too wide) in paragraph at lines 1810--1810
 []\TU/lmtt/m/n/10 ##  Mode  :character   Mode  :character   Mode  :character   
 Median :204.0[] 
  []
 
 
-Overfull \hbox (43.5pt too wide) in paragraph at lines 1801--1801
+Overfull \hbox (43.5pt too wide) in paragraph at lines 1810--1810
 []\TU/lmtt/m/n/10 ##                                                           
 Mean   :208.2[] 
  []
 
 
-Overfull \hbox (43.5pt too wide) in paragraph at lines 1801--1801
+Overfull \hbox (43.5pt too wide) in paragraph at lines 1810--1810
 []\TU/lmtt/m/n/10 ##                                                           
 3rd Qu.:230.0[] 
  []
 
 
-Overfull \hbox (43.5pt too wide) in paragraph at lines 1801--1801
+Overfull \hbox (43.5pt too wide) in paragraph at lines 1810--1810
 []\TU/lmtt/m/n/10 ##                                                           
 Max.   :443.0[] 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 1801--1801
+Overfull \hbox (12.0pt too wide) in paragraph at lines 1810--1810
 []\TU/lmtt/m/n/10 ##  Min.   : 48.0   Min.   : 12.00   Min.   : 1.500   Min.   
 : 2.680[] 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 1801--1801
+Overfull \hbox (12.0pt too wide) in paragraph at lines 1810--1810
 []\TU/lmtt/m/n/10 ##  1st Qu.: 81.0   1st Qu.: 38.00   1st Qu.: 3.200   1st Qu.
 : 4.390[] 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 1801--1801
+Overfull \hbox (12.0pt too wide) in paragraph at lines 1810--1810
 []\TU/lmtt/m/n/10 ##  Median : 90.0   Median : 46.00   Median : 4.200   Median 
 : 4.860[] 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 1801--1801
+Overfull \hbox (12.0pt too wide) in paragraph at lines 1810--1810
 []\TU/lmtt/m/n/10 ##  Mean   :107.3   Mean   : 50.36   Mean   : 4.538   Mean   
 : 5.594[] 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 1801--1801
+Overfull \hbox (12.0pt too wide) in paragraph at lines 1810--1810
 []\TU/lmtt/m/n/10 ##  3rd Qu.:108.0   3rd Qu.: 59.00   3rd Qu.: 5.400   3rd Qu.
 : 5.622[] 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 1801--1801
+Overfull \hbox (12.0pt too wide) in paragraph at lines 1810--1810
 []\TU/lmtt/m/n/10 ##  Max.   :385.0   Max.   :120.00   Max.   :19.300   Max.   
 :16.110[] 
  []
 
-[33]
-Overfull \hbox (22.5pt too wide) in paragraph at lines 1855--1855
+[35]
+Overfull \hbox (22.5pt too wide) in paragraph at lines 1864--1864
 []\TU/lmtt/m/n/10 ##    location            gender             frame           
      chol[] 
  []
 
 
-Overfull \hbox (43.5pt too wide) in paragraph at lines 1855--1855
+Overfull \hbox (43.5pt too wide) in paragraph at lines 1864--1864
 []\TU/lmtt/m/n/10 ##  Length:367         Length:367         Length:367         
 Min.   : 78.0[] 
  []
 
 
-Overfull \hbox (43.5pt too wide) in paragraph at lines 1855--1855
+Overfull \hbox (43.5pt too wide) in paragraph at lines 1864--1864
 []\TU/lmtt/m/n/10 ##  Class :character   Class :character   Class :character   
 1st Qu.:179.0[] 
  []
 
 
-Overfull \hbox (43.5pt too wide) in paragraph at lines 1855--1855
+Overfull \hbox (43.5pt too wide) in paragraph at lines 1864--1864
 []\TU/lmtt/m/n/10 ##  Mode  :character   Mode  :character   Mode  :character   
 Median :204.0[] 
  []
 
 
-Overfull \hbox (43.5pt too wide) in paragraph at lines 1855--1855
+Overfull \hbox (43.5pt too wide) in paragraph at lines 1864--1864
 []\TU/lmtt/m/n/10 ##                                                           
 Mean   :207.5[] 
  []
 
 
-Overfull \hbox (43.5pt too wide) in paragraph at lines 1855--1855
+Overfull \hbox (43.5pt too wide) in paragraph at lines 1864--1864
 []\TU/lmtt/m/n/10 ##                                                           
 3rd Qu.:229.0[] 
  []
 
 
-Overfull \hbox (43.5pt too wide) in paragraph at lines 1855--1855
+Overfull \hbox (43.5pt too wide) in paragraph at lines 1864--1864
 []\TU/lmtt/m/n/10 ##                                                           
 Max.   :443.0[] 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 1855--1855
+Overfull \hbox (12.0pt too wide) in paragraph at lines 1864--1864
 []\TU/lmtt/m/n/10 ##  Min.   : 48.0   Min.   : 12.00   Min.   : 1.500   Min.   
 : 2.680[] 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 1855--1855
+Overfull \hbox (12.0pt too wide) in paragraph at lines 1864--1864
 []\TU/lmtt/m/n/10 ##  1st Qu.: 81.0   1st Qu.: 38.00   1st Qu.: 3.200   1st Qu.
 : 4.390[] 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 1855--1855
+Overfull \hbox (12.0pt too wide) in paragraph at lines 1864--1864
 []\TU/lmtt/m/n/10 ##  Median : 90.0   Median : 46.00   Median : 4.200   Median 
 : 4.860[] 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 1855--1855
+Overfull \hbox (12.0pt too wide) in paragraph at lines 1864--1864
 []\TU/lmtt/m/n/10 ##  Mean   :107.3   Mean   : 50.28   Mean   : 4.536   Mean   
 : 5.602[] 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 1855--1855
+Overfull \hbox (12.0pt too wide) in paragraph at lines 1864--1864
 []\TU/lmtt/m/n/10 ##  3rd Qu.:108.0   3rd Qu.: 59.00   3rd Qu.: 5.400   3rd Qu.
 : 5.630[] 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 1855--1855
+Overfull \hbox (12.0pt too wide) in paragraph at lines 1864--1864
 []\TU/lmtt/m/n/10 ##  Max.   :385.0   Max.   :120.00   Max.   :19.300   Max.   
 :16.110[] 
  []
 
-[34]
+[36]
 File: _main_files/figure-latex/unnamed-chunk-47-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-47-1.pdf>
 File: _main_files/figure-latex/unnamed-chunk-48-1.pdf Graphic file (type pdf)
@@ -1531,16 +1535,16 @@ File: _main_files/figure-latex/unnamed-chunk-48-1.pdf Graphic file (type pdf)
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[35]
+[37]
 File: _main_files/figure-latex/unnamed-chunk-49-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-49-1.pdf>
 
 Underfull \vbox (badness 7433) has occurred while \output is active []
 
-[36]
+[38]
 
 LaTeX Font Warning: Font shape `TU/lmtt/bx/it' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/sl' tried instead on input line 1937.
+(Font)              Font shape `TU/lmtt/b/sl' tried instead on input line 1946.
 
 
 File: _main_files/figure-latex/unnamed-chunk-50-1.pdf Graphic file (type pdf)
@@ -1550,50 +1554,50 @@ File: _main_files/figure-latex/unnamed-chunk-51-1.pdf Graphic file (type pdf)
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[37]
+[39]
 File: _main_files/figure-latex/unnamed-chunk-52-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-52-1.pdf>
-[38]
+[40]
 File: _main_files/figure-latex/unnamed-chunk-53-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-53-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[39]
+[41]
 File: _main_files/figure-latex/unnamed-chunk-55-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-55-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[40]
+[42]
 File: _main_files/figure-latex/unnamed-chunk-57-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-57-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[41] [42]
+[43] [44]
 Overfull \hbox (41.10954pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/10 0.1.  DAY 2: DIMENSIONALITY REDUCTION AND UNSUPERVISED LEARNING
- \TU/lmr/m/n/10 43
- []
-
-[43]
-Underfull \hbox (badness 1137) in paragraph at lines 2224--2226
-[]\TU/lmr/bx/n/10 Homogenization: \TU/lmr/m/n/10 base-2 logarithmic transformat
-ion of the entire
- []
-
-[44]
-Overfull \vbox (1.55992pt too high) detected at line 2294
- []
-
-
-Overfull \hbox (41.10954pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/10 0.1.  DAY 2: DIMENSIONALITY REDUCTION AND UNSUPERVISED LEARNING
+\TU/lmr/m/sl/10 1.1.  DAY 2: DIMENSIONALITY REDUCTION AND UNSUPERVISED LEARNING
  \TU/lmr/m/n/10 45
  []
 
 [45]
+Underfull \hbox (badness 1137) in paragraph at lines 2233--2235
+[]\TU/lmr/bx/n/10 Homogenization: \TU/lmr/m/n/10 base-2 logarithmic transformat
+ion of the entire
+ []
+
+[46]
+Overfull \vbox (1.55992pt too high) detected at line 2303
+ []
+
+
+Overfull \hbox (41.10954pt too wide) has occurred while \output is active
+\TU/lmr/m/sl/10 1.1.  DAY 2: DIMENSIONALITY REDUCTION AND UNSUPERVISED LEARNING
+ \TU/lmr/m/n/10 47
+ []
+
+[47]
 File: _main_files/figure-latex/unnamed-chunk-67-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-67-1.pdf>
 File: _main_files/figure-latex/unnamed-chunk-68-1.pdf Graphic file (type pdf)
@@ -1601,155 +1605,155 @@ File: _main_files/figure-latex/unnamed-chunk-68-1.pdf Graphic file (type pdf)
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[46]
+[48]
 Overfull \hbox (41.10954pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/10 0.1.  DAY 2: DIMENSIONALITY REDUCTION AND UNSUPERVISED LEARNING
- \TU/lmr/m/n/10 47
+\TU/lmr/m/sl/10 1.1.  DAY 2: DIMENSIONALITY REDUCTION AND UNSUPERVISED LEARNING
+ \TU/lmr/m/n/10 49
  []
 
-[47] [48]
+[49] [50]
 File: _main_files/figure-latex/unnamed-chunk-72-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-72-1.pdf>
 
 Overfull \hbox (41.10954pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/10 0.1.  DAY 2: DIMENSIONALITY REDUCTION AND UNSUPERVISED LEARNING
- \TU/lmr/m/n/10 49
+\TU/lmr/m/sl/10 1.1.  DAY 2: DIMENSIONALITY REDUCTION AND UNSUPERVISED LEARNING
+ \TU/lmr/m/n/10 51
  []
 
-[49]
+[51]
 File: _main_files/figure-latex/unnamed-chunk-74-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-74-1.pdf>
 
-Underfull \vbox (badness 2781) has occurred while \output is active []
+Underfull \vbox (badness 2941) has occurred while \output is active []
 
-[50]
-Overfull \hbox (43.5pt too wide) in paragraph at lines 2527--2527
+[52]
+Overfull \hbox (43.5pt too wide) in paragraph at lines 2536--2536
 []\TU/lmtt/m/n/10 ##  [1] "TFF1"      "C4orf7"    "AGR3"      "GABRP"     "C1or
 f64"   "TFF3"[] 
  []
 
 
-Overfull \hbox (48.75pt too wide) in paragraph at lines 2527--2527
+Overfull \hbox (48.75pt too wide) in paragraph at lines 2536--2536
 []\TU/lmtt/m/n/10 ##  [7] "ABCC11"    "PGR"       "FABP7"     "SERPINA11" "VGLL
 1"     "A2ML1"[] 
  []
 
 
-Overfull \hbox (48.75pt too wide) in paragraph at lines 2527--2527
+Overfull \hbox (48.75pt too wide) in paragraph at lines 2536--2536
 []\TU/lmtt/m/n/10 ## [13] "ELF5"      "PROM1"     "CYP4Z2P"   "SLC6A14"   "CAPN
 8"     "ABCC8"[] 
  []
 
 
-Overfull \hbox (59.25pt too wide) in paragraph at lines 2527--2527
+Overfull \hbox (59.25pt too wide) in paragraph at lines 2536--2536
 []\TU/lmtt/m/n/10 ## [19] "SYTL5"     "SFRP1"     "ART3"      "GABBR2"    "PPP1
 R14C"  "HORMAD1"[] 
  []
 
 
 Overfull \hbox (41.10954pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/10 0.1.  DAY 2: DIMENSIONALITY REDUCTION AND UNSUPERVISED LEARNING
- \TU/lmr/m/n/10 51
- []
-
-[51]
-File: _main_files/figure-latex/unnamed-chunk-79-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-79-1.pdf>
-[52]
-File: _main_files/figure-latex/unnamed-chunk-80-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-80-1.pdf>
-
-Overfull \hbox (41.10954pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/10 0.1.  DAY 2: DIMENSIONALITY REDUCTION AND UNSUPERVISED LEARNING
+\TU/lmr/m/sl/10 1.1.  DAY 2: DIMENSIONALITY REDUCTION AND UNSUPERVISED LEARNING
  \TU/lmr/m/n/10 53
  []
 
 [53]
-Overfull \hbox (64.5pt too wide) in paragraph at lines 2622--2622
+File: _main_files/figure-latex/unnamed-chunk-79-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-79-1.pdf>
+[54]
+File: _main_files/figure-latex/unnamed-chunk-80-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-80-1.pdf>
+
+Overfull \hbox (41.10954pt too wide) has occurred while \output is active
+\TU/lmr/m/sl/10 1.1.  DAY 2: DIMENSIONALITY REDUCTION AND UNSUPERVISED LEARNING
+ \TU/lmr/m/n/10 55
+ []
+
+[55]
+Overfull \hbox (64.5pt too wide) in paragraph at lines 2631--2631
 []\TU/lmtt/m/n/10 ##                          PC1    PC2     PC3     PC4     PC
 5     PC6     PC7[] 
  []
 
 
-Overfull \hbox (64.5pt too wide) in paragraph at lines 2622--2622
+Overfull \hbox (64.5pt too wide) in paragraph at lines 2631--2631
 []\TU/lmtt/m/n/10 ## Standard deviation     3.719 2.1886 0.89796 0.86195 0.6932
 6 0.62793 0.61645[] 
  []
 
 
-Overfull \hbox (64.5pt too wide) in paragraph at lines 2622--2622
+Overfull \hbox (64.5pt too wide) in paragraph at lines 2631--2631
 []\TU/lmtt/m/n/10 ## Proportion of Variance 0.559 0.1936 0.03259 0.03003 0.0194
 2 0.01593 0.01536[] 
  []
 
 
-Overfull \hbox (64.5pt too wide) in paragraph at lines 2622--2622
+Overfull \hbox (64.5pt too wide) in paragraph at lines 2631--2631
 []\TU/lmtt/m/n/10 ## Cumulative Proportion  0.559 0.7526 0.78514 0.81516 0.8345
 8 0.85052 0.86588[] 
  []
 
 
-Overfull \hbox (75.0pt too wide) in paragraph at lines 2622--2622
+Overfull \hbox (75.0pt too wide) in paragraph at lines 2631--2631
 []\TU/lmtt/m/n/10 ##                            PC8     PC9    PC10    PC11    
 PC12   PC13    PC14[] 
  []
 
 
-Overfull \hbox (75.0pt too wide) in paragraph at lines 2622--2622
+Overfull \hbox (75.0pt too wide) in paragraph at lines 2631--2631
 []\TU/lmtt/m/n/10 ## Standard deviation     0.59717 0.55556 0.53665 0.52007 0.5
 0060 0.4900 0.45974[] 
  []
 
 
-Overfull \hbox (75.0pt too wide) in paragraph at lines 2622--2622
+Overfull \hbox (75.0pt too wide) in paragraph at lines 2631--2631
 []\TU/lmtt/m/n/10 ## Proportion of Variance 0.01441 0.01247 0.01164 0.01093 0.0
 1013 0.0097 0.00854[] 
  []
 
 
-Overfull \hbox (75.0pt too wide) in paragraph at lines 2622--2622
+Overfull \hbox (75.0pt too wide) in paragraph at lines 2631--2631
 []\TU/lmtt/m/n/10 ## Cumulative Proportion  0.88029 0.89276 0.90440 0.91533 0.9
 2546 0.9352 0.94370[] 
  []
 
 
-Overfull \hbox (75.0pt too wide) in paragraph at lines 2622--2622
+Overfull \hbox (75.0pt too wide) in paragraph at lines 2631--2631
 []\TU/lmtt/m/n/10 ##                           PC15    PC16   PC17    PC18    P
 C19    PC20    PC21[] 
  []
 
 
-Overfull \hbox (75.0pt too wide) in paragraph at lines 2622--2622
+Overfull \hbox (75.0pt too wide) in paragraph at lines 2631--2631
 []\TU/lmtt/m/n/10 ## Standard deviation     0.44696 0.43284 0.4009 0.39542 0.38
 101 0.35781 0.34271[] 
  []
 
 
-Overfull \hbox (75.0pt too wide) in paragraph at lines 2622--2622
+Overfull \hbox (75.0pt too wide) in paragraph at lines 2631--2631
 []\TU/lmtt/m/n/10 ## Proportion of Variance 0.00807 0.00757 0.0065 0.00632 0.00
 587 0.00517 0.00475[] 
  []
 
 
-Overfull \hbox (75.0pt too wide) in paragraph at lines 2622--2622
+Overfull \hbox (75.0pt too wide) in paragraph at lines 2631--2631
 []\TU/lmtt/m/n/10 ## Cumulative Proportion  0.95178 0.95935 0.9658 0.97216 0.97
 803 0.98320 0.98795[] 
  []
 
 
-Overfull \hbox (59.25pt too wide) in paragraph at lines 2645--2645
+Overfull \hbox (59.25pt too wide) in paragraph at lines 2654--2654
 []\TU/lmtt/m/n/10 ##  [1] 3.7190077 2.1886234 0.8979609 0.8619466 0.6932587 0.6
 279258 0.6164472[] 
  []
 
 
-Overfull \hbox (59.25pt too wide) in paragraph at lines 2645--2645
+Overfull \hbox (59.25pt too wide) in paragraph at lines 2654--2654
 []\TU/lmtt/m/n/10 ##  [8] 0.5971745 0.5555603 0.5366514 0.5200662 0.5006037 0.4
 899632 0.4597383[] 
  []
 
 
-Overfull \hbox (59.25pt too wide) in paragraph at lines 2645--2645
+Overfull \hbox (59.25pt too wide) in paragraph at lines 2654--2654
 []\TU/lmtt/m/n/10 ## [15] 0.4469622 0.4328397 0.4008966 0.3954205 0.3810141 0.3
 578084 0.3427089[] 
  []
@@ -1757,42 +1761,42 @@ Overfull \hbox (59.25pt too wide) in paragraph at lines 2645--2645
 
 Underfull \vbox (badness 1515) has occurred while \output is active []
 
-[54]
+[56]
 File: _main_files/figure-latex/unnamed-chunk-83-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-83-1.pdf>
 
 Overfull \hbox (41.10954pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/10 0.1.  DAY 2: DIMENSIONALITY REDUCTION AND UNSUPERVISED LEARNING
- \TU/lmr/m/n/10 55
+\TU/lmr/m/sl/10 1.1.  DAY 2: DIMENSIONALITY REDUCTION AND UNSUPERVISED LEARNING
+ \TU/lmr/m/n/10 57
  []
 
-[55]
+[57]
 File: _main_files/figure-latex/unnamed-chunk-85-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-85-1.pdf>
-[56]
-Overfull \hbox (4.6089pt too wide) in paragraph at lines 2740--2741
+[58]
+Overfull \hbox (4.6089pt too wide) in paragraph at lines 2749--2750
 []\TU/lmr/m/n/10 (optional) Color the patients in the PCA plot according to \TU
 /lmtt/m/n/10 Classification\TU/lmr/m/n/10 ;
  []
 
 File: figures/distrib.png Graphic file (type bmp)
 <figures/distrib.png>
-[57] [58] [59] [60]
+[59] [60] [61] [62]
 File: _main_files/figure-latex/unnamed-chunk-92-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-92-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[61]
+[63]
 File: _main_files/figure-latex/unnamed-chunk-93-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-93-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[62] [63]
+[64] [65]
 File: _main_files/figure-latex/unnamed-chunk-94-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-94-1.pdf>
-[64] [65]
+[66] [67]
 File: _main_files/figure-latex/unnamed-chunk-97-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-97-1.pdf>
 File: _main_files/figure-latex/unnamed-chunk-98-1.pdf Graphic file (type pdf)
@@ -1800,142 +1804,142 @@ File: _main_files/figure-latex/unnamed-chunk-98-1.pdf Graphic file (type pdf)
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[66] [67] [68]
+[68] [69] [70]
 File: _main_files/figure-latex/unnamed-chunk-106-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-106-1.pdf>
-[69]
+[71]
 File: _main_files/figure-latex/unnamed-chunk-107-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-107-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[70] [71] [72] [73]
+[72] [73] [74] [75]
 File: _main_files/figure-latex/unnamed-chunk-114-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-114-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[74] [75]
-Underfull \hbox (badness 10000) in paragraph at lines 3569--3571
+[76] [77]
+Underfull \hbox (badness 10000) in paragraph at lines 3578--3580
 
  []
 
 
-Overfull \hbox (1.5pt too wide) in paragraph at lines 3651--3651
+Overfull \hbox (1.5pt too wide) in paragraph at lines 3660--3660
 []\TU/lmtt/m/n/10 ##  Min.   : 1000   Min.   : 78.0   Min.   : 48.0   Min.   : 
 12.00[] 
  []
 
 
-Overfull \hbox (1.5pt too wide) in paragraph at lines 3651--3651
+Overfull \hbox (1.5pt too wide) in paragraph at lines 3660--3660
 []\TU/lmtt/m/n/10 ##  1st Qu.: 4792   1st Qu.:179.0   1st Qu.: 81.0   1st Qu.: 
 38.00[] 
  []
 
 
-Overfull \hbox (1.5pt too wide) in paragraph at lines 3651--3651
+Overfull \hbox (1.5pt too wide) in paragraph at lines 3660--3660
 []\TU/lmtt/m/n/10 ##  Median :15766   Median :204.0   Median : 89.0   Median : 
 46.00[] 
  []
 
 
-Overfull \hbox (1.5pt too wide) in paragraph at lines 3651--3651
+Overfull \hbox (1.5pt too wide) in paragraph at lines 3660--3660
 []\TU/lmtt/m/n/10 ##  Mean   :15978   Mean   :207.8   Mean   :106.7   Mean   : 
 50.45[] 
  []
 
 
-Overfull \hbox (1.5pt too wide) in paragraph at lines 3651--3651
+Overfull \hbox (1.5pt too wide) in paragraph at lines 3660--3660
 []\TU/lmtt/m/n/10 ##  3rd Qu.:20336   3rd Qu.:230.0   3rd Qu.:106.0   3rd Qu.: 
 59.00[] 
  []
 
 
-Overfull \hbox (1.5pt too wide) in paragraph at lines 3651--3651
+Overfull \hbox (1.5pt too wide) in paragraph at lines 3660--3660
 []\TU/lmtt/m/n/10 ##  Max.   :41756   Max.   :443.0   Max.   :385.0   Max.   :1
 20.00[] 
  []
 
 
-Overfull \hbox (17.25pt too wide) in paragraph at lines 3651--3651
+Overfull \hbox (17.25pt too wide) in paragraph at lines 3660--3660
 []\TU/lmtt/m/n/10 ##  Min.   : 1.500   Min.   : 2.68   Length:403         Min. 
   :19.00[] 
  []
 
 
-Overfull \hbox (17.25pt too wide) in paragraph at lines 3651--3651
+Overfull \hbox (17.25pt too wide) in paragraph at lines 3660--3660
 []\TU/lmtt/m/n/10 ##  1st Qu.: 3.200   1st Qu.: 4.38   Class :character   1st Q
 u.:34.00[] 
  []
 
 
-Overfull \hbox (17.25pt too wide) in paragraph at lines 3651--3651
+Overfull \hbox (17.25pt too wide) in paragraph at lines 3660--3660
 []\TU/lmtt/m/n/10 ##  Median : 4.200   Median : 4.84   Mode  :character   Media
 n :45.00[] 
  []
 
 
-Overfull \hbox (17.25pt too wide) in paragraph at lines 3651--3651
+Overfull \hbox (17.25pt too wide) in paragraph at lines 3660--3660
 []\TU/lmtt/m/n/10 ##  Mean   : 4.522   Mean   : 5.59                      Mean 
   :46.85[] 
  []
 
 
-Overfull \hbox (17.25pt too wide) in paragraph at lines 3651--3651
+Overfull \hbox (17.25pt too wide) in paragraph at lines 3660--3660
 []\TU/lmtt/m/n/10 ##  3rd Qu.: 5.400   3rd Qu.: 5.60                      3rd Q
 u.:60.00[] 
  []
 
 
-Overfull \hbox (17.25pt too wide) in paragraph at lines 3651--3651
+Overfull \hbox (17.25pt too wide) in paragraph at lines 3660--3660
 []\TU/lmtt/m/n/10 ##  Max.   :19.300   Max.   :16.11                      Max. 
   :92.00[] 
  []
 
-[76]
-Overfull \hbox (27.75pt too wide) in paragraph at lines 3651--3651
+[78]
+Overfull \hbox (27.75pt too wide) in paragraph at lines 3660--3660
 []\TU/lmtt/m/n/10 ##  Class :character   1st Qu.:63.00   1st Qu.:151.0   Class 
 :character[] 
  []
 
 
-Overfull \hbox (27.75pt too wide) in paragraph at lines 3651--3651
+Overfull \hbox (27.75pt too wide) in paragraph at lines 3660--3660
 []\TU/lmtt/m/n/10 ##  Mode  :character   Median :66.00   Median :172.5   Mode  
 :character[] 
  []
 
 
-Overfull \hbox (6.75pt too wide) in paragraph at lines 3651--3651
+Overfull \hbox (6.75pt too wide) in paragraph at lines 3660--3660
 []\TU/lmtt/m/n/10 ##  Min.   : 90.0   Min.   : 48.00   Min.   :110.0   Min.   :
  60.00[] 
  []
 
 
-Overfull \hbox (6.75pt too wide) in paragraph at lines 3651--3651
+Overfull \hbox (6.75pt too wide) in paragraph at lines 3660--3660
 []\TU/lmtt/m/n/10 ##  1st Qu.:121.2   1st Qu.: 75.00   1st Qu.:138.0   1st Qu.:
  84.00[] 
  []
 
 
-Overfull \hbox (6.75pt too wide) in paragraph at lines 3651--3651
+Overfull \hbox (6.75pt too wide) in paragraph at lines 3660--3660
 []\TU/lmtt/m/n/10 ##  Median :136.0   Median : 82.00   Median :149.0   Median :
  92.00[] 
  []
 
 
-Overfull \hbox (6.75pt too wide) in paragraph at lines 3651--3651
+Overfull \hbox (6.75pt too wide) in paragraph at lines 3660--3660
 []\TU/lmtt/m/n/10 ##  Mean   :136.9   Mean   : 83.32   Mean   :152.4   Mean   :
  92.52[] 
  []
 
 
-Overfull \hbox (6.75pt too wide) in paragraph at lines 3651--3651
+Overfull \hbox (6.75pt too wide) in paragraph at lines 3660--3660
 []\TU/lmtt/m/n/10 ##  3rd Qu.:146.8   3rd Qu.: 90.00   3rd Qu.:161.0   3rd Qu.:
 100.00[] 
  []
 
 
-Overfull \hbox (6.75pt too wide) in paragraph at lines 3651--3651
+Overfull \hbox (6.75pt too wide) in paragraph at lines 3660--3660
 []\TU/lmtt/m/n/10 ##  Max.   :250.0   Max.   :124.00   Max.   :238.0   Max.   :
 124.00[] 
  []
@@ -1945,60 +1949,60 @@ File: _main_files/figure-latex/unnamed-chunk-118-1.pdf Graphic file (type pdf)
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[77]
+[79]
 File: _main_files/figure-latex/unnamed-chunk-120-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-120-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[78]
+[80]
 Underfull \vbox (badness 2158) has occurred while \output is active []
 
-[79]
-Underfull \hbox (badness 10000) in paragraph at lines 3755--3757
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 3765--3767
-
- []
-
-[80]
-Underfull \hbox (badness 10000) in paragraph at lines 3818--3820
-
- []
-
 [81]
-Underfull \hbox (badness 10000) in paragraph at lines 3853--3854
+Underfull \hbox (badness 10000) in paragraph at lines 3764--3766
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3774--3776
+
+ []
+
+[82]
+Underfull \hbox (badness 10000) in paragraph at lines 3827--3829
+
+ []
+
+[83]
+Underfull \hbox (badness 10000) in paragraph at lines 3862--3863
 
  []
 
 File: _main_files/figure-latex/unnamed-chunk-124-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-124-1.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 3875--3877
+Underfull \hbox (badness 10000) in paragraph at lines 3884--3886
 
  []
 
-[82]
-Overfull \hbox (17.25pt too wide) in paragraph at lines 3899--3899
+[84]
+Overfull \hbox (17.25pt too wide) in paragraph at lines 3908--3908
 []\TU/lmtt/m/n/10 ## alternative hypothesis: true difference in means is not eq
 ual to 0[] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3915--3917
+Underfull \hbox (badness 10000) in paragraph at lines 3924--3926
 
  []
 
 
-Overfull \hbox (17.25pt too wide) in paragraph at lines 3939--3939
+Overfull \hbox (17.25pt too wide) in paragraph at lines 3948--3948
 []\TU/lmtt/m/n/10 ## alternative hypothesis: true difference in means is greate
 r than 0[] 
  []
 
-[83]
+[85]
 File: _main_files/figure-latex/unnamed-chunk-128-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-128-1.pdf>
 File: _main_files/figure-latex/unnamed-chunk-129-1.pdf Graphic file (type pdf)
@@ -2006,7 +2010,7 @@ File: _main_files/figure-latex/unnamed-chunk-129-1.pdf Graphic file (type pdf)
 
 Underfull \vbox (badness 1622) has occurred while \output is active []
 
-[84] [85]
+[86] [87]
 File: _main_files/figure-latex/unnamed-chunk-131-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-131-1.pdf>
 File: _main_files/figure-latex/unnamed-chunk-131-2.pdf Graphic file (type pdf)
@@ -2014,58 +2018,58 @@ File: _main_files/figure-latex/unnamed-chunk-131-2.pdf Graphic file (type pdf)
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[86]
-Underfull \vbox (badness 10000) detected at line 4063
+[88]
+Underfull \vbox (badness 10000) detected at line 4072
  []
 
 
 Underfull \vbox (badness 4084) has occurred while \output is active []
 
-[87]
-Overfull \hbox (17.25pt too wide) in paragraph at lines 4094--4094
+[89]
+Overfull \hbox (17.25pt too wide) in paragraph at lines 4103--4103
 []\TU/lmtt/m/n/10 ## alternative hypothesis: true difference in means is not eq
 ual to 0[] 
  []
 
-[88]
-Overfull \hbox (10.86002pt too wide) in paragraph at lines 4130--4131
+[90]
+Overfull \hbox (10.86002pt too wide) in paragraph at lines 4139--4140
 []\TU/lmr/m/n/10 Check which variables in this dataset are categorical/ordinal/
 numerical. 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 4160--4162
+Underfull \hbox (badness 10000) in paragraph at lines 4169--4171
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 4162--4164
+Underfull \hbox (badness 10000) in paragraph at lines 4171--4173
 
  []
 
-[89] [90] [91]
+[91] [92] [93]
 File: _main_files/figure-latex/unnamed-chunk-143-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-143-1.pdf>
-[92] [93]
-Overfull \hbox (33.0pt too wide) in paragraph at lines 4480--4480
+[94] [95]
+Overfull \hbox (33.0pt too wide) in paragraph at lines 4489--4489
 []\TU/lmtt/m/n/10 ##  [1] 1.250000e-01 4.000000e-04 6.153846e-02 2.400000e-19 6
 .666667e-03[] 
  []
 
 
-Overfull \hbox (33.0pt too wide) in paragraph at lines 4480--4480
+Overfull \hbox (33.0pt too wide) in paragraph at lines 4489--4489
 []\TU/lmtt/m/n/10 ##  [6] 2.222222e-02 5.555556e-01 1.000000e+00 4.000000e-02 9
 .500000e-05[] 
  []
 
 
-Overfull \hbox (33.0pt too wide) in paragraph at lines 4480--4480
+Overfull \hbox (33.0pt too wide) in paragraph at lines 4489--4489
 []\TU/lmtt/m/n/10 ## [11] 7.333333e-06 5.333333e-02 7.368421e-01 8.000000e-02 2
 .222222e-02[] 
  []
 
 
-Overfull \hbox (33.0pt too wide) in paragraph at lines 4480--4480
+Overfull \hbox (33.0pt too wide) in paragraph at lines 4489--4489
 []\TU/lmtt/m/n/10 ## [16] 3.529412e-01 7.142857e-02 1.000000e-12 5.333333e-02 1
 .142857e-02[] 
  []
@@ -2075,56 +2079,56 @@ File: _main_files/figure-latex/unnamed-chunk-147-1.pdf Graphic file (type pdf)
 File: _main_files/figure-latex/unnamed-chunk-147-2.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-147-2.pdf>
 
-Overfull \hbox (2.21574pt too wide) in paragraph at lines 4484--4486
+Overfull \hbox (2.21574pt too wide) in paragraph at lines 4493--4495
 [][] [] 
  []
 
-[94]
-Overfull \hbox (80.25pt too wide) in paragraph at lines 4544--4544
+[96]
+Overfull \hbox (80.25pt too wide) in paragraph at lines 4553--4553
 []\TU/lmtt/m/n/10 ##     id chol stab.glu hdl ratio glyhb age height weight bp.
 1s bp.1d bp.2s bp.2d[] 
  []
 
 
-Overfull \hbox (80.25pt too wide) in paragraph at lines 4544--4544
+Overfull \hbox (80.25pt too wide) in paragraph at lines 4553--4553
 []\TU/lmtt/m/n/10 ## 1 1000  203       82  56   3.6  4.31  46     62    121   1
 18    59    NA    NA[] 
  []
 
 
-Overfull \hbox (80.25pt too wide) in paragraph at lines 4544--4544
+Overfull \hbox (80.25pt too wide) in paragraph at lines 4553--4553
 []\TU/lmtt/m/n/10 ## 2 1001  165       97  24   6.9  4.44  29     64    218   1
 12    68    NA    NA[] 
  []
 
 
-Overfull \hbox (80.25pt too wide) in paragraph at lines 4544--4544
+Overfull \hbox (80.25pt too wide) in paragraph at lines 4553--4553
 []\TU/lmtt/m/n/10 ## 3 1002  228       92  37   6.2  4.64  58     61    256   1
 90    92   185    92[] 
  []
 
 
-Overfull \hbox (80.25pt too wide) in paragraph at lines 4544--4544
+Overfull \hbox (80.25pt too wide) in paragraph at lines 4553--4553
 []\TU/lmtt/m/n/10 ## 4 1003   78       93  12   6.5  4.63  67     67    119   1
 10    50    NA    NA[] 
  []
 
 
-Overfull \hbox (80.25pt too wide) in paragraph at lines 4544--4544
+Overfull \hbox (80.25pt too wide) in paragraph at lines 4553--4553
 []\TU/lmtt/m/n/10 ## 5 1005  249       90  28   8.9  7.72  64     68    183   1
 38    80    NA    NA[] 
  []
 
 
-Overfull \hbox (80.25pt too wide) in paragraph at lines 4544--4544
+Overfull \hbox (80.25pt too wide) in paragraph at lines 4553--4553
 []\TU/lmtt/m/n/10 ## 6 1008  248       94  69   3.6  4.81  34     71    190   1
 32    86    NA    NA[] 
  []
 
-[95]
+[97]
 File: _main_files/figure-latex/unnamed-chunk-151-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-151-1.pdf>
-[96] [97]
+[98] [99]
 File: _main_files/figure-latex/unnamed-chunk-154-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-154-1.pdf>
 File: _main_files/figure-latex/unnamed-chunk-154-2.pdf Graphic file (type pdf)
@@ -2132,52 +2136,52 @@ File: _main_files/figure-latex/unnamed-chunk-154-2.pdf Graphic file (type pdf)
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[98]
+[100]
 File: _main_files/figure-latex/unnamed-chunk-154-3.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-154-3.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[99]
+[101]
 File: _main_files/figure-latex/unnamed-chunk-155-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-155-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[100] [101]
-Overfull \hbox (27.75pt too wide) in paragraph at lines 4820--4820
+[102] [103]
+Overfull \hbox (27.75pt too wide) in paragraph at lines 4829--4829
 []\TU/lmtt/m/n/10 ## lm(formula = chol ~ stab.glu + hdl + glyhb + age + height 
 + weight +[] 
  []
 
-[102]
+[104]
 File: _main_files/figure-latex/unnamed-chunk-158-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-158-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[103] [104]
-Overfull \hbox (27.75pt too wide) in paragraph at lines 4914--4914
+[105] [106]
+Overfull \hbox (27.75pt too wide) in paragraph at lines 4923--4923
 []\TU/lmtt/m/n/10 ## lm(formula = chol ~ stab.glu + hdl + glyhb + age + height 
 + weight +[] 
  []
 
-[105] [106]
+[107] [108]
 File: _main_files/figure-latex/unnamed-chunk-165-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-165-1.pdf>
-[107] [108
+[109] [110
 
 ]
 File: figures/Annotathon/Annot_create_account.png Graphic file (type bmp)
 <figures/Annotathon/Annot_create_account.png>
 
-Overfull \hbox (16.66121pt too wide) in paragraph at lines 5022--5025
+Overfull \hbox (16.66121pt too wide) in paragraph at lines 5031--5034
 \TU/lmr/m/n/10 tab []
  []
 
 File: figures/Annotathon/Annot_select_affiliation.png Graphic file (type bmp)
 <figures/Annotathon/Annot_select_affiliation.png>
-[109]
+[111]
 File: figures/Annotathon/Annot_access_rulebook.png Graphic file (type bmp)
 <figures/Annotathon/Annot_access_rulebook.png>
 File: figures/Annotathon/Annot_add_sequence_to_cart.png Graphic file (type bmp)
@@ -2188,43 +2192,43 @@ File: figures/Annotathon/Annot_your_sequence.png Graphic file (type bmp)
 
 Underfull \vbox (badness 1377) has occurred while \output is active []
 
-[110]
+[112]
 File: figures/Annotathon/Annot_edit_report.png Graphic file (type bmp)
 <figures/Annotathon/Annot_edit_report.png>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[111]
+[113]
 
 Package longtable Warning: Column widths have changed
-(longtable)                in table 1 on input line 5092.
+(longtable)                in table 1.1 on input line 5101.
 
 File: figures/Annotathon/Annot_copy_sequence.png Graphic file (type bmp)
 <figures/Annotathon/Annot_copy_sequence.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 5105--5107
+Underfull \hbox (badness 10000) in paragraph at lines 5114--5116
 []
  []
 
-[112]
+[114]
 File: figures/Annotathon/Annot_ORF_input.png Graphic file (type bmp)
 <figures/Annotathon/Annot_ORF_input.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 5127--5129
+Underfull \hbox (badness 10000) in paragraph at lines 5136--5138
 [][]
  []
 
 File: figures/Annotathon/Annot_ORF_output.png Graphic file (type bmp)
 <figures/Annotathon/Annot_ORF_output.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 5130--5132
+Underfull \hbox (badness 10000) in paragraph at lines 5139--5141
 [][]
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[113]
+[115]
 File: figures/Annotathon/Annot_table1_ORF.png Graphic file (type bmp)
 <figures/Annotathon/Annot_table1_ORF.png>
 File: figures/Annotathon/Annot_figure1_ORF.png Graphic file (type bmp)
@@ -2232,50 +2236,50 @@ File: figures/Annotathon/Annot_figure1_ORF.png Graphic file (type bmp)
 File: figures/Annotathon/Annot_protein_domain.png Graphic file (type bmp)
 <figures/Annotathon/Annot_protein_domain.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 5154--5156
+Underfull \hbox (badness 10000) in paragraph at lines 5163--5165
 [][]
  []
 
-[114]
+[116]
 File: figures/Annotathon/Annot_table2_prot_domain.png Graphic file (type bmp)
 <figures/Annotathon/Annot_table2_prot_domain.png>
 
-Overfull \hbox (269.25pt too wide) in paragraph at lines 5168--5168
+Overfull \hbox (269.25pt too wide) in paragraph at lines 5177--5177
 []\TU/lmtt/m/n/10 - Which domains predictions do you select to annotate the ORF
 ? Specifiy their sizes, E-value! Justify your selection![] 
  []
 
 
-Overfull \hbox (54.0pt too wide) in paragraph at lines 5174--5174
+Overfull \hbox (54.0pt too wide) in paragraph at lines 5183--5183
 []\TU/lmtt/m/n/10 - Why are some functional domains rejected? (high E-value?  N
 o IPR domains?)[] 
  []
 
-[115]
+[117]
 File: figures/Annotathon/Annot_BLASTp_NR.png Graphic file (type bmp)
 <figures/Annotathon/Annot_BLASTp_NR.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 5190--5192
+Underfull \hbox (badness 10000) in paragraph at lines 5199--5201
 [][]
  []
 
 File: figures/Annotathon/Annot_table3_BLASTp.png Graphic file (type bmp)
 <figures/Annotathon/Annot_table3_BLASTp.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 5193--5196
+Underfull \hbox (badness 10000) in paragraph at lines 5202--5205
 [][]
  []
 
 File: figures/Annotathon/Annot_BLAST_hit_list.png Graphic file (type bmp)
 <figures/Annotathon/Annot_BLAST_hit_list.png>
-[116]
+[118]
 File: figures/Annotathon/Annot_table4_BLAST.png Graphic file (type bmp)
 <figures/Annotathon/Annot_table4_BLAST.png>
-[117]
+[119]
 File: figures/Annotathon/Annot_Taxonomy_from_BLAST.png Graphic file (type bmp)
 <figures/Annotathon/Annot_Taxonomy_from_BLAST.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 5247--5249
+Underfull \hbox (badness 10000) in paragraph at lines 5256--5258
 [][]
  []
 
@@ -2283,7 +2287,7 @@ File: figures/Annotathon/Annot_taxonomy_summary_tool.png Graphic file (type bmp
 )
 <figures/Annotathon/Annot_taxonomy_summary_tool.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 5250--5252
+Underfull \hbox (badness 10000) in paragraph at lines 5259--5261
 [][]
  []
 
@@ -2292,12 +2296,12 @@ File: figures/Annotathon/Annot_taxonomy_summary.png Graphic file (type bmp)
 
 Underfull \vbox (badness 1112) has occurred while \output is active []
 
-[118]
+[120]
 File: figures/Annotathon/Anno_Multiple_sequence_alignment.png Graphic file (typ
 e bmp)
 <figures/Annotathon/Anno_Multiple_sequence_alignment.png>
 
-Overfull \hbox (143.25157pt too wide) in paragraph at lines 5279--5282
+Overfull \hbox (143.25157pt too wide) in paragraph at lines 5288--5291
 []\TU/lmr/m/n/10 Copy paste your sequences here : []
  []
 
@@ -2306,34 +2310,34 @@ Underfull \vbox (badness 6268) has occurred while \output is active []
 
 
 Overfull \hbox (19.44063pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/10 0.7.  DAY 3: ANNOTATHON! PHYLOGENETIC TREES AND CONCLUSION \TU/
-lmr/m/n/10 119
+\TU/lmr/m/sl/10 1.7.  DAY 3: ANNOTATHON! PHYLOGENETIC TREES AND CONCLUSION \TU/
+lmr/m/n/10 121
  []
 
-[119]
+[121]
 File: figures/Annotathon/Annot_Clustal_format.png Graphic file (type bmp)
 <figures/Annotathon/Annot_Clustal_format.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 5287--5290
+Underfull \hbox (badness 10000) in paragraph at lines 5296--5299
 [][]
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[120]
+[122]
 Overfull \hbox (19.44063pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/10 0.7.  DAY 3: ANNOTATHON! PHYLOGENETIC TREES AND CONCLUSION \TU/
-lmr/m/n/10 121
+\TU/lmr/m/sl/10 1.7.  DAY 3: ANNOTATHON! PHYLOGENETIC TREES AND CONCLUSION \TU/
+lmr/m/n/10 123
  []
 
-[121]
+[123]
 File: figures/Annotathon/Annot_phylogeny_alacarte.png Graphic file (type bmp)
 <figures/Annotathon/Annot_phylogeny_alacarte.png>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[122]
+[124]
 File: figures/Annotathon/Annot_newick_to_annot_tree.png Graphic file (type bmp)
 
 <figures/Annotathon/Annot_newick_to_annot_tree.png>
@@ -2342,93 +2346,93 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Overfull \hbox (19.44063pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/10 0.7.  DAY 3: ANNOTATHON! PHYLOGENETIC TREES AND CONCLUSION \TU/
-lmr/m/n/10 123
+\TU/lmr/m/sl/10 1.7.  DAY 3: ANNOTATHON! PHYLOGENETIC TREES AND CONCLUSION \TU/
+lmr/m/n/10 125
  []
 
-[123]
+[125]
 File: figures/Annotathon/Annot_newick_example.png Graphic file (type bmp)
 <figures/Annotathon/Annot_newick_example.png>
 
-Overfull \hbox (143.17769pt too wide) in paragraph at lines 5341--5343
+Overfull \hbox (143.17769pt too wide) in paragraph at lines 5350--5352
 []\TU/lmr/m/n/10 Your result should look like this : [] 
  []
 
 
-Overfull \hbox (27.75pt too wide) in paragraph at lines 5354--5354
+Overfull \hbox (27.75pt too wide) in paragraph at lines 5363--5363
 []\TU/lmtt/m/n/10 - Describe the topology of each tree. What are the monophylet
 ic groups?[] 
  []
 
 
-Overfull \hbox (274.5pt too wide) in paragraph at lines 5354--5354
+Overfull \hbox (274.5pt too wide) in paragraph at lines 5363--5363
 []\TU/lmtt/m/n/10 - Do the two independant trees describe the same evolutionary
  history? the same topology? Similar or different clades?[] 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5354--5354
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5363--5363
 []\TU/lmtt/m/n/10 - Identify the commonalities as well as the potential incoher
 encies.[] 
  []
 
-[124]
-Overfull \hbox (80.25pt too wide) in paragraph at lines 5362--5362
+[126]
+Overfull \hbox (80.25pt too wide) in paragraph at lines 5371--5371
 []\TU/lmtt/m/n/10 - Are your gene trees coherent with the reference species tre
 es ("tree of life")?[] 
  []
 
 
-Overfull \hbox (285.0pt too wide) in paragraph at lines 5362--5362
+Overfull \hbox (285.0pt too wide) in paragraph at lines 5371--5371
 []\TU/lmtt/m/n/10 - Identify each discrepancy with the reference species tree, 
 and suggest some explanations (HGTs, gene duplications...).[] 
  []
 
 
-Overfull \hbox (69.75pt too wide) in paragraph at lines 5370--5370
+Overfull \hbox (69.75pt too wide) in paragraph at lines 5379--5379
 []\TU/lmtt/m/n/10 - In which monophyletic clade does the the metagenomic sequen
 ce seem to emerge?[] 
  []
 
 
-Overfull \hbox (43.5pt too wide) in paragraph at lines 5370--5370
+Overfull \hbox (43.5pt too wide) in paragraph at lines 5379--5379
 []\TU/lmtt/m/n/10 - Propose a hypothetical taxonomic classification for the met
 agenomic ORF![] 
  []
 
 
-Overfull \hbox (243.0pt too wide) in paragraph at lines 5370--5370
+Overfull \hbox (243.0pt too wide) in paragraph at lines 5379--5379
 []\TU/lmtt/m/n/10 - Provide detailed justification of your hypothesis, do not u
 nder/over interpret the infered phylogenetic trees![] 
  []
 
 
 Overfull \hbox (19.44063pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/10 0.7.  DAY 3: ANNOTATHON! PHYLOGENETIC TREES AND CONCLUSION \TU/
-lmr/m/n/10 125
+\TU/lmr/m/sl/10 1.7.  DAY 3: ANNOTATHON! PHYLOGENETIC TREES AND CONCLUSION \TU/
+lmr/m/n/10 127
  []
 
-[125]
-Underfull \hbox (badness 10000) in paragraph at lines 5434--5436
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 5436--5438
+[127]
+Underfull \hbox (badness 10000) in paragraph at lines 5443--5445
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 5438--5440
+Underfull \hbox (badness 10000) in paragraph at lines 5445--5447
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5447--5449
 
  []
 
 File: figures/IGVintro.png Graphic file (type bmp)
 <figures/IGVintro.png>
-[126] [127] [128]
+[128] [129] [130]
 
 LaTeX Warning: File `https://www.samformat.info/images/sam_format_annotated_exa
-mple.5108a0cd.jpg' not found on input line 5514.
+mple.5108a0cd.jpg' not found on input line 5523.
 
 
 ! LaTeX Error: File `https://www.samformat.info/images/sam_format_annotated_exa
@@ -2438,15 +2442,15 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.5514 ...m_format_annotated_example.5108a0cd.jpg}
+l.5523 ...m_format_annotated_example.5108a0cd.jpg}
                                                    
 Here is how much of TeX's memory you used:
- 28279 strings out of 492916
- 522116 string characters out of 6133344
+ 28286 strings out of 492916
+ 522277 string characters out of 6133344
  730500 words of memory out of 5000000
- 31976 multiletter control sequences out of 15000+600000
- 538764 words of font info for 81 fonts, out of 8000000 for 9000
+ 31981 multiletter control sequences out of 15000+600000
+ 538780 words of font info for 83 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  58i,6n,115p,854b,455s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on _main.pdf (128 pages).
+Output written on _main.pdf (130 pages).

@@ -1,0 +1,4 @@
+# Lecture files
+
+* Day 1 - data types/graphs/correlation [slides](./slides/GKBioinfo_week1_day1.pdf)
+
