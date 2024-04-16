@@ -668,6 +668,7 @@ Clustering is a method by which we group together similar observations while sep
 
 #### Determine the most variable genes
 
+
 When performing clustering, we usually reduce the number of genes used, as some of them are not informative. For example, genes that show a mostly constant expression across all samples will not be useful to distinguish the samples, right? One simple method is to select genes that show a **high variance** across all samples.
 
 ```{r}
