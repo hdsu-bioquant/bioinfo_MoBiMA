@@ -843,6 +843,9 @@ What can you tell from the differences in these values?</p></li>
 <span id="cb134-2"><a href="week-1-data-analysis.html#cb134-2" tabindex="-1"></a>            <span class="at">centers =</span> <span class="dv">2</span>, </span>
 <span id="cb134-3"><a href="week-1-data-analysis.html#cb134-3" tabindex="-1"></a>            <span class="at">nstart =</span> <span class="dv">10</span>)</span></code></pre></div>
 <blockquote>
+<p>What does the <code>t</code> mean in the command?</p>
+</blockquote>
+<blockquote>
 <p>Just type <code>km</code> in your console and check all results generated. Play around with the <code>centers</code> parameter. See cluster assignments by typing <code>table(km$cluster)</code></p>
 </blockquote>
 </div>
@@ -917,6 +920,10 @@ We can test a simple scenario before. Check how the output of this simple loop l
 <span id="cb146-4"><a href="week-1-data-analysis.html#cb146-4" tabindex="-1"></a><span class="co"># Let us use the basic R function plot() to see the results</span></span>
 <span id="cb146-5"><a href="week-1-data-analysis.html#cb146-5" tabindex="-1"></a><span class="fu">plot</span>(s)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-74-1.png" width="672" /></p>
+<blockquote>
+<p>Run this for various values of k and compare the silhouette scores
+Compare to the Elbow method!</p>
+</blockquote>
 <hr />
 </div>
 </div>
@@ -1483,7 +1490,7 @@ Then, we <code>lapply(v, function(i))</code>:
 <span id="cb230-22"><a href="week-1-data-analysis.html#cb230-22" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">&quot;95% CI Status&quot;</span>) </span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-114-1.png" width="768" /></p>
 <p>Here, the orange/grey bars represent the confidence interval, the dot is the mean of the sample values, and the dotted line at <code>\lambda</code> represents the true expectation value. Whenever the true expectation value is within the CI, the bar is orange, if not, the bar is grey. How often is the true expectation value outside the CI? Count the grey bars!</p>
-<p>It happens 8 times, which fits pretty well with the expected 5%.</p>
+<p>It happens 7 times, which fits pretty well with the expected 5%.</p>
 <blockquote>
 <p>Repeat this simulation, but now with samples of <span class="math inline">\(N=24\)</span> (again 100 times)<br />
 What do you observe?<br />

@@ -177,7 +177,7 @@ Check your name, your user name on which you will connect.
 \begin{itemize}
 \tightlist
 \item
-  open a terminal and type the following commant: \texttt{ssh\ \textless{}USER\textgreater{}\textbackslash{}@194.94.113.18\ -p\ 30210\ -L\ 8787:127.0.0.1:8787}; replace \texttt{\textless{}USER\textgreater{}} with your user name from the Google Sheet
+  open a terminal and type the following commant: \texttt{ssh\ \textless{}USER\textgreater{}@194.94.113.18\ -p\ 30210\ -L\ 8787:127.0.0.1:8787}; replace \texttt{\textless{}USER\textgreater{}} with your user name from the Google Sheet
 \item
   in a browser, go to \href{http://127.0.0.1:8787}{this url}
 \item
@@ -306,7 +306,7 @@ In the new window, make the following changes:
 \item
   in Benutzername (or Username), type your username (like user1)
 \item
-  password box: gkBio\%!
+  password box: (ask for it!)
 \end{itemize}
 
 Click on Verbinden (or Connect)
@@ -606,13 +606,13 @@ Therefore, we can use the function \texttt{min()}.
 \end{Shaded}
 
 \begin{verbatim}
-##            [,1]        [,2]        [,3]        [,4]       [,5]
-## [1,]  0.7190288 -0.47043989 -1.82562245 -0.58815667  1.8476676
-## [2,] -0.2157417 -0.26778581  1.53475711 -0.74927964 -0.7542569
-## [3,] -2.5225050  0.03361452  0.15741733 -1.65395515 -0.5921112
-## [4,] -0.2624053 -0.74058785 -0.03418108 -2.03853474 -0.2437229
-## [5,]  0.9938333  1.53664036 -0.19393765 -0.01226644  0.1590075
-## [6,]  0.6761342  0.53860500  0.24999756  1.14268115  0.4116064
+##            [,1]       [,2]        [,3]       [,4]       [,5]
+## [1,] -0.1308164  1.2820140  1.05056532  1.1403971 -1.2477211
+## [2,]  0.6695646 -0.8406033  0.35877194 -0.2722253  1.4887185
+## [3,] -0.8155545 -0.4173141 -1.19253373  0.8602309  0.2496372
+## [4,] -0.3310000  0.5178117 -0.07918144  0.7051160 -0.4528020
+## [5,]  0.6029521 -0.9718624 -1.48480273  2.0063564 -1.0271856
+## [6,]  0.2390710  0.3992942  0.93106307 -0.2578888  0.3545928
 \end{verbatim}
 
 \begin{Shaded}
@@ -623,7 +623,7 @@ Therefore, we can use the function \texttt{min()}.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] -1.8256224 -0.7542569 -2.5225050 -2.0385347 -0.1939376  0.2499976
+## [1] -1.2477211 -0.8406033 -1.1925337 -0.4528020 -1.4848027 -0.2578888
 \end{verbatim}
 
 \begin{quote}
@@ -678,13 +678,13 @@ Instead of using built-in functions, we can also write our own little function a
 \end{Shaded}
 
 \begin{verbatim}
-##            [,1]        [,2]        [,3]        [,4]       [,5]
-## [1,]  0.7190288 -0.47043989 -1.82562245 -0.58815667  1.8476676
-## [2,] -0.2157417 -0.26778581  1.53475711 -0.74927964 -0.7542569
-## [3,] -2.5225050  0.03361452  0.15741733 -1.65395515 -0.5921112
-## [4,] -0.2624053 -0.74058785 -0.03418108 -2.03853474 -0.2437229
-## [5,]  0.9938333  1.53664036 -0.19393765 -0.01226644  0.1590075
-## [6,]  0.6761342  0.53860500  0.24999756  1.14268115  0.4116064
+##            [,1]       [,2]        [,3]       [,4]       [,5]
+## [1,] -0.1308164  1.2820140  1.05056532  1.1403971 -1.2477211
+## [2,]  0.6695646 -0.8406033  0.35877194 -0.2722253  1.4887185
+## [3,] -0.8155545 -0.4173141 -1.19253373  0.8602309  0.2496372
+## [4,] -0.3310000  0.5178117 -0.07918144  0.7051160 -0.4528020
+## [5,]  0.6029521 -0.9718624 -1.48480273  2.0063564 -1.0271856
+## [6,]  0.2390710  0.3992942  0.93106307 -0.2578888  0.3545928
 \end{verbatim}
 
 \begin{Shaded}
@@ -694,7 +694,7 @@ Instead of using built-in functions, we can also write our own little function a
 \end{Shaded}
 
 \begin{verbatim}
-## [1] -0.6350452 -0.9046139 -9.1550789 -6.6388637  4.9665541  6.0380484
+## [1]  4.1888777  2.8084528 -2.6310684  0.7198884 -1.7490842  3.3322646
 \end{verbatim}
 
 Besides, we can use \texttt{sapply()} for a \textbf{list}, for example to calculate the length of every element using \texttt{length()}:
@@ -2339,6 +2339,10 @@ We use the function \texttt{kmeans()} in R on our matrix. You can check the opti
 \end{Shaded}
 
 \begin{quote}
+What does the \texttt{t} mean in the command?
+\end{quote}
+
+\begin{quote}
 Just type \texttt{km} in your console and check all results generated. Play around with the \texttt{centers} parameter. See cluster assignments by typing \texttt{table(km\$cluster)}
 \end{quote}
 
@@ -2474,6 +2478,11 @@ We now compute the silhouette for a specific k-means clustering:
 \end{Shaded}
 
 \includegraphics{_main_files/figure-latex/unnamed-chunk-74-1.pdf}
+
+\begin{quote}
+Run this for various values of k and compare the silhouette scores
+Compare to the Elbow method!
+\end{quote}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -3535,7 +3544,7 @@ Finally, we determine whether each sample mean is found within the 95\% CI or no
 
 Here, the orange/grey bars represent the confidence interval, the dot is the mean of the sample values, and the dotted line at \texttt{\textbackslash{}lambda} represents the true expectation value. Whenever the true expectation value is within the CI, the bar is orange, if not, the bar is grey. How often is the true expectation value outside the CI? Count the grey bars!
 
-It happens 6 times, which fits pretty well with the expected 5\%.
+It happens 1 times, which fits pretty well with the expected 5\%.
 
 \begin{quote}
 Repeat this simulation, but now with samples of \(N=24\) (again 100 times)\\

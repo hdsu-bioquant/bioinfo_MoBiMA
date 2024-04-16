@@ -586,6 +586,8 @@ km = kmeans(x=t(brca.exp),
             nstart = 10)
 ```
 
+>  What does the `t` mean in the command?
+
 > Just type `km` in your console and check all results generated. Play around with the `centers` parameter. See cluster assignments by typing `table(km$cluster)`
 
 #### Quality of the clustering
@@ -654,6 +656,9 @@ s = silhouette(km$cluster,D)
 # Let us use the basic R function plot() to see the results
 plot(s)
 ```
+
+> Run this for various values of k and compare the silhouette scores
+> Compare to the Elbow method!
 
 ------------------------------------------------------------------------
 

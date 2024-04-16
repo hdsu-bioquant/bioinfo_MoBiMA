@@ -325,7 +325,7 @@ Check your name, your user name on which you will connect.</p>
 <div id="if-you-are-running-machine-with-linux-or-macos" class="section level4 unnumbered hasAnchor">
 <h4>if you are running machine with Linux or MacOS<a href="index.html#if-you-are-running-machine-with-linux-or-macos" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
-<li>open a terminal and type the following commant: <code>ssh &lt;USER&gt;\@194.94.113.18 -p 30210 -L 8787:127.0.0.1:8787</code>; replace <code>&lt;USER&gt;</code> with your user name from the Google Sheet</li>
+<li>open a terminal and type the following commant: <code>ssh &lt;USER&gt;@194.94.113.18 -p 30210 -L 8787:127.0.0.1:8787</code>; replace <code>&lt;USER&gt;</code> with your user name from the Google Sheet</li>
 <li>in a browser, go to <a href="http://127.0.0.1:8787">this url</a></li>
 <li>log in with your user name and the password that will be provided to you.</li>
 </ul>
@@ -400,7 +400,7 @@ We will cover other basics on the next sections.</p>
 <li>in the server box, type 194.94.113.18</li>
 <li>in the port box, type 30210</li>
 <li>in Benutzername (or Username), type your username (like user1)</li>
-<li>password box: gkBio%!</li>
+<li>password box: (ask for it!)</li>
 </ul>
 <p>Click on Verbinden (or Connect)</p>
 </div>
@@ -562,16 +562,16 @@ Therefore, we can use the function <code>min()</code>.</p>
 <span id="cb22-2"><a href="index.html#cb22-2" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">30</span>)   <span class="co"># generate 30 random numbers for the matrix</span></span>
 <span id="cb22-3"><a href="index.html#cb22-3" tabindex="-1"></a>Mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> m, <span class="at">nrow =</span> <span class="dv">6</span>)</span>
 <span id="cb22-4"><a href="index.html#cb22-4" tabindex="-1"></a>Mat</span></code></pre></div>
-<pre><code>##            [,1]        [,2]       [,3]         [,4]        [,5]
-## [1,] -0.8963706  0.23513219 -0.4457071  0.001654689 -0.46015941
-## [2,]  0.1293395 -0.36239690 -0.7656104 -0.219718539  0.80373016
-## [3,]  0.5355249 -0.05637661  0.2036620  0.313960383  0.06144027
-## [4,] -0.2432926 -0.66646023 -0.7089143  0.662977640  0.06053241
-## [5,]  0.2067455  0.37090917 -1.9072735  0.037161983  1.44128544
-## [6,]  0.5654814 -0.09799715  0.9802817  0.309368868  0.04249232</code></pre>
+<pre><code>##            [,1]       [,2]        [,3]       [,4]       [,5]
+## [1,] -1.9660956  0.3564106  0.97642773  1.0436028 -0.1713416
+## [2,]  1.0018086 -0.2890213  1.67132217  1.7777012  0.4252614
+## [3,] -0.9726411  1.4888522  1.07713438  2.2236271  0.5022412
+## [4,] -0.4370848 -1.1381563  0.06976414 -0.6318303  1.4175891
+## [5,] -0.5295174  0.2604030  0.30408722  1.2693363  0.1202211
+## [6,]  0.2743536  0.7736245 -0.14948977  1.4114872 -0.9674779</code></pre>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="index.html#cb24-1" tabindex="-1"></a><span class="co">#Next, we want to determine the minimum value of each row: </span></span>
 <span id="cb24-2"><a href="index.html#cb24-2" tabindex="-1"></a><span class="fu">apply</span>(Mat, <span class="dv">1</span>, min)</span></code></pre></div>
-<pre><code>## [1] -0.89637057 -0.76561044 -0.05637661 -0.70891434 -1.90727349 -0.09799715</code></pre>
+<pre><code>## [1] -1.9660956 -0.2890213 -0.9726411 -1.1381563 -0.5295174 -0.9674779</code></pre>
 <blockquote>
 <p>What happens if you change the “1” in the apply function to “2”?
 Try it!</p>
@@ -597,15 +597,15 @@ which function do we want to apply to each element of this vector?<br />
 <pre><code>## [1]  2  4  6  8 10</code></pre>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="index.html#cb30-1" tabindex="-1"></a><span class="co"># apply()</span></span>
 <span id="cb30-2"><a href="index.html#cb30-2" tabindex="-1"></a>Mat </span></code></pre></div>
-<pre><code>##            [,1]        [,2]       [,3]         [,4]        [,5]
-## [1,] -0.8963706  0.23513219 -0.4457071  0.001654689 -0.46015941
-## [2,]  0.1293395 -0.36239690 -0.7656104 -0.219718539  0.80373016
-## [3,]  0.5355249 -0.05637661  0.2036620  0.313960383  0.06144027
-## [4,] -0.2432926 -0.66646023 -0.7089143  0.662977640  0.06053241
-## [5,]  0.2067455  0.37090917 -1.9072735  0.037161983  1.44128544
-## [6,]  0.5654814 -0.09799715  0.9802817  0.309368868  0.04249232</code></pre>
+<pre><code>##            [,1]       [,2]        [,3]       [,4]       [,5]
+## [1,] -1.9660956  0.3564106  0.97642773  1.0436028 -0.1713416
+## [2,]  1.0018086 -0.2890213  1.67132217  1.7777012  0.4252614
+## [3,] -0.9726411  1.4888522  1.07713438  2.2236271  0.5022412
+## [4,] -0.4370848 -1.1381563  0.06976414 -0.6318303  1.4175891
+## [5,] -0.5295174  0.2604030  0.30408722  1.2693363  0.1202211
+## [6,]  0.2743536  0.7736245 -0.14948977  1.4114872 -0.9674779</code></pre>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="index.html#cb32-1" tabindex="-1"></a><span class="fu">apply</span>(Mat, <span class="dv">1</span>, <span class="cf">function</span>(x) {<span class="fu">sum</span>(x<span class="sc">*</span><span class="dv">2</span>)}) <span class="co">#the operation is performed on every row of &quot;Mat&quot;; every element is multiplied by two and the sum of the row is calculated</span></span></code></pre></div>
-<pre><code>## [1] -3.1309003 -0.8293124  2.1164217 -1.7903142  0.2976571  3.5992545</code></pre>
+<pre><code>## [1]  0.478008  9.174144  8.638427 -1.439436  2.849060  2.684995</code></pre>
 <p>Besides, we can use <code>sapply()</code> for a <strong>list</strong>, for example to calculate the length of every element using <code>length()</code>:</p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="index.html#cb34-1" tabindex="-1"></a>List1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">color =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>), <span class="at">size =</span> <span class="dv">5</span>, <span class="at">state =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span>))</span>
 <span id="cb34-2"><a href="index.html#cb34-2" tabindex="-1"></a></span>

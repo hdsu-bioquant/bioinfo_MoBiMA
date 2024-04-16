@@ -48,7 +48,7 @@ Check your name, your user name on which you will connect.
 
 #### if you are running machine with Linux or MacOS {.unnumbered}
 
--   open a terminal and type the following commant: `ssh <USER>\@194.94.113.18 -p 30210 -L 8787:127.0.0.1:8787`; replace `<USER>` with your user name from the Google Sheet
+-   open a terminal and type the following commant: `ssh <USER>@194.94.113.18 -p 30210 -L 8787:127.0.0.1:8787`; replace `<USER>` with your user name from the Google Sheet
 -   in a browser, go to [this url](http://127.0.0.1:8787)
 -   log in with your user name and the password that will be provided to you.
 
@@ -116,7 +116,7 @@ In the new window, make the following changes:
 -   in the server box, type 194.94.113.18
 -   in the port box, type 30210
 -   in Benutzername (or Username), type your username (like user1)
--   password box: gkBio%!
+-   password box: (ask for it!)
 
 Click on Verbinden (or Connect)
 
@@ -1324,6 +1324,8 @@ km = kmeans(x=t(brca.exp),
             nstart = 10)
 ```
 
+>  What does the `t` mean in the command?
+
 > Just type `km` in your console and check all results generated. Play around with the `centers` parameter. See cluster assignments by typing `table(km$cluster)`
 
 #### Quality of the clustering
@@ -1392,6 +1394,9 @@ s = silhouette(km$cluster,D)
 # Let us use the basic R function plot() to see the results
 plot(s)
 ```
+
+> Run this for various values of k and compare the silhouette scores
+> Compare to the Elbow method!
 
 ------------------------------------------------------------------------
 
