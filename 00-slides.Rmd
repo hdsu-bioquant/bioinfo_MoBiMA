@@ -2,4 +2,4 @@
 
 * Day 1 - data types/graphs/correlation [[slides]](./slides/GKBioinfo_week1_day1.pdf)
 * Day 2 - clustering / principal compoment analysis [[slides]](./slides/GKBioinfo_week1_day.pdf)
-* Day 3 - distributions / inference [[slides]](./slides/GKBioinfo_week1_day.pdf)
+* Day 3 - distributions / inference [[slides]](./slides/GKBioinfo_week1_day3.pdf)
