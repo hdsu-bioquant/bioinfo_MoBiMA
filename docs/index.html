@@ -562,16 +562,16 @@ Therefore, we can use the function <code>min()</code>.</p>
 <span id="cb22-2"><a href="index.html#cb22-2" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">30</span>)   <span class="co"># generate 30 random numbers for the matrix</span></span>
 <span id="cb22-3"><a href="index.html#cb22-3" tabindex="-1"></a>Mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> m, <span class="at">nrow =</span> <span class="dv">6</span>)</span>
 <span id="cb22-4"><a href="index.html#cb22-4" tabindex="-1"></a>Mat</span></code></pre></div>
-<pre><code>##            [,1]       [,2]       [,3]        [,4]       [,5]
-## [1,]  1.9470185  0.3159737  1.3245889 -0.59818754  0.4238736
-## [2,]  0.5716021  0.2123359 -0.5268886 -1.16202210 -0.5199883
-## [3,] -1.6605093 -1.2881519  0.0626495 -0.86784122 -0.7478891
-## [4,] -0.4425737 -0.2887260  0.6620375  1.02418988  1.8053583
-## [5,]  2.0749767 -0.1449065  0.1017387  0.08364377  1.3198789
-## [6,]  0.3382010  0.1869289  0.1542706  0.79870889 -1.1395138</code></pre>
+<pre><code>##            [,1]        [,2]       [,3]       [,4]       [,5]
+## [1,]  0.7042081  0.98932608  1.5650903  0.1775264  0.3307423
+## [2,]  0.9138678  0.98511949 -0.7280489  0.2619170  0.2240228
+## [3,] -0.7441971  1.24011737 -0.9649700 -0.4325604 -0.6084558
+## [4,]  1.3890472 -0.25181553 -2.5362535  2.2431803 -2.0357191
+## [5,] -0.6491435 -0.05344213 -1.0883228 -0.8309297  0.5706613
+## [6,] -0.4352054 -1.45193287 -0.4849996  0.7919578 -2.3010196</code></pre>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="index.html#cb24-1" tabindex="-1"></a><span class="co">#Next, we want to determine the minimum value of each row: </span></span>
 <span id="cb24-2"><a href="index.html#cb24-2" tabindex="-1"></a><span class="fu">apply</span>(Mat, <span class="dv">1</span>, min)</span></code></pre></div>
-<pre><code>## [1] -0.5981875 -1.1620221 -1.6605093 -0.4425737 -0.1449065 -1.1395138</code></pre>
+<pre><code>## [1]  0.1775264 -0.7280489 -0.9649700 -2.5362535 -1.0883228 -2.3010196</code></pre>
 <blockquote>
 <p>What happens if you change the “1” in the apply function to “2”?
 Try it!</p>
@@ -597,15 +597,15 @@ which function do we want to apply to each element of this vector?<br />
 <pre><code>## [1]  2  4  6  8 10</code></pre>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="index.html#cb30-1" tabindex="-1"></a><span class="co"># apply()</span></span>
 <span id="cb30-2"><a href="index.html#cb30-2" tabindex="-1"></a>Mat </span></code></pre></div>
-<pre><code>##            [,1]       [,2]       [,3]        [,4]       [,5]
-## [1,]  1.9470185  0.3159737  1.3245889 -0.59818754  0.4238736
-## [2,]  0.5716021  0.2123359 -0.5268886 -1.16202210 -0.5199883
-## [3,] -1.6605093 -1.2881519  0.0626495 -0.86784122 -0.7478891
-## [4,] -0.4425737 -0.2887260  0.6620375  1.02418988  1.8053583
-## [5,]  2.0749767 -0.1449065  0.1017387  0.08364377  1.3198789
-## [6,]  0.3382010  0.1869289  0.1542706  0.79870889 -1.1395138</code></pre>
+<pre><code>##            [,1]        [,2]       [,3]       [,4]       [,5]
+## [1,]  0.7042081  0.98932608  1.5650903  0.1775264  0.3307423
+## [2,]  0.9138678  0.98511949 -0.7280489  0.2619170  0.2240228
+## [3,] -0.7441971  1.24011737 -0.9649700 -0.4325604 -0.6084558
+## [4,]  1.3890472 -0.25181553 -2.5362535  2.2431803 -2.0357191
+## [5,] -0.6491435 -0.05344213 -1.0883228 -0.8309297  0.5706613
+## [6,] -0.4352054 -1.45193287 -0.4849996  0.7919578 -2.3010196</code></pre>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="index.html#cb32-1" tabindex="-1"></a><span class="fu">apply</span>(Mat, <span class="dv">1</span>, <span class="cf">function</span>(x) {<span class="fu">sum</span>(x<span class="sc">*</span><span class="dv">2</span>)}) <span class="co">#the operation is performed on every row of &quot;Mat&quot;; every element is multiplied by two and the sum of the row is calculated</span></span></code></pre></div>
-<pre><code>## [1]  6.8265343 -2.8499219 -9.0034840  5.5205719  6.8706632  0.6771914</code></pre>
+<pre><code>## [1]  7.533786  3.313756 -3.020132 -2.383121 -4.102354 -7.762399</code></pre>
 <p>Besides, we can use <code>sapply()</code> for a <strong>list</strong>, for example to calculate the length of every element using <code>length()</code>:</p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="index.html#cb34-1" tabindex="-1"></a>List1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">color =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>), <span class="at">size =</span> <span class="dv">5</span>, <span class="at">state =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span>))</span>
 <span id="cb34-2"><a href="index.html#cb34-2" tabindex="-1"></a></span>
