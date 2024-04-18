@@ -607,12 +607,12 @@ Therefore, we can use the function \texttt{min()}.
 
 \begin{verbatim}
 ##            [,1]       [,2]       [,3]        [,4]       [,5]
-## [1,] -0.8473991  0.7726158 -1.0096778  0.03585477  0.9926608
-## [2,] -0.1249481  0.7584916  1.4741678 -0.51171188  0.1509433
-## [3,]  0.3924500  0.7955004 -0.2476967  0.70902466  1.2351514
-## [4,]  1.0084804 -0.7963152 -1.2597904  1.01656730  0.2494847
-## [5,]  1.2925591  0.2273377 -0.6035925  0.07204920 -0.4165428
-## [6,]  1.6730160  0.4473831 -0.1168474 -0.38046168  0.4436072
+## [1,] -0.4420641 -0.2094516 0.73574874 -0.01324343 -1.1036542
+## [2,] -0.7302559 -1.1169525 0.66726152  0.11468145 -0.6091161
+## [3,] -0.9735894 -3.3596824 0.03031071 -0.22398777  0.4783217
+## [4,]  0.0324101 -1.4210485 0.18745057 -1.07768195 -0.5629866
+## [5,] -1.3296631 -1.3606618 1.46011838 -0.62401628 -1.2318050
+## [6,]  0.9078681  1.3983470 0.37293067  0.22764888 -0.1147736
 \end{verbatim}
 
 \begin{Shaded}
@@ -623,7 +623,7 @@ Therefore, we can use the function \texttt{min()}.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] -1.0096778 -0.5117119 -0.2476967 -1.2597904 -0.6035925 -0.3804617
+## [1] -1.1036542 -1.1169525 -3.3596824 -1.4210485 -1.3606618 -0.1147736
 \end{verbatim}
 
 \begin{quote}
@@ -679,12 +679,12 @@ Instead of using built-in functions, we can also write our own little function a
 
 \begin{verbatim}
 ##            [,1]       [,2]       [,3]        [,4]       [,5]
-## [1,] -0.8473991  0.7726158 -1.0096778  0.03585477  0.9926608
-## [2,] -0.1249481  0.7584916  1.4741678 -0.51171188  0.1509433
-## [3,]  0.3924500  0.7955004 -0.2476967  0.70902466  1.2351514
-## [4,]  1.0084804 -0.7963152 -1.2597904  1.01656730  0.2494847
-## [5,]  1.2925591  0.2273377 -0.6035925  0.07204920 -0.4165428
-## [6,]  1.6730160  0.4473831 -0.1168474 -0.38046168  0.4436072
+## [1,] -0.4420641 -0.2094516 0.73574874 -0.01324343 -1.1036542
+## [2,] -0.7302559 -1.1169525 0.66726152  0.11468145 -0.6091161
+## [3,] -0.9735894 -3.3596824 0.03031071 -0.22398777  0.4783217
+## [4,]  0.0324101 -1.4210485 0.18745057 -1.07768195 -0.5629866
+## [5,] -1.3296631 -1.3606618 1.46011838 -0.62401628 -1.2318050
+## [6,]  0.9078681  1.3983470 0.37293067  0.22764888 -0.1147736
 \end{verbatim}
 
 \begin{Shaded}
@@ -694,7 +694,7 @@ Instead of using built-in functions, we can also write our own little function a
 \end{Shaded}
 
 \begin{verbatim}
-## [1] -0.1118913  3.4938855  5.7688596  0.4368537  1.1436214  4.1333943
+## [1] -2.065329 -3.348763 -8.097254 -5.683713 -6.172056  5.584042
 \end{verbatim}
 
 Besides, we can use \texttt{sapply()} for a \textbf{list}, for example to calculate the length of every element using \texttt{length()}:
@@ -1362,16 +1362,42 @@ You can see it by running \texttt{??gather}
 \hypertarget{week-1---data-analysis-statistics}{%
 \section{Week 1 - data analysis \& statistics}\label{week-1---data-analysis-statistics}}
 
+\hypertarget{day-1---data-typesgraphscorrelation}{%
+\subsection{Day 1 - data types/graphs/correlation}\label{day-1---data-typesgraphscorrelation}}
+
 \begin{itemize}
 \tightlist
 \item
-  Day 1 - data types/graphs/correlation \href{./slides/GKBioinfo_week1_day1.pdf}{{[}slides{]}}
+  \href{./slides/GKBioinfo_week1_day1.pdf}{{[}slides{]}}
 \item
-  Day 2 - clustering / principal compoment analysis \href{./slides/GKBioinfo_week1_day.pdf}{{[}slides{]}}
+  \href{./slides/day1_exercises.Rmd}{{[}solutions to exercises{]}}
+\end{itemize}
+
+\hypertarget{day-2---clustering-pca}{%
+\subsection{Day 2 - clustering \& PCA}\label{day-2---clustering-pca}}
+
+\begin{itemize}
+\tightlist
 \item
-  Day 3 - distributions / inference \href{./slides/GKBioinfo_week1_day3.pdf}{{[}slides{]}}
+  \href{./slides/GKBioinfo_week1_day2.pdf}{{[}slides{]}}
+\end{itemize}
+
+\hypertarget{day-3---distributions-statistical-inference}{%
+\subsection{Day 3 - distributions \& statistical inference}\label{day-3---distributions-statistical-inference}}
+
+\begin{itemize}
+\tightlist
 \item
-  Day 4 - hypothesis tests \href{./slides/GKBioinfo_week1_day4.pdf}{{[}slides{]}}
+  \href{./slides/GKBioinfo_week1_day3.pdf}{{[}slides{]}}
+\end{itemize}
+
+\hypertarget{day-4---hypothesis-testing}{%
+\subsection{Day 4 - hypothesis testing}\label{day-4---hypothesis-testing}}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{./slides/GKBioinfo_week1_day4.pdf}{{[}slides{]}}
 \end{itemize}
 
 \hypertarget{week-1-data-analysis}{%
@@ -3553,7 +3579,7 @@ Finally, we determine whether each sample mean is found within the 95\% CI or no
 
 Here, the orange/grey bars represent the confidence interval, the dot is the mean of the sample values, and the dotted line at \texttt{\textbackslash{}lambda} represents the true expectation value. Whenever the true expectation value is within the CI, the bar is orange, if not, the bar is grey. How often is the true expectation value outside the CI? Count the grey bars!
 
-It happens 2 times, which fits pretty well with the expected 5\%.
+It happens 5 times, which fits pretty well with the expected 5\%.
 
 \begin{quote}
 Repeat this simulation, but now with samples of \(N=24\) (again 100 times)\\
