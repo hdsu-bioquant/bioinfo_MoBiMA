@@ -1,0 +1,113 @@
+---
+title: "Day 4 - solutions"
+author: "Carl Herrmann"
+date: "2024-04-20"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+dat = as_tibble(read.delim('https://tinyurl.com/y4fark9g')) # Load the dataset
+```
+
+## Exercise 1
+
+
+### question 1
+
+Question: doe men have a larger body height compared to women?
+H0 = the expectation value of body for men is equal or smaller to that of women
+H1 = the the expectation value of body for men is larger than that of women
+
+```{r}
+t.test(dat %>% filter(gender=='male') %>% select(height), 
+       dat %>% filter(gender=='female') %>% select(height))
+```
+### question 2
+
+Compare age means
+
+```{r}
+dat %>% group_by(gender) %>% summarise(mean(age,na.rm=TRUE))
+```
+
+### question 3
+
+Question: are men significantly younger than 50?
+H0: expectation value of male age is equal or larger than 50
+H1: expectation value of male age is smaller than 50
+
+```{r}
+t.test(dat %>% filter(gender=='male') %>% select(age),
+       mu=50,
+       alternative='less')
+```
+
+For $\alpha=0.05$, the test is NOT significant, we cannot reject H0!
+
+
+## Exercise 2
+
+### question 1
+
+```{r}
+table(dat$location)
+```
+
+
+```{r}
+dat.louisa = dat %>% filter(location=='Louisa')
+dat.buck = dat %>% filter(location=='Buckingham')
+
+```
+
+
+```{r}
+dat %>% group_by(location) %>% summarize(across(where(is.numeric),mean))
+```
+
+when computing the mean, some means are NA because of missing values in the variable. We can define a function to avoid this:
+
+```{r}
+dat %>% group_by(location) %>% summarize(across(where(is.numeric),function(x) {mean(x,na.rm=TRUE)}))
+```
+ Let's test the difference in cholesterol:
+ 
+```{r}
+t.test(dat.buck$chol,dat.louisa$chol)
+```
+ Not a significant difference!
+ 
+ 
+## Exercise 3
+ 
+* acne: if acne is a binary value (yes/no) or categorical (little/medium/strong), then a proportion test should be applied
+
+* grades: if grades are categorical, then proportion test; if grades are on a continuous scale, the test on the mean
+
+* gene: propostion test (silenced yes/no), lactose intolerant (yes/no)
+
+
+## Going further
+
+We can test normality with the Shapiro Wilks test; the H0 hypothesis is always that the data is normaly distributed, the test tells if H0 should be rejected (= data is NOT normaly distributed)
+
+```{r}
+shapiro.test(dat$chol)
+```
+Cholesterol does not seem to be normaly distributed!
+
+```{r}
+chol = dat %>% select(chol) %>% na.omit()
+ggplot(chol,aes(sample=chol)) + stat_qq() + stat_qq_line()
+```
+
+ Indeed, qqplot shows that cholesterol values are not normaly distributed!
+ 

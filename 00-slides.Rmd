@@ -5,16 +5,26 @@
 ### Day 1 - data types/graphs/correlation
 
 * [[slides]](./slides/GKBioinfo_week1_day1.pdf)
-* [[solutions to exercises]](./slides/day1_exercises.Rmd)
+* [[solutions to exercises]](./slides/solution_day1.Rmd)
 
 ### Day 2 - clustering & PCA
 
 * [[slides]](./slides/GKBioinfo_week1_day2.pdf)
+* [[solutions to exercises]](./slides/solution_day2.Rmd)
 
 ### Day 3 - distributions & statistical inference
 
 * [[slides]](./slides/GKBioinfo_week1_day3.pdf)
+* [[solutions to exercises]](./slides/solution_day3.Rmd)
+
 
 ### Day 4 - hypothesis testing
 
 * [[slides]](./slides/GKBioinfo_week1_day4.pdf)
+* [[solutions to exercises]](./slides/solution_day4.Rmd)
+
+### Day 5 - regression
+
+* [[slides]](./slides/GKBioinfo_week1_day5.pdf)
+
+

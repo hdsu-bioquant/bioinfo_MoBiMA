@@ -1,0 +1,98 @@
+---
+title: "solution_week1_day3"
+author: "Albert"
+date: "2024-04-18"
+output: html_document
+---
+
+
+# Solution to the exercises
+
+
+
+## Exercise 1: Probability distributions
+
+### 1. What is the expression of TP53 observed at 10th percentile? What is the expression of TP53 observed at 90th percentile?
+
+
+
+```{r 1}
+
+tp53.exp = read.table("https://www.dropbox.com/s/rwopdr8ycmdg8bd/TP53_expression_LungAdeno.txt?dl=1", 
+                      header=T, sep="\t")[,1:2]
+
+
+# Calculate the 10th percentile
+percentile_10 <- quantile(tp53.exp$TP53_expression, probs = 0.1, na.rm = TRUE)
+```
+
+
+```{r 2}
+# Calculate the 90th percentile
+percentile_90 <- quantile(tp53.exp$TP53_expression, probs = 0.9, na.rm = TRUE)
+```
+
+
+### 2. (optional)
+
+```{r 3}
+lambdas <- c(1, 10, 100, 1000)
+
+# Generate 1000 random numbers for each lambda
+random_numbers <- lapply(lambdas, function(lambda) rpois(1000, lambda))
+
+# Set up the layout parameters
+num_rows <- length(lambdas)
+num_cols <- 1
+par(mfrow = c(num_rows, num_cols))
+
+# Adjust the height of each plot to avoid squeezing
+height <- 5 * num_rows  # Adjust this value as needed
+options(repr.plot.height=height)
+
+# Create a histogram for each lambda
+par(mfrow = c(length(lambdas), 1))
+for (i in seq_along(lambdas)) {
+  hist(random_numbers[[i]], main = paste("Poisson Distribution (lambda =", lambdas[i], ")"),
+       xlab = "Random Numbers", ylab = "Frequency", col = "skyblue", border = "white")
+}
+```
+
+## Exercise 2: Confidence intervals
+
+
+### 1. 
+```{r 4}
+# Expected values
+expected_green <- 84/6
+expected_red <- 84/6
+```
+
+### 2. 
+```{r 5}
+# Observed amounts of red and green gummy bears per pack
+red_observed <- c(12, 16, 17, 12, 16, 13, 11, 18, 13, 19)
+green_observed <- c(11, 10, 15, 16, 12, 14, 13, 10, 13, 17)
+
+# Calculate mean and standard deviation
+red_mean <- mean(red_observed)
+red_sd <- sd(red_observed)
+
+green_mean <- mean(green_observed)
+green_sd <- sd(green_observed)
+
+
+
+# Calculate 95% confidence interval for red gummy bears
+red_ci <- qt(0.975, df = length(red_observed) - 1) * (red_sd / sqrt(length(red_observed)))
+red_ci <- c(red_mean - red_ci, red_mean + red_ci)
+
+# Calculate 95% confidence interval for green gummy bears
+green_ci <- qt(0.975, df = length(green_observed) - 1) * (green_sd / sqrt(length(green_observed)))
+green_ci <- c(green_mean - green_ci, green_mean + green_ci)
+
+# Check if the expected value lies within confidence intervals
+red_within_ci <- expected_red >= red_ci[1] && expected_red <= red_ci[2]
+green_within_ci <- expected_green >= green_ci[1] && expected_green <= green_ci[2]
+
+```

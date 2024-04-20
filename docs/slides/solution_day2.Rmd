@@ -1,0 +1,247 @@
+---
+title: "day2 correction"
+output: html_document
+date: "2024-04-18"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## This part is from the course, we are loading and transforming the data to then do the exercises
+
+```{r loading data}
+library(tidyverse)
+
+brca.exp = readRDS(url('https://www.dropbox.com/s/qububmfvtv443mq/brca.exp.rds?dl=1'))
+dim(brca.exp)
+
+brca.anno = readRDS(url('https://www.dropbox.com/s/9xlivejqkj77llc/brca.anno.rds?dl=1'))
+head(brca.anno)
+
+brca.exp.original = brca.exp # keeps the original as matrix
+
+brca.exp = log2(brca.exp+1)
+
+rownames(as_tibble(brca.exp, rownames = NA))[1:5]
+```
+
+```{r scaling}
+## scaling
+brca.exp = scale(brca.exp)
+
+## plotting the density
+as_tibble(brca.exp, rownames = NA) %>%
+  gather(key = "sample", 
+         value = "expression") %>%
+  ggplot(aes(x = expression)) +
+  geom_histogram() +
+  labs(title = "Transformed data")
+```
+
+```{r k means}
+km = kmeans(x=t(brca.exp), 
+            centers = 2, 
+            nstart = 10)
+
+k_to_test = c(2:7)
+
+for (i in 1:length(k_to_test)) {
+  print(i) # We can print the indexes
+}
+
+km_wws = numeric() # we start by creating an empty vector
+
+# To write in the position 1, we use i
+# to find the 1st element, we use k_to_test[i]
+for (i in 1:length(k_to_test)) {
+  km_wws[i] = kmeans(x=t(brca.exp), 
+                     centers = k_to_test[i])$tot.withinss
+}
+
+# We can plot the k against WSS using geom_line
+ggplot() +
+  geom_line(aes(x = k_to_test, y = km_wws)) +
+  labs(x="Number of clusters K",
+       y="Total within-clusters sum of squares")
+```
+
+```{r clusters}
+## compute the patient-patient distance matrix (this is why we transpose using the `t()` function)
+D = dist(t(brca.exp))
+```
+
+```{r clusters 2}
+library(cluster)
+library(pheatmap)
+
+km = kmeans(x=t(brca.exp), centers = 3, nstart = 10)
+s = silhouette(km$cluster,D)
+
+# Let us use the basic R function plot() to see the results
+plot(s)
+```
+
+```{r most variable genes}
+brca.exp.tibble = as_tibble(brca.exp, rownames=NA) %>%
+  rownames_to_column("gene")
+
+## create a new column with the variance for all genes across all samples
+brca.exp.var = brca.exp.tibble %>%
+  rowwise() %>%
+  mutate(variance = var(c_across(starts_with("TCGA")))) 
+# only includes the columns starting with TCGA
+
+## what is the 75% quantile of the variance?
+q75 = quantile(brca.exp.var$variance, probs = 0.75)
+q75
+
+## only select the genes with a variance in the top 25%
+topVariantGenes <- brca.exp.var %>%
+  filter(variance >= q75)
+
+print(topVariantGenes$gene)
+```
+
+```{r plot cor}
+brca.exp.highvar.cor = brca.exp.tibble %>%
+  filter(gene %in% topVariantGenes$gene) %>%        # from the whole list, select only high variable
+  select(where(is.numeric)) %>%                     # get only numerical columns
+  cor(method="spearman")                            # create correlation-based distance matrix
+
+pheatmap(brca.exp.highvar.cor, 
+         show_rownames = FALSE, 
+         show_colnames = FALSE)
+```
+
+```{r second heatmap}
+pheatmap(brca.exp.highvar.cor,
+         annotation_row = brca.anno,
+         show_rownames = FALSE, 
+         show_colnames = FALSE)
+```
+
+```{r pca}
+pca = topVariantGenes %>%
+  select(where(is.numeric)) %>%
+  t() %>% # do not forget to transpose the data!
+  prcomp(center = FALSE, scale = FALSE) # We set these as false as we have already scaled our data
+summary(pca)
+
+variance = (pca$sdev)^2
+prop.variance = variance/sum(variance)
+names(prop.variance) = 1:length(prop.variance)
+
+# We make a data.frame from the prop.variance and the PC it corresponds to 
+# we can obtain the PCs using names()
+data.frame(proportion = prop.variance, 
+           PCs = as.numeric(names(prop.variance))) %>%
+  ggplot(aes(x = PCs, y = proportion)) +
+  geom_col() +                               # to make the barplot
+  labs(y='Proportion of variance')           # we only plot the first 20 PCs
+```
+
+```{r pca plot}
+# We start by creating a dataframe and combining it with the annotation
+pca_with_annot = as.data.frame(pca$x) %>%
+  merge(brca.anno, by = 0) # by = 0 makes use of the rownames as common information
+
+## Now the object is in a ggplot2 friendly format
+ggplot(pca_with_annot,
+       aes(x = PC1, y = PC2, colour = ER_status)) +
+  geom_point() +
+  scale_colour_manual(values = c("grey", "red", "navy")) # scale_colour_manual can be used to change colours
+```
+
+## Exercise 1
+
+
+### exercise 1.1
+
+Make a heatmap of the reduced matrix “topVariantGenes” using the pheatmap() function of the pheatmap library (do not forget to select only for numerical columns). Check for parameters that might change the style of the heatmap (column names, row names, etc..). How is this heatmap different from the heatmap in section 2?
+
+```{r exercise 1.1}
+# we copy the table in case of trouble in a new variable
+top_variant_genes <- as.data.frame(topVariantGenes)
+# we put the gene column to rownames to keep the labels on the plot
+rownames(top_variant_genes) <- top_variant_genes$gene
+# and we remove this column after that
+top_variant_genes$gene <- NULL
+
+# now we do the actual heatmap
+pheatmap(top_variant_genes,
+         show_rownames = TRUE, 
+         show_colnames = FALSE)
+```
+### exercise 1.2
+
+Repeat the selection of top variable genes (apply the same quantile used to generate “topVariantGenes”), but using the median absolute deviation (or MAD) using the mad() function instead of the sd() function, and store into as brca.topMAD
+
+```{r exercise 1.2}
+# first we create the median absolute deviation in the table
+brca.exp.var = brca.exp.tibble %>%
+  rowwise() %>%
+  mutate(mad = mad(c_across(starts_with("TCGA")))) 
+# only includes the columns starting with TCGA
+
+## what is the 75% quantile of the mad?
+q75 = quantile(brca.exp.var$mad, probs = 0.75)
+q75
+
+# actually filtering to keep the genes
+brca.topMAD <- brca.exp.var %>%
+  filter(mad >= q75)
+
+print(brca.topMAD)
+```
+
+### exercise 1.3
+
+Extract the gene names of topVariantGenes and brca.topMAD and check how many overlap using the intersect() function.
+
+```{r exercise 1.3}
+intersect(topVariantGenes$gene, brca.topMAD$gene)
+```
+
+## Exercise 2
+
+### Exercise 2.1
+
+Try building a distance matrix which would lead to different topologies of the dendrogram, depending on which linkage method is used! Show the dendrograms built with different linkage methods!
+
+
+```{r exercise 2.1}
+brca.exp.highvar.dist = brca.exp.tibble %>%
+  filter(gene %in% topVariantGenes$gene) %>%        # from the whole list, select only high variable
+  select(where(is.numeric))                  # get only numerical columns
+
+brca.exp.highvar.dist = dist(t(brca.exp.highvar.dist), method = "euclidean", upper = TRUE, diag = TRUE)                           
+
+pheatmap(brca.exp.highvar.dist,
+         show_rownames = FALSE, 
+         show_colnames = FALSE)
+```
+
+## Exercise 3
+
+### Exercise 3.1
+
+Display the patients in the first two principal components (available in pca_with_annot) using geom_point(). Color the patients in the PCA plot according to HER2_status
+
+```{r Exercise 3.1}
+
+ggplot(pca_with_annot,
+       aes(x = PC1, y = PC2, colour = HER2_status)) +
+  geom_point() +
+  scale_colour_manual(values = c("grey", "red", "navy")) 
+```
+### Exercise 3.2
+
+(optional) Color the patients in the PCA plot according to Classification; you will probably need to define some more colors…
+
+```{r Exercise 3.2}
+# not specifying the colors let ggplot2 select them itself
+ggplot(pca_with_annot,
+       aes(x = PC1, y = PC2, colour = Classification)) +
+  geom_point()
+```
