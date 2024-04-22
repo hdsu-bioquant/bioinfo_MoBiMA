@@ -27,4 +27,9 @@
 
 * [[slides]](./slides/GKBioinfo_week1_day5.pdf)
 
+## Week 2 - sequence analysis
+
+### Day 1 - intro to sequence analysis
+
+* [[slides]](./slides/GKBioinfo_week2.pdf)
 

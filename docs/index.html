@@ -196,6 +196,10 @@ MSc MoBi
 <li class="chapter" data-level="" data-path="lecture-files.html"><a href="lecture-files.html#day-4---hypothesis-testing"><i class="fa fa-check"></i>Day 4 - hypothesis testing</a></li>
 <li class="chapter" data-level="" data-path="lecture-files.html"><a href="lecture-files.html#day-5---regression"><i class="fa fa-check"></i>Day 5 - regression</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="lecture-files.html"><a href="lecture-files.html#week-2---sequence-analysis"><i class="fa fa-check"></i>Week 2 - sequence analysis</a>
+<ul>
+<li class="chapter" data-level="" data-path="lecture-files.html"><a href="lecture-files.html#day-1---intro-to-sequence-analysis"><i class="fa fa-check"></i>Day 1 - intro to sequence analysis</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="week-1-data-analysis.html"><a href="week-1-data-analysis.html"><i class="fa fa-check"></i>Week 1 : data analysis</a>
 <ul>
@@ -572,16 +576,16 @@ Therefore, we can use the function <code>min()</code>.</p>
 <span id="cb22-2"><a href="index.html#cb22-2" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">30</span>)   <span class="co"># generate 30 random numbers for the matrix</span></span>
 <span id="cb22-3"><a href="index.html#cb22-3" tabindex="-1"></a>Mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> m, <span class="at">nrow =</span> <span class="dv">6</span>)</span>
 <span id="cb22-4"><a href="index.html#cb22-4" tabindex="-1"></a>Mat</span></code></pre></div>
-<pre><code>##            [,1]       [,2]       [,3]       [,4]       [,5]
-## [1,] -0.1162846  0.6970707 -1.1229052 -0.8088424 -0.3240654
-## [2,] -1.7300171  0.3269193  0.1926801 -0.9792790  0.1730199
-## [3,] -0.6549826 -0.4913866  0.5437413  2.1434932 -0.6764786
-## [4,]  1.0588995 -1.1637342  0.6978768  1.3099991 -0.4959280
-## [5,]  0.4631923 -0.8026009  1.2154791 -1.3861789  2.1845246
-## [6,]  0.7016539  1.3709836 -0.2660720 -0.6556994  1.6991926</code></pre>
+<pre><code>##            [,1]       [,2]        [,3]       [,4]       [,5]
+## [1,]  0.1498140  2.1086613 -1.05968496  1.4925702  1.5686098
+## [2,] -0.9921028 -0.8034173  1.97639945 -1.2458956 -0.7193855
+## [3,]  0.1912443 -0.1527203  1.26155149  1.5345574 -1.5431166
+## [4,]  0.9814037 -0.1388758 -1.21432566  1.9373557 -2.0175495
+## [5,] -1.8271236  0.1936975 -0.08689137 -0.4394676  2.5051926
+## [6,]  1.1199407  1.1826262  0.03816773  1.0223772 -0.1728198</code></pre>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="index.html#cb24-1" tabindex="-1"></a><span class="co">#Next, we want to determine the minimum value of each row: </span></span>
 <span id="cb24-2"><a href="index.html#cb24-2" tabindex="-1"></a><span class="fu">apply</span>(Mat, <span class="dv">1</span>, min)</span></code></pre></div>
-<pre><code>## [1] -1.1229052 -1.7300171 -0.6764786 -1.1637342 -1.3861789 -0.6556994</code></pre>
+<pre><code>## [1] -1.0596850 -1.2458956 -1.5431166 -2.0175495 -1.8271236 -0.1728198</code></pre>
 <blockquote>
 <p>What happens if you change the “1” in the apply function to “2”?
 Try it!</p>
@@ -607,15 +611,15 @@ which function do we want to apply to each element of this vector?<br />
 <pre><code>## [1]  2  4  6  8 10</code></pre>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="index.html#cb30-1" tabindex="-1"></a><span class="co"># apply()</span></span>
 <span id="cb30-2"><a href="index.html#cb30-2" tabindex="-1"></a>Mat </span></code></pre></div>
-<pre><code>##            [,1]       [,2]       [,3]       [,4]       [,5]
-## [1,] -0.1162846  0.6970707 -1.1229052 -0.8088424 -0.3240654
-## [2,] -1.7300171  0.3269193  0.1926801 -0.9792790  0.1730199
-## [3,] -0.6549826 -0.4913866  0.5437413  2.1434932 -0.6764786
-## [4,]  1.0588995 -1.1637342  0.6978768  1.3099991 -0.4959280
-## [5,]  0.4631923 -0.8026009  1.2154791 -1.3861789  2.1845246
-## [6,]  0.7016539  1.3709836 -0.2660720 -0.6556994  1.6991926</code></pre>
+<pre><code>##            [,1]       [,2]        [,3]       [,4]       [,5]
+## [1,]  0.1498140  2.1086613 -1.05968496  1.4925702  1.5686098
+## [2,] -0.9921028 -0.8034173  1.97639945 -1.2458956 -0.7193855
+## [3,]  0.1912443 -0.1527203  1.26155149  1.5345574 -1.5431166
+## [4,]  0.9814037 -0.1388758 -1.21432566  1.9373557 -2.0175495
+## [5,] -1.8271236  0.1936975 -0.08689137 -0.4394676  2.5051926
+## [6,]  1.1199407  1.1826262  0.03816773  1.0223772 -0.1728198</code></pre>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="index.html#cb32-1" tabindex="-1"></a><span class="fu">apply</span>(Mat, <span class="dv">1</span>, <span class="cf">function</span>(x) {<span class="fu">sum</span>(x<span class="sc">*</span><span class="dv">2</span>)}) <span class="co">#the operation is performed on every row of &quot;Mat&quot;; every element is multiplied by two and the sum of the row is calculated</span></span></code></pre></div>
-<pre><code>## [1] -3.350054 -4.033354  1.728773  2.814226  3.348832  5.700117</code></pre>
+<pre><code>## [1]  8.519941 -3.568803  2.583032 -0.903983  0.690815  6.380584</code></pre>
 <p>Besides, we can use <code>sapply()</code> for a <strong>list</strong>, for example to calculate the length of every element using <code>length()</code>:</p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="index.html#cb34-1" tabindex="-1"></a>List1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">color =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>), <span class="at">size =</span> <span class="dv">5</span>, <span class="at">state =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span>))</span>
 <span id="cb34-2"><a href="index.html#cb34-2" tabindex="-1"></a></span>
