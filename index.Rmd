@@ -48,7 +48,9 @@ Check your name, your user name on which you will connect.
 
 #### if you are running machine with Linux or MacOS {.unnumbered}
 
--   open a terminal and type the following commant: `ssh <USER>@194.94.113.18 -p 30210 -L 8787:127.0.0.1:8787`; replace `<USER>` with your user name from the Google Sheet
+-   open a terminal and type the following commang: 
+      * GK1: `ssh <USER>@194.94.113.18 -p 30210 -L 8787:127.0.0.1:8787`; replace `<USER>` with your user name from the Google Sheet
+      * GK2: `ssh <USER>@194.94.113.18 -p 30108 -L 8787:127.0.0.1:8787`; replace `<USER>` with your user name from the Google Sheet
 -   in a browser, go to [this url](http://127.0.0.1:8787)
 -   log in with your user name and the password that will be provided to you.
 
@@ -61,7 +63,7 @@ In the GUI, the following settings are needed:
 
 -   In the main panel:
     -   Host name (or IP address): <USER>\@194.94.113.18
-    -   Port: 30210 (check the right port in the Google Sheet)
+    -   Port: 30210 (GK1) or 30108 (GK2) 
     -   Connection type: SSH
 -   In the panel "Connection / SSH / Tunnel":
     -   Source port: 8787
@@ -73,6 +75,24 @@ In the GUI, the following settings are needed:
 -   log in with your user name and the password that will be provided to you.
 
 You can now start working in RStudio!
+
+### Installing and configuring Cyberduck {.unnumbered}
+
+In order to access remote files (for example opening a pdf file), you will need to install an additional tool, called cyberduck (https://cyberduck.io/).
+
+-   Install Cyberduck according to your operating system
+-   Once installed, open Cyberduck
+-   On the top left, click on Neue Verbindung(or new connection)
+
+In the new window, make the following changes:
+
+-   select sftp in the dropdown menu
+-   in the server box, type 194.94.113.18
+-   in the port box, type 30210 (GK1) or 30108 (GK2)
+-   in Benutzername (or Username), type your username (like user1)
+-   password box: (ask for it!)
+
+Click on Verbinden (or Connect)
 
 ### Installing R and RStudio {.unnumbered}
 
@@ -102,23 +122,7 @@ You can find more resources here:
 > -   R markdown at [RStudio](https://rmarkdown.rstudio.com/lesson-1.html) and in this [cheatsheet](https://www.markdownguide.org/cheat-sheet/)
 > -   [Youtube tutorial](https://www.youtube.com/watch?v=h29g21z0a68) on ggplot2 with one of its developers
 
-### Installing and configuring Cyberduck {.unnumbered}
 
-In order to access remote files (for example opening a pdf file), you will need to install an additional tool, called cyberduck (https://cyberduck.io/).
-
--   Install Cyberduck according to your operating system
--   Once installed, open Cyberduck
--   On the top left, click on Neue Verbindung(or new connection)
-
-In the new window, make the following changes:
-
--   select sftp in the dropdown menu
--   in the server box, type 194.94.113.18
--   in the port box, type 30210
--   in Benutzername (or Username), type your username (like user1)
--   password box: (ask for it!)
-
-Click on Verbinden (or Connect)
 
 ## Good practice {.unnumbered}
 

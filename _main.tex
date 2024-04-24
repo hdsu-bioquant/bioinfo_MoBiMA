@@ -177,7 +177,15 @@ Check your name, your user name on which you will connect.
 \begin{itemize}
 \tightlist
 \item
-  open a terminal and type the following commant: \texttt{ssh\ \textless{}USER\textgreater{}@194.94.113.18\ -p\ 30210\ -L\ 8787:127.0.0.1:8787}; replace \texttt{\textless{}USER\textgreater{}} with your user name from the Google Sheet
+  open a terminal and type the following commang:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    GK1: \texttt{ssh\ \textless{}USER\textgreater{}@194.94.113.18\ -p\ 30210\ -L\ 8787:127.0.0.1:8787}; replace \texttt{\textless{}USER\textgreater{}} with your user name from the Google Sheet
+  \item
+    GK2: \texttt{ssh\ \textless{}USER\textgreater{}@194.94.113.18\ -p\ 30108\ -L\ 8787:127.0.0.1:8787}; replace \texttt{\textless{}USER\textgreater{}} with your user name from the Google Sheet
+  \end{itemize}
 \item
   in a browser, go to \href{http://127.0.0.1:8787}{this url}
 \item
@@ -203,7 +211,7 @@ In the GUI, the following settings are needed:
   \item
     Host name (or IP address): @194.94.113.18
   \item
-    Port: 30210 (check the right port in the Google Sheet)
+    Port: 30210 (GK1) or 30108 (GK2)
   \item
     Connection type: SSH
   \end{itemize}
@@ -230,6 +238,40 @@ In the GUI, the following settings are needed:
 \end{itemize}
 
 You can now start working in RStudio!
+
+\hypertarget{installing-and-configuring-cyberduck}{%
+\subsection*{Installing and configuring Cyberduck}\label{installing-and-configuring-cyberduck}}
+\addcontentsline{toc}{subsection}{Installing and configuring Cyberduck}
+
+In order to access remote files (for example opening a pdf file), you will need to install an additional tool, called cyberduck (\url{https://cyberduck.io/}).
+
+\begin{itemize}
+\tightlist
+\item
+  Install Cyberduck according to your operating system
+\item
+  Once installed, open Cyberduck
+\item
+  On the top left, click on Neue Verbindung(or new connection)
+\end{itemize}
+
+In the new window, make the following changes:
+
+\begin{itemize}
+\tightlist
+\item
+  select sftp in the dropdown menu
+\item
+  in the server box, type 194.94.113.18
+\item
+  in the port box, type 30210 (GK1) or 30108 (GK2)
+\item
+  in Benutzername (or Username), type your username (like user1)
+\item
+  password box: (ask for it!)
+\end{itemize}
+
+Click on Verbinden (or Connect)
 
 \hypertarget{installing-r-and-rstudio}{%
 \subsection*{Installing R and RStudio}\label{installing-r-and-rstudio}}
@@ -276,40 +318,6 @@ You can find more resources here:
   \href{https://www.youtube.com/watch?v=h29g21z0a68}{Youtube tutorial} on ggplot2 with one of its developers
 \end{itemize}
 \end{quote}
-
-\hypertarget{installing-and-configuring-cyberduck}{%
-\subsection*{Installing and configuring Cyberduck}\label{installing-and-configuring-cyberduck}}
-\addcontentsline{toc}{subsection}{Installing and configuring Cyberduck}
-
-In order to access remote files (for example opening a pdf file), you will need to install an additional tool, called cyberduck (\url{https://cyberduck.io/}).
-
-\begin{itemize}
-\tightlist
-\item
-  Install Cyberduck according to your operating system
-\item
-  Once installed, open Cyberduck
-\item
-  On the top left, click on Neue Verbindung(or new connection)
-\end{itemize}
-
-In the new window, make the following changes:
-
-\begin{itemize}
-\tightlist
-\item
-  select sftp in the dropdown menu
-\item
-  in the server box, type 194.94.113.18
-\item
-  in the port box, type 30210
-\item
-  in Benutzername (or Username), type your username (like user1)
-\item
-  password box: (ask for it!)
-\end{itemize}
-
-Click on Verbinden (or Connect)
 
 \hypertarget{good-practice}{%
 \section*{Good practice}\label{good-practice}}
@@ -606,13 +614,13 @@ Therefore, we can use the function \texttt{min()}.
 \end{Shaded}
 
 \begin{verbatim}
-##             [,1]       [,2]       [,3]       [,4]       [,5]
-## [1,] -0.29623800  1.0997890  0.3367354 -1.4029044  0.8979773
-## [2,]  0.05369166  1.4612711 -2.3908311  0.8229212 -1.7944745
-## [3,]  0.57444823 -0.8776870 -0.9923846 -0.5065686 -2.0338056
-## [4,] -1.39493027  1.1017116  2.0641754 -0.8287392  0.1980889
-## [5,]  0.39761537 -0.6568246 -0.4299701 -0.1694542  0.1588598
-## [6,]  0.34190868  1.4358787 -0.2112233 -0.4486198 -0.2298110
+##            [,1]         [,2]         [,3]       [,4]       [,5]
+## [1,]  0.9634178 -0.048584792 -0.000581576 -0.9789242  0.1609030
+## [2,] -0.8299935  2.640324426 -0.231253241  1.1018593  0.1442285
+## [3,]  2.0084621  0.097893356 -0.162965134  0.5725396  0.5117056
+## [4,]  0.2673388 -0.005925997 -0.071880125  0.4254527 -0.7105225
+## [5,] -0.1758693  0.117482674  1.066932632  0.2549107 -1.3768568
+## [6,]  1.1711117  0.478995232 -0.721669655 -0.1981943 -0.4502779
 \end{verbatim}
 
 \begin{Shaded}
@@ -623,7 +631,7 @@ Therefore, we can use the function \texttt{min()}.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] -1.4029044 -2.3908311 -2.0338056 -1.3949303 -0.6568246 -0.4486198
+## [1] -0.9789242 -0.8299935 -0.1629651 -0.7105225 -1.3768568 -0.7216697
 \end{verbatim}
 
 \begin{quote}
@@ -678,13 +686,13 @@ Instead of using built-in functions, we can also write our own little function a
 \end{Shaded}
 
 \begin{verbatim}
-##             [,1]       [,2]       [,3]       [,4]       [,5]
-## [1,] -0.29623800  1.0997890  0.3367354 -1.4029044  0.8979773
-## [2,]  0.05369166  1.4612711 -2.3908311  0.8229212 -1.7944745
-## [3,]  0.57444823 -0.8776870 -0.9923846 -0.5065686 -2.0338056
-## [4,] -1.39493027  1.1017116  2.0641754 -0.8287392  0.1980889
-## [5,]  0.39761537 -0.6568246 -0.4299701 -0.1694542  0.1588598
-## [6,]  0.34190868  1.4358787 -0.2112233 -0.4486198 -0.2298110
+##            [,1]         [,2]         [,3]       [,4]       [,5]
+## [1,]  0.9634178 -0.048584792 -0.000581576 -0.9789242  0.1609030
+## [2,] -0.8299935  2.640324426 -0.231253241  1.1018593  0.1442285
+## [3,]  2.0084621  0.097893356 -0.162965134  0.5725396  0.5117056
+## [4,]  0.2673388 -0.005925997 -0.071880125  0.4254527 -0.7105225
+## [5,] -0.1758693  0.117482674  1.066932632  0.2549107 -1.3768568
+## [6,]  1.1711117  0.478995232 -0.721669655 -0.1981943 -0.4502779
 \end{verbatim}
 
 \begin{Shaded}
@@ -694,7 +702,7 @@ Instead of using built-in functions, we can also write our own little function a
 \end{Shaded}
 
 \begin{verbatim}
-## [1]  1.270719 -3.694843 -7.671995  2.280613 -1.399548  1.776267
+## [1]  0.1924605  5.6503310  6.0552712 -0.1910743 -0.2268001  0.5599302
 \end{verbatim}
 
 Besides, we can use \texttt{sapply()} for a \textbf{list}, for example to calculate the length of every element using \texttt{length()}:
@@ -3619,7 +3627,7 @@ Finally, we determine whether each sample mean is found within the 95\% CI or no
 
 Here, the orange/grey bars represent the confidence interval, the dot is the mean of the sample values, and the dotted line at \texttt{\textbackslash{}lambda} represents the true expectation value. Whenever the true expectation value is within the CI, the bar is orange, if not, the bar is grey. How often is the true expectation value outside the CI? Count the grey bars!
 
-It happens 2 times, which fits pretty well with the expected 5\%.
+It happens 4 times, which fits pretty well with the expected 5\%.
 
 \begin{quote}
 Repeat this simulation, but now with samples of \(N=24\) (again 100 times)\\

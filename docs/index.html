@@ -146,9 +146,9 @@ MSc MoBi
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#where-to-start"><i class="fa fa-check"></i>Where to start</a>
 <ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#log-into-the-server"><i class="fa fa-check"></i>Log into the server</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#installing-and-configuring-cyberduck"><i class="fa fa-check"></i>Installing and configuring Cyberduck</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#installing-r-and-rstudio"><i class="fa fa-check"></i>Installing R and RStudio</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#courses"><i class="fa fa-check"></i>Courses</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#installing-and-configuring-cyberduck"><i class="fa fa-check"></i>Installing and configuring Cyberduck</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#good-practice"><i class="fa fa-check"></i>Good practice</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#r-markdown"><i class="fa fa-check"></i>R Markdown</a></li>
@@ -331,7 +331,11 @@ Check your name, your user name on which you will connect.</p>
 <div id="if-you-are-running-machine-with-linux-or-macos" class="section level4 unnumbered hasAnchor">
 <h4>if you are running machine with Linux or MacOS<a href="index.html#if-you-are-running-machine-with-linux-or-macos" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
-<li>open a terminal and type the following commant: <code>ssh &lt;USER&gt;@194.94.113.18 -p 30210 -L 8787:127.0.0.1:8787</code>; replace <code>&lt;USER&gt;</code> with your user name from the Google Sheet</li>
+<li>open a terminal and type the following commang:
+<ul>
+<li>GK1: <code>ssh &lt;USER&gt;@194.94.113.18 -p 30210 -L 8787:127.0.0.1:8787</code>; replace <code>&lt;USER&gt;</code> with your user name from the Google Sheet</li>
+<li>GK2: <code>ssh &lt;USER&gt;@194.94.113.18 -p 30108 -L 8787:127.0.0.1:8787</code>; replace <code>&lt;USER&gt;</code> with your user name from the Google Sheet</li>
+</ul></li>
 <li>in a browser, go to <a href="http://127.0.0.1:8787">this url</a></li>
 <li>log in with your user name and the password that will be provided to you.</li>
 </ul>
@@ -345,7 +349,7 @@ In the GUI, the following settings are needed:</p>
 <li>In the main panel:
 <ul>
 <li>Host name (or IP address): <USER>@194.94.113.18</li>
-<li>Port: 30210 (check the right port in the Google Sheet)</li>
+<li>Port: 30210 (GK1) or 30108 (GK2)</li>
 <li>Connection type: SSH</li>
 </ul></li>
 <li>In the panel “Connection / SSH / Tunnel”:
@@ -361,6 +365,24 @@ In the GUI, the following settings are needed:</p>
 </ul>
 <p>You can now start working in RStudio!</p>
 </div>
+</div>
+<div id="installing-and-configuring-cyberduck" class="section level3 unnumbered hasAnchor">
+<h3>Installing and configuring Cyberduck<a href="index.html#installing-and-configuring-cyberduck" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In order to access remote files (for example opening a pdf file), you will need to install an additional tool, called cyberduck (<a href="https://cyberduck.io/" class="uri">https://cyberduck.io/</a>).</p>
+<ul>
+<li>Install Cyberduck according to your operating system</li>
+<li>Once installed, open Cyberduck</li>
+<li>On the top left, click on Neue Verbindung(or new connection)</li>
+</ul>
+<p>In the new window, make the following changes:</p>
+<ul>
+<li>select sftp in the dropdown menu</li>
+<li>in the server box, type 194.94.113.18</li>
+<li>in the port box, type 30210 (GK1) or 30108 (GK2)</li>
+<li>in Benutzername (or Username), type your username (like user1)</li>
+<li>password box: (ask for it!)</li>
+</ul>
+<p>Click on Verbinden (or Connect)</p>
 </div>
 <div id="installing-r-and-rstudio" class="section level3 unnumbered hasAnchor">
 <h3>Installing R and RStudio<a href="index.html#installing-r-and-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -391,24 +413,6 @@ We will cover other basics on the next sections.</p>
 <li><a href="https://www.youtube.com/watch?v=h29g21z0a68">Youtube tutorial</a> on ggplot2 with one of its developers</li>
 </ul>
 </blockquote>
-</div>
-<div id="installing-and-configuring-cyberduck" class="section level3 unnumbered hasAnchor">
-<h3>Installing and configuring Cyberduck<a href="index.html#installing-and-configuring-cyberduck" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>In order to access remote files (for example opening a pdf file), you will need to install an additional tool, called cyberduck (<a href="https://cyberduck.io/" class="uri">https://cyberduck.io/</a>).</p>
-<ul>
-<li>Install Cyberduck according to your operating system</li>
-<li>Once installed, open Cyberduck</li>
-<li>On the top left, click on Neue Verbindung(or new connection)</li>
-</ul>
-<p>In the new window, make the following changes:</p>
-<ul>
-<li>select sftp in the dropdown menu</li>
-<li>in the server box, type 194.94.113.18</li>
-<li>in the port box, type 30210</li>
-<li>in Benutzername (or Username), type your username (like user1)</li>
-<li>password box: (ask for it!)</li>
-</ul>
-<p>Click on Verbinden (or Connect)</p>
 </div>
 </div>
 <div id="good-practice" class="section level2 unnumbered hasAnchor">
@@ -568,16 +572,16 @@ Therefore, we can use the function <code>min()</code>.</p>
 <span id="cb22-2"><a href="index.html#cb22-2" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">30</span>)   <span class="co"># generate 30 random numbers for the matrix</span></span>
 <span id="cb22-3"><a href="index.html#cb22-3" tabindex="-1"></a>Mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> m, <span class="at">nrow =</span> <span class="dv">6</span>)</span>
 <span id="cb22-4"><a href="index.html#cb22-4" tabindex="-1"></a>Mat</span></code></pre></div>
-<pre><code>##            [,1]        [,2]        [,3]        [,4]       [,5]
-## [1,] -0.4823462 -0.20094835  0.54138019 -0.25222141 -0.4385947
-## [2,] -1.6176644  0.03862645  0.22076236  0.05266941 -1.3176206
-## [3,] -1.2607730  0.26266059 -0.07164537 -0.66812573 -0.3475898
-## [4,]  0.7559138 -0.50894923  1.06494301 -0.80162865 -0.6699991
-## [5,] -0.2671795  0.56527878 -1.35620433 -0.25972331  0.3910982
-## [6,] -0.1074293  0.14524667  1.13363565 -0.64094725  1.7747328</code></pre>
+<pre><code>##            [,1]        [,2]        [,3]       [,4]        [,5]
+## [1,]  0.3013824  1.04493119 -0.50285438  0.4446958  0.08027102
+## [2,] -0.2818004 -0.01305171 -1.31916408  1.5007585 -0.74386186
+## [3,]  0.2697877 -0.54569819 -0.04697321 -0.9880894  1.32555435
+## [4,]  0.7790222 -1.27480823  0.72105804 -1.0368056  1.37166697
+## [5,] -0.3717493  1.21362317 -1.29972670  0.3302648  0.38234292
+## [6,]  0.2675463 -0.12326951 -0.32367949  0.1558778 -0.14828996</code></pre>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="index.html#cb24-1" tabindex="-1"></a><span class="co">#Next, we want to determine the minimum value of each row: </span></span>
 <span id="cb24-2"><a href="index.html#cb24-2" tabindex="-1"></a><span class="fu">apply</span>(Mat, <span class="dv">1</span>, min)</span></code></pre></div>
-<pre><code>## [1] -0.4823462 -1.6176644 -1.2607730 -0.8016286 -1.3562043 -0.6409472</code></pre>
+<pre><code>## [1] -0.5028544 -1.3191641 -0.9880894 -1.2748082 -1.2997267 -0.3236795</code></pre>
 <blockquote>
 <p>What happens if you change the “1” in the apply function to “2”?
 Try it!</p>
@@ -603,15 +607,15 @@ which function do we want to apply to each element of this vector?<br />
 <pre><code>## [1]  2  4  6  8 10</code></pre>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="index.html#cb30-1" tabindex="-1"></a><span class="co"># apply()</span></span>
 <span id="cb30-2"><a href="index.html#cb30-2" tabindex="-1"></a>Mat </span></code></pre></div>
-<pre><code>##            [,1]        [,2]        [,3]        [,4]       [,5]
-## [1,] -0.4823462 -0.20094835  0.54138019 -0.25222141 -0.4385947
-## [2,] -1.6176644  0.03862645  0.22076236  0.05266941 -1.3176206
-## [3,] -1.2607730  0.26266059 -0.07164537 -0.66812573 -0.3475898
-## [4,]  0.7559138 -0.50894923  1.06494301 -0.80162865 -0.6699991
-## [5,] -0.2671795  0.56527878 -1.35620433 -0.25972331  0.3910982
-## [6,] -0.1074293  0.14524667  1.13363565 -0.64094725  1.7747328</code></pre>
+<pre><code>##            [,1]        [,2]        [,3]       [,4]        [,5]
+## [1,]  0.3013824  1.04493119 -0.50285438  0.4446958  0.08027102
+## [2,] -0.2818004 -0.01305171 -1.31916408  1.5007585 -0.74386186
+## [3,]  0.2697877 -0.54569819 -0.04697321 -0.9880894  1.32555435
+## [4,]  0.7790222 -1.27480823  0.72105804 -1.0368056  1.37166697
+## [5,] -0.3717493  1.21362317 -1.29972670  0.3302648  0.38234292
+## [6,]  0.2675463 -0.12326951 -0.32367949  0.1558778 -0.14828996</code></pre>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="index.html#cb32-1" tabindex="-1"></a><span class="fu">apply</span>(Mat, <span class="dv">1</span>, <span class="cf">function</span>(x) {<span class="fu">sum</span>(x<span class="sc">*</span><span class="dv">2</span>)}) <span class="co">#the operation is performed on every row of &quot;Mat&quot;; every element is multiplied by two and the sum of the row is calculated</span></span></code></pre></div>
-<pre><code>## [1] -1.6654610 -5.2464537 -4.1709465 -0.3194404 -1.8534604  4.6104772</code></pre>
+<pre><code>## [1]  2.73685220 -1.71423907  0.02916249  1.12026674  0.50950981 -0.34362973</code></pre>
 <p>Besides, we can use <code>sapply()</code> for a <strong>list</strong>, for example to calculate the length of every element using <code>length()</code>:</p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="index.html#cb34-1" tabindex="-1"></a>List1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">color =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>), <span class="at">size =</span> <span class="dv">5</span>, <span class="at">state =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span>))</span>
 <span id="cb34-2"><a href="index.html#cb34-2" tabindex="-1"></a></span>
