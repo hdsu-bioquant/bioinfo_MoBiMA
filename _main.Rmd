@@ -731,39 +731,45 @@ Color <- c("orange", "red", "green", "blue", "green")
 
 # Lecture files
 
+------------------------------------------------------------------------
+
 ## Week 1 - data analysis & statistics
 
-### Day 1 - data types/graphs/correlation
+#### Day 1 - data types/graphs/correlation
 
-* [[slides]](./slides/GKBioinfo_week1_day1.pdf)
-* [[solutions to exercises]](./slides/solution_day1.Rmd)
+-   [[slides]](./slides/GKBioinfo_week1_day1.pdf)
+-   [[solutions to exercises]](./slides/solution_day1.Rmd)
 
-### Day 2 - clustering & PCA
+#### Day 2 - clustering & PCA
 
-* [[slides]](./slides/GKBioinfo_week1_day2.pdf)
-* [[solutions to exercises]](./slides/solution_day2.Rmd)
+-   [[slides]](./slides/GKBioinfo_week1_day2.pdf)
+-   [[solutions to exercises]](./slides/solution_day2.Rmd)
 
-### Day 3 - distributions & statistical inference
+#### Day 3 - distributions & statistical inference
 
-* [[slides]](./slides/GKBioinfo_week1_day3.pdf)
-* [[solutions to exercises]](./slides/solution_day3.Rmd)
+-   [[slides]](./slides/GKBioinfo_week1_day3.pdf)
+-   [[solutions to exercises]](./slides/solution_day3.Rmd)
 
+#### Day 4 - hypothesis testing
 
-### Day 4 - hypothesis testing
+-   [[slides]](./slides/GKBioinfo_week1_day4.pdf)
+-   [[solutions to exercises]](./slides/solution_day4.Rmd)
 
-* [[slides]](./slides/GKBioinfo_week1_day4.pdf)
-* [[solutions to exercises]](./slides/solution_day4.Rmd)
+#### Day 5 - regression
 
-### Day 5 - regression
+-   [[slides]](./slides/GKBioinfo_week1_day5.pdf)
 
-* [[slides]](./slides/GKBioinfo_week1_day5.pdf)
+------------------------------------------------------------------------
 
 ## Week 2 - sequence analysis
 
-### Day 1 - intro to sequence analysis
+#### Day 1 - intro to sequence analysis
 
-* [[slides]](./slides/GKBioinfo_week2.pdf)
+-   [[slides]](./slides/GKBioinfo_week2.pdf)
 
+#### Day 2 - Blast, alignments, etc...
+
+-   [[slides]](./slides/GKBioinfo_week2_2.pdf)
 
 <!--chapter:end:00-slides.Rmd-->
 
@@ -3294,7 +3300,8 @@ Below this menu, you can select genome locations (in the format *chrN:start-end*
 
 #### Example 1
 
-Try IGV out using [this session](IGV_sessions/heart_Histones.json). 
+Try IGV out using [this session](IGV_sessions/heart_Histones.json). Download the file, and upload it to IGV using Session > local file.
+
 Do you recognize the differences between the different histone modifications? Blue represents active histone modifications (linked to active transcription). H3K27ac is a classical marker of active gene promoters and other open chromatin regions. H3K36me3 is linked with gene bodies.  
 
 Conversely, red represents repressive histone modifications. H3K27me3 and H3K9me3 are both associated with repression/heterochromatin. However, H3K9me3 is meant to be much more permanent, while H3K27me3 is often associated with regions that can be activated in development.
@@ -3306,6 +3313,10 @@ Conversely, red represents repressive histone modifications. H3K27me3 and H3K9me
 
 > Check different genes (eg. BDP1, NPLOC4, PIK3C3) and observed the shape of the H3K27ac (activation) signal at their promoters. 
 
+Using `Tracks > ENCODE Signals - other` look for the corresponding RNA-seq file (type RNA-seq heart in the search box, and look for the female patient with the right age...).
+Check the expression of the previous genes. 
+
+> Do you understand the RNA-seq profile along the genes?
 
 ### Identifying formats
 
@@ -3323,13 +3334,13 @@ Let us start with an example of a **FASTQ file**:
 FASTQ files are text-based (as many other sequence classes) and are the **most common format for storage of sequences and quality scores from high-throughput sequencing technologies**. These are large files, so they are generally compressed (extension `.fastq.gz`). When opening a FASTQ file (using `zless` or `less` in the terminal), this what an entry will generally look like:
 
 ```         
-@@A00665:126:HTNC2DRXX:1:2101:1136:1047 1:N:0:AGGCAGAA+NTAAGGAG
+@A00665:126:HTNC2DRXX:1:2101:1136:1047 1:N:0:AGGCAGAA+NTAAGGAG
 GNCCTTACTAGACCAATGGGACTTAAACCCACAAACACTTAGTTAACAGCT
 +
 F#:FFFFFFFFF:FFFFFFFFFFFFFFFFFFFFF:FFFFFFFFFFFFF:FF
 ```
 
-One FASTQ file contains millions of these entries. Each entry (starting with `@`) is composed of a sequence identifier (in this case, `@A00665:126:HTNC2DRXX ...`), the sequence itself, a separator (in this case, `+`), and the quality scores (Phred +33 encoded) for each base called. Sequence identifiers include information which allows us to know the name of the instrument which produced it, run identifiers, flowcell identifiers, pair number, index sequence, among others.
+One FASTQ file contains millions of these entries. Each entry (starting with `@`) is composed of a sequence identifier (in this case, `@A00665:126:HTNC2DRXX ...`), the sequence itself, a separator (in this case, `+`), and the quality scores (Phred +33 encoded [check this page for further explanations](https://people.duke.edu/~ccc14/duke-hts-2018/bioinformatics/quality_scores.html)) for each base called. Sequence identifiers include information which allows us to know the name of the instrument which produced it, run identifiers, flowcell identifiers, pair number, index sequence, among others.
 
 This example is from paired-end sequencing, meaning that there are two FASTQ files per sample and entries match between them. I.e., `@A00665:126:HTNC2DRXX` will also exist in FASTQ file 2. When the sequencing is single-end, only one FASTQ file is produced per sample.
 
@@ -3373,6 +3384,8 @@ Let us see an example of BigWigs and peaks.
 Load the session [here](IGV_sessions/ExampleATAC_ChIP_CTCF_hg38.json) to see an example of how ChIP-seq and ATAC-seq correlate with each other. 
 
 Observe how peaks (rectangles below the coverage tracks) are not always identified for all the "bumps" in the BigWig.
+
+> Search for the ENCODE track for this cell line representing the H3K27ac signal (bigWig format!), and compare to ATAC-seq.
 
 ### A practical guide to GEO
 
@@ -3420,9 +3433,9 @@ Search for the dataset identified as **GSE205807**.
 
 ChIP-seq can be used to identify genes regulated by targeted transcription factors. In the example, we will explore a dataset obtained in the human liver cell line HepG2.
 
-1.  Download the set of peaks for the FOS transcription factor from the GEO dataset GSE104247.
+1.1  Download the set of peaks for the FOS transcription factor from the GEO dataset GSE104247.
 
-1.1. What genome assembly is this dataset aligned to? Apply the necessary changes to see it in IGV. 
+> What genome assembly is this dataset aligned to? Apply the necessary changes to see it in IGV. 
 
 1.2. Load the dataset in the IGV web app. Give a couple of examples of genes that are likely regulated by FOS in this cell line.
 
@@ -3431,9 +3444,8 @@ ChIP-seq can be used to identify genes regulated by targeted transcription facto
 
 ##### Exercise 2. ATAC-seq and DNase-seq comparison
 
-2.1. Load a track in BED and BigWig format from ATAC-seq and DNase-seq obtained in the same cell line using the *Tracks* section from *ENCODE Other* (BED) and *ENCODE Signals - Other* (Tip: There is typically plenty of material included for the A549 cell line). Compare the called peaks and other features from each experiment (peak size, noise, coverage) and discuss the advantages one has over the other.  
+Load a track in BED and BigWig format from ATAC-seq and DNase-seq obtained in the same cell line using the *Tracks* section from *ENCODE Other* (BED) and *ENCODE Signals - Other* (Tip: There is typically plenty of material included for the A549 cell line). Compare the called peaks and other features from each experiment (peak size, noise, coverage) and discuss the advantages one has over the other.  
 
-2.2 (Optional) Load a *4DN* track on insulation score for your cell line. This is from the 4D Nucleome Data Portal and it is a way to quantify the number of regions interacting within a window. At chromosomal scale, do you see how this correlates (or not) with the ATAC-seq track? What are the regions that present a high insulation score?
 
 ##### Exercise 3. Using GEO to look for DNA methylation datasets
 

@@ -606,13 +606,13 @@ Therefore, we can use the function \texttt{min()}.
 \end{Shaded}
 
 \begin{verbatim}
-##            [,1]        [,2]       [,3]        [,4]        [,5]
-## [1,] -0.4770001  0.31748432  2.2825214 -0.59176206  1.17301913
-## [2,] -0.3153778 -0.51064583 -0.8903713 -0.11656918  0.75686163
-## [3,] -0.0584420 -0.29101986 -0.4107073  0.94795801 -0.40863050
-## [4,]  1.0301608  0.03951597 -1.8746587 -0.17625592 -0.48271821
-## [5,] -0.3460092  0.75305464 -1.8269717  0.02619209  2.12234223
-## [6,]  0.4958441  0.76188265 -1.4690737 -0.04026952  0.09959009
+##             [,1]        [,2]       [,3]       [,4]        [,5]
+## [1,]  1.19983282  0.04054099 -0.6312743 -1.3870826  0.95174305
+## [2,]  0.66601527  1.83613760  0.2060948  1.4231224 -0.02231608
+## [3,]  0.03463679 -0.54238205  1.7977782 -0.8719776  0.63767789
+## [4,]  0.62077318 -0.54004724 -0.5015148 -0.3652576 -0.82105759
+## [5,] -0.16119245 -0.70979194 -0.1576515  0.3673302  3.06256552
+## [6,]  0.27030359  0.36003687 -1.0035556  1.8079989 -0.07315575
 \end{verbatim}
 
 \begin{Shaded}
@@ -623,7 +623,7 @@ Therefore, we can use the function \texttt{min()}.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] -0.5917621 -0.8903713 -0.4107073 -1.8746587 -1.8269717 -1.4690737
+## [1] -1.38708264 -0.02231608 -0.87197764 -0.82105759 -0.70979194 -1.00355564
 \end{verbatim}
 
 \begin{quote}
@@ -678,13 +678,13 @@ Instead of using built-in functions, we can also write our own little function a
 \end{Shaded}
 
 \begin{verbatim}
-##            [,1]        [,2]       [,3]        [,4]        [,5]
-## [1,] -0.4770001  0.31748432  2.2825214 -0.59176206  1.17301913
-## [2,] -0.3153778 -0.51064583 -0.8903713 -0.11656918  0.75686163
-## [3,] -0.0584420 -0.29101986 -0.4107073  0.94795801 -0.40863050
-## [4,]  1.0301608  0.03951597 -1.8746587 -0.17625592 -0.48271821
-## [5,] -0.3460092  0.75305464 -1.8269717  0.02619209  2.12234223
-## [6,]  0.4958441  0.76188265 -1.4690737 -0.04026952  0.09959009
+##             [,1]        [,2]       [,3]       [,4]        [,5]
+## [1,]  1.19983282  0.04054099 -0.6312743 -1.3870826  0.95174305
+## [2,]  0.66601527  1.83613760  0.2060948  1.4231224 -0.02231608
+## [3,]  0.03463679 -0.54238205  1.7977782 -0.8719776  0.63767789
+## [4,]  0.62077318 -0.54004724 -0.5015148 -0.3652576 -0.82105759
+## [5,] -0.16119245 -0.70979194 -0.1576515  0.3673302  3.06256552
+## [6,]  0.27030359  0.36003687 -1.0035556  1.8079989 -0.07315575
 \end{verbatim}
 
 \begin{Shaded}
@@ -694,7 +694,7 @@ Instead of using built-in functions, we can also write our own little function a
 \end{Shaded}
 
 \begin{verbatim}
-## [1]  5.4085254 -2.1522050 -0.4416834 -2.9279121  1.4572162 -0.3040527
+## [1]  0.3475199  8.2181080  2.1114664 -3.2142081  4.8025196  2.7232558
 \end{verbatim}
 
 Besides, we can use \texttt{sapply()} for a \textbf{list}, for example to calculate the length of every element using \texttt{length()}:
@@ -1359,11 +1359,13 @@ You can see it by running \texttt{??gather}
 \hypertarget{lecture-files}{%
 \chapter{Lecture files}\label{lecture-files}}
 
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
 \hypertarget{week-1---data-analysis-statistics}{%
 \section{Week 1 - data analysis \& statistics}\label{week-1---data-analysis-statistics}}
 
 \hypertarget{day-1---data-typesgraphscorrelation}{%
-\subsection{Day 1 - data types/graphs/correlation}\label{day-1---data-typesgraphscorrelation}}
+\subsubsection{Day 1 - data types/graphs/correlation}\label{day-1---data-typesgraphscorrelation}}
 
 \begin{itemize}
 \tightlist
@@ -1374,7 +1376,7 @@ You can see it by running \texttt{??gather}
 \end{itemize}
 
 \hypertarget{day-2---clustering-pca}{%
-\subsection{Day 2 - clustering \& PCA}\label{day-2---clustering-pca}}
+\subsubsection{Day 2 - clustering \& PCA}\label{day-2---clustering-pca}}
 
 \begin{itemize}
 \tightlist
@@ -1385,7 +1387,7 @@ You can see it by running \texttt{??gather}
 \end{itemize}
 
 \hypertarget{day-3---distributions-statistical-inference}{%
-\subsection{Day 3 - distributions \& statistical inference}\label{day-3---distributions-statistical-inference}}
+\subsubsection{Day 3 - distributions \& statistical inference}\label{day-3---distributions-statistical-inference}}
 
 \begin{itemize}
 \tightlist
@@ -1396,7 +1398,7 @@ You can see it by running \texttt{??gather}
 \end{itemize}
 
 \hypertarget{day-4---hypothesis-testing}{%
-\subsection{Day 4 - hypothesis testing}\label{day-4---hypothesis-testing}}
+\subsubsection{Day 4 - hypothesis testing}\label{day-4---hypothesis-testing}}
 
 \begin{itemize}
 \tightlist
@@ -1407,7 +1409,7 @@ You can see it by running \texttt{??gather}
 \end{itemize}
 
 \hypertarget{day-5---regression}{%
-\subsection{Day 5 - regression}\label{day-5---regression}}
+\subsubsection{Day 5 - regression}\label{day-5---regression}}
 
 \begin{itemize}
 \tightlist
@@ -1415,16 +1417,27 @@ You can see it by running \texttt{??gather}
   \href{./slides/GKBioinfo_week1_day5.pdf}{{[}slides{]}}
 \end{itemize}
 
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
 \hypertarget{week-2---sequence-analysis}{%
 \section{Week 2 - sequence analysis}\label{week-2---sequence-analysis}}
 
 \hypertarget{day-1---intro-to-sequence-analysis}{%
-\subsection{Day 1 - intro to sequence analysis}\label{day-1---intro-to-sequence-analysis}}
+\subsubsection{Day 1 - intro to sequence analysis}\label{day-1---intro-to-sequence-analysis}}
 
 \begin{itemize}
 \tightlist
 \item
   \href{./slides/GKBioinfo_week2.pdf}{{[}slides{]}}
+\end{itemize}
+
+\hypertarget{day-2---blast-alignments-etc}{%
+\subsubsection{Day 2 - Blast, alignments, etc\ldots{}}\label{day-2---blast-alignments-etc}}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{./slides/GKBioinfo_week2_2.pdf}{{[}slides{]}}
 \end{itemize}
 
 \hypertarget{week-1-data-analysis}{%
@@ -3606,7 +3619,7 @@ Finally, we determine whether each sample mean is found within the 95\% CI or no
 
 Here, the orange/grey bars represent the confidence interval, the dot is the mean of the sample values, and the dotted line at \texttt{\textbackslash{}lambda} represents the true expectation value. Whenever the true expectation value is within the CI, the bar is orange, if not, the bar is grey. How often is the true expectation value outside the CI? Count the grey bars!
 
-It happens 9 times, which fits pretty well with the expected 5\%.
+It happens 7 times, which fits pretty well with the expected 5\%.
 
 \begin{quote}
 Repeat this simulation, but now with samples of \(N=24\) (again 100 times)\\
@@ -5536,7 +5549,8 @@ Below this menu, you can select genome locations (in the format \emph{chrN:start
 \hypertarget{example-1}{%
 \subsubsection{Example 1}\label{example-1}}
 
-Try IGV out using \href{IGV_sessions/heart_Histones.json}{this session}.
+Try IGV out using \href{IGV_sessions/heart_Histones.json}{this session}. Download the file, and upload it to IGV using Session \textgreater{} local file.
+
 Do you recognize the differences between the different histone modifications? Blue represents active histone modifications (linked to active transcription). H3K27ac is a classical marker of active gene promoters and other open chromatin regions. H3K36me3 is linked with gene bodies.
 
 Conversely, red represents repressive histone modifications. H3K27me3 and H3K9me3 are both associated with repression/heterochromatin. However, H3K9me3 is meant to be much more permanent, while H3K27me3 is often associated with regions that can be activated in development.
@@ -5551,6 +5565,13 @@ Inspect the HOXD gene cluster (Find it in \emph{chr2:175,992,177-176,263,537}). 
 
 \begin{quote}
 Check different genes (eg. BDP1, NPLOC4, PIK3C3) and observed the shape of the H3K27ac (activation) signal at their promoters.
+\end{quote}
+
+Using \texttt{Tracks\ \textgreater{}\ ENCODE\ Signals\ -\ other} look for the corresponding RNA-seq file (type RNA-seq heart in the search box, and look for the female patient with the right age\ldots).
+Check the expression of the previous genes.
+
+\begin{quote}
+Do you understand the RNA-seq profile along the genes?
 \end{quote}
 
 \hypertarget{identifying-formats}{%
@@ -5577,13 +5598,13 @@ Let us start with an example of a \textbf{FASTQ file}:
 FASTQ files are text-based (as many other sequence classes) and are the \textbf{most common format for storage of sequences and quality scores from high-throughput sequencing technologies}. These are large files, so they are generally compressed (extension \texttt{.fastq.gz}). When opening a FASTQ file (using \texttt{zless} or \texttt{less} in the terminal), this what an entry will generally look like:
 
 \begin{verbatim}
-@@A00665:126:HTNC2DRXX:1:2101:1136:1047 1:N:0:AGGCAGAA+NTAAGGAG
+@A00665:126:HTNC2DRXX:1:2101:1136:1047 1:N:0:AGGCAGAA+NTAAGGAG
 GNCCTTACTAGACCAATGGGACTTAAACCCACAAACACTTAGTTAACAGCT
 +
 F#:FFFFFFFFF:FFFFFFFFFFFFFFFFFFFFF:FFFFFFFFFFFFF:FF
 \end{verbatim}
 
-One FASTQ file contains millions of these entries. Each entry (starting with \texttt{@}) is composed of a sequence identifier (in this case, \texttt{@A00665:126:HTNC2DRXX\ ...}), the sequence itself, a separator (in this case, \texttt{+}), and the quality scores (Phred +33 encoded) for each base called. Sequence identifiers include information which allows us to know the name of the instrument which produced it, run identifiers, flowcell identifiers, pair number, index sequence, among others.
+One FASTQ file contains millions of these entries. Each entry (starting with \texttt{@}) is composed of a sequence identifier (in this case, \texttt{@A00665:126:HTNC2DRXX\ ...}), the sequence itself, a separator (in this case, \texttt{+}), and the quality scores (Phred +33 encoded \href{https://people.duke.edu/~ccc14/duke-hts-2018/bioinformatics/quality_scores.html}{check this page for further explanations}) for each base called. Sequence identifiers include information which allows us to know the name of the instrument which produced it, run identifiers, flowcell identifiers, pair number, index sequence, among others.
 
 This example is from paired-end sequencing, meaning that there are two FASTQ files per sample and entries match between them. I.e., \texttt{@A00665:126:HTNC2DRXX} will also exist in FASTQ file 2. When the sequencing is single-end, only one FASTQ file is produced per sample.
 
@@ -5642,6 +5663,10 @@ Let us see an example of BigWigs and peaks.
 Load the session \href{IGV_sessions/ExampleATAC_ChIP_CTCF_hg38.json}{here} to see an example of how ChIP-seq and ATAC-seq correlate with each other.
 
 Observe how peaks (rectangles below the coverage tracks) are not always identified for all the ``bumps'' in the BigWig.
+
+\begin{quote}
+Search for the ENCODE track for this cell line representing the H3K27ac signal (bigWig format!), and compare to ATAC-seq.
+\end{quote}
 
 \hypertarget{a-practical-guide-to-geo}{%
 \subsection{A practical guide to GEO}\label{a-practical-guide-to-geo}}
@@ -5707,14 +5732,11 @@ What kind of processed files are present in each sample?
 
 ChIP-seq can be used to identify genes regulated by targeted transcription factors. In the example, we will explore a dataset obtained in the human liver cell line HepG2.
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  Download the set of peaks for the FOS transcription factor from the GEO dataset GSE104247.
-\end{enumerate}
+1.1 Download the set of peaks for the FOS transcription factor from the GEO dataset GSE104247.
 
-1.1. What genome assembly is this dataset aligned to? Apply the necessary changes to see it in IGV.
+\begin{quote}
+What genome assembly is this dataset aligned to? Apply the necessary changes to see it in IGV.
+\end{quote}
 
 1.2. Load the dataset in the IGV web app. Give a couple of examples of genes that are likely regulated by FOS in this cell line.
 
@@ -5723,9 +5745,7 @@ ChIP-seq can be used to identify genes regulated by targeted transcription facto
 \hypertarget{exercise-2.-atac-seq-and-dnase-seq-comparison}{%
 \paragraph{Exercise 2. ATAC-seq and DNase-seq comparison}\label{exercise-2.-atac-seq-and-dnase-seq-comparison}}
 
-2.1. Load a track in BED and BigWig format from ATAC-seq and DNase-seq obtained in the same cell line using the \emph{Tracks} section from \emph{ENCODE Other} (BED) and \emph{ENCODE Signals - Other} (Tip: There is typically plenty of material included for the A549 cell line). Compare the called peaks and other features from each experiment (peak size, noise, coverage) and discuss the advantages one has over the other.
-
-2.2 (Optional) Load a \emph{4DN} track on insulation score for your cell line. This is from the 4D Nucleome Data Portal and it is a way to quantify the number of regions interacting within a window. At chromosomal scale, do you see how this correlates (or not) with the ATAC-seq track? What are the regions that present a high insulation score?
+Load a track in BED and BigWig format from ATAC-seq and DNase-seq obtained in the same cell line using the \emph{Tracks} section from \emph{ENCODE Other} (BED) and \emph{ENCODE Signals - Other} (Tip: There is typically plenty of material included for the A549 cell line). Compare the called peaks and other features from each experiment (peak size, noise, coverage) and discuss the advantages one has over the other.
 
 \hypertarget{exercise-3.-using-geo-to-look-for-dna-methylation-datasets}{%
 \paragraph{Exercise 3. Using GEO to look for DNA methylation datasets}\label{exercise-3.-using-geo-to-look-for-dna-methylation-datasets}}
