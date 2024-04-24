@@ -257,6 +257,8 @@ MSc MoBi
 </ul></li>
 <li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#day-5-rna-seq---from-fastq-to-count-matrix"><i class="fa fa-check"></i>Day 5: RNA-seq - from FASTQ to count matrix</a>
 <ul>
+<li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#connecting-to-the-virtual-machine"><i class="fa fa-check"></i>Connecting to the virtual machine</a></li>
+<li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#workflow"><i class="fa fa-check"></i>Workflow</a></li>
 <li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#quality-control"><i class="fa fa-check"></i>Quality control</a></li>
 <li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#alignment"><i class="fa fa-check"></i>Alignment</a></li>
 <li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#quantification"><i class="fa fa-check"></i>Quantification</a></li>
@@ -566,16 +568,16 @@ Therefore, we can use the function <code>min()</code>.</p>
 <span id="cb22-2"><a href="index.html#cb22-2" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">30</span>)   <span class="co"># generate 30 random numbers for the matrix</span></span>
 <span id="cb22-3"><a href="index.html#cb22-3" tabindex="-1"></a>Mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> m, <span class="at">nrow =</span> <span class="dv">6</span>)</span>
 <span id="cb22-4"><a href="index.html#cb22-4" tabindex="-1"></a>Mat</span></code></pre></div>
-<pre><code>##            [,1]        [,2]       [,3]        [,4]       [,5]
-## [1,] -0.2273250  0.55461835  1.3895485 -0.57979945  2.2377412
-## [2,] -0.4345453 -1.90061701  0.9568546  0.34834252 -2.4985953
-## [3,]  1.3321504  1.04850140 -1.1980482  0.05499381 -1.8221866
-## [4,]  1.1683239  0.65426764 -0.3646801 -1.34456838 -0.6186646
-## [5,]  1.0245676  0.05043387 -1.2443572  1.28310640 -0.3442326
-## [6,] -0.8375732  0.56827214  0.8726221  0.72035358 -0.3054709</code></pre>
+<pre><code>##            [,1]        [,2]        [,3]        [,4]       [,5]
+## [1,] -0.4823462 -0.20094835  0.54138019 -0.25222141 -0.4385947
+## [2,] -1.6176644  0.03862645  0.22076236  0.05266941 -1.3176206
+## [3,] -1.2607730  0.26266059 -0.07164537 -0.66812573 -0.3475898
+## [4,]  0.7559138 -0.50894923  1.06494301 -0.80162865 -0.6699991
+## [5,] -0.2671795  0.56527878 -1.35620433 -0.25972331  0.3910982
+## [6,] -0.1074293  0.14524667  1.13363565 -0.64094725  1.7747328</code></pre>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="index.html#cb24-1" tabindex="-1"></a><span class="co">#Next, we want to determine the minimum value of each row: </span></span>
 <span id="cb24-2"><a href="index.html#cb24-2" tabindex="-1"></a><span class="fu">apply</span>(Mat, <span class="dv">1</span>, min)</span></code></pre></div>
-<pre><code>## [1] -0.5797994 -2.4985953 -1.8221866 -1.3445684 -1.2443572 -0.8375732</code></pre>
+<pre><code>## [1] -0.4823462 -1.6176644 -1.2607730 -0.8016286 -1.3562043 -0.6409472</code></pre>
 <blockquote>
 <p>What happens if you change the “1” in the apply function to “2”?
 Try it!</p>
@@ -601,15 +603,15 @@ which function do we want to apply to each element of this vector?<br />
 <pre><code>## [1]  2  4  6  8 10</code></pre>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="index.html#cb30-1" tabindex="-1"></a><span class="co"># apply()</span></span>
 <span id="cb30-2"><a href="index.html#cb30-2" tabindex="-1"></a>Mat </span></code></pre></div>
-<pre><code>##            [,1]        [,2]       [,3]        [,4]       [,5]
-## [1,] -0.2273250  0.55461835  1.3895485 -0.57979945  2.2377412
-## [2,] -0.4345453 -1.90061701  0.9568546  0.34834252 -2.4985953
-## [3,]  1.3321504  1.04850140 -1.1980482  0.05499381 -1.8221866
-## [4,]  1.1683239  0.65426764 -0.3646801 -1.34456838 -0.6186646
-## [5,]  1.0245676  0.05043387 -1.2443572  1.28310640 -0.3442326
-## [6,] -0.8375732  0.56827214  0.8726221  0.72035358 -0.3054709</code></pre>
+<pre><code>##            [,1]        [,2]        [,3]        [,4]       [,5]
+## [1,] -0.4823462 -0.20094835  0.54138019 -0.25222141 -0.4385947
+## [2,] -1.6176644  0.03862645  0.22076236  0.05266941 -1.3176206
+## [3,] -1.2607730  0.26266059 -0.07164537 -0.66812573 -0.3475898
+## [4,]  0.7559138 -0.50894923  1.06494301 -0.80162865 -0.6699991
+## [5,] -0.2671795  0.56527878 -1.35620433 -0.25972331  0.3910982
+## [6,] -0.1074293  0.14524667  1.13363565 -0.64094725  1.7747328</code></pre>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="index.html#cb32-1" tabindex="-1"></a><span class="fu">apply</span>(Mat, <span class="dv">1</span>, <span class="cf">function</span>(x) {<span class="fu">sum</span>(x<span class="sc">*</span><span class="dv">2</span>)}) <span class="co">#the operation is performed on every row of &quot;Mat&quot;; every element is multiplied by two and the sum of the row is calculated</span></span></code></pre></div>
-<pre><code>## [1]  6.749567 -7.057121 -1.169178 -1.010643  1.539036  2.036408</code></pre>
+<pre><code>## [1] -1.6654610 -5.2464537 -4.1709465 -0.3194404 -1.8534604  4.6104772</code></pre>
 <p>Besides, we can use <code>sapply()</code> for a <strong>list</strong>, for example to calculate the length of every element using <code>length()</code>:</p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="index.html#cb34-1" tabindex="-1"></a>List1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">color =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>), <span class="at">size =</span> <span class="dv">5</span>, <span class="at">state =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span>))</span>
 <span id="cb34-2"><a href="index.html#cb34-2" tabindex="-1"></a></span>

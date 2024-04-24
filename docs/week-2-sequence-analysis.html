@@ -257,6 +257,8 @@ MSc MoBi
 </ul></li>
 <li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#day-5-rna-seq---from-fastq-to-count-matrix"><i class="fa fa-check"></i>Day 5: RNA-seq - from FASTQ to count matrix</a>
 <ul>
+<li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#connecting-to-the-virtual-machine"><i class="fa fa-check"></i>Connecting to the virtual machine</a></li>
+<li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#workflow"><i class="fa fa-check"></i>Workflow</a></li>
 <li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#quality-control"><i class="fa fa-check"></i>Quality control</a></li>
 <li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#alignment"><i class="fa fa-check"></i>Alignment</a></li>
 <li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#quantification"><i class="fa fa-check"></i>Quantification</a></li>
@@ -731,6 +733,15 @@ Search for the dataset identified as <strong>GSE205807</strong>.</p>
 <div id="day-5-rna-seq---from-fastq-to-count-matrix" class="section level2 hasAnchor">
 <h2>Day 5: RNA-seq - from FASTQ to count matrix<a href="week-2-sequence-analysis.html#day-5-rna-seq---from-fastq-to-count-matrix" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Today we will analyze the RNA sequencing data.</p>
+<div id="connecting-to-the-virtual-machine" class="section level3 hasAnchor">
+<h3>Connecting to the virtual machine<a href="week-2-sequence-analysis.html#connecting-to-the-virtual-machine" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Follow the instructions in the Introduction (see left menu) to connect to the VM.</li>
+<li>In the terminal, type <code>conda activate denbi</code></li>
+</ul>
+</div>
+<div id="workflow" class="section level3 hasAnchor">
+<h3>Workflow<a href="week-2-sequence-analysis.html#workflow" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We will use the RNA-seq data from this paper: Nature volume 571, pages505–509 (2019). The raw sequence data is stored at: <a href="https://www.ebi.ac.uk/biostudies/arrayexpress/studies/E-MTAB-6798/sdrf" class="uri">https://www.ebi.ac.uk/biostudies/arrayexpress/studies/E-MTAB-6798/sdrf</a></p>
 <p>We will take two samples from there. One from the 2 week post-conception (2WPC) mouse brain and the other from 4WPC brain.</p>
 <p>You can find the raw data here:</p>
@@ -742,6 +753,7 @@ Search for the dataset identified as <strong>GSE205807</strong>.</p>
 <div class="float">
 <img src="figures/workflow.png" alt="Workflow for the RNA-seq analysis" />
 <div class="figcaption">Workflow for the RNA-seq analysis</div>
+</div>
 </div>
 <div id="quality-control" class="section level3 hasAnchor">
 <h3>Quality control<a href="week-2-sequence-analysis.html#quality-control" class="anchor-section" aria-label="Anchor link to header"></a></h3>

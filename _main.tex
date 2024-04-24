@@ -606,13 +606,13 @@ Therefore, we can use the function \texttt{min()}.
 \end{Shaded}
 
 \begin{verbatim}
-##             [,1]        [,2]       [,3]       [,4]        [,5]
-## [1,]  1.19983282  0.04054099 -0.6312743 -1.3870826  0.95174305
-## [2,]  0.66601527  1.83613760  0.2060948  1.4231224 -0.02231608
-## [3,]  0.03463679 -0.54238205  1.7977782 -0.8719776  0.63767789
-## [4,]  0.62077318 -0.54004724 -0.5015148 -0.3652576 -0.82105759
-## [5,] -0.16119245 -0.70979194 -0.1576515  0.3673302  3.06256552
-## [6,]  0.27030359  0.36003687 -1.0035556  1.8079989 -0.07315575
+##             [,1]       [,2]       [,3]       [,4]       [,5]
+## [1,] -0.29623800  1.0997890  0.3367354 -1.4029044  0.8979773
+## [2,]  0.05369166  1.4612711 -2.3908311  0.8229212 -1.7944745
+## [3,]  0.57444823 -0.8776870 -0.9923846 -0.5065686 -2.0338056
+## [4,] -1.39493027  1.1017116  2.0641754 -0.8287392  0.1980889
+## [5,]  0.39761537 -0.6568246 -0.4299701 -0.1694542  0.1588598
+## [6,]  0.34190868  1.4358787 -0.2112233 -0.4486198 -0.2298110
 \end{verbatim}
 
 \begin{Shaded}
@@ -623,7 +623,7 @@ Therefore, we can use the function \texttt{min()}.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] -1.38708264 -0.02231608 -0.87197764 -0.82105759 -0.70979194 -1.00355564
+## [1] -1.4029044 -2.3908311 -2.0338056 -1.3949303 -0.6568246 -0.4486198
 \end{verbatim}
 
 \begin{quote}
@@ -678,13 +678,13 @@ Instead of using built-in functions, we can also write our own little function a
 \end{Shaded}
 
 \begin{verbatim}
-##             [,1]        [,2]       [,3]       [,4]        [,5]
-## [1,]  1.19983282  0.04054099 -0.6312743 -1.3870826  0.95174305
-## [2,]  0.66601527  1.83613760  0.2060948  1.4231224 -0.02231608
-## [3,]  0.03463679 -0.54238205  1.7977782 -0.8719776  0.63767789
-## [4,]  0.62077318 -0.54004724 -0.5015148 -0.3652576 -0.82105759
-## [5,] -0.16119245 -0.70979194 -0.1576515  0.3673302  3.06256552
-## [6,]  0.27030359  0.36003687 -1.0035556  1.8079989 -0.07315575
+##             [,1]       [,2]       [,3]       [,4]       [,5]
+## [1,] -0.29623800  1.0997890  0.3367354 -1.4029044  0.8979773
+## [2,]  0.05369166  1.4612711 -2.3908311  0.8229212 -1.7944745
+## [3,]  0.57444823 -0.8776870 -0.9923846 -0.5065686 -2.0338056
+## [4,] -1.39493027  1.1017116  2.0641754 -0.8287392  0.1980889
+## [5,]  0.39761537 -0.6568246 -0.4299701 -0.1694542  0.1588598
+## [6,]  0.34190868  1.4358787 -0.2112233 -0.4486198 -0.2298110
 \end{verbatim}
 
 \begin{Shaded}
@@ -694,7 +694,7 @@ Instead of using built-in functions, we can also write our own little function a
 \end{Shaded}
 
 \begin{verbatim}
-## [1]  0.3475199  8.2181080  2.1114664 -3.2142081  4.8025196  2.7232558
+## [1]  1.270719 -3.694843 -7.671995  2.280613 -1.399548  1.776267
 \end{verbatim}
 
 Besides, we can use \texttt{sapply()} for a \textbf{list}, for example to calculate the length of every element using \texttt{length()}:
@@ -3619,7 +3619,7 @@ Finally, we determine whether each sample mean is found within the 95\% CI or no
 
 Here, the orange/grey bars represent the confidence interval, the dot is the mean of the sample values, and the dotted line at \texttt{\textbackslash{}lambda} represents the true expectation value. Whenever the true expectation value is within the CI, the bar is orange, if not, the bar is grey. How often is the true expectation value outside the CI? Count the grey bars!
 
-It happens 7 times, which fits pretty well with the expected 5\%.
+It happens 2 times, which fits pretty well with the expected 5\%.
 
 \begin{quote}
 Repeat this simulation, but now with samples of \(N=24\) (again 100 times)\\
@@ -5771,6 +5771,20 @@ Is an interaction mediated by CTCF always associated with a CTCF peak? Why?
 \section{Day 5: RNA-seq - from FASTQ to count matrix}\label{day-5-rna-seq---from-fastq-to-count-matrix}}
 
 Today we will analyze the RNA sequencing data.
+
+\hypertarget{connecting-to-the-virtual-machine}{%
+\subsection{Connecting to the virtual machine}\label{connecting-to-the-virtual-machine}}
+
+\begin{itemize}
+\tightlist
+\item
+  Follow the instructions in the Introduction (see left menu) to connect to the VM.
+\item
+  In the terminal, type \texttt{conda\ activate\ denbi}
+\end{itemize}
+
+\hypertarget{workflow}{%
+\subsection{Workflow}\label{workflow}}
 
 We will use the RNA-seq data from this paper: Nature volume 571, pages505--509 (2019). The raw sequence data is stored at: \url{https://www.ebi.ac.uk/biostudies/arrayexpress/studies/E-MTAB-6798/sdrf}
 

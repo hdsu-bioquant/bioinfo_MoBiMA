@@ -3469,6 +3469,14 @@ Observe interactions at chromosomal and gene level. What can you conclude from t
 
 Today we will analyze the RNA sequencing data. 
 
+### Connecting to the virtual machine
+
+- Follow the instructions in the Introduction (see left menu) to connect to the VM.
+- In the terminal, type `conda activate denbi`
+
+
+### Workflow
+
 We will use the RNA-seq data from this paper: Nature volume 571, pages505–509 (2019). The raw sequence data is stored at: https://www.ebi.ac.uk/biostudies/arrayexpress/studies/E-MTAB-6798/sdrf
 
 We will take two samples from there. One from the 2 week post-conception (2WPC) mouse brain and the other from 4WPC brain.
