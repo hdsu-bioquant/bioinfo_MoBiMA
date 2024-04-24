@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Project report guide | Bioinformatics Introductory Course - Master Molecular Biotechnology</title>
   <meta name="description" content="RMarkdowns for the Data Analysis introduction course (SoSe2024), MoBi MA" />
-  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Project report guide | Bioinformatics Introductory Course - Master Molecular Biotechnology" />
   <meta property="og:type" content="book" />
@@ -258,7 +258,6 @@ MSc MoBi
 <li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#day-5-rna-seq---from-fastq-to-count-matrix"><i class="fa fa-check"></i>Day 5: RNA-seq - from FASTQ to count matrix</a>
 <ul>
 <li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#connecting-to-the-virtual-machine"><i class="fa fa-check"></i>Connecting to the virtual machine</a></li>
-<li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#workflow"><i class="fa fa-check"></i>Workflow</a></li>
 <li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#quality-control"><i class="fa fa-check"></i>Quality control</a></li>
 <li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#alignment"><i class="fa fa-check"></i>Alignment</a></li>
 <li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#quantification"><i class="fa fa-check"></i>Quantification</a></li>
@@ -363,10 +362,10 @@ MSc MoBi
 <p>For more additions like table, check the <a href="https://bookdown.org/yihui/rmarkdown-cookbook/tables.html">RMarkdown cookbook</a>.</p>
 <p>Figures and tables <em>with captions</em> can also be cross-referenced from elsewhere using <code>\@ref(fig:chunk-label)</code> and <code>\@ref(tab:chunk-label)</code>, respectively.</p>
 <p>Don’t miss Table <a href="project-report-guide.html#tab:nice-tab">1</a>. Reference tables using <code>\@ref(tab:nice-tab)</code></p>
-<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="project-report-guide.html#cb328-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
-<span id="cb328-2"><a href="project-report-guide.html#cb328-2" tabindex="-1"></a>  <span class="fu">head</span>(pressure, <span class="dv">5</span>), <span class="at">caption =</span> <span class="st">&#39;Here is a nice table!&#39;</span>,</span>
-<span id="cb328-3"><a href="project-report-guide.html#cb328-3" tabindex="-1"></a>  <span class="at">booktabs =</span> <span class="cn">TRUE</span></span>
-<span id="cb328-4"><a href="project-report-guide.html#cb328-4" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="project-report-guide.html#cb329-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb329-2"><a href="project-report-guide.html#cb329-2" tabindex="-1"></a>  <span class="fu">head</span>(pressure, <span class="dv">5</span>), <span class="at">caption =</span> <span class="st">&#39;Here is a nice table!&#39;</span>,</span>
+<span id="cb329-3"><a href="project-report-guide.html#cb329-3" tabindex="-1"></a>  <span class="at">booktabs =</span> <span class="cn">TRUE</span></span>
+<span id="cb329-4"><a href="project-report-guide.html#cb329-4" tabindex="-1"></a>)</span></code></pre></div>
 <table>
 <caption><span id="tab:nice-tab">Table 1: </span>Here is a nice table!</caption>
 <thead>
