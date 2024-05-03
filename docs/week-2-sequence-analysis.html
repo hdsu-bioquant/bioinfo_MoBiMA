@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Week 2 : sequence analysis | Bioinformatics Introductory Course - Master Molecular Biotechnology</title>
   <meta name="description" content="RMarkdowns for the Data Analysis introduction course (SoSe2024), MoBi MA" />
-  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Week 2 : sequence analysis | Bioinformatics Introductory Course - Master Molecular Biotechnology" />
   <meta property="og:type" content="book" />
@@ -258,7 +258,6 @@ MSc MoBi
 <li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#day-5-rna-seq---from-fastq-to-count-matrix"><i class="fa fa-check"></i>Day 5: RNA-seq - from FASTQ to count matrix</a>
 <ul>
 <li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#connecting-to-the-virtual-machine"><i class="fa fa-check"></i>Connecting to the virtual machine</a></li>
-<li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#workflow"><i class="fa fa-check"></i>Workflow</a></li>
 <li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#quality-control"><i class="fa fa-check"></i>Quality control</a></li>
 <li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#alignment"><i class="fa fa-check"></i>Alignment</a></li>
 <li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#quantification"><i class="fa fa-check"></i>Quantification</a></li>
@@ -734,18 +733,19 @@ Search for the dataset identified as <strong>GSE205807</strong>.</p>
 </div>
 <div id="day-5-rna-seq---from-fastq-to-count-matrix" class="section level2 hasAnchor">
 <h2>Day 5: RNA-seq - from FASTQ to count matrix<a href="week-2-sequence-analysis.html#day-5-rna-seq---from-fastq-to-count-matrix" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Today we will analyze the RNA sequencing data.</p>
+<p>Today we will analyze the RNA sequencing data. Please refer to the intro section (<code>Where to start</code>) to log in the virtual machine.</p>
+<p>After logging in, please check your current directory (<code>pwd</code>), and also please check your folder (<code>ls</code>). It should be empty for now.</p>
 <div id="connecting-to-the-virtual-machine" class="section level3 hasAnchor">
 <h3>Connecting to the virtual machine<a href="week-2-sequence-analysis.html#connecting-to-the-virtual-machine" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The tools that we will use today have already been preinstalled in a conda environment called <code>denbi</code>. You do not need to install them by yourself, but do remember to load them before using them.</p>
 <ul>
 <li>Follow the instructions in the Introduction (see left menu) to connect to the VM.</li>
 <li>In the terminal, type <code>conda activate denbi</code></li>
 </ul>
-</div>
-<div id="workflow" class="section level3 hasAnchor">
-<h3>Workflow<a href="week-2-sequence-analysis.html#workflow" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>After loading the <code>denbi</code> environment, you are ready to go.</p>
+<p>Just in case you have problems in signing the virtual machines, you can find the output files here: <a href="https://drive.google.com/drive/folders/1EJu2F_-pFvw4v71h1QJHq_xOcK6nMAKi?usp=drive_link" class="uri">https://drive.google.com/drive/folders/1EJu2F_-pFvw4v71h1QJHq_xOcK6nMAKi?usp=drive_link</a></p>
 <p>We will use the RNA-seq data from this paper: Nature volume 571, pages505–509 (2019). The raw sequence data is stored at: <a href="https://www.ebi.ac.uk/biostudies/arrayexpress/studies/E-MTAB-6798/sdrf" class="uri">https://www.ebi.ac.uk/biostudies/arrayexpress/studies/E-MTAB-6798/sdrf</a></p>
-<p>We will take two samples from there. One from the 2 week post-conception (2WPC) mouse brain and the other from 4WPC brain.</p>
+<p>Two samples are taken. One from the 2 week post-conception (2WPC) mouse brain and the other from 4WPC brain.</p>
 <p>You can find the raw data here:</p>
 <pre class="raw"><code>/vol/data/raw/mouse_brain_2wpb.fastq.gz
 
@@ -761,7 +761,8 @@ Search for the dataset identified as <strong>GSE205807</strong>.</p>
 <h3>Quality control<a href="week-2-sequence-analysis.html#quality-control" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We retrieve the raw data and employ a software tool named <code>fastqc</code> to examine the quality of the sequence files.</p>
 <p>We next examine the quality of the samples with <code>fastqc</code>.</p>
-<pre class="fastqc"><code>mkdir path/to/your_fastqc_folder
+<pre class="fastqc"><code># Notice: only create folders/files under your own directoy. DO NOT create or delete anything outside your own directory.
+mkdir path/to/your_fastqc_folder 
 
 fastqc /vol/data/raw/mouse_brain_4wpb.fastq.gz -o path/to/your_fastqc_folder/
 
@@ -792,15 +793,14 @@ fastqc /vol/data/raw/mouse_brain_2wpb.fastq.gz -o path/to/your_fastqc_folder/
 <h3>Alignment<a href="week-2-sequence-analysis.html#alignment" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Alignment involves the process of mapping sequences to a reference genome.</p>
 <p>We use <code>Bowtie2</code> to implement seuqence alignment. Common aligners include <code>BWA</code>, <code>TOPHAT</code>, and <code>STAR</code>. They differ in their accuracy, speed, and memory usage due to different computational algorithms.</p>
-<pre><code>
-# Create a new directory
+<pre><code># Notice: only create folders/files under your own directoy. DO NOT create or delete anything outside your own directory.
 
 mkdir path/to/your_bam_folder
 
 
 # Alignment (It will take for a while)
 bowtie2 -p 2 --no-unal -x /vol/data/raw/chr6 -U /vol/data/raw/mouse_brain_2wpb.fastq.gz | samtools view -bS - &gt; path/to/your_bam_folder/mouse_brain_2wpb_chr6.bam 
-
+bowtie2 -p 2 --no-unal -x /vol/data/raw/chr6 -U /vol/data/raw/mouse_brain_4wpb.fastq.gz | samtools view -bS - &gt; path/to/your_bam_folder/mouse_brain_4wpb_chr6.bam
 </code></pre>
 <blockquote>
 <p>Question: How to view the BAM files? What do you find in your BAM files?
@@ -808,7 +808,8 @@ Ref: <a href="https://bookdown.org/content/24942ad6-9ed7-44e9-b214-1ea8ba9f0224/
 Hint: Use <code>samtools view</code> to view your BAM files.</p>
 </blockquote>
 <p>We then use <code>samtools flagstat</code> to evaluate the quality of the aligned bam file.</p>
-<pre class="flagstat"><code>samtools flagstat path/to/your_bam_folder/mouse_brain_2wpb_chr6.bam  &gt; path/to/your_bam_folder/mouse_brain_flagstat_2wpb_chr6.txt
+<pre class="flagstat"><code># Notice: only create folders/files under your own directoy. DO NOT create or delete anything outside your own directory.
+samtools flagstat path/to/your_bam_folder/mouse_brain_2wpb_chr6.bam  &gt; path/to/your_bam_folder/mouse_brain_flagstat_2wpb_chr6.txt
 </code></pre>
 <div class="float">
 <img src="figures/flagstat.png" alt="Quality of the aligned bam file." />
@@ -817,9 +818,9 @@ Hint: Use <code>samtools view</code> to view your BAM files.</p>
 </div>
 <div id="quantification" class="section level3 hasAnchor">
 <h3>Quantification<a href="week-2-sequence-analysis.html#quantification" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Now, we utilise the aligned BAM files to quantify the gene expression in our samples. We implement this with a tool named <code>htseq-count</code>. There are various methods exist for quantifying gene expression in <code>htseq-count</code>. For further illustration, please refer to the tutorial (<a href="https://htseq.readthedocs.io/en/release_0.11.1/count.html" class="uri">https://htseq.readthedocs.io/en/release_0.11.1/count.html</a>).</p>
-<pre><code>
-# Create a new directory
+<p>Now, we utilise the BAM files to quantify the gene expression in our samples. We implement this with a tool named <code>htseq-count</code>. There are various methods exist for quantifying gene expression in <code>htseq-count</code>. For further illustration, please refer to the tutorial (<a href="https://htseq.readthedocs.io/en/release_0.11.1/count.html" class="uri">https://htseq.readthedocs.io/en/release_0.11.1/count.html</a>).</p>
+<pre><code># Notice: only create folders/files under your own directoy. DO NOT create or delete anything outside your own directory.
+
 mkdir path/to/your_count_folder
 # Keep the high quality reads
 
@@ -827,6 +828,7 @@ samtools view -bq 40 path/to/your_bam_folder/mouse_brain_2wpb_chr6.bam &gt; path
 
 htseq-count -s no -m intersection-nonempty --nonunique all --format bam path/to/your_bam_folder/mouse_brain_2wpb_chr6_Q40.bam /vol/data/raw/mm39.ncbiRefSeq.chr6.gtf &gt; path/to/your_count_folder/mouse_brain_2wpb_chr6.txt
 </code></pre>
+<p>Please repeate the code above to get the count matrix from your mouse_brain_4wpb sample.</p>
 <div class="float">
 <img src="figures/count_matrix.png" alt="Gene expression profile in 2WPC mouse brain. The first column shows the gene name. The second column shows the count. Speical counts are highlighted in red" />
 <div class="figcaption">Gene expression profile in 2WPC mouse brain. The first column shows the gene name. The second column shows the count. Speical counts are highlighted in red</div>
@@ -834,6 +836,15 @@ htseq-count -s no -m intersection-nonempty --nonunique all --format bam path/to/
 </div>
 <div id="visualization-2" class="section level3 hasAnchor">
 <h3>Visualization<a href="week-2-sequence-analysis.html#visualization-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We will see what the bam files and count matrix files look like.</p>
+<p>To view the bam files with IGV, we need an index file.</p>
+<pre class="visualization"><code># Notice: only create folders/files under your own directoy. DO NOT create or delete anything outside your own directory.
+cd  path/to/your_bam_folder
+
+samtools sort mouse_brain_2wpb_chr6_Q40.bam -o mouse_brain_2wpb_chr6_Q40_sorted.bam # sort the bam
+
+samtools index mouse_brain_2wpb_chr6_Q40_sorted.bam # index the sorted bam</code></pre>
+<p>To visualize the count matrix, you are encouraged to download the count matrix files to your local computer (using Cyberduck). Next, read the files in R, and visualize it (code below).</p>
 <pre class="visualization"><code>
 library(tidyverse)
 setwd(&quot;path/to/your_count_folder&quot;)
@@ -858,17 +869,17 @@ tb_merge %&gt;% ggplot(mapping = aes(x = log10(Count + 1), fill = Sample)) +
 <h3>Excercises<a href="week-2-sequence-analysis.html#excercises" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <blockquote>
 <ol style="list-style-type: decimal">
-<li>Please explore your bam files with IGV. What do you find?</li>
+<li>Please explore your bam files with IGV. What do you find ?(Hint: download both .bam and .bai file —&gt; open IGV browser —&gt; click Genome &gt; Mouse (GRCmm39mm39) —&gt; click Tracks &gt; Local Files &gt; select the two files -&gt; select proper coordinate (e.g., chr6:28,527,661-28,527,699))</li>
 </ol>
 </blockquote>
 <blockquote>
 <ol start="2" style="list-style-type: decimal">
-<li>Please try to run the whole workflow that you learnt today on mouse chromosome 8. The reference genome sequence can be found at /vol/data/raw. However, you are encouraged to retrieve the reference genome from the databases by yourself.</li>
+<li>Please explore your count matrix of these two samples. Do you find any genes that express differentially between the samples? Also, think about that, if you are a project leader, how would you design your experiment and what hypothesis testing strategy would you opt for? (Note: Formal analysis will be revealed next week)</li>
 </ol>
 </blockquote>
 <blockquote>
 <ol start="3" style="list-style-type: decimal">
-<li>Please explore your count matrix of these two samples. Do you find any genes that express differentially between the samples? Also, think about that, if you are a project leader, how would you design your experiment and what hypothesis testing strategy would you opt for? (Note: Formal analysis will be revealed next week)</li>
+<li>(Optional) Please try to run the whole workflow that you learnt today on mouse chromosome 8. The reference genome sequence can be found at /vol/data/raw. However, you are encouraged to retrieve the reference genome from the databases by yourself.</li>
 </ol>
 </blockquote>
 

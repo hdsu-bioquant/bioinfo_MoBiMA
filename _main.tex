@@ -614,13 +614,13 @@ Therefore, we can use the function \texttt{min()}.
 \end{Shaded}
 
 \begin{verbatim}
-##            [,1]         [,2]         [,3]       [,4]       [,5]
-## [1,]  0.9634178 -0.048584792 -0.000581576 -0.9789242  0.1609030
-## [2,] -0.8299935  2.640324426 -0.231253241  1.1018593  0.1442285
-## [3,]  2.0084621  0.097893356 -0.162965134  0.5725396  0.5117056
-## [4,]  0.2673388 -0.005925997 -0.071880125  0.4254527 -0.7105225
-## [5,] -0.1758693  0.117482674  1.066932632  0.2549107 -1.3768568
-## [6,]  1.1711117  0.478995232 -0.721669655 -0.1981943 -0.4502779
+##            [,1]       [,2]       [,3]        [,4]       [,5]
+## [1,] -0.9153154  0.6644170 -1.3751109  0.03465152 -1.6099791
+## [2,]  0.8897005 -0.6736305 -1.5067941  0.94879149 -0.9890300
+## [3,]  0.9861227 -1.4483915  0.7975421  0.61063985 -0.4948008
+## [4,] -0.0950120 -1.8571848  0.2234879  1.37256417  0.4726276
+## [5,]  0.6144595  0.9150287 -0.3653866 -0.66767182 -0.2738129
+## [6,]  0.1564331 -0.9532834 -0.2879497  0.16305460 -0.8633530
 \end{verbatim}
 
 \begin{Shaded}
@@ -631,7 +631,7 @@ Therefore, we can use the function \texttt{min()}.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] -0.9789242 -0.8299935 -0.1629651 -0.7105225 -1.3768568 -0.7216697
+## [1] -1.6099791 -1.5067941 -1.4483915 -1.8571848 -0.6676718 -0.9532834
 \end{verbatim}
 
 \begin{quote}
@@ -686,13 +686,13 @@ Instead of using built-in functions, we can also write our own little function a
 \end{Shaded}
 
 \begin{verbatim}
-##            [,1]         [,2]         [,3]       [,4]       [,5]
-## [1,]  0.9634178 -0.048584792 -0.000581576 -0.9789242  0.1609030
-## [2,] -0.8299935  2.640324426 -0.231253241  1.1018593  0.1442285
-## [3,]  2.0084621  0.097893356 -0.162965134  0.5725396  0.5117056
-## [4,]  0.2673388 -0.005925997 -0.071880125  0.4254527 -0.7105225
-## [5,] -0.1758693  0.117482674  1.066932632  0.2549107 -1.3768568
-## [6,]  1.1711117  0.478995232 -0.721669655 -0.1981943 -0.4502779
+##            [,1]       [,2]       [,3]        [,4]       [,5]
+## [1,] -0.9153154  0.6644170 -1.3751109  0.03465152 -1.6099791
+## [2,]  0.8897005 -0.6736305 -1.5067941  0.94879149 -0.9890300
+## [3,]  0.9861227 -1.4483915  0.7975421  0.61063985 -0.4948008
+## [4,] -0.0950120 -1.8571848  0.2234879  1.37256417  0.4726276
+## [5,]  0.6144595  0.9150287 -0.3653866 -0.66767182 -0.2738129
+## [6,]  0.1564331 -0.9532834 -0.2879497  0.16305460 -0.8633530
 \end{verbatim}
 
 \begin{Shaded}
@@ -702,7 +702,7 @@ Instead of using built-in functions, we can also write our own little function a
 \end{Shaded}
 
 \begin{verbatim}
-## [1]  0.1924605  5.6503310  6.0552712 -0.1910743 -0.2268001  0.5599302
+## [1] -6.4026739 -2.6619253  0.9022249  0.2329658  0.4452338 -3.5701966
 \end{verbatim}
 
 Besides, we can use \texttt{sapply()} for a \textbf{list}, for example to calculate the length of every element using \texttt{length()}:
@@ -886,10 +886,10 @@ And load it using
 
 \begin{verbatim}
 ## -- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --
-## v dplyr     1.1.3     v readr     2.1.4
-## v forcats   1.0.0     v stringr   1.5.0
-## v ggplot2   3.4.3     v tibble    3.2.1
-## v lubridate 1.9.3     v tidyr     1.3.0
+## v dplyr     1.1.4     v readr     2.1.5
+## v forcats   1.0.0     v stringr   1.5.1
+## v ggplot2   3.5.0     v tibble    3.2.1
+## v lubridate 1.9.3     v tidyr     1.3.1
 ## v purrr     1.0.2     
 ## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
 ## x dplyr::filter() masks stats::filter()
@@ -3627,7 +3627,7 @@ Finally, we determine whether each sample mean is found within the 95\% CI or no
 
 Here, the orange/grey bars represent the confidence interval, the dot is the mean of the sample values, and the dotted line at \texttt{\textbackslash{}lambda} represents the true expectation value. Whenever the true expectation value is within the CI, the bar is orange, if not, the bar is grey. How often is the true expectation value outside the CI? Count the grey bars!
 
-It happens 4 times, which fits pretty well with the expected 5\%.
+It happens 3 times, which fits pretty well with the expected 5\%.
 
 \begin{quote}
 Repeat this simulation, but now with samples of \(N=24\) (again 100 times)\\
@@ -5778,10 +5778,14 @@ Is an interaction mediated by CTCF always associated with a CTCF peak? Why?
 \hypertarget{day-5-rna-seq---from-fastq-to-count-matrix}{%
 \section{Day 5: RNA-seq - from FASTQ to count matrix}\label{day-5-rna-seq---from-fastq-to-count-matrix}}
 
-Today we will analyze the RNA sequencing data.
+Today we will analyze the RNA sequencing data. Please refer to the intro section (\texttt{Where\ to\ start}) to log in the virtual machine.
+
+After logging in, please check your current directory (\texttt{pwd}), and also please check your folder (\texttt{ls}). It should be empty for now.
 
 \hypertarget{connecting-to-the-virtual-machine}{%
 \subsection{Connecting to the virtual machine}\label{connecting-to-the-virtual-machine}}
+
+The tools that we will use today have already been preinstalled in a conda environment called \texttt{denbi}. You do not need to install them by yourself, but do remember to load them before using them.
 
 \begin{itemize}
 \tightlist
@@ -5791,12 +5795,13 @@ Today we will analyze the RNA sequencing data.
   In the terminal, type \texttt{conda\ activate\ denbi}
 \end{itemize}
 
-\hypertarget{workflow}{%
-\subsection{Workflow}\label{workflow}}
+After loading the \texttt{denbi} environment, you are ready to go.
+
+Just in case you have problems in signing the virtual machines, you can find the output files here: \url{https://drive.google.com/drive/folders/1EJu2F_-pFvw4v71h1QJHq_xOcK6nMAKi?usp=drive_link}
 
 We will use the RNA-seq data from this paper: Nature volume 571, pages505--509 (2019). The raw sequence data is stored at: \url{https://www.ebi.ac.uk/biostudies/arrayexpress/studies/E-MTAB-6798/sdrf}
 
-We will take two samples from there. One from the 2 week post-conception (2WPC) mouse brain and the other from 4WPC brain.
+Two samples are taken. One from the 2 week post-conception (2WPC) mouse brain and the other from 4WPC brain.
 
 You can find the raw data here:
 
@@ -5826,7 +5831,8 @@ We next examine the quality of the samples with \texttt{fastqc}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{mkdir path/to/your\_fastqc\_folder}
+\NormalTok{\# Notice: only create folders/files under your own directoy. DO NOT create or delete anything outside your own directory.}
+\NormalTok{mkdir path/to/your\_fastqc\_folder }
 
 \NormalTok{fastqc /vol/data/raw/mouse\_brain\_4wpb.fastq.gz {-}o path/to/your\_fastqc\_folder/}
 
@@ -5872,15 +5878,14 @@ Alignment involves the process of mapping sequences to a reference genome.
 We use \texttt{Bowtie2} to implement seuqence alignment. Common aligners include \texttt{BWA}, \texttt{TOPHAT}, and \texttt{STAR}. They differ in their accuracy, speed, and memory usage due to different computational algorithms.
 
 \begin{verbatim}
-
-# Create a new directory
+# Notice: only create folders/files under your own directoy. DO NOT create or delete anything outside your own directory.
 
 mkdir path/to/your_bam_folder
 
 
 # Alignment (It will take for a while)
 bowtie2 -p 2 --no-unal -x /vol/data/raw/chr6 -U /vol/data/raw/mouse_brain_2wpb.fastq.gz | samtools view -bS - > path/to/your_bam_folder/mouse_brain_2wpb_chr6.bam 
-
+bowtie2 -p 2 --no-unal -x /vol/data/raw/chr6 -U /vol/data/raw/mouse_brain_4wpb.fastq.gz | samtools view -bS - > path/to/your_bam_folder/mouse_brain_4wpb_chr6.bam
 \end{verbatim}
 
 \begin{quote}
@@ -5893,6 +5898,7 @@ We then use \texttt{samtools\ flagstat} to evaluate the quality of the aligned b
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\NormalTok{\# Notice: only create folders/files under your own directoy. DO NOT create or delete anything outside your own directory.}
 \NormalTok{samtools flagstat path/to/your\_bam\_folder/mouse\_brain\_2wpb\_chr6.bam  \textgreater{} path/to/your\_bam\_folder/mouse\_brain\_flagstat\_2wpb\_chr6.txt}
 \end{Highlighting}
 \end{Shaded}
@@ -5906,11 +5912,11 @@ We then use \texttt{samtools\ flagstat} to evaluate the quality of the aligned b
 \hypertarget{quantification}{%
 \subsection{Quantification}\label{quantification}}
 
-Now, we utilise the aligned BAM files to quantify the gene expression in our samples. We implement this with a tool named \texttt{htseq-count}. There are various methods exist for quantifying gene expression in \texttt{htseq-count}. For further illustration, please refer to the tutorial (\url{https://htseq.readthedocs.io/en/release_0.11.1/count.html}).
+Now, we utilise the BAM files to quantify the gene expression in our samples. We implement this with a tool named \texttt{htseq-count}. There are various methods exist for quantifying gene expression in \texttt{htseq-count}. For further illustration, please refer to the tutorial (\url{https://htseq.readthedocs.io/en/release_0.11.1/count.html}).
 
 \begin{verbatim}
+# Notice: only create folders/files under your own directoy. DO NOT create or delete anything outside your own directory.
 
-# Create a new directory
 mkdir path/to/your_count_folder
 # Keep the high quality reads
 
@@ -5918,6 +5924,8 @@ samtools view -bq 40 path/to/your_bam_folder/mouse_brain_2wpb_chr6.bam > path/to
 
 htseq-count -s no -m intersection-nonempty --nonunique all --format bam path/to/your_bam_folder/mouse_brain_2wpb_chr6_Q40.bam /vol/data/raw/mm39.ncbiRefSeq.chr6.gtf > path/to/your_count_folder/mouse_brain_2wpb_chr6.txt
 \end{verbatim}
+
+Please repeate the code above to get the count matrix from your mouse\_brain\_4wpb sample.
 
 \begin{figure}
 \centering
@@ -5927,6 +5935,23 @@ htseq-count -s no -m intersection-nonempty --nonunique all --format bam path/to/
 
 \hypertarget{visualization-2}{%
 \subsection{Visualization}\label{visualization-2}}
+
+We will see what the bam files and count matrix files look like.
+
+To view the bam files with IGV, we need an index file.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\# Notice: only create folders/files under your own directoy. DO NOT create or delete anything outside your own directory.}
+\NormalTok{cd  path/to/your\_bam\_folder}
+
+\NormalTok{samtools sort mouse\_brain\_2wpb\_chr6\_Q40.bam {-}o mouse\_brain\_2wpb\_chr6\_Q40\_sorted.bam \# sort the bam}
+
+\NormalTok{samtools index mouse\_brain\_2wpb\_chr6\_Q40\_sorted.bam \# index the sorted bam}
+\end{Highlighting}
+\end{Shaded}
+
+To visualize the count matrix, you are encouraged to download the count matrix files to your local computer (using Cyberduck). Next, read the files in R, and visualize it (code below).
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5960,7 +5985,7 @@ htseq-count -s no -m intersection-nonempty --nonunique all --format bam path/to/
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  Please explore your bam files with IGV. What do you find?
+  Please explore your bam files with IGV. What do you find ?(Hint: download both .bam and .bai file ---\textgreater{} open IGV browser ---\textgreater{} click Genome \textgreater{} Mouse (GRCmm39mm39) ---\textgreater{} click Tracks \textgreater{} Local Files \textgreater{} select the two files -\textgreater{} select proper coordinate (e.g., chr6:28,527,661-28,527,699))
 \end{enumerate}
 \end{quote}
 
@@ -5970,7 +5995,7 @@ htseq-count -s no -m intersection-nonempty --nonunique all --format bam path/to/
 \setcounter{enumi}{1}
 \tightlist
 \item
-  Please try to run the whole workflow that you learnt today on mouse chromosome 8. The reference genome sequence can be found at /vol/data/raw. However, you are encouraged to retrieve the reference genome from the databases by yourself.
+  Please explore your count matrix of these two samples. Do you find any genes that express differentially between the samples? Also, think about that, if you are a project leader, how would you design your experiment and what hypothesis testing strategy would you opt for? (Note: Formal analysis will be revealed next week)
 \end{enumerate}
 \end{quote}
 
@@ -5980,7 +6005,7 @@ htseq-count -s no -m intersection-nonempty --nonunique all --format bam path/to/
 \setcounter{enumi}{2}
 \tightlist
 \item
-  Please explore your count matrix of these two samples. Do you find any genes that express differentially between the samples? Also, think about that, if you are a project leader, how would you design your experiment and what hypothesis testing strategy would you opt for? (Note: Formal analysis will be revealed next week)
+  (Optional) Please try to run the whole workflow that you learnt today on mouse chromosome 8. The reference genome sequence can be found at /vol/data/raw. However, you are encouraged to retrieve the reference genome from the databases by yourself.
 \end{enumerate}
 \end{quote}
 

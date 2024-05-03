@@ -495,19 +495,26 @@ Observe interactions at chromosomal and gene level. What can you conclude from t
 
 ## Day 5: RNA-seq - from FASTQ to count matrix
 
-Today we will analyze the RNA sequencing data. 
+Today we will analyze the RNA sequencing data. Please refer to the intro section (`Where to start`) to log in the virtual machine.
+
+After logging in, please check your current directory (`pwd`), and also please check your folder (`ls`). It should be empty for now.
+
 
 ### Connecting to the virtual machine
+
+The tools that we will use today have already been preinstalled in a conda environment called `denbi`. You do not need to install them by yourself, but do remember to load them before using them.
 
 - Follow the instructions in the Introduction (see left menu) to connect to the VM.
 - In the terminal, type `conda activate denbi`
 
 
-### Workflow
+After loading the `denbi` environment, you are ready to go.
+
+Just in case you have problems in signing the virtual machines, you can find the output files here: https://drive.google.com/drive/folders/1EJu2F_-pFvw4v71h1QJHq_xOcK6nMAKi?usp=drive_link
 
 We will use the RNA-seq data from this paper: Nature volume 571, pages505–509 (2019). The raw sequence data is stored at: https://www.ebi.ac.uk/biostudies/arrayexpress/studies/E-MTAB-6798/sdrf
 
-We will take two samples from there. One from the 2 week post-conception (2WPC) mouse brain and the other from 4WPC brain.
+Two samples are taken. One from the 2 week post-conception (2WPC) mouse brain and the other from 4WPC brain.
 
 You can find the raw data here: 
 ```{Raw data}
@@ -531,7 +538,8 @@ We retrieve the raw data and employ a software tool named `fastqc` to examine th
 We next examine the quality of the samples with `fastqc`. 
 
 ```{fastqc}
-mkdir path/to/your_fastqc_folder
+# Notice: only create folders/files under your own directoy. DO NOT create or delete anything outside your own directory.
+mkdir path/to/your_fastqc_folder 
 
 fastqc /vol/data/raw/mouse_brain_4wpb.fastq.gz -o path/to/your_fastqc_folder/
 
@@ -571,15 +579,14 @@ We use `Bowtie2` to implement seuqence alignment. Common aligners include `BWA`,
 
 
 ```{}
-
-# Create a new directory
+# Notice: only create folders/files under your own directoy. DO NOT create or delete anything outside your own directory.
 
 mkdir path/to/your_bam_folder
 
 
 # Alignment (It will take for a while)
 bowtie2 -p 2 --no-unal -x /vol/data/raw/chr6 -U /vol/data/raw/mouse_brain_2wpb.fastq.gz | samtools view -bS - > path/to/your_bam_folder/mouse_brain_2wpb_chr6.bam 
-
+bowtie2 -p 2 --no-unal -x /vol/data/raw/chr6 -U /vol/data/raw/mouse_brain_4wpb.fastq.gz | samtools view -bS - > path/to/your_bam_folder/mouse_brain_4wpb_chr6.bam
 
 ```
 > Question: How to view the BAM files? What do you find in your BAM files?
@@ -591,6 +598,7 @@ Hint: Use `samtools view` to view your BAM files.
 We then use `samtools flagstat` to evaluate the quality of the aligned bam file.
 
 ```{flagstat}
+# Notice: only create folders/files under your own directoy. DO NOT create or delete anything outside your own directory.
 samtools flagstat path/to/your_bam_folder/mouse_brain_2wpb_chr6.bam  > path/to/your_bam_folder/mouse_brain_flagstat_2wpb_chr6.txt
 
 ```
@@ -601,11 +609,11 @@ samtools flagstat path/to/your_bam_folder/mouse_brain_2wpb_chr6.bam  > path/to/y
 
 ### Quantification
 
-Now, we utilise the aligned BAM files to quantify the gene expression in our samples. We implement this with a tool named `htseq-count`. There are various methods exist for quantifying gene expression in `htseq-count`. For further illustration, please refer to the tutorial (https://htseq.readthedocs.io/en/release_0.11.1/count.html).
+Now, we utilise the BAM files to quantify the gene expression in our samples. We implement this with a tool named `htseq-count`. There are various methods exist for quantifying gene expression in `htseq-count`. For further illustration, please refer to the tutorial (https://htseq.readthedocs.io/en/release_0.11.1/count.html).
 
 ```{}
+# Notice: only create folders/files under your own directoy. DO NOT create or delete anything outside your own directory.
 
-# Create a new directory
 mkdir path/to/your_count_folder
 # Keep the high quality reads
 
@@ -615,10 +623,26 @@ htseq-count -s no -m intersection-nonempty --nonunique all --format bam path/to/
 
 ```
 
+Please repeate the code above to get the count matrix from your mouse_brain_4wpb sample.
 
 ![Gene expression profile in 2WPC mouse brain. The first column shows the gene name. The second column shows the count. Speical counts are highlighted in red](figures/count_matrix.png)
 
 ### Visualization
+
+We will see what the bam files and count matrix files look like.
+
+To view the bam files with IGV, we need an index file.
+
+```{Visualization}
+# Notice: only create folders/files under your own directoy. DO NOT create or delete anything outside your own directory.
+cd  path/to/your_bam_folder
+
+samtools sort mouse_brain_2wpb_chr6_Q40.bam -o mouse_brain_2wpb_chr6_Q40_sorted.bam # sort the bam
+
+samtools index mouse_brain_2wpb_chr6_Q40_sorted.bam # index the sorted bam
+```
+
+To visualize the count matrix, you are encouraged to download the count matrix files to your local computer (using Cyberduck). Next, read the files in R, and visualize it (code below). 
 
 
 ```{Visualization}
@@ -648,8 +672,8 @@ tb_merge %>% ggplot(mapping = aes(x = log10(Count + 1), fill = Sample)) +
 
 ### Excercises
 
-> 1. Please explore your bam files with IGV. What do you find?
+> 1. Please explore your bam files with IGV. What do you find ?(Hint: download both .bam and .bai file —>  open IGV browser —> click Genome > Mouse (GRCmm39mm39) —> click Tracks > Local Files >  select the two files -> select proper coordinate (e.g., chr6:28,527,661-28,527,699))
 
-> 2. Please try to run the whole workflow that you learnt today on mouse chromosome 8. The reference genome sequence can be found at /vol/data/raw. However, you are encouraged to retrieve the reference genome from the databases by yourself.  
+> 2. Please explore your count matrix of these two samples. Do you find any genes that express differentially between the samples? Also, think about that, if you are a project leader, how would you design your experiment and what hypothesis testing strategy would you opt for? (Note: Formal analysis will be revealed next week)
 
-> 3. Please explore your count matrix of these two samples. Do you find any genes that express differentially between the samples? Also, think about that, if you are a project leader, how would you design your experiment and what hypothesis testing strategy would you opt for? (Note: Formal analysis will be revealed next week)
+> 3. (Optional) Please try to run the whole workflow that you learnt today on mouse chromosome 8. The reference genome sequence can be found at /vol/data/raw. However, you are encouraged to retrieve the reference genome from the databases by yourself. 

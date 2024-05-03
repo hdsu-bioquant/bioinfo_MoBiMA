@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Bioinformatics Introductory Course - Master Molecular Biotechnology</title>
   <meta name="description" content="RMarkdowns for the Data Analysis introduction course (SoSe2024), MoBi MA" />
-  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Bioinformatics Introductory Course - Master Molecular Biotechnology" />
   <meta property="og:type" content="book" />
@@ -258,7 +258,6 @@ MSc MoBi
 <li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#day-5-rna-seq---from-fastq-to-count-matrix"><i class="fa fa-check"></i>Day 5: RNA-seq - from FASTQ to count matrix</a>
 <ul>
 <li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#connecting-to-the-virtual-machine"><i class="fa fa-check"></i>Connecting to the virtual machine</a></li>
-<li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#workflow"><i class="fa fa-check"></i>Workflow</a></li>
 <li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#quality-control"><i class="fa fa-check"></i>Quality control</a></li>
 <li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#alignment"><i class="fa fa-check"></i>Alignment</a></li>
 <li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#quantification"><i class="fa fa-check"></i>Quantification</a></li>
@@ -583,6 +582,7 @@ Therefore, we can use the function <code>min()</code>.</p>
 <span id="cb22-2"><a href="index.html#cb22-2" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">30</span>)   <span class="co"># generate 30 random numbers for the matrix</span></span>
 <span id="cb22-3"><a href="index.html#cb22-3" tabindex="-1"></a>Mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> m, <span class="at">nrow =</span> <span class="dv">6</span>)</span>
 <span id="cb22-4"><a href="index.html#cb22-4" tabindex="-1"></a>Mat</span></code></pre></div>
+<<<<<<< HEAD
 <pre><code>##             [,1]        [,2]       [,3]        [,4]       [,5]
 ## [1,]  0.81075342  1.63010444  0.1009744 -0.51431302  0.3188881
 ## [2,] -1.02544562  0.45038368  0.5050776  0.19423683  1.5527958
@@ -593,6 +593,18 @@ Therefore, we can use the function <code>min()</code>.</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="index.html#cb24-1" tabindex="-1"></a><span class="co">#Next, we want to determine the minimum value of each row: </span></span>
 <span id="cb24-2"><a href="index.html#cb24-2" tabindex="-1"></a><span class="fu">apply</span>(Mat, <span class="dv">1</span>, min)</span></code></pre></div>
 <pre><code>## [1] -0.5143130 -1.0254456 -0.3657364 -1.0931076 -0.7785007 -1.6803655</code></pre>
+=======
+<pre><code>##            [,1]        [,2]       [,3]       [,4]       [,5]
+## [1,] -1.0318877 -0.19919998 -0.2789355 -0.8626632  0.5958629
+## [2,] -0.4981175 -0.43542522  1.2493546 -1.5926187  2.4863728
+## [3,]  1.2905379  0.01911208 -0.1216354 -1.1481337  1.6183240
+## [4,]  0.9635422  1.71116843 -0.5578625 -0.3206149  0.5815731
+## [5,] -0.6967730  1.14118041 -0.9098303  0.2695962  0.6601308
+## [6,] -0.3211455  0.07563811  0.6615047 -0.4579862 -1.8129887</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="index.html#cb24-1" tabindex="-1"></a><span class="co">#Next, we want to determine the minimum value of each row: </span></span>
+<span id="cb24-2"><a href="index.html#cb24-2" tabindex="-1"></a><span class="fu">apply</span>(Mat, <span class="dv">1</span>, min)</span></code></pre></div>
+<pre><code>## [1] -1.0318877 -1.5926187 -1.1481337 -0.5578625 -0.9098303 -1.8129887</code></pre>
+>>>>>>> b072ae4e7247f16e57ffe2565aced6aaf0fb377e
 <blockquote>
 <p>What happens if you change the “1” in the apply function to “2”?
 Try it!</p>
@@ -618,6 +630,7 @@ which function do we want to apply to each element of this vector?<br />
 <pre><code>## [1]  2  4  6  8 10</code></pre>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="index.html#cb30-1" tabindex="-1"></a><span class="co"># apply()</span></span>
 <span id="cb30-2"><a href="index.html#cb30-2" tabindex="-1"></a>Mat </span></code></pre></div>
+<<<<<<< HEAD
 <pre><code>##             [,1]        [,2]       [,3]        [,4]       [,5]
 ## [1,]  0.81075342  1.63010444  0.1009744 -0.51431302  0.3188881
 ## [2,] -1.02544562  0.45038368  0.5050776  0.19423683  1.5527958
@@ -627,6 +640,17 @@ which function do we want to apply to each element of this vector?<br />
 ## [6,]  0.02723114 -1.68036554 -0.9208189 -1.10706835  1.0189460</code></pre>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="index.html#cb32-1" tabindex="-1"></a><span class="fu">apply</span>(Mat, <span class="dv">1</span>, <span class="cf">function</span>(x) {<span class="fu">sum</span>(x<span class="sc">*</span><span class="dv">2</span>)}) <span class="co">#the operation is performed on every row of &quot;Mat&quot;; every element is multiplied by two and the sum of the row is calculated</span></span></code></pre></div>
 <pre><code>## [1]  4.6928147  3.3540966  1.2332761  0.4351964 -0.3965901 -5.3241513</code></pre>
+=======
+<pre><code>##            [,1]        [,2]       [,3]       [,4]       [,5]
+## [1,] -1.0318877 -0.19919998 -0.2789355 -0.8626632  0.5958629
+## [2,] -0.4981175 -0.43542522  1.2493546 -1.5926187  2.4863728
+## [3,]  1.2905379  0.01911208 -0.1216354 -1.1481337  1.6183240
+## [4,]  0.9635422  1.71116843 -0.5578625 -0.3206149  0.5815731
+## [5,] -0.6967730  1.14118041 -0.9098303  0.2695962  0.6601308
+## [6,] -0.3211455  0.07563811  0.6615047 -0.4579862 -1.8129887</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="index.html#cb32-1" tabindex="-1"></a><span class="fu">apply</span>(Mat, <span class="dv">1</span>, <span class="cf">function</span>(x) {<span class="fu">sum</span>(x<span class="sc">*</span><span class="dv">2</span>)}) <span class="co">#the operation is performed on every row of &quot;Mat&quot;; every element is multiplied by two and the sum of the row is calculated</span></span></code></pre></div>
+<pre><code>## [1] -3.5536469  2.4191321  3.3164098  4.7556129  0.9286082 -3.7099552</code></pre>
+>>>>>>> b072ae4e7247f16e57ffe2565aced6aaf0fb377e
 <p>Besides, we can use <code>sapply()</code> for a <strong>list</strong>, for example to calculate the length of every element using <code>length()</code>:</p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="index.html#cb34-1" tabindex="-1"></a>List1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">color =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>), <span class="at">size =</span> <span class="dv">5</span>, <span class="at">state =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span>))</span>
 <span id="cb34-2"><a href="index.html#cb34-2" tabindex="-1"></a></span>
@@ -723,11 +747,19 @@ You can think of tidyverse as a variation of the original R, which is meant to b
 <div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="index.html#cb48-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
 <p>And load it using</p>
 <div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="index.html#cb49-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<<<<<<< HEAD
 <pre><code>## ── Attaching core tidyverse packages ────────────────────────────── tidyverse 2.0.0 ──
 ## ✔ dplyr     1.1.3     ✔ readr     2.1.4
 ## ✔ forcats   1.0.0     ✔ stringr   1.5.0
 ## ✔ ggplot2   3.4.3     ✔ tibble    3.2.1
 ## ✔ lubridate 1.9.3     ✔ tidyr     1.3.0
+=======
+<pre><code>## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+## ✔ dplyr     1.1.4     ✔ readr     2.1.5
+## ✔ forcats   1.0.0     ✔ stringr   1.5.1
+## ✔ ggplot2   3.5.0     ✔ tibble    3.2.1
+## ✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+>>>>>>> b072ae4e7247f16e57ffe2565aced6aaf0fb377e
 ## ✔ purrr     1.0.2     
 ## ── Conflicts ──────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
