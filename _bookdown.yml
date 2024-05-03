@@ -1,4 +1,5 @@
 delete_merged_file: true
+rmd_files: ["index.Rmd", "00-slides.Rmd", "01-week.Rmd", "02-week.Rmd", "03-project.Rmd", "04-reportInstructions.Rmd"]
 language:
   ui:
     chapter_name: ""

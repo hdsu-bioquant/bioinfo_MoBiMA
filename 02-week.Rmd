@@ -62,11 +62,9 @@ Every step of the analysis will be written following the same pattern :
 Protocol :
 Describe what tool is used, how it is used ...
 
------------------------------------------
 Results Analysis:
 your observations
 
------------------------------------------
 Raw results:
 output of the tool used
 

@@ -266,6 +266,17 @@ MSc MoBi
 <li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#excercises"><i class="fa fa-check"></i>Excercises</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html"><i class="fa fa-check"></i>Project: Cancer Hallmark and Metabolic Pathways in Cancer</a>
+<ul>
+<li class="chapter" data-level="" data-path="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#introduction-1"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#objectives-and-workplan"><i class="fa fa-check"></i>Objectives and workplan</a></li>
+<li class="chapter" data-level="" data-path="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#description-of-datasets"><i class="fa fa-check"></i>Description of datasets</a></li>
+<li class="chapter" data-level="" data-path="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#literature-review"><i class="fa fa-check"></i>Literature review</a></li>
+<li class="chapter" data-level="" data-path="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#how-to-structure-your-project"><i class="fa fa-check"></i>How to structure your project</a>
+<ul>
+<li class="chapter" data-level="" data-path="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#project"><i class="fa fa-check"></i>Project</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="project-report-guide.html"><a href="project-report-guide.html"><i class="fa fa-check"></i>Project report guide</a>
 <ul>
 <li class="chapter" data-level="" data-path="project-report-guide.html"><a href="project-report-guide.html#knitting"><i class="fa fa-check"></i>Knitting</a></li>
@@ -572,16 +583,16 @@ Therefore, we can use the function <code>min()</code>.</p>
 <span id="cb22-2"><a href="index.html#cb22-2" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">30</span>)   <span class="co"># generate 30 random numbers for the matrix</span></span>
 <span id="cb22-3"><a href="index.html#cb22-3" tabindex="-1"></a>Mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> m, <span class="at">nrow =</span> <span class="dv">6</span>)</span>
 <span id="cb22-4"><a href="index.html#cb22-4" tabindex="-1"></a>Mat</span></code></pre></div>
-<pre><code>##            [,1]        [,2]        [,3]       [,4]        [,5]
-## [1,]  0.3013824  1.04493119 -0.50285438  0.4446958  0.08027102
-## [2,] -0.2818004 -0.01305171 -1.31916408  1.5007585 -0.74386186
-## [3,]  0.2697877 -0.54569819 -0.04697321 -0.9880894  1.32555435
-## [4,]  0.7790222 -1.27480823  0.72105804 -1.0368056  1.37166697
-## [5,] -0.3717493  1.21362317 -1.29972670  0.3302648  0.38234292
-## [6,]  0.2675463 -0.12326951 -0.32367949  0.1558778 -0.14828996</code></pre>
+<pre><code>##             [,1]        [,2]       [,3]        [,4]       [,5]
+## [1,]  0.81075342  1.63010444  0.1009744 -0.51431302  0.3188881
+## [2,] -1.02544562  0.45038368  0.5050776  0.19423683  1.5527958
+## [3,]  1.06936183  0.06153936 -0.1269797 -0.02154715 -0.3657364
+## [4,]  0.88974304 -0.43830831  0.1023935  0.75687749 -1.0931076
+## [5,] -0.07781049  0.49469362  0.3494489 -0.77850067 -0.1861264
+## [6,]  0.02723114 -1.68036554 -0.9208189 -1.10706835  1.0189460</code></pre>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="index.html#cb24-1" tabindex="-1"></a><span class="co">#Next, we want to determine the minimum value of each row: </span></span>
 <span id="cb24-2"><a href="index.html#cb24-2" tabindex="-1"></a><span class="fu">apply</span>(Mat, <span class="dv">1</span>, min)</span></code></pre></div>
-<pre><code>## [1] -0.5028544 -1.3191641 -0.9880894 -1.2748082 -1.2997267 -0.3236795</code></pre>
+<pre><code>## [1] -0.5143130 -1.0254456 -0.3657364 -1.0931076 -0.7785007 -1.6803655</code></pre>
 <blockquote>
 <p>What happens if you change the “1” in the apply function to “2”?
 Try it!</p>
@@ -607,15 +618,15 @@ which function do we want to apply to each element of this vector?<br />
 <pre><code>## [1]  2  4  6  8 10</code></pre>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="index.html#cb30-1" tabindex="-1"></a><span class="co"># apply()</span></span>
 <span id="cb30-2"><a href="index.html#cb30-2" tabindex="-1"></a>Mat </span></code></pre></div>
-<pre><code>##            [,1]        [,2]        [,3]       [,4]        [,5]
-## [1,]  0.3013824  1.04493119 -0.50285438  0.4446958  0.08027102
-## [2,] -0.2818004 -0.01305171 -1.31916408  1.5007585 -0.74386186
-## [3,]  0.2697877 -0.54569819 -0.04697321 -0.9880894  1.32555435
-## [4,]  0.7790222 -1.27480823  0.72105804 -1.0368056  1.37166697
-## [5,] -0.3717493  1.21362317 -1.29972670  0.3302648  0.38234292
-## [6,]  0.2675463 -0.12326951 -0.32367949  0.1558778 -0.14828996</code></pre>
+<pre><code>##             [,1]        [,2]       [,3]        [,4]       [,5]
+## [1,]  0.81075342  1.63010444  0.1009744 -0.51431302  0.3188881
+## [2,] -1.02544562  0.45038368  0.5050776  0.19423683  1.5527958
+## [3,]  1.06936183  0.06153936 -0.1269797 -0.02154715 -0.3657364
+## [4,]  0.88974304 -0.43830831  0.1023935  0.75687749 -1.0931076
+## [5,] -0.07781049  0.49469362  0.3494489 -0.77850067 -0.1861264
+## [6,]  0.02723114 -1.68036554 -0.9208189 -1.10706835  1.0189460</code></pre>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="index.html#cb32-1" tabindex="-1"></a><span class="fu">apply</span>(Mat, <span class="dv">1</span>, <span class="cf">function</span>(x) {<span class="fu">sum</span>(x<span class="sc">*</span><span class="dv">2</span>)}) <span class="co">#the operation is performed on every row of &quot;Mat&quot;; every element is multiplied by two and the sum of the row is calculated</span></span></code></pre></div>
-<pre><code>## [1]  2.73685220 -1.71423907  0.02916249  1.12026674  0.50950981 -0.34362973</code></pre>
+<pre><code>## [1]  4.6928147  3.3540966  1.2332761  0.4351964 -0.3965901 -5.3241513</code></pre>
 <p>Besides, we can use <code>sapply()</code> for a <strong>list</strong>, for example to calculate the length of every element using <code>length()</code>:</p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="index.html#cb34-1" tabindex="-1"></a>List1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">color =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>), <span class="at">size =</span> <span class="dv">5</span>, <span class="at">state =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span>))</span>
 <span id="cb34-2"><a href="index.html#cb34-2" tabindex="-1"></a></span>
@@ -712,13 +723,13 @@ You can think of tidyverse as a variation of the original R, which is meant to b
 <div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="index.html#cb48-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
 <p>And load it using</p>
 <div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="index.html#cb49-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
-<pre><code>## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+<pre><code>## ── Attaching core tidyverse packages ────────────────────────────── tidyverse 2.0.0 ──
 ## ✔ dplyr     1.1.3     ✔ readr     2.1.4
 ## ✔ forcats   1.0.0     ✔ stringr   1.5.0
 ## ✔ ggplot2   3.4.3     ✔ tibble    3.2.1
 ## ✔ lubridate 1.9.3     ✔ tidyr     1.3.0
 ## ✔ purrr     1.0.2     
-## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ── Conflicts ──────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()
 ## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>

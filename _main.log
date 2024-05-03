@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.11.24)  24 APR 2024 15:27
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.11.24)  2 MAY 2024 23:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1116,99 +1116,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 595--603
 Underfull \vbox (badness 5592) has occurred while \output is active []
 
 [11]
-Overfull \hbox (1.5pt too wide) in paragraph at lines 624--624
-[]\TU/lmtt/m/n/10 ##            [,1]         [,2]         [,3]       [,4]      
- [,5][] 
- []
-
-
-Overfull \hbox (1.5pt too wide) in paragraph at lines 624--624
-[]\TU/lmtt/m/n/10 ## [1,]  0.9634178 -0.048584792 -0.000581576 -0.9789242  0.16
-09030[] 
- []
-
-
-Overfull \hbox (1.5pt too wide) in paragraph at lines 624--624
-[]\TU/lmtt/m/n/10 ## [2,] -0.8299935  2.640324426 -0.231253241  1.1018593  0.14
-42285[] 
- []
-
-
-Overfull \hbox (1.5pt too wide) in paragraph at lines 624--624
-[]\TU/lmtt/m/n/10 ## [3,]  2.0084621  0.097893356 -0.162965134  0.5725396  0.51
-17056[] 
- []
-
-
-Overfull \hbox (1.5pt too wide) in paragraph at lines 624--624
-[]\TU/lmtt/m/n/10 ## [4,]  0.2673388 -0.005925997 -0.071880125  0.4254527 -0.71
-05225[] 
- []
-
-
-Overfull \hbox (1.5pt too wide) in paragraph at lines 624--624
-[]\TU/lmtt/m/n/10 ## [5,] -0.1758693  0.117482674  1.066932632  0.2549107 -1.37
-68568[] 
- []
-
-
-Overfull \hbox (1.5pt too wide) in paragraph at lines 624--624
-[]\TU/lmtt/m/n/10 ## [6,]  1.1711117  0.478995232 -0.721669655 -0.1981943 -0.45
-02779[] 
- []
-
-
 Overfull \hbox (33.0pt too wide) in paragraph at lines 635--635
-[]\TU/lmtt/m/n/10 ## [1] -0.9789242 -0.8299935 -0.1629651 -0.7105225 -1.3768568
- -0.7216697[] 
+[]\TU/lmtt/m/n/10 ## [1] -1.2092229 -1.3364585 -0.6286342 -1.1688762 -0.8256743
+ -0.8866185[] 
  []
 
 [12]
-Overfull \hbox (1.5pt too wide) in paragraph at lines 696--696
-[]\TU/lmtt/m/n/10 ##            [,1]         [,2]         [,3]       [,4]      
- [,5][] 
- []
-
-
-Overfull \hbox (1.5pt too wide) in paragraph at lines 696--696
-[]\TU/lmtt/m/n/10 ## [1,]  0.9634178 -0.048584792 -0.000581576 -0.9789242  0.16
-09030[] 
- []
-
-
-Overfull \hbox (1.5pt too wide) in paragraph at lines 696--696
-[]\TU/lmtt/m/n/10 ## [2,] -0.8299935  2.640324426 -0.231253241  1.1018593  0.14
-42285[] 
- []
-
-
-Overfull \hbox (1.5pt too wide) in paragraph at lines 696--696
-[]\TU/lmtt/m/n/10 ## [3,]  2.0084621  0.097893356 -0.162965134  0.5725396  0.51
-17056[] 
- []
-
-
-Overfull \hbox (1.5pt too wide) in paragraph at lines 696--696
-[]\TU/lmtt/m/n/10 ## [4,]  0.2673388 -0.005925997 -0.071880125  0.4254527 -0.71
-05225[] 
- []
-
-
-Overfull \hbox (1.5pt too wide) in paragraph at lines 696--696
-[]\TU/lmtt/m/n/10 ## [5,] -0.1758693  0.117482674  1.066932632  0.2549107 -1.37
-68568[] 
- []
-
-
-Overfull \hbox (1.5pt too wide) in paragraph at lines 696--696
-[]\TU/lmtt/m/n/10 ## [6,]  1.1711117  0.478995232 -0.721669655 -0.1981943 -0.45
-02779[] 
- []
-
-
-Overfull \hbox (33.0pt too wide) in paragraph at lines 706--706
-[]\TU/lmtt/m/n/10 ## [1]  0.1924605  5.6503310  6.0552712 -0.1910743 -0.2268001
-  0.5599302[] 
+Overfull \hbox (64.5pt too wide) in paragraph at lines 706--706
+[]\TU/lmtt/m/n/10 ## [1] -1.91484196  2.37142020  1.88412258 -0.01958309  4.443
+98167  2.49926826[] 
  []
 
 [13] [14]
@@ -2297,240 +2213,65 @@ File: figures/Annotathon/Annot_edit_report.png Graphic file (type bmp)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [113]
-
-Package longtable Warning: Column widths have changed
-(longtable)                in table 1.1 on input line 5193.
-
 File: figures/Annotathon/Annot_copy_sequence.png Graphic file (type bmp)
 <figures/Annotathon/Annot_copy_sequence.png>
-
-Underfull \hbox (badness 10000) in paragraph at lines 5206--5208
-[]
- []
-
-[114]
 File: figures/Annotathon/Annot_ORF_input.png Graphic file (type bmp)
 <figures/Annotathon/Annot_ORF_input.png>
-
-Underfull \hbox (badness 10000) in paragraph at lines 5228--5230
-[][]
- []
-
 File: figures/Annotathon/Annot_ORF_output.png Graphic file (type bmp)
 <figures/Annotathon/Annot_ORF_output.png>
-
-Underfull \hbox (badness 10000) in paragraph at lines 5231--5233
-[][]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[115]
 File: figures/Annotathon/Annot_table1_ORF.png Graphic file (type bmp)
 <figures/Annotathon/Annot_table1_ORF.png>
 File: figures/Annotathon/Annot_figure1_ORF.png Graphic file (type bmp)
 <figures/Annotathon/Annot_figure1_ORF.png>
 File: figures/Annotathon/Annot_protein_domain.png Graphic file (type bmp)
 <figures/Annotathon/Annot_protein_domain.png>
-
-Underfull \hbox (badness 10000) in paragraph at lines 5255--5257
-[][]
- []
-
-[116]
 File: figures/Annotathon/Annot_table2_prot_domain.png Graphic file (type bmp)
 <figures/Annotathon/Annot_table2_prot_domain.png>
-
-Overfull \hbox (269.25pt too wide) in paragraph at lines 5269--5269
-[]\TU/lmtt/m/n/10 - Which domains predictions do you select to annotate the ORF
-? Specifiy their sizes, E-value! Justify your selection![] 
- []
-
-
-Overfull \hbox (54.0pt too wide) in paragraph at lines 5275--5275
-[]\TU/lmtt/m/n/10 - Why are some functional domains rejected? (high E-value?  N
-o IPR domains?)[] 
- []
-
-[117]
 File: figures/Annotathon/Annot_BLASTp_NR.png Graphic file (type bmp)
 <figures/Annotathon/Annot_BLASTp_NR.png>
-
-Underfull \hbox (badness 10000) in paragraph at lines 5291--5293
-[][]
- []
-
 File: figures/Annotathon/Annot_table3_BLASTp.png Graphic file (type bmp)
 <figures/Annotathon/Annot_table3_BLASTp.png>
-
-Underfull \hbox (badness 10000) in paragraph at lines 5294--5297
-[][]
- []
-
 File: figures/Annotathon/Annot_BLAST_hit_list.png Graphic file (type bmp)
 <figures/Annotathon/Annot_BLAST_hit_list.png>
-[118]
 File: figures/Annotathon/Annot_table4_BLAST.png Graphic file (type bmp)
 <figures/Annotathon/Annot_table4_BLAST.png>
-[119]
+[114] [115]
 File: figures/Annotathon/Annot_Taxonomy_from_BLAST.png Graphic file (type bmp)
 <figures/Annotathon/Annot_Taxonomy_from_BLAST.png>
-
-Underfull \hbox (badness 10000) in paragraph at lines 5348--5350
-[][]
- []
-
 File: figures/Annotathon/Annot_taxonomy_summary_tool.png Graphic file (type bmp
 )
 <figures/Annotathon/Annot_taxonomy_summary_tool.png>
-
-Underfull \hbox (badness 10000) in paragraph at lines 5351--5353
-[][]
- []
-
 File: figures/Annotathon/Annot_taxonomy_summary.png Graphic file (type bmp)
 <figures/Annotathon/Annot_taxonomy_summary.png>
-
-Underfull \vbox (badness 1112) has occurred while \output is active []
-
-[120]
 File: figures/Annotathon/Anno_Multiple_sequence_alignment.png Graphic file (typ
 e bmp)
 <figures/Annotathon/Anno_Multiple_sequence_alignment.png>
-
-Overfull \hbox (143.25157pt too wide) in paragraph at lines 5380--5383
-[]\TU/lmr/m/n/10 Copy paste your sequences here : []
- []
-
-
-Underfull \vbox (badness 6268) has occurred while \output is active []
-
-
-Overfull \hbox (19.44063pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/10 1.9.  DAY 3: ANNOTATHON! PHYLOGENETIC TREES AND CONCLUSION \TU/
-lmr/m/n/10 121
- []
-
-[121]
+[116] [117]
 File: figures/Annotathon/Annot_Clustal_format.png Graphic file (type bmp)
 <figures/Annotathon/Annot_Clustal_format.png>
-
-Underfull \hbox (badness 10000) in paragraph at lines 5388--5391
-[][]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[122]
-Overfull \hbox (19.44063pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/10 1.9.  DAY 3: ANNOTATHON! PHYLOGENETIC TREES AND CONCLUSION \TU/
-lmr/m/n/10 123
- []
-
-[123]
 File: figures/Annotathon/Annot_phylogeny_alacarte.png Graphic file (type bmp)
 <figures/Annotathon/Annot_phylogeny_alacarte.png>
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[124]
 File: figures/Annotathon/Annot_newick_to_annot_tree.png Graphic file (type bmp)
 
 <figures/Annotathon/Annot_newick_to_annot_tree.png>
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (19.44063pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/10 1.9.  DAY 3: ANNOTATHON! PHYLOGENETIC TREES AND CONCLUSION \TU/
-lmr/m/n/10 125
- []
-
-[125]
 File: figures/Annotathon/Annot_newick_example.png Graphic file (type bmp)
 <figures/Annotathon/Annot_newick_example.png>
-
-Overfull \hbox (143.17769pt too wide) in paragraph at lines 5442--5444
-[]\TU/lmr/m/n/10 Your result should look like this : [] 
- []
-
-
-Overfull \hbox (27.75pt too wide) in paragraph at lines 5455--5455
-[]\TU/lmtt/m/n/10 - Describe the topology of each tree. What are the monophylet
-ic groups?[] 
- []
-
-
-Overfull \hbox (274.5pt too wide) in paragraph at lines 5455--5455
-[]\TU/lmtt/m/n/10 - Do the two independant trees describe the same evolutionary
- history? the same topology? Similar or different clades?[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5455--5455
-[]\TU/lmtt/m/n/10 - Identify the commonalities as well as the potential incoher
-encies.[] 
- []
-
-[126]
-Overfull \hbox (80.25pt too wide) in paragraph at lines 5463--5463
-[]\TU/lmtt/m/n/10 - Are your gene trees coherent with the reference species tre
-es ("tree of life")?[] 
- []
-
-
-Overfull \hbox (285.0pt too wide) in paragraph at lines 5463--5463
-[]\TU/lmtt/m/n/10 - Identify each discrepancy with the reference species tree, 
-and suggest some explanations (HGTs, gene duplications...).[] 
- []
-
-
-Overfull \hbox (69.75pt too wide) in paragraph at lines 5471--5471
-[]\TU/lmtt/m/n/10 - In which monophyletic clade does the the metagenomic sequen
-ce seem to emerge?[] 
- []
-
-
-Overfull \hbox (43.5pt too wide) in paragraph at lines 5471--5471
-[]\TU/lmtt/m/n/10 - Propose a hypothetical taxonomic classification for the met
-agenomic ORF![] 
- []
-
-
-Overfull \hbox (243.0pt too wide) in paragraph at lines 5471--5471
-[]\TU/lmtt/m/n/10 - Provide detailed justification of your hypothesis, do not u
-nder/over interpret the infered phylogenetic trees![] 
- []
-
-
-Overfull \hbox (19.44063pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/10 1.9.  DAY 3: ANNOTATHON! PHYLOGENETIC TREES AND CONCLUSION \TU/
-lmr/m/n/10 127
- []
-
-[127]
-Underfull \hbox (badness 10000) in paragraph at lines 5535--5537
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 5537--5539
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 5539--5541
-
- []
-
+[118] [119]
 File: figures/IGVintro.png Graphic file (type bmp)
 <figures/IGVintro.png>
-[128] [129] [130]
+[120] [121] [122] [123]
+Overfull \hbox (66.51228pt too wide) in paragraph at lines 5373--5374
+\TU/lmtt/m/n/10 GNCCTTACTAGACCAATGGGACTTAAACCCACAAACACTTAGTTAACAGCT 
+ []
+
+
+Overfull \hbox (66.51228pt too wide) in paragraph at lines 5373--5374
+\TU/lmtt/m/n/10 F#:FFFFFFFFF:FFFFFFFFFFFFFFFFFFFFF:FFFFFFFFFFFFF:FF|  
+ []
+
 
 LaTeX Warning: File `https://www.samformat.info/images/sam_format_annotated_exa
-mple.5108a0cd.jpg' not found on input line 5623.
+mple.5108a0cd.jpg' not found on input line 5377.
 
 
 ! LaTeX Error: File `https://www.samformat.info/images/sam_format_annotated_exa
@@ -2540,15 +2281,15 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.5623 ...m_format_annotated_example.5108a0cd.jpg}
-                                                   
+l.5377 ...m_format_annotated_example.5108a0cd.jpg}
+                                                   \\ 
 Here is how much of TeX's memory you used:
- 28288 strings out of 492916
- 522289 string characters out of 6133344
- 730500 words of memory out of 5000000
- 31983 multiletter control sequences out of 15000+600000
+ 28285 strings out of 492916
+ 522271 string characters out of 6133344
+ 745500 words of memory out of 5000000
+ 31980 multiletter control sequences out of 15000+600000
  538780 words of font info for 83 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 58i,6n,115p,854b,455s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 58i,9n,115p,854b,582s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on _main.pdf (130 pages).
+Output written on _main.pdf (123 pages).

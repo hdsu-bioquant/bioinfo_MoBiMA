@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Project: Cancer Hallmark and Metabolic Pathways in Cancer | Bioinformatics Introductory Course - Master Molecular Biotechnology</title>
+  <meta name="description" content="RMarkdowns for the Data Analysis introduction course (SoSe2024), MoBi MA" />
+  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Project: Cancer Hallmark and Metabolic Pathways in Cancer | Bioinformatics Introductory Course - Master Molecular Biotechnology" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="RMarkdowns for the Data Analysis introduction course (SoSe2024), MoBi MA" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Project: Cancer Hallmark and Metabolic Pathways in Cancer | Bioinformatics Introductory Course - Master Molecular Biotechnology" />
+  
+  <meta name="twitter:description" content="RMarkdowns for the Data Analysis introduction course (SoSe2024), MoBi MA" />
+  
+
+<meta name="author" content="Biomedical Genomics group, IPMB" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="week-2-sequence-analysis.html"/>
+<link rel="next" href="project-report-guide.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<img src="./logos_IPMB_final_202309.jpg" width="250" >  
+Introductory Course Bioinformatics |  
+MSc MoBi
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#where-to-start"><i class="fa fa-check"></i>Where to start</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#log-into-the-server"><i class="fa fa-check"></i>Log into the server</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#installing-and-configuring-cyberduck"><i class="fa fa-check"></i>Installing and configuring Cyberduck</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#installing-r-and-rstudio"><i class="fa fa-check"></i>Installing R and RStudio</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#courses"><i class="fa fa-check"></i>Courses</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#good-practice"><i class="fa fa-check"></i>Good practice</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#r-markdown"><i class="fa fa-check"></i>R Markdown</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#r-basics"><i class="fa fa-check"></i>R Basics</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#variable-assignment-in-r"><i class="fa fa-check"></i>Variable assignment in R</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#classes"><i class="fa fa-check"></i>Classes</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#logical-operations"><i class="fa fa-check"></i>Logical operations</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#vectors"><i class="fa fa-check"></i>Vectors</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#matrixes"><i class="fa fa-check"></i>Matrixes</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#dataframes"><i class="fa fa-check"></i>Dataframes</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#apply-sapply-lapply"><i class="fa fa-check"></i>Apply, sapply, lapply</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#for-loops"><i class="fa fa-check"></i>For Loops</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#if-statements"><i class="fa fa-check"></i>If Statements</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#data-wrangling-with-tidyverse"><i class="fa fa-check"></i>Data wrangling with tidyverse</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#introducing-tidyverse"><i class="fa fa-check"></i>Introducing tidyverse</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#filter-based-on-conditions"><i class="fa fa-check"></i>Filter based on conditions</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#select-specific-columns"><i class="fa fa-check"></i>Select specific columns</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#operations-on-groups"><i class="fa fa-check"></i>Operations on groups</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#reshaping-data"><i class="fa fa-check"></i>Reshaping data</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#plotting-using-ggplot2"><i class="fa fa-check"></i>Plotting using ggplot2</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#scatter-plot"><i class="fa fa-check"></i>Scatter plot</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#histogram"><i class="fa fa-check"></i>Histogram</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#boxplot"><i class="fa fa-check"></i>Boxplot</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#common-errors"><i class="fa fa-check"></i>Common errors</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#introductory-exercises"><i class="fa fa-check"></i>Introductory exercises</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#exercise-1-vectors"><i class="fa fa-check"></i>Exercise 1: Vectors</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#exercise-2-matrices"><i class="fa fa-check"></i>Exercise 2: Matrices</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#exercise-3-data-frames"><i class="fa fa-check"></i>Exercise 3: Data Frames</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="lecture-files.html"><a href="lecture-files.html"><i class="fa fa-check"></i>Lecture files</a>
+<ul>
+<li class="chapter" data-level="" data-path="lecture-files.html"><a href="lecture-files.html#week-1---data-analysis-statistics"><i class="fa fa-check"></i>Week 1 - data analysis &amp; statistics</a></li>
+<li class="chapter" data-level="" data-path="lecture-files.html"><a href="lecture-files.html#week-2---sequence-analysis"><i class="fa fa-check"></i>Week 2 - sequence analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="week-1-data-analysis.html"><a href="week-1-data-analysis.html"><i class="fa fa-check"></i>Week 1 : data analysis</a>
+<ul>
+<li class="chapter" data-level="" data-path="week-1-data-analysis.html"><a href="week-1-data-analysis.html#day-1-descriptive-statistics-and-data-types"><i class="fa fa-check"></i>Day 1: Descriptive statistics and data types</a>
+<ul>
+<li class="chapter" data-level="" data-path="week-1-data-analysis.html"><a href="week-1-data-analysis.html#data-features-and-where-to-find-them"><i class="fa fa-check"></i>Data features and where to find them</a></li>
+<li class="chapter" data-level="" data-path="week-1-data-analysis.html"><a href="week-1-data-analysis.html#data-cleaning"><i class="fa fa-check"></i>Data cleaning</a></li>
+<li class="chapter" data-level="" data-path="week-1-data-analysis.html"><a href="week-1-data-analysis.html#visualizing-data-distribution"><i class="fa fa-check"></i>Visualizing data distribution</a></li>
+<li class="chapter" data-level="" data-path="week-1-data-analysis.html"><a href="week-1-data-analysis.html#correlation"><i class="fa fa-check"></i>Correlation</a></li>
+<li class="chapter" data-level="" data-path="week-1-data-analysis.html"><a href="week-1-data-analysis.html#exercises"><i class="fa fa-check"></i>EXERCISES</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="week-1-data-analysis.html"><a href="week-1-data-analysis.html#day-2-dimensionality-reduction-and-unsupervised-learning"><i class="fa fa-check"></i>Day 2: Dimensionality reduction and unsupervised learning</a>
+<ul>
+<li class="chapter" data-level="" data-path="week-1-data-analysis.html"><a href="week-1-data-analysis.html#preparing-the-data"><i class="fa fa-check"></i>Preparing the data</a></li>
+<li class="chapter" data-level="" data-path="week-1-data-analysis.html"><a href="week-1-data-analysis.html#k-means-clustering"><i class="fa fa-check"></i>k-means clustering</a></li>
+<li class="chapter" data-level="" data-path="week-1-data-analysis.html"><a href="week-1-data-analysis.html#hierarchical-clustering"><i class="fa fa-check"></i>Hierarchical clustering</a></li>
+<li class="chapter" data-level="" data-path="week-1-data-analysis.html"><a href="week-1-data-analysis.html#principal-component-analysis"><i class="fa fa-check"></i>Principal component analysis</a></li>
+<li class="chapter" data-level="" data-path="week-1-data-analysis.html"><a href="week-1-data-analysis.html#exercises-1"><i class="fa fa-check"></i>EXERCISES</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="week-1-data-analysis.html"><a href="week-1-data-analysis.html#day-3-probability-distributions"><i class="fa fa-check"></i>Day 3: Probability distributions</a>
+<ul>
+<li class="chapter" data-level="" data-path="week-1-data-analysis.html"><a href="week-1-data-analysis.html#probability-distributions"><i class="fa fa-check"></i>Probability distributions</a></li>
+<li class="chapter" data-level="" data-path="week-1-data-analysis.html"><a href="week-1-data-analysis.html#confidence-interval"><i class="fa fa-check"></i>Confidence interval</a></li>
+<li class="chapter" data-level="" data-path="week-1-data-analysis.html"><a href="week-1-data-analysis.html#exercises-2"><i class="fa fa-check"></i>EXERCISES</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="week-1-data-analysis.html"><a href="week-1-data-analysis.html#day-4-hypothesis-testing"><i class="fa fa-check"></i>Day 4: Hypothesis testing</a>
+<ul>
+<li class="chapter" data-level="" data-path="week-1-data-analysis.html"><a href="week-1-data-analysis.html#tests-of-mean"><i class="fa fa-check"></i>Tests of mean</a></li>
+<li class="chapter" data-level="" data-path="week-1-data-analysis.html"><a href="week-1-data-analysis.html#proportion-tests"><i class="fa fa-check"></i>Proportion tests</a></li>
+<li class="chapter" data-level="" data-path="week-1-data-analysis.html"><a href="week-1-data-analysis.html#exercises-3"><i class="fa fa-check"></i>EXERCISES</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="week-1-data-analysis.html"><a href="week-1-data-analysis.html#day-5-multiple-testing-and-regression"><i class="fa fa-check"></i>Day 5: Multiple testing and regression</a>
+<ul>
+<li class="chapter" data-level="" data-path="week-1-data-analysis.html"><a href="week-1-data-analysis.html#multiple-testing"><i class="fa fa-check"></i>Multiple testing</a></li>
+<li class="chapter" data-level="" data-path="week-1-data-analysis.html"><a href="week-1-data-analysis.html#regression"><i class="fa fa-check"></i>Regression</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html"><i class="fa fa-check"></i>Week 2 : sequence analysis</a>
+<ul>
+<li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#day-1-annotathon-identifying-orfs"><i class="fa fa-check"></i>Day 1: Annotathon! Identifying ORFs</a>
+<ul>
+<li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#getting-ready"><i class="fa fa-check"></i>Getting ready</a></li>
+<li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#getting-started"><i class="fa fa-check"></i>Getting started</a></li>
+<li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#finding-orfs"><i class="fa fa-check"></i>Finding ORFs</a></li>
+<li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#conserved-protein-domains"><i class="fa fa-check"></i>Conserved protein domains</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#day-2-annotathon-alignments"><i class="fa fa-check"></i>Day 2: Annotathon! Alignments</a>
+<ul>
+<li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#blast-homolog-search"><i class="fa fa-check"></i>BLAST homolog search</a></li>
+<li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#blast-taxonomic-report"><i class="fa fa-check"></i>BLAST Taxonomic report</a></li>
+<li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#selecting-sequences-for-multiple-alignment"><i class="fa fa-check"></i>Selecting sequences for multiple alignment</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#day-3-annotathon-phylogenetic-trees-and-conclusion"><i class="fa fa-check"></i>Day 3: Annotathon! Phylogenetic trees and conclusion</a>
+<ul>
+<li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#multiple-alignments"><i class="fa fa-check"></i>Multiple alignments</a></li>
+<li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#phylogeny"><i class="fa fa-check"></i>Phylogeny</a></li>
+<li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#conclusion"><i class="fa fa-check"></i>Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#day-4-data-formats-and-where-to-find-them"><i class="fa fa-check"></i>Day 4: Data formats and where to find them</a>
+<ul>
+<li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#meet-igv"><i class="fa fa-check"></i>Meet IGV</a></li>
+<li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#identifying-formats"><i class="fa fa-check"></i>Identifying formats</a></li>
+<li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#a-practical-guide-to-geo"><i class="fa fa-check"></i>A practical guide to GEO</a></li>
+<li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#exercises-4"><i class="fa fa-check"></i>EXERCISES</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#day-5-rna-seq---from-fastq-to-count-matrix"><i class="fa fa-check"></i>Day 5: RNA-seq - from FASTQ to count matrix</a>
+<ul>
+<li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#connecting-to-the-virtual-machine"><i class="fa fa-check"></i>Connecting to the virtual machine</a></li>
+<li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#workflow"><i class="fa fa-check"></i>Workflow</a></li>
+<li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#quality-control"><i class="fa fa-check"></i>Quality control</a></li>
+<li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#alignment"><i class="fa fa-check"></i>Alignment</a></li>
+<li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#quantification"><i class="fa fa-check"></i>Quantification</a></li>
+<li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#visualization-2"><i class="fa fa-check"></i>Visualization</a></li>
+<li class="chapter" data-level="" data-path="week-2-sequence-analysis.html"><a href="week-2-sequence-analysis.html#excercises"><i class="fa fa-check"></i>Excercises</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html"><i class="fa fa-check"></i>Project: Cancer Hallmark and Metabolic Pathways in Cancer</a>
+<ul>
+<li class="chapter" data-level="" data-path="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#introduction-1"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#objectives-and-workplan"><i class="fa fa-check"></i>Objectives and workplan</a></li>
+<li class="chapter" data-level="" data-path="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#description-of-datasets"><i class="fa fa-check"></i>Description of datasets</a></li>
+<li class="chapter" data-level="" data-path="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#literature-review"><i class="fa fa-check"></i>Literature review</a></li>
+<li class="chapter" data-level="" data-path="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#how-to-structure-your-project"><i class="fa fa-check"></i>How to structure your project</a>
+<ul>
+<li class="chapter" data-level="" data-path="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#project"><i class="fa fa-check"></i>Project</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="project-report-guide.html"><a href="project-report-guide.html"><i class="fa fa-check"></i>Project report guide</a>
+<ul>
+<li class="chapter" data-level="" data-path="project-report-guide.html"><a href="project-report-guide.html#knitting"><i class="fa fa-check"></i>Knitting</a></li>
+<li class="chapter" data-level="" data-path="project-report-guide.html"><a href="project-report-guide.html#formatting"><i class="fa fa-check"></i>Formatting</a>
+<ul>
+<li class="chapter" data-level="" data-path="project-report-guide.html"><a href="project-report-guide.html#new-pages-and-paragraphs"><i class="fa fa-check"></i>New pages and paragraphs</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="project-report-guide.html"><a href="project-report-guide.html#chunk-options"><i class="fa fa-check"></i>Chunk options</a></li>
+<li class="chapter" data-level="" data-path="project-report-guide.html"><a href="project-report-guide.html#external-images"><i class="fa fa-check"></i>External images</a></li>
+<li class="chapter" data-level="" data-path="project-report-guide.html"><a href="project-report-guide.html#references"><i class="fa fa-check"></i>References</a>
+<ul>
+<li class="chapter" data-level="" data-path="project-report-guide.html"><a href="project-report-guide.html#citations"><i class="fa fa-check"></i>Citations</a></li>
+<li class="chapter" data-level="" data-path="project-report-guide.html"><a href="project-report-guide.html#footnotes"><i class="fa fa-check"></i>Footnotes</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Bioinformatics Introductory Course - Master Molecular Biotechnology</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="project-cancer-hallmark-and-metabolic-pathways-in-cancer" class="section level1 hasAnchor">
+<h1>Project: Cancer Hallmark and Metabolic Pathways in Cancer<a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#project-cancer-hallmark-and-metabolic-pathways-in-cancer" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="introduction-1" class="section level2 hasAnchor">
+<h2>Introduction<a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#introduction-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Tumor tissues are a complex mixture of distinct cell types. Cancer cells represent the most distinctive part
+of tissue. These are normal cells which have undergone an oncogenic event, such as for example copy-number variations, in which portions of chromosomes are duplicated a large number of times, or chromosomal fusions, in which several portions of chromosomes are fused together and might induce the high expression of so-called oncogenes. However, in some cancer types, these tumor cells only represent a small fraction of the tumor tissue. Other non-tumor cells contribute to the <strong>tumor micro-environment</strong>, such as immune cells (e.g. tumor infiltrating lymphocytes, or TILs) or stromal cells. These different cell types form a complex system in which multiple interactions (e.g. through cytokine signalling) take place and promote the tumor development.</p>
+<p>Despite this complexity, and the very distinct feature of different tumors (liquid, solid, sarcomas, carcinomas,..), a number of <strong>common cellular principles</strong> have been described, which can be identified in all cancer types; these are the so called <strong>cancer hallmarks</strong>. A first description of 6 hallmarks was made by Hanahan and Weinberg in 2000, and updated and extended to four further characteristics by the same authors in 2011 (see references below).</p>
+<p><img src="hallmark_all.png" alt="Fig. 1 - Cancer hallmarks (adapted from Hanahan & Weinberg (2011))" width="700"></p>
+<p>These hallmarks represent cellular mechanisms by which the tumor cells acquire a growth advantage over normal cells and evade cellular mechanisms, such as immune surveillance, meant to suppress cancer cells. On the other hand, various metabolic process are being altered in cancer cells to adapt the cell to the changed micro-environment. The best known example of such a metabolic changes is the <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4783224/"><em>Warburg-effect</em></a>, during which the cancer cell switch their energy production from an aerobe mode to an anaerobe-like mode, i.e. purely through glycolysis, even in the presence of oxygen (‘aerobe glycolysis’). However, in recent years, additional examples of the importance of metabolic changes in cancer have been described.</p>
+<p>The activation of the 10 hallmarks can be detected by changes in the expression levels of certain genes that can be related to one or the other of these hallmarks or metabolic pathways. For example, angiogenesis, i.e. the development of new blood vessels in the tumor to provide nutrients, is induced by a number of well described genes such as <a href="https://www.genecards.org/cgi-bin/carddisp.pl?gene=EGFR&amp;keywords=EGFR"><em>EGFR</em></a>, along with a number of other genes which promote this process.</p>
+<p>The goal of this project is to perform a <strong>pan-cancer analysis of these cancer hallmarks and metabolic pathways</strong>, using datasets of genes expression data from a large collection of tumor samples. We will use the TCGA (The Cancer Genome Atlas) collection of RNA-seq data, across a large number of tumor types and patients (hence <em>pan-cancer</em>) and identify the activity of these hallmarks by using a collection of gene sets which describe the activity of these pathways. Then, each group in this project will focus on a specific cancer type and compare these hallmarks between the cancer samples and matched normal control.</p>
+<p>Hence, you will be conducting (1) a pan-cancer analysis to compare tumor types amongst themselves (similar to the other groups in the project), and (2) a cancer specific analysis to compare normal to cancer cells in this tumor type.</p>
+<p>The 5 sub-projects correspond to a different tumor type for the cancer specific analysis</p>
+<ol style="list-style-type: decimal">
+<li>sub-project 1: BRCA = breast cancer;</li>
+<li>sub-project 2: KIRC = kidney renal carcinoma;</li>
+<li>sub-project 3: LUAD = lung adenocarcinoma;</li>
+<li>sub-prohect 4: PRAD = prostate adenocarcinoma;</li>
+<li>sub-project 5: THCA = Thyroid carcinoma</li>
+</ol>
+</div>
+<div id="objectives-and-workplan" class="section level2 hasAnchor">
+<h2>Objectives and workplan<a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#objectives-and-workplan" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The objectives of your project are the following:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Identify cancer hallmark pathways</strong>: we have provided a first list of genesets, which have been curated from the literature; check those and identify in the literature additional (for example metabolic pathways) that are relevant to cancer, and collect the corresponding gene sets. For this, you can use the following databases:</li>
+</ol>
+<ul>
+<li><a href="https://www.gsea-msigdb.org/gsea/msigdb/">MSigDB</a>: this is a very large collection of gene sets organized by categories; you can browse by keyword</li>
+<li><a href="http://geneontology.org/">Gene Ontology</a>: GO is a controlled vocabulary which describes all biological or molecular processed; you can query bey keyword, and then extract the genes which are annotated to this term (<em>make sure to select the right organism!</em>)</li>
+<li><a href="https://www.genome.jp/kegg/pathway.html">KEGG</a>: Comprehensive database of biological pathways</li>
+<li><a href="https://www.pathwaycommons.org/">Pathway Commons</a>: this is a very large database of pathways from which gene sets can be obtained</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Compare gene sets</strong>: make a comparison of the cancer hallmarks gene sets and the selected metabolic gene sets; how many shared genes are there between these gene sets?</li>
+</ol>
+<ul>
+<li>a compiled list of hallmark related datasets are provided (see dataset section); bring your metabolic pathways into a similar format</li>
+<li>find a way to compare all these datasets, in order to identify groups of datasets with shared genes (identify a suitable metric to quantify the distance or similarity between 2 sets!)</li>
+<li>display this comparison using a graphical representation</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>Perform a pan-cancer analysis</strong>: determine the expression profiles of these gene sets across all TCGA tumor datasets, and determine patterns and clusters of tumor samples</li>
+</ol>
+<ul>
+<li>a data frame of expression values for many cancer samples is provided (see dataset section);</li>
+<li>start with one pathway, and check the expression of the genes of this pathway compared to all genes for one sample; how could you summarize this into one number? This would represent the <strong>activity</strong> of this pathway in this sample</li>
+<li>compute the activities of all pathways for all samples, and display this in an appropriate way</li>
+<li>how can you identify patterns and clusters of samples / pathways?</li>
+<li>compare this with the clinical informations provided in the datasets; can you find associations with specific clinical variables?</li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li><strong>Compare Tumor to normal tissue through a focused analysis</strong>: perform a differential analysis for the select tumor type between normal tissue and tumor tissue</li>
+</ol>
+<ul>
+<li>for the tumor type you selected, repeat a similar analysis as in (3) in tumor and normal samples</li>
+<li>test which pathways have a significant different activity between the normal and tumor samples</li>
+</ul>
+<ol start="5" style="list-style-type: decimal">
+<li><strong>Predict pathway activities using a regression model</strong>: predict the activity of a metabolic pathway using the other hallmarks/metabolic pathways as explanatory variables</li>
+</ol>
+<ul>
+<li>select one pathway of interest</li>
+<li>can you build a linear regression model to determine the activity of this pathway from the other pathways? Make sure to take into account the analysis performed in (2) !</li>
+</ul>
+<p><strong>Alternatively</strong>, you can try to perform a <strong><a href="https://www.datacamp.com/tutorial/logistic-regression-R">logistic regression model</a></strong> to perform a <strong>binary classification</strong> tumor vs. normal based on the activity of the pathways.</p>
+<p>All these analysis steps should be summarized in a R markdown document, with appropriate description and graphical outputs!</p>
+</div>
+<div id="description-of-datasets" class="section level2 hasAnchor">
+<h2>Description of datasets<a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#description-of-datasets" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We have stored 4 datasets onto a public platform, figshare. These datasets represent</p>
+<ol style="list-style-type: decimal">
+<li><p>a data frame containing the <strong>gene expression data from RNA-seq</strong> for almost 10,000 TCGA cancer patients, representing 33 different tumor types; you can download the R-object <code>tcga_tumor_log2TPM.RDS</code> (beware, almost 1 Gb!) using this link: <a href="https://figshare.com/s/3c2bf4d766181a17a2e0">https://figshare.com/s/3c2bf4d766181a17a2e0</a></p></li>
+<li><p>a data frame with <strong>37 clinical annotations</strong> for all TCGA samples present in the full data matrix; you can download the R-object <code>tcga_tumor_annotation.RDS</code> using this link : <a href="https://figshare.com/s/eed44ff6fdcf451cebd9">https://figshare.com/s/eed44ff6fdcf451cebd9</a></p></li>
+<li><p>a R object containing, for 5 tumor types, the expression data of matched tumor and normal tissue; you can download this object <code>tcga_tumor_normal_datascience_proj_2024.RDS</code> using this link <a href="https://figshare.com/s/3b9aa021a5cebc249ffa">https://figshare.com/s/3b9aa021a5cebc249ffa</a></p></li>
+<li><p>a R object, containing a list of gene sets for the cancer hallmarks and additional pathways; you can download the object <code>hallmarks_genesets.rds</code> using this link <a href="https://figshare.com/s/4f917a4f41e90027dd6f">https://figshare.com/s/4f917a4f41e90027dd6f</a></p></li>
+</ol>
+<p>Once you have downloaded these 4 files, load them as below (make sure to replace the <code>path/to/your/directory/</code> part with the path to the location on your computer where you have stored the files!):</p>
+<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb327-1" tabindex="-1"></a>tcga_exp <span class="ot">=</span> <span class="fu">readRDS</span>(<span class="st">&quot;path/to/your/directory/tcga_tumor_log2TPM.RDS&quot;</span>)</span>
+<span id="cb327-2"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb327-2" tabindex="-1"></a>tcga_annot <span class="ot">=</span> <span class="fu">readRDS</span>(<span class="st">&quot;path/to/your/directory/tcga_tumor_annotation.RDS&quot;</span>)</span>
+<span id="cb327-3"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb327-3" tabindex="-1"></a>tcga_tumor_norm <span class="ot">=</span> <span class="fu">readRDS</span>(<span class="st">&quot;path/to/your/directory/tcga_tumor_normal_datascience_proj_2020.RDS&quot;</span>)</span>
+<span id="cb327-4"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb327-4" tabindex="-1"></a>genesets <span class="ot">=</span> <span class="fu">readRDS</span>(<span class="st">&quot;path/to/your/directory/hallmarks_genesets.rds&quot;</span>)</span></code></pre></div>
+<p>The first 2 objects are data frames</p>
+<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb328-1" tabindex="-1"></a><span class="fu">dim</span>(tcga_exp)</span>
+<span id="cb328-2"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb328-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">60498</span>  <span class="dv">9741</span></span>
+<span id="cb328-3"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb328-3" tabindex="-1"></a> </span>
+<span id="cb328-4"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb328-4" tabindex="-1"></a><span class="fu">dim</span>(tcga_annot)</span>
+<span id="cb328-5"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb328-5" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">9741</span>   <span class="dv">37</span></span></code></pre></div>
+<p>The third object is a list with 5 entries corresponding to 5 tumor types (BRCA = breast cancer; KIRC = kidney renal carcinoma; LUAD = lung adenocarcinoma; PRAD = prostate adenocarcinoma; THCA = Thyroid carcinoma); each entry of the list is itself a list with 3 entries, corresponding to (1) a data frame with expression values for tumor samples, (2) a data frame with expression values for normal samples from the same patients, (3) a data frame with clinical annotations for these patients.</p>
+<p>Hence, if you want to access the expression matrix for tumor samples and normal sample for LUAD for example, you can do it through:</p>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb329-1" tabindex="-1"></a>luad <span class="ot">=</span> tcga_tumor_norm[[<span class="st">&quot;LUAD&quot;</span>]]</span>
+<span id="cb329-2"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb329-2" tabindex="-1"></a>luad.tumor <span class="ot">=</span> luad[[<span class="st">&quot;tumor&quot;</span>]]</span>
+<span id="cb329-3"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb329-3" tabindex="-1"></a>luad.norm <span class="ot">=</span> luad[[<span class="st">&quot;normal&quot;</span>]]</span>
+<span id="cb329-4"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb329-4" tabindex="-1"></a>luad.annot <span class="ot">=</span> luad[[<span class="st">&quot;clinical&quot;</span>]]</span>
+<span id="cb329-5"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb329-5" tabindex="-1"></a><span class="fu">dim</span>(luad.tumor)</span>
+<span id="cb329-6"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb329-6" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">19624</span>    <span class="dv">58</span></span>
+<span id="cb329-7"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb329-7" tabindex="-1"></a><span class="fu">dim</span>(luad.norm)</span>
+<span id="cb329-8"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb329-8" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">19624</span>    <span class="dv">58</span></span>
+<span id="cb329-9"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb329-9" tabindex="-1"></a><span class="fu">dim</span>(luad.annot)</span>
+<span id="cb329-10"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb329-10" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">58</span> <span class="dv">37</span></span></code></pre></div>
+<p>The last object is again a list</p>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb330-1" tabindex="-1"></a><span class="fu">class</span>(genesets)</span>
+<span id="cb330-2"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb330-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;list&quot;</span></span>
+<span id="cb330-3"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb330-3" tabindex="-1"></a><span class="fu">names</span>(genesets)</span>
+<span id="cb330-4"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb330-4" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;genesets&quot;</span>    <span class="st">&quot;description&quot;</span></span>
+<span id="cb330-5"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb330-5" tabindex="-1"></a><span class="fu">names</span>(genesets<span class="sc">$</span>genesets)</span>
+<span id="cb330-6"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb330-6" tabindex="-1"></a> [<span class="dv">1</span>] <span class="st">&quot;Angio_AACR&quot;</span>             <span class="st">&quot;Angio_ALL&quot;</span>              <span class="st">&quot;Angio_VEGF&quot;</span>            </span>
+<span id="cb330-7"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb330-7" tabindex="-1"></a> [<span class="dv">4</span>] <span class="st">&quot;Angio_N_Reg&quot;</span>            <span class="st">&quot;Angio_P_Reg&quot;</span>            <span class="st">&quot;Apop_AACR&quot;</span>             </span>
+<span id="cb330-8"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb330-8" tabindex="-1"></a> [<span class="dv">7</span>] <span class="st">&quot;Apop_ALL&quot;</span>               <span class="st">&quot;Apop_SURVIVAL&quot;</span>          <span class="st">&quot;Genome_AACR&quot;</span>           </span>
+<span id="cb330-9"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb330-9" tabindex="-1"></a>[<span class="dv">10</span>] <span class="st">&quot;Genome_DN_Reg&quot;</span>          <span class="st">&quot;Genome_REPAIR&quot;</span>          <span class="st">&quot;Growth_AACR&quot;</span>           </span>
+<span id="cb330-10"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb330-10" tabindex="-1"></a>[<span class="dv">13</span>] <span class="st">&quot;Growth_ALL&quot;</span>             <span class="st">&quot;Growth_CONTACT_Inh&quot;</span>     <span class="st">&quot;Growth_Tumor_Supp&quot;</span>     </span>
+<span id="cb330-11"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb330-11" tabindex="-1"></a>[<span class="dv">16</span>] <span class="st">&quot;Immune_AACR&quot;</span>            <span class="st">&quot;Immune_ALL&quot;</span>             <span class="st">&quot;Immune_UP&quot;</span>             </span>
+<span id="cb330-12"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb330-12" tabindex="-1"></a>[<span class="dv">19</span>] <span class="st">&quot;Immune_DN&quot;</span>              <span class="st">&quot;Immune_Ils&quot;</span>             <span class="st">&quot;Inflam_AACR&quot;</span>           </span>
+<span id="cb330-13"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb330-13" tabindex="-1"></a>[<span class="dv">22</span>] <span class="st">&quot;Inflam_PRO&quot;</span>             <span class="st">&quot;Inflam_NEG&quot;</span>             <span class="st">&quot;Meta_AACR&quot;</span>             </span>
+<span id="cb330-14"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb330-14" tabindex="-1"></a>[<span class="dv">25</span>] <span class="st">&quot;Meta_Glc&quot;</span>               <span class="st">&quot;Meta_Gln&quot;</span>               <span class="st">&quot;Meta_Chol&quot;</span>             </span>
+<span id="cb330-15"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb330-15" tabindex="-1"></a>[<span class="dv">28</span>] <span class="st">&quot;Meta_FA&quot;</span>                <span class="st">&quot;Meta_HIF1&quot;</span>              <span class="st">&quot;Metas_AACR&quot;</span>            </span>
+<span id="cb330-16"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb330-16" tabindex="-1"></a>[<span class="dv">31</span>] <span class="st">&quot;Metas_ALL&quot;</span>              <span class="st">&quot;Metas_EMT_MMP&quot;</span>          <span class="st">&quot;Metas_NEG&quot;</span>             </span>
+<span id="cb330-17"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb330-17" tabindex="-1"></a>[<span class="dv">34</span>] <span class="st">&quot;Metas_EMT&quot;</span>              <span class="st">&quot;Prol_AACR&quot;</span>              <span class="st">&quot;Prol_EGFR&quot;</span>             </span>
+<span id="cb330-18"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb330-18" tabindex="-1"></a>[<span class="dv">37</span>] <span class="st">&quot;Prol_MAPK&quot;</span>              <span class="st">&quot;Prol_PI3CK&quot;</span>             <span class="st">&quot;Prol_NOTCH&quot;</span>            </span>
+<span id="cb330-19"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb330-19" tabindex="-1"></a>[<span class="dv">40</span>] <span class="st">&quot;Prol_ERK&quot;</span>               <span class="st">&quot;Prol_RAS&quot;</span>               <span class="st">&quot;Prol_JAK_STAT&quot;</span>         </span>
+<span id="cb330-20"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb330-20" tabindex="-1"></a>[<span class="dv">43</span>] <span class="st">&quot;Prol_MTOR&quot;</span>              <span class="st">&quot;Prol_WNT&quot;</span>               <span class="st">&quot;Replication_AACR&quot;</span>      </span>
+<span id="cb330-21"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb330-21" tabindex="-1"></a>[<span class="dv">46</span>] <span class="st">&quot;Replication_Telomerase&quot;</span></span>
+<span id="cb330-22"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb330-22" tabindex="-1"></a><span class="do">## these are the first genes of the first geneset</span></span>
+<span id="cb330-23"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb330-23" tabindex="-1"></a><span class="fu">head</span>(genesets<span class="sc">$</span>genesets[[<span class="dv">1</span>]])</span>
+<span id="cb330-24"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb330-24" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;AAMP&quot;</span>   <span class="st">&quot;ACTA2&quot;</span>  <span class="st">&quot;ACVR1&quot;</span>  <span class="st">&quot;ACVRL1&quot;</span> <span class="st">&quot;ADGRG1&quot;</span> <span class="st">&quot;ADM&quot;</span>   </span>
+<span id="cb330-25"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb330-25" tabindex="-1"></a><span class="do">## the element description contains a description of the genesets</span></span>
+<span id="cb330-26"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb330-26" tabindex="-1"></a><span class="fu">head</span>(genesets<span class="sc">$</span>description)</span>
+<span id="cb330-27"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb330-27" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;na&quot;</span>                                  <span class="st">&quot;all angiogenesis inducing genes&quot;</span>    </span>
+<span id="cb330-28"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb330-28" tabindex="-1"></a>[<span class="dv">3</span>] <span class="st">&quot;VEGF pathway&quot;</span>                        <span class="st">&quot;negative regulators of angiogenesis&quot;</span></span>
+<span id="cb330-29"><a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#cb330-29" tabindex="-1"></a>[<span class="dv">5</span>] <span class="st">&quot;positive regulators of angiogenesis&quot;</span> <span class="st">&quot;na&quot;</span> </span></code></pre></div>
+</div>
+<div id="literature-review" class="section level2 hasAnchor">
+<h2>Literature review<a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#literature-review" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This list is meant as a <strong>starting point</strong> for your literature research; you should not restrict yourself to this list only!</p>
+<div id="reviews-on-general-cancer-biology-and-cancer-metabolism" class="section level4 hasAnchor">
+<h4>Reviews on general cancer biology and cancer metabolism<a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#reviews-on-general-cancer-biology-and-cancer-metabolism" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><strong>Cancer biology -</strong> Hanahan, Douglas, and Robert A. Weinberg. “Hallmarks of cancer: the next generation.” cell 144, no. 5 (2011): 646-674. <a href="https://doi.org/10.1016/j.cell.2011.02.013" class="uri">https://doi.org/10.1016/j.cell.2011.02.013</a></li>
+<li><strong>Cancer metabolism -</strong> De Berardinis, R. J., &amp; Chandel, N. S. (2016). Fundamentals of cancer metabolism. Science Advances, 2(5). <a href="https://doi.org/10.1126/sciadv.1600200" class="uri">https://doi.org/10.1126/sciadv.1600200</a></li>
+<li><strong>Cancer metabolism -</strong> Pavlova, Natalya N., and Craig B. Thompson. “The emerging hallmarks of cancer metabolism.” Cell metabolism 23, no. 1 (2016): 27-47.https://doi.org/10.1016/j.cmet.2015.12.006</li>
+</ul>
+</div>
+<div id="analysis-of-cancer-hallmarks-across-multiple-cancer-types-using-integrative-approches" class="section level4 hasAnchor">
+<h4>Analysis of cancer hallmarks across multiple cancer types using integrative approches<a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#analysis-of-cancer-hallmarks-across-multiple-cancer-types-using-integrative-approches" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><strong>Cancer immunology -</strong> Thorsson, Vésteinn, David L. Gibbs, Scott D. Brown, Denise Wolf, Dante S. Bortone, Tai-Hsien Ou Yang, Eduard Porta-Pardo et al. “The immune landscape of cancer.” Immunity 48, no. 4 (2018): 812-830. <a href="https://doi.org/10.1016/j.immuni.2018.03.023" class="uri">https://doi.org/10.1016/j.immuni.2018.03.023</a></li>
+<li><strong>Cancer metabolism -</strong> Peng, Xinxin, Zhongyuan Chen, Farshad Farshidfar, Xiaoyan Xu, Philip L. Lorenzi, Yumeng Wang, Feixiong Cheng et al. “Molecular characterization and clinical relevance of metabolic expression subtypes in human cancers.” Cell reports 23, no. 1 (2018): 255-269. <a href="https://doi.org/10.1016/j.celrep.2018.03.077" class="uri">https://doi.org/10.1016/j.celrep.2018.03.077</a></li>
+<li><strong>Cancer stemness/de-differenciation</strong> Malta, Tathiane M., Artem Sokolov, Andrew J. Gentles, Tomasz Burzykowski, Laila Poisson, John N. Weinstein, Bożena Kamińska et al. “Machine learning identifies stemness features associated with oncogenic dedifferentiation.” Cell 173, no. 2 (2018): 338-354. <a href="https://doi.org/10.1016/j.cell.2018.03.034" class="uri">https://doi.org/10.1016/j.cell.2018.03.034</a></li>
+<li><strong>DNA damage in cancer -</strong> Knijnenburg, Theo A., Linghua Wang, Michael T. Zimmermann, Nyasha Chambwe, Galen F. Gao, Andrew D. Cherniack, Huihui Fan et al. “Genomic and molecular landscape of DNA damage repair deficiency across The Cancer Genome Atlas.” Cell reports 23, no. 1 (2018): 239-254. <a href="https://doi.org/10.1016/j.celrep.2018.03.076" class="uri">https://doi.org/10.1016/j.celrep.2018.03.076</a></li>
+<li><strong>RAS signalling Cancer -</strong> Way, Gregory P., Francisco Sanchez-Vega, Konnor La, Joshua Armenia, Walid K. Chatila, Augustin Luna, Chris Sander et al. “Machine learning detects pan-cancer ras pathway activation in the cancer genome atlas.” Cell reports 23, no. 1 (2018): 172-180. <a href="https://doi.org/10.1016/j.celrep.2018.03.046" class="uri">https://doi.org/10.1016/j.celrep.2018.03.046</a></li>
+</ul>
+</div>
+<div id="how-to-score-pathways" class="section level4 hasAnchor">
+<h4>How to score pathways ?<a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#how-to-score-pathways" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><p>Reimand, Jüri, Ruth Isserlin, Veronique Voisin, Mike Kucera, Christian Tannus-Lopes, Asha Rostamianfar, Lina Wadi et al. “Pathway enrichment analysis and visualization of omics data using g: Profiler, GSEA, Cytoscape and EnrichmentMap.” Nature protocols 14, no. 2 (2019): 482-517. <a href="https://doi.org/10.1038/s41596-018-0103-9" class="uri">https://doi.org/10.1038/s41596-018-0103-9</a></p></li>
+<li><p>Paczkowska, Marta, Jonathan Barenboim, Nardnisa Sintupisut, Natalie S. Fox, Helen Zhu, Diala Abd-Rabbo, Miles W. Mee, Paul C. Boutros, and Jüri Reimand. “Integrative pathway enrichment analysis of multivariate omics data.” Nature communications 11, no. 1 (2020): 1-16. <a href="https://doi.org/10.1038/s41467-019-13983-9" class="uri">https://doi.org/10.1038/s41467-019-13983-9</a></p></li>
+<li><p>Jia, Dongya, Mingyang Lu, Kwang Hwa Jung, Jun Hyoung Park, Linglin Yu, José N. Onuchic, Benny Abraham Kaipparettu, and Herbert Levine. “Elucidating cancer metabolic plasticity by coupling gene regulation with metabolic pathways.” Proceedings of the National Academy of Sciences 116, no. 9 (2019): 3909-3918. <a href="https://doi.org/10.1073/pnas.1816391116" class="uri">https://doi.org/10.1073/pnas.1816391116</a></p></li>
+</ul>
+</div>
+</div>
+<div id="how-to-structure-your-project" class="section level2 hasAnchor">
+<h2>How to structure your project<a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#how-to-structure-your-project" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="project" class="section level3 hasAnchor">
+<h3>Project<a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#project" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>You project <strong>MUST</strong> contain the following elements:
+- <strong>descriptive statistics</strong> about the datasets
+- <strong>graphical representations</strong>
+- <strong>dimension reduction</strong> analysis (PCA, clustering or k-means)
+- <strong>statistical tests</strong> (t-test, proportion tests etc)
+- <strong>linear/logistic regression</strong> analysis, either uni- or multivariate</p>
+<div id="data-cleanup" class="section level4 hasAnchor">
+<h4>Data cleanup<a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#data-cleanup" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>You will be analyzing multiple genomic data sets together. It is
+essential that you explore each dataset and clean it. Cleaning can refer
+to many things:</p>
+<ul>
+<li>Removing missing values</li>
+<li>Imputing missing values</li>
+<li>Removing low variance columns/rows</li>
+<li>Removing batch effects</li>
+<li>Removing outlier samples (only if it is due to technical issues !!)</li>
+<li>Making sure that data is in the correct format, for example, numbers
+should be encoded as numeric and not as characters. Categorical
+variables should be factors etc.</li>
+<li>Re-ordering rows/columns in meaningful and useful ways</li>
+</ul>
+</div>
+<div id="data-exploration" class="section level4 hasAnchor">
+<h4>Data exploration<a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#data-exploration" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Now that you have cleaned data, explore your data to understand its
+structure. Perform basic exploratory data analysis.</p>
+<ul>
+<li>Look at the distribution of the overall data, specific samples or
+features.</li>
+<li>Visualize the data distribution</li>
+<li>Visualize the inter-dependencies among specific samples/features of
+interest</li>
+<li>Check some of your hypothesis like - is something high/low between
+two conditions etc</li>
+</ul>
+</div>
+<div id="data-reduction" class="section level4 hasAnchor">
+<h4>Data reduction<a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#data-reduction" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>You have a high dimension matrix, that is, you have way more features
+(~25000 genes) than observations.</p>
+<ul>
+<li>Try out methods to reduce the dimensionality of this data.</li>
+<li>Cluster your samples to identify similar and dis-similar groups</li>
+<li>Check how well the groups separate based on the features of your
+interest</li>
+</ul>
+</div>
+<div id="data-modelling" class="section level4 hasAnchor">
+<h4>Data modelling<a href="project-cancer-hallmark-and-metabolic-pathways-in-cancer.html#data-modelling" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Predict activities of some pathways using the activities of other pathways.</p>
+
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="week-2-sequence-analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="project-report-guide.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/03-project.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -39,3 +39,9 @@
 #### Day 2 - Blast, alignments, etc...
 
 -   [[slides]](./slides/GKBioinfo_week2_2.pdf)
+
+#### Day 4/5 - Next generation sequencing, RNA-seq
+
+-   [[slides RNA-seq - part 1]](./slides/2024_RNAseq_Part1.pdf)
+-   [[slides RNA-seq - part 1.2]](./slides/Oscar_Introduction RNAseq 1-2 2024.pdf)
+

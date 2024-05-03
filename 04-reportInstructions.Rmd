@@ -1,0 +1,103 @@
+# Project report guide {.unnumbered}
+
+At the end of this course, you will have to produce a report in RMarkdown. RMarkdown is an inherantly ready-to publish format. Meaning that if there are no mistakes on your text, it should simply produce a PDF in one go. Let's see how.
+
+## Knitting
+
+Create a new RMarkdown document and start trying it out. You can already call this document *Report* if you would like to. You can also use a layout we have made available [here](https://github.com/hdsu-bioquant/bioinfo_MoBiMA/tree/main/report_example).
+
+By clicking on the little blue yarn ball on top, you can *Knit* the document into a PDF (to PDF option can be found on the right drop arrow).
+
+Tips to ensure you catch errors early on:
+
+-   Knit your document every so often! If you have too much code/text that you have not verified if it's running or not, this might cause issues later on.
+-   Read your errors when you have them: R will usually tell you where the error is located. Most times it's a character error as some characters will have meanings in RMarkdown and that is not always clear at first.
+-   Check for missing dependencies like `dplyr`, `tidyr`, or `ggplot2` if you are using these packages.
+-   Comment your code!
+-   Keep things short, simplify, and avoid having a wall of text/code that is hardly decipherable.
+
+## Formatting
+
+New chapter titles and subtitles are defined from `#` (larger title as in 1.) to `####` (smaller title as in 1.1.1.1). Further formatting can be found [here](https://bookdown.org/yihui/rmarkdown-cookbook/formatting.html).
+
+Numerical equations and special characters have their own formatting. For example: `$\sqrt{13}$` is square-root of 13 `$\alpha=0.05$` is alpha=0.05
+
+Here is an equation:
+```
+\begin{equation} 
+  f\left(k\right) = \binom{n}{k} p^k\left(1-p\right)^{n-k}
+  (\#eq:binom)
+\end{equation}
+```
+
+\begin{equation} 
+  f\left(k\right) = \binom{n}{k} p^k\left(1-p\right)^{n-k}
+  (\#eq:binom)
+\end{equation}
+
+
+You may refer to this equation using `\@ref(eq:binom)`.
+
+### New pages and paragraphs
+
+You can use `\newpage` to create new pages and `\par` to make paragraphs.
+
+## Chunk options
+
+There are a multitude of options to display the R chunks and their outputs. See all of them [here](https://bookdown.org/yihui/rmarkdown-cookbook/chunk-options.html). The ones will will most likely use are:
+
+-   `echo=FALSE`: hides the code but not the results
+-   `results='hide'`: hides the results but not the code
+-   `include=FALSE`: does not include the chunk
+-   `eval=FALSE`: does not run the chunk
+
+Some of the ones below control figure placement and size:
+
+-   `fig.height`
+-   `fig.width`
+-   `fig.align='center'`
+-   `out.width` Extra: `results='hold', out.width='50%'`: will allow you to show 2 figure/plot outputs side by side.
+
+## External images
+
+When including external images, you need to indicate the location of such figure relative to your document: `![This is a Figure](figure_folder/avocado_image.jpeg)`
+
+![This is a Figure. Source: <https://www.metmuseum.org/de/art/collection/search/436535>](figures/vangogh.jpeg)
+
+For more additions like table, check the [RMarkdown cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/tables.html).
+
+Figures and tables *with captions* can also be cross-referenced from elsewhere using `\@ref(fig:chunk-label)` and `\@ref(tab:chunk-label)`, respectively.
+
+Don't miss Table \@ref(tab:nice-tab). Reference tables using `\@ref(tab:nice-tab)`
+
+```{r nice-tab, tidy=FALSE}
+knitr::kable(
+  head(pressure, 5), caption = 'Here is a nice table!',
+  booktabs = TRUE
+)
+```
+
+## References
+
+Your report will very likely include some references. Each RMarkdown is accompanied by a *.bib* extension file. Indicate the name of that file in the beginning of the report (see example). You can see the one we have included in the example [here](https://github.com/hdsu-bioquant/bioinfo_MoBiMA/tree/main/report_example) too. If you open that file in a text editor, you can see that entries are structured like this:
+
+```         
+@book{ggplot2,
+    author = {Hadley Wickham},
+    isbn = {978-3-319-24277-4},
+    publisher = {Springer-Verlag New York},
+    title = {ggplot2: Elegant Graphics for Data Analysis},
+    url = {https://ggplot2.tidyverse.org},
+    year = {2016},
+    bdsk-url-1 = {https://ggplot2.tidyverse.org}}
+```
+
+This citation format is compatible with citation managers like BibDesk (only available on macOS) or Mendeley. When you are using one of these, you are able to add in other references. Watch out for the reference key in your Markdown.
+
+### Citations
+
+Reference items present in your bibliography file(s) in the Markdown using `@key` or `[@key]`. For the previous example, key is actually *ggplot2*!
+
+### Footnotes
+
+Footnotes are put inside the square brackets after a caret `^[]`.
