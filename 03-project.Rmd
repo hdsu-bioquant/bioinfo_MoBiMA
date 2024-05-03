@@ -25,6 +25,10 @@ The 5 sub-projects correspond to a different tumor type for the cancer specific 
 3. sub-project 3: LUAD = lung adenocarcinoma;
 4. sub-prohect 4: PRAD = prostate adenocarcinoma; 
 5. sub-project 5: THCA = Thyroid carcinoma
+6. sub-project 6: COAD = colon adenocarcinoma;
+7. sub-prohect 7: LIHC = liver hepatocarcinoma; 
+8. sub-project 8: LUSC = lung small cell carcinoma
+
 
 ## Objectives and workplan
 
@@ -69,7 +73,7 @@ We have stored 4 datasets onto a public platform, figshare. These datasets repre
 
 2. a data frame with **37 clinical annotations** for all TCGA samples present in the full data matrix; you can download the R-object `tcga_tumor_annotation.RDS` using this link : [https://figshare.com/s/eed44ff6fdcf451cebd9](https://figshare.com/s/eed44ff6fdcf451cebd9)
 
-3. a R object containing, for 5 tumor types, the expression data of matched tumor and normal tissue; you can download this object `tcga_tumor_normal_datascience_proj_2024.RDS` using this link [https://figshare.com/s/3b9aa021a5cebc249ffa](https://figshare.com/s/3b9aa021a5cebc249ffa)
+3. a R object containing, for 8 tumor types, the expression data of matched tumor and normal tissue; you can download this object `GKBioinfo_tumor_normal.rds` using this link [https://figshare.com/s/5bd4cf0fc7a0af36b767](https://figshare.com/s/5bd4cf0fc7a0af36b767)
 
 4. a R object, containing a list of gene sets for the cancer hallmarks and additional pathways; you can download the object `hallmarks_genesets.rds` using this link [https://figshare.com/s/4f917a4f41e90027dd6f](https://figshare.com/s/4f917a4f41e90027dd6f)
 
